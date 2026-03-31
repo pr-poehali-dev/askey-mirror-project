@@ -121,7 +121,7 @@
     position: fixed;
     left: 0;
     top: 0;
-    width: 3px;
+    width: 8px;
     height: 100vh;
     background: linear-gradient(
       to bottom,
@@ -132,9 +132,11 @@
       transparent
     );
     box-shadow:
-      0 0 20px var(--neon-purple),
-      0 0 60px var(--neon-violet),
-      -5px 0 40px var(--neon-purple);
+      0 0 15px var(--neon-pink),
+      0 0 40px var(--neon-purple),
+      0 0 80px var(--neon-violet),
+      -20px 0 80px var(--neon-purple),
+      -40px 0 120px rgba(168, 85, 247, 0.4);
     z-index: 50;
     pointer-events: none;
   }
@@ -143,7 +145,7 @@
     position: fixed;
     right: 0;
     top: 0;
-    width: 3px;
+    width: 8px;
     height: 100vh;
     background: linear-gradient(
       to bottom,
@@ -154,9 +156,11 @@
       transparent
     );
     box-shadow:
-      0 0 20px var(--neon-purple),
-      0 0 60px var(--neon-violet),
-      5px 0 40px var(--neon-purple);
+      0 0 15px var(--neon-pink),
+      0 0 40px var(--neon-purple),
+      0 0 80px var(--neon-violet),
+      20px 0 80px var(--neon-purple),
+      40px 0 120px rgba(168, 85, 247, 0.4);
     z-index: 50;
     pointer-events: none;
   }
