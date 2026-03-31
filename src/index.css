@@ -1,92 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 4%;
+    --foreground: 0 0% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 270 20% 8%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 270 20% 8%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 270 80% 60%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 270 30% 15%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 270 20% 12%;
+    --muted-foreground: 270 10% 60%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 270 80% 60%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 270 30% 20%;
+    --input: 270 30% 15%;
+    --ring: 270 80% 60%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
+    --neon-purple: #a855f7;
+    --neon-violet: #7c3aed;
+    --neon-pink: #e879f9;
+    --neon-cyan: #22d3ee;
+    --dark-bg: #0a0a0f;
+    --card-bg: #111118;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-background: 270 20% 8%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 270 80% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 270 30% 15%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 270 30% 20%;
+    --sidebar-ring: 270 80% 60%;
   }
 }
 
@@ -97,5 +61,189 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Inter", sans-serif;
+    background-color: var(--dark-bg);
+    overflow-x: hidden;
   }
+
+  h1,
+  h2,
+  h3 {
+    font-family: "Orbitron", monospace;
+  }
+}
+
+@layer utilities {
+  .neon-text-purple {
+    color: var(--neon-purple);
+    text-shadow:
+      0 0 10px var(--neon-purple),
+      0 0 30px var(--neon-purple),
+      0 0 60px var(--neon-violet);
+  }
+
+  .neon-text-pink {
+    color: var(--neon-pink);
+    text-shadow:
+      0 0 10px var(--neon-pink),
+      0 0 30px var(--neon-pink);
+  }
+
+  .neon-border-purple {
+    border: 1px solid var(--neon-purple);
+    box-shadow:
+      0 0 10px var(--neon-purple),
+      inset 0 0 10px rgba(168, 85, 247, 0.05);
+  }
+
+  .neon-glow-purple {
+    box-shadow:
+      0 0 20px var(--neon-purple),
+      0 0 60px rgba(168, 85, 247, 0.3);
+  }
+
+  .neon-btn {
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    box-shadow:
+      0 0 20px rgba(168, 85, 247, 0.5),
+      0 0 60px rgba(168, 85, 247, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .neon-btn:hover {
+    box-shadow:
+      0 0 30px rgba(168, 85, 247, 0.8),
+      0 0 80px rgba(168, 85, 247, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .side-glow-left {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100vh;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--neon-purple),
+      var(--neon-pink),
+      var(--neon-purple),
+      transparent
+    );
+    box-shadow:
+      0 0 20px var(--neon-purple),
+      0 0 60px var(--neon-violet),
+      -5px 0 40px var(--neon-purple);
+    z-index: 50;
+    pointer-events: none;
+  }
+
+  .side-glow-right {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 3px;
+    height: 100vh;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--neon-purple),
+      var(--neon-pink),
+      var(--neon-purple),
+      transparent
+    );
+    box-shadow:
+      0 0 20px var(--neon-purple),
+      0 0 60px var(--neon-violet),
+      5px 0 40px var(--neon-purple);
+    z-index: 50;
+    pointer-events: none;
+  }
+
+  .card-dark {
+    background: var(--card-bg);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .card-dark:hover {
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+  }
+
+  .gradient-purple {
+    background: linear-gradient(135deg, #1a0a2e, #2d1a4a, #0a0a0f);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #a855f7, #e879f9, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .mirror-reflection {
+    background: linear-gradient(
+      135deg,
+      rgba(168, 85, 247, 0.1),
+      rgba(255, 255, 255, 0.05),
+      rgba(168, 85, 247, 0.1)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2px);
+  }
+}
+
+@keyframes pulse-neon {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 20px rgba(168, 85, 247, 0.5),
+      0 0 60px rgba(168, 85, 247, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 40px rgba(168, 85, 247, 0.9),
+      0 0 100px rgba(168, 85, 247, 0.4);
+  }
+}
+
+.animate-pulse-neon {
+  animation: pulse-neon 2s ease-in-out infinite;
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
 }
