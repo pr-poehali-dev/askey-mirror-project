@@ -48,14 +48,7 @@ const MirrorDecor = () => (
             backdropFilter: 'blur(1px)',
           }}
         >
-          {/* Блик (имитация стекла) */}
-          <div
-            className="absolute top-0 left-0 right-0 h-[40%] rounded-t-[35px] pointer-events-none"
-            style={{
-              background:
-                'linear-gradient(to bottom, rgba(255,255,255,0.09), transparent)',
-            }}
-          />
+
           {/* Диагональный блик */}
           <div
             className="absolute top-[10%] left-[8%] w-[28%] h-[30%] rounded-full pointer-events-none"
