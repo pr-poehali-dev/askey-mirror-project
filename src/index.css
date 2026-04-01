@@ -355,3 +355,63 @@
 .delay-800 {
   animation-delay: 800ms;
 }
+
+/* === Mirror slide-in from right === */
+@keyframes slide-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(160px) scale(0.92);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-10px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* === Mirror LED lighting top-to-bottom reveal === */
+@keyframes led-top-down {
+  0% {
+    clip-path: inset(0 0 100% 0 round 4px);
+    opacity: 0.4;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    clip-path: inset(0 0 0% 0 round 4px);
+    opacity: 1;
+  }
+}
+
+.animate-led-top-down {
+  animation: led-top-down 1.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* === Mirror glow pulse (looped) === */
+@keyframes mirror-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 18px 4px rgba(168, 85, 247, 0.55),
+      0 0 50px 10px rgba(168, 85, 247, 0.25),
+      inset 0 0 30px rgba(168, 85, 247, 0.08);
+  }
+  50% {
+    box-shadow:
+      0 0 30px 8px rgba(232, 121, 249, 0.75),
+      0 0 80px 20px rgba(168, 85, 247, 0.4),
+      inset 0 0 50px rgba(168, 85, 247, 0.14);
+  }
+}
+
+.animate-mirror-glow {
+  animation: mirror-glow 3s ease-in-out infinite;
+}
