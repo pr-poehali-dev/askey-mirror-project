@@ -40,30 +40,45 @@ const steps = [
 
 const Timeline = () => {
   return (
-    <section id="timeline" className="py-24 relative" style={{ background: '#0a0a0f' }}>
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 text-xs font-semibold tracking-widest uppercase" style={{ border: '1px solid rgba(168,85,247,0.4)', background: 'rgba(168,85,247,0.1)', color: '#a855f7' }}>
-            <Icon name="Clock" size={14} />
+    <section id="timeline" className="py-16 sm:py-20 lg:py-24 relative" style={{ background: '#0a0a0f' }}>
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-16">
+        {/* Заголовок */}
+        <div className="text-center mb-10 sm:mb-12 lg:mb-16">
+          <div
+            className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-[10px] sm:text-xs font-semibold tracking-widest uppercase"
+            style={{ border: '1px solid rgba(168,85,247,0.4)', background: 'rgba(168,85,247,0.1)', color: '#a855f7' }}
+          >
+            <Icon name="Clock" size={12} />
             Сроки производства
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4" style={{ fontFamily: 'Orbitron, monospace' }}>
+          <h2
+            className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-black text-white mb-3 sm:mb-4"
+            style={{ fontFamily: 'Orbitron, monospace' }}
+          >
             ОТ ЗАЯВКИ <span className="text-gradient">ДО ДОСТАВКИ</span>
           </h2>
-          <p className="text-white/50 text-lg max-w-2xl mx-auto">
+          <p className="text-white/50 text-sm sm:text-base lg:text-lg max-w-xl sm:max-w-2xl mx-auto">
             Весь процесс занимает от 3 до 7 дней. Держим вас в курсе на каждом этапе
           </p>
         </div>
 
         <div className="relative">
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-px" style={{ background: 'linear-gradient(to bottom, transparent, rgba(168,85,247,0.5), rgba(232,121,249,0.5), rgba(168,85,247,0.5), transparent)' }} />
+          {/* Вертикальная линия */}
+          <div
+            className="absolute left-5 sm:left-6 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-px"
+            style={{ background: 'linear-gradient(to bottom, transparent, rgba(168,85,247,0.5), rgba(232,121,249,0.5), rgba(168,85,247,0.5), transparent)' }}
+          />
 
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {steps.map((step, i) => (
-              <div key={i} className={`relative flex flex-col md:flex-row ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-start md:items-center gap-4 md:gap-0`}>
-                <div className="md:w-1/2 md:pr-12 pl-16 md:pl-0">
+              <div
+                key={i}
+                className={`relative flex flex-col md:flex-row ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-start md:items-center gap-0 md:gap-0`}
+              >
+                {/* Левая половина (чётные шаги на десктопе) */}
+                <div className="md:w-1/2 md:pr-10 lg:pr-16 pl-14 sm:pl-16 md:pl-0">
                   {i % 2 === 0 ? (
-                    <div className="card-dark rounded-3xl p-6 md:ml-auto md:max-w-sm group hover:neon-border-purple transition-all duration-300">
+                    <div className="card-dark rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6 md:ml-auto md:max-w-sm lg:max-w-md group hover:neon-border-purple transition-all duration-300">
                       <StepCard step={step} />
                     </div>
                   ) : (
@@ -71,17 +86,22 @@ const Timeline = () => {
                   )}
                 </div>
 
-                <div className="absolute left-3 md:left-1/2 md:-translate-x-1/2 w-7 h-7 rounded-full flex items-center justify-center z-10 flex-shrink-0" style={{ background: step.color, boxShadow: `0 0 15px ${step.color}` }}>
-                  <Icon name={step.icon} size={14} className="text-white" />
+                {/* Иконка на линии */}
+                <div
+                  className="absolute left-2.5 sm:left-3.5 md:left-1/2 md:-translate-x-1/2 w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center z-10 flex-shrink-0 mt-4 md:mt-0"
+                  style={{ background: step.color, boxShadow: `0 0 15px ${step.color}` }}
+                >
+                  <Icon name={step.icon} size={12} className="text-white" />
                 </div>
 
-                <div className="md:w-1/2 md:pl-12 pl-16 md:pl-12">
+                {/* Правая половина (нечётные шаги на десктопе) */}
+                <div className="md:w-1/2 md:pl-10 lg:pl-16 pl-14 sm:pl-16">
                   {i % 2 !== 0 ? (
-                    <div className="card-dark rounded-3xl p-6 md:max-w-sm group hover:neon-border-purple transition-all duration-300">
+                    <div className="card-dark rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6 md:max-w-sm lg:max-w-md group hover:neon-border-purple transition-all duration-300">
                       <StepCard step={step} />
                     </div>
                   ) : (
-                    <div className="block md:hidden card-dark rounded-3xl p-6 group hover:neon-border-purple transition-all duration-300">
+                    <div className="block md:hidden card-dark rounded-2xl sm:rounded-3xl p-4 sm:p-5 group hover:neon-border-purple transition-all duration-300">
                       <StepCard step={step} />
                     </div>
                   )}
@@ -91,11 +111,15 @@ const Timeline = () => {
           </div>
         </div>
 
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-3 px-8 py-4 rounded-3xl" style={{ background: 'linear-gradient(135deg, rgba(168,85,247,0.15), rgba(124,58,237,0.1))', border: '1px solid rgba(168,85,247,0.3)' }}>
-            <Icon name="Zap" size={20} className="text-yellow-400" />
-            <span className="text-white font-semibold">Срочный заказ?</span>
-            <span className="text-white/60">Экспресс-производство за 2–3 дня по запросу</span>
+        {/* Срочный заказ */}
+        <div className="mt-10 sm:mt-12 lg:mt-16 text-center">
+          <div
+            className="inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-3 px-5 sm:px-8 py-3 sm:py-4 rounded-2xl sm:rounded-3xl text-center sm:text-left"
+            style={{ background: 'linear-gradient(135deg, rgba(168,85,247,0.15), rgba(124,58,237,0.1))', border: '1px solid rgba(168,85,247,0.3)' }}
+          >
+            <Icon name="Zap" size={18} className="text-yellow-400" />
+            <span className="text-white font-semibold text-sm sm:text-base">Срочный заказ?</span>
+            <span className="text-white/60 text-xs sm:text-sm">Экспресс-производство за 2–3 дня по запросу</span>
           </div>
         </div>
       </div>
@@ -105,11 +129,14 @@ const Timeline = () => {
 
 const StepCard = ({ step }: { step: typeof steps[0] }) => (
   <>
-    <div className="text-xs font-bold mb-2 px-2 py-1 rounded-xl inline-block" style={{ background: `${step.color}22`, color: step.color }}>
+    <div
+      className="text-[10px] sm:text-xs font-bold mb-1.5 sm:mb-2 px-2 py-1 rounded-lg sm:rounded-xl inline-block"
+      style={{ background: `${step.color}22`, color: step.color }}
+    >
       {step.day}
     </div>
-    <h3 className="text-white font-bold text-lg mb-2">{step.title}</h3>
-    <p className="text-white/50 text-sm leading-relaxed">{step.description}</p>
+    <h3 className="text-white font-bold text-base sm:text-lg mb-1.5 sm:mb-2">{step.title}</h3>
+    <p className="text-white/50 text-xs sm:text-sm leading-relaxed">{step.description}</p>
   </>
 );
 

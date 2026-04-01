@@ -24,7 +24,7 @@ const MirrorDecor = () => (
     <div
       className="relative animate-mirror-float"
       style={{
-        width: 'clamp(200px, 22vw, 300px)',
+        width: 'clamp(140px, 18vw, 280px)',
         zIndex: 1,
       }}
     >
@@ -236,15 +236,15 @@ const Hero = () => {
       {/* Фоновые блобы и сетка */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
-          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full opacity-10 blur-3xl"
+          className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-72 sm:h-72 md:w-96 md:h-96 rounded-full opacity-10 blur-3xl"
           style={{ background: 'radial-gradient(circle, #a855f7, transparent)' }}
         />
         <div
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full opacity-10 blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-full opacity-10 blur-3xl"
           style={{ background: 'radial-gradient(circle, #7c3aed, transparent)' }}
         />
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-5 blur-3xl"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 sm:w-[400px] sm:h-[400px] md:w-[600px] md:h-[600px] rounded-full opacity-5 blur-3xl"
           style={{ background: 'radial-gradient(circle, #e879f9, transparent)' }}
         />
         <div
@@ -252,44 +252,46 @@ const Hero = () => {
           style={{
             backgroundImage:
               'linear-gradient(rgba(168, 85, 247, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(168, 85, 247, 0.03) 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
+            backgroundSize: '40px 40px',
           }}
         />
       </div>
 
       {/* ── Двухколоночный лейаут ── */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 w-full">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 pt-24 pb-16 sm:pt-28 lg:pt-0">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-10 xl:gap-16">
 
           {/* Левая колонка — текст и кнопки */}
-          <div className="flex-1 text-center lg:text-left">
-            <div className="animate-fade-in-down delay-100 flex flex-wrap items-center gap-3 mb-8 justify-center lg:justify-start">
+          <div className="flex-1 text-center lg:text-left w-full">
+            {/* Бейджи */}
+            <div className="animate-fade-in-down delay-100 flex flex-wrap items-center gap-2 sm:gap-3 mb-6 sm:mb-8 justify-center lg:justify-start">
               <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-widest uppercase"
+                className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-semibold tracking-widest uppercase"
                 style={{
                   border: '1px solid rgba(168,85,247,0.4)',
                   background: 'rgba(168,85,247,0.1)',
                   color: '#a855f7',
                 }}
               >
-                <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+                <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-purple-400 animate-pulse" />
                 Эксклюзивные зеркала с подсветкой
               </div>
               <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase"
+                className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold tracking-widest uppercase"
                 style={{
                   border: '1px solid rgba(250,204,21,0.5)',
                   background: 'rgba(250,204,21,0.08)',
                   color: '#facc15',
                 }}
               >
-                <Icon name="TrendingUp" size={13} />
+                <Icon name="TrendingUp" size={11} />
                 Тренд 2026 года
               </div>
             </div>
 
+            {/* Заголовок */}
             <h1
-              className="animate-fade-in-up delay-200 text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight"
+              className="animate-fade-in-up delay-200 text-4xl xs:text-5xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black mb-4 sm:mb-6 leading-tight"
               style={{ fontFamily: 'Orbitron, monospace' }}
             >
               <span className="text-white">ЗЕРКАЛА</span>
@@ -299,32 +301,34 @@ const Hero = () => {
               <span className="text-white">ПОКОЛЕНИЯ</span>
             </h1>
 
-            <p className="animate-fade-in-up delay-300 text-white/60 text-lg md:text-xl max-w-2xl mx-auto lg:mx-0 mb-4 leading-relaxed">
+            <p className="animate-fade-in-up delay-300 text-white/60 text-base sm:text-lg md:text-xl max-w-xl sm:max-w-2xl mx-auto lg:mx-0 mb-3 sm:mb-4 leading-relaxed">
               Производим премиальные зеркала с наклейками вашего профиля и уникальной{' '}
               <span className="text-purple-400 font-semibold">адресной лентой</span>
             </p>
-            <p className="animate-fade-in-up delay-400 text-white/40 text-sm md:text-base max-w-xl mx-auto lg:mx-0 mb-12">
+            <p className="animate-fade-in-up delay-400 text-white/40 text-xs sm:text-sm md:text-base max-w-md sm:max-w-xl mx-auto lg:mx-0 mb-8 sm:mb-12">
               LED-подсветка · Индивидуальный дизайн · Быстрое производство
             </p>
 
-            <div className="animate-fade-in-up delay-500 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+            {/* Кнопки */}
+            <div className="animate-fade-in-up delay-500 flex flex-col xs:flex-row sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center">
               <button
                 onClick={() => scrollTo('#catalog')}
-                className="neon-btn text-white px-10 py-4 rounded-xl text-base font-bold tracking-wide flex items-center gap-2"
+                className="neon-btn text-white w-full xs:w-auto px-6 sm:px-8 lg:px-10 py-3.5 sm:py-4 rounded-xl text-sm sm:text-base font-bold tracking-wide flex items-center justify-center gap-2"
               >
-                <Icon name="Sparkles" size={18} />
+                <Icon name="Sparkles" size={16} />
                 Смотреть каталог
               </button>
               <button
                 onClick={() => scrollTo('#contacts')}
-                className="text-white/80 hover:text-white border border-white/20 hover:border-purple-400 px-10 py-4 rounded-xl text-base font-semibold tracking-wide transition-all duration-300 flex items-center gap-2"
+                className="text-white/80 hover:text-white border border-white/20 hover:border-purple-400 w-full xs:w-auto px-6 sm:px-8 lg:px-10 py-3.5 sm:py-4 rounded-xl text-sm sm:text-base font-semibold tracking-wide transition-all duration-300 flex items-center justify-center gap-2"
               >
-                <Icon name="Phone" size={18} />
+                <Icon name="Phone" size={16} />
                 Связаться с нами
               </button>
             </div>
 
-            <div className="animate-fade-in-up delay-600 mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto lg:mx-0">
+            {/* Статистика */}
+            <div className="animate-fade-in-up delay-600 mt-10 sm:mt-16 grid grid-cols-3 gap-4 sm:gap-8 max-w-sm sm:max-w-2xl mx-auto lg:mx-0">
               {[
                 { value: '500+', label: 'Зеркал продано' },
                 { value: '3–7', label: 'Дней производства' },
@@ -332,12 +336,12 @@ const Hero = () => {
               ].map((stat) => (
                 <div key={stat.label} className="text-center lg:text-left">
                   <div
-                    className="text-3xl md:text-4xl font-black text-gradient mb-1"
+                    className="text-2xl sm:text-3xl md:text-4xl font-black text-gradient mb-0.5 sm:mb-1"
                     style={{ fontFamily: 'Orbitron, monospace' }}
                   >
                     {stat.value}
                   </div>
-                  <div className="text-white/40 text-xs uppercase tracking-wider">
+                  <div className="text-white/40 text-[9px] sm:text-xs uppercase tracking-wider leading-tight">
                     {stat.label}
                   </div>
                 </div>
@@ -346,15 +350,15 @@ const Hero = () => {
           </div>
 
           {/* Правая колонка — зеркало */}
-          <div className="flex-shrink-0 flex items-center justify-center pb-8 lg:pb-0 lg:pr-4">
+          <div className="flex-shrink-0 flex items-center justify-center order-first lg:order-last pb-2 lg:pb-0 lg:pr-4">
             <MirrorDecor />
           </div>
         </div>
       </div>
 
       {/* Стрелка вниз */}
-      <div className="animate-fade-in delay-700 absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <Icon name="ChevronDown" size={28} className="text-purple-400/60" />
+      <div className="animate-fade-in delay-700 absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <Icon name="ChevronDown" size={24} className="text-purple-400/60 sm:w-7 sm:h-7" />
       </div>
     </section>
   );
