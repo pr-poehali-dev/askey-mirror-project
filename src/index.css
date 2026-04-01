@@ -415,3 +415,43 @@
 .animate-mirror-glow {
   animation: mirror-glow 3s ease-in-out infinite;
 }
+
+/* === Warm iPhone-mirror halo glow === */
+@keyframes warm-halo {
+  0%,
+  100% {
+    opacity: 0.85;
+    transform: scale(1.18);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.24);
+  }
+}
+
+.animate-warm-halo {
+  animation: warm-halo 3.5s ease-in-out infinite;
+}
+
+/* === Warm iPhone-mirror frame glow === */
+@keyframes warm-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 2px rgba(255, 255, 255, 0.9),
+      0 0 40px 12px rgba(255, 195, 80, 0.55),
+      0 0 80px 24px rgba(255, 160, 40, 0.32),
+      0 0 140px 48px rgba(255, 130, 0, 0.18);
+  }
+  50% {
+    box-shadow:
+      0 0 0 2px rgba(255, 255, 255, 0.95),
+      0 0 55px 20px rgba(255, 210, 90, 0.75),
+      0 0 110px 40px rgba(255, 175, 50, 0.45),
+      0 0 180px 70px rgba(255, 140, 10, 0.28);
+  }
+}
+
+.animate-warm-glow {
+  animation: warm-glow 3.5s ease-in-out infinite;
+}
