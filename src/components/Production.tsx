@@ -83,7 +83,6 @@ const Production = () => {
                   'Реальные фото из вашего профиля',
                   'Количество подписчиков на дату заказа',
                   'Имя профиля и ник',
-                  'QR-код для перехода на профиль',
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-sm text-white/70">
                     <span className="w-2 h-2 rounded-full bg-purple-400 flex-shrink-0" />
