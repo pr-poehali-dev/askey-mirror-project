@@ -22,7 +22,7 @@ const MirrorDecor = () => (
     >
       {/* ── Внешнее неоновое свечение вокруг рамки ── */}
       <div
-        className="absolute inset-0 rounded-[18px] pointer-events-none"
+        className="absolute inset-0 rounded-[40px] pointer-events-none"
         style={{
           boxShadow:
             '0 0 40px 12px rgba(147,210,255,0.55), 0 0 100px 30px rgba(186,230,255,0.22)',
@@ -31,7 +31,7 @@ const MirrorDecor = () => (
 
       {/* ── Рамка зеркала ── */}
       <div
-        className="absolute inset-0 rounded-[18px] animate-mirror-glow"
+        className="absolute inset-0 rounded-[40px] animate-mirror-glow"
         style={{
           background:
             'linear-gradient(145deg, rgba(255,255,255,0.14) 0%, rgba(147,210,255,0.18) 40%, rgba(255,255,255,0.06) 100%)',
@@ -41,7 +41,7 @@ const MirrorDecor = () => (
       >
         {/* ── Зеркальная поверхность ── */}
         <div
-          className="absolute inset-[3px] rounded-[15px] overflow-hidden"
+          className="absolute inset-[3px] rounded-[37px] overflow-hidden"
           style={{
             background:
               'linear-gradient(160deg, rgba(255,255,255,0.07) 0%, rgba(15,12,28,0.92) 35%, rgba(10,10,20,0.97) 100%)',
@@ -50,7 +50,7 @@ const MirrorDecor = () => (
         >
           {/* Блик (имитация стекла) */}
           <div
-            className="absolute top-0 left-0 right-0 h-[40%] rounded-t-[13px] pointer-events-none"
+            className="absolute top-0 left-0 right-0 h-[40%] rounded-t-[35px] pointer-events-none"
             style={{
               background:
                 'linear-gradient(to bottom, rgba(255,255,255,0.09), transparent)',
