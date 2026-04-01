@@ -18,14 +18,14 @@ const MirrorDecor = () => (
     */}
     <div
       className="relative mx-auto"
-      style={{ width: 'clamp(220px, 36vw, 400px)', aspectRatio: '2 / 1' }}
+      style={{ width: 'clamp(140px, 20vw, 240px)', aspectRatio: '1 / 2' }}
     >
       {/* ── Внешнее неоновое свечение вокруг рамки ── */}
       <div
         className="absolute inset-0 rounded-[18px] pointer-events-none"
         style={{
           boxShadow:
-            '0 0 40px 12px rgba(168,85,247,0.45), 0 0 100px 30px rgba(168,85,247,0.18)',
+            '0 0 40px 12px rgba(147,210,255,0.55), 0 0 100px 30px rgba(186,230,255,0.22)',
         }}
       />
 
@@ -34,8 +34,8 @@ const MirrorDecor = () => (
         className="absolute inset-0 rounded-[18px] animate-mirror-glow"
         style={{
           background:
-            'linear-gradient(145deg, rgba(255,255,255,0.12) 0%, rgba(168,85,247,0.18) 40%, rgba(255,255,255,0.06) 100%)',
-          border: '2px solid rgba(168,85,247,0.7)',
+            'linear-gradient(145deg, rgba(255,255,255,0.14) 0%, rgba(147,210,255,0.18) 40%, rgba(255,255,255,0.06) 100%)',
+          border: '2px solid rgba(147,210,255,0.75)',
           boxSizing: 'border-box',
         }}
       >
@@ -73,8 +73,8 @@ const MirrorDecor = () => (
           style={{
             animationDelay: '900ms',
             background:
-              'linear-gradient(to bottom, #e879f9, #a855f7, #7c3aed)',
-            boxShadow: '0 0 8px 2px rgba(168,85,247,0.9)',
+              'linear-gradient(to bottom, #e0f7ff, #93d2ff, #38bdf8)',
+            boxShadow: '0 0 8px 3px rgba(147,210,255,0.95)',
           }}
         />
         {/* Правая полоска */}
@@ -83,8 +83,8 @@ const MirrorDecor = () => (
           style={{
             animationDelay: '950ms',
             background:
-              'linear-gradient(to bottom, #e879f9, #a855f7, #7c3aed)',
-            boxShadow: '0 0 8px 2px rgba(168,85,247,0.9)',
+              'linear-gradient(to bottom, #e0f7ff, #93d2ff, #38bdf8)',
+            boxShadow: '0 0 8px 3px rgba(147,210,255,0.95)',
           }}
         />
         {/* Верхняя полоска */}
@@ -93,8 +93,8 @@ const MirrorDecor = () => (
           style={{
             animationDelay: '850ms',
             background:
-              'linear-gradient(to right, #e879f9, #a855f7, #7c3aed, #a855f7, #e879f9)',
-            boxShadow: '0 0 8px 2px rgba(232,121,249,0.9)',
+              'linear-gradient(to right, #e0f7ff, #93d2ff, #38bdf8, #93d2ff, #e0f7ff)',
+            boxShadow: '0 0 8px 3px rgba(186,230,255,0.95)',
           }}
         />
         {/* Нижняя полоска */}
@@ -103,8 +103,8 @@ const MirrorDecor = () => (
           style={{
             animationDelay: '1100ms',
             background:
-              'linear-gradient(to right, #7c3aed, #a855f7, #e879f9, #a855f7, #7c3aed)',
-            boxShadow: '0 0 8px 2px rgba(168,85,247,0.9)',
+              'linear-gradient(to right, #38bdf8, #93d2ff, #e0f7ff, #93d2ff, #38bdf8)',
+            boxShadow: '0 0 8px 3px rgba(147,210,255,0.95)',
           }}
         />
       </div>
@@ -116,9 +116,9 @@ const MirrorDecor = () => (
       >
         <span
           className="text-[10px] uppercase tracking-widest"
-          style={{ color: '#a855f7', fontFamily: 'Orbitron, monospace' }}
+          style={{ color: '#93d2ff', fontFamily: 'Orbitron, monospace' }}
         >
-          120 × 60 см
+          60 × 120 см
         </span>
       </div>
 
@@ -127,10 +127,10 @@ const MirrorDecor = () => (
         className="absolute -top-7 left-0 right-0 flex items-center justify-center gap-1.5 pointer-events-none animate-led-top-down"
         style={{ animationDelay: '1200ms' }}
       >
-        <span className="w-1.5 h-1.5 rounded-full bg-pink-400 animate-pulse-neon" />
+        <span className="w-1.5 h-1.5 rounded-full animate-pulse-neon" style={{ backgroundColor: '#93d2ff' }} />
         <span
-          className="text-[10px] uppercase tracking-widest text-pink-400"
-          style={{ fontFamily: 'Orbitron, monospace' }}
+          className="text-[10px] uppercase tracking-widest"
+          style={{ color: '#93d2ff', fontFamily: 'Orbitron, monospace' }}
         >
           LED подсветка
         </span>
