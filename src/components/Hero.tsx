@@ -1,7 +1,7 @@
 import Icon from '@/components/ui/icon';
 
 /* ─────────────────────────────────────────
-   Реальное зеркало с тёплой LED-подсветкой
+   CSS-зеркало с LED-подсветкой и анимациями
    Вылетает справа при загрузке страницы
 ───────────────────────────────────────── */
 const MirrorDecor = () => (
@@ -9,65 +9,189 @@ const MirrorDecor = () => (
     className="animate-slide-in-right relative flex items-center justify-center"
     style={{ animationDelay: '400ms', willChange: 'transform, opacity' }}
   >
-    {/* ── Внешнее фиолетовое свечение (halo вокруг зеркала) ── */}
+    {/* ── Дальнее фоновое свечение (halo) ── */}
     <div
-      className="absolute pointer-events-none animate-warm-halo"
+      className="absolute pointer-events-none animate-mirror-outer-halo"
       style={{
-        inset: '-20px',
-        filter: 'blur(40px)',
-        background: 'radial-gradient(ellipse at center, rgba(168,85,247,0.40) 0%, rgba(124,58,237,0.22) 45%, transparent 72%)',
+        inset: '-60px',
+        filter: 'blur(60px)',
+        background: 'radial-gradient(ellipse at center, rgba(168,85,247,0.30) 0%, rgba(124,58,237,0.15) 50%, transparent 75%)',
         zIndex: 0,
       }}
     />
 
-    {/* ── Боковое LED-свечение слева (фиолетовое) ── */}
+    {/* ── Обёртка зеркала ── */}
     <div
-      className="absolute left-0 top-[8%] bottom-[8%] pointer-events-none animate-warm-glow"
+      className="relative animate-mirror-float"
       style={{
-        width: '18px',
-        background: 'linear-gradient(to bottom, transparent, rgba(168,85,247,0.9) 20%, rgba(124,58,237,1) 50%, rgba(168,85,247,0.9) 80%, transparent)',
-        filter: 'blur(6px)',
-        zIndex: 2,
-        transform: 'translateX(-50%)',
-      }}
-    />
-    {/* ── Боковое LED-свечение справа (фиолетовое) ── */}
-    <div
-      className="absolute right-0 top-[8%] bottom-[8%] pointer-events-none animate-warm-glow"
-      style={{
-        width: '18px',
-        background: 'linear-gradient(to bottom, transparent, rgba(168,85,247,0.9) 20%, rgba(124,58,237,1) 50%, rgba(168,85,247,0.9) 80%, transparent)',
-        filter: 'blur(6px)',
-        zIndex: 2,
-        transform: 'translateX(50%)',
-      }}
-    />
-
-    {/* ── Само зеркало ── */}
-    <div
-      className="relative"
-      style={{
-        width: 'clamp(220px, 24vw, 340px)',
+        width: 'clamp(200px, 22vw, 300px)',
         zIndex: 1,
       }}
     >
-      <img
-        src="https://cdn.poehali.dev/projects/af6d2ef4-20e2-486b-93ab-6d38dda52f4e/files/5ceef6b4-dc70-4e9f-9a8c-6098fc8f80da.jpg"
-        alt="Зеркало с наклейками Instagram профиля"
-        className="w-full h-auto animate-led-top-down"
+      {/* ── Рамка зеркала ── */}
+      <div
+        className="relative animate-mirror-frame-glow"
         style={{
-          animationDelay: '600ms',
-          borderRadius: '16px',
-          boxShadow:
-            '0 0 30px 8px rgba(168,85,247,0.35), 0 0 70px 20px rgba(124,58,237,0.22), 0 0 120px 40px rgba(232,121,249,0.12)',
-          filter: 'drop-shadow(0 0 18px rgba(168,85,247,0.55))',
+          borderRadius: '18px',
+          padding: '6px',
+          background: 'linear-gradient(145deg, rgba(168,85,247,0.9) 0%, rgba(232,121,249,0.7) 30%, rgba(124,58,237,0.95) 60%, rgba(168,85,247,0.8) 100%)',
+        }}
+      >
+        {/* ── Зеркальная поверхность ── */}
+        <div
+          className="relative overflow-hidden"
+          style={{
+            borderRadius: '13px',
+            aspectRatio: '9 / 16',
+            background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 20%, #0f3460 40%, #1a1a2e 60%, #0d0d1a 80%, #1a1a2e 100%)',
+          }}
+        >
+          {/* ── Зеркальный блик (полоса света) ── */}
+          <div
+            className="absolute pointer-events-none animate-mirror-shine"
+            style={{
+              top: 0,
+              left: '-60%',
+              width: '40%',
+              height: '100%',
+              background: 'linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.06) 60%, transparent 70%)',
+              transform: 'skewX(-15deg)',
+              zIndex: 3,
+            }}
+          />
+
+          {/* ── Отражение-градиент поверхности ── */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: 'linear-gradient(160deg, rgba(255,255,255,0.08) 0%, rgba(168,85,247,0.05) 30%, transparent 60%, rgba(124,58,237,0.06) 90%)',
+              zIndex: 2,
+            }}
+          />
+
+          {/* ── Instagram-наклейка (имитация) ── */}
+          <div
+            className="absolute inset-0 flex flex-col items-center justify-center gap-3 animate-mirror-content-reveal"
+            style={{ zIndex: 4, animationDelay: '800ms' }}
+          >
+            {/* Аватар */}
+            <div
+              style={{
+                width: '54px',
+                height: '54px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)',
+                padding: '2px',
+              }}
+            >
+              <div style={{
+                width: '100%',
+                height: '100%',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #1a1a2e, #16213e)',
+                border: '2px solid rgba(255,255,255,0.15)',
+              }} />
+            </div>
+            {/* Ник */}
+            <div style={{
+              color: 'rgba(255,255,255,0.85)',
+              fontSize: '11px',
+              fontFamily: 'Orbitron, monospace',
+              letterSpacing: '0.1em',
+              textAlign: 'center',
+            }}>
+              @your_profile
+            </div>
+            {/* Имитация QR/ссылки */}
+            <div style={{
+              width: '44px',
+              height: '44px',
+              borderRadius: '6px',
+              background: 'rgba(255,255,255,0.9)',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(5, 1fr)',
+              gridTemplateRows: 'repeat(5, 1fr)',
+              gap: '2px',
+              padding: '4px',
+            }}>
+              {[1,1,1,1,1, 1,0,0,0,1, 1,0,1,0,1, 1,0,0,0,1, 1,1,1,1,1].map((v, i) => (
+                <div key={i} style={{
+                  background: v ? '#1a1a2e' : 'transparent',
+                  borderRadius: '1px',
+                }} />
+              ))}
+            </div>
+            {/* Адресная лента */}
+            <div style={{
+              color: 'rgba(168,85,247,0.9)',
+              fontSize: '7px',
+              fontFamily: 'Orbitron, monospace',
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              textAlign: 'center',
+              borderTop: '1px solid rgba(168,85,247,0.3)',
+              paddingTop: '6px',
+              width: '80%',
+            }}>
+              instagram.com/your_profile
+            </div>
+          </div>
+
+          {/* ── LED-полоска снизу ── */}
+          <div
+            className="absolute bottom-0 left-0 right-0 pointer-events-none animate-led-strip"
+            style={{
+              height: '3px',
+              background: 'linear-gradient(90deg, transparent, rgba(168,85,247,1) 20%, rgba(232,121,249,1) 50%, rgba(168,85,247,1) 80%, transparent)',
+              filter: 'blur(1px)',
+              zIndex: 5,
+            }}
+          />
+          {/* ── LED-полоска сверху ── */}
+          <div
+            className="absolute top-0 left-0 right-0 pointer-events-none animate-led-strip"
+            style={{
+              height: '3px',
+              background: 'linear-gradient(90deg, transparent, rgba(168,85,247,1) 20%, rgba(232,121,249,1) 50%, rgba(168,85,247,1) 80%, transparent)',
+              filter: 'blur(1px)',
+              zIndex: 5,
+              animationDelay: '0.3s',
+            }}
+          />
+        </div>
+      </div>
+
+      {/* ── Боковые LED-лучи (исходят из рамки наружу) ── */}
+      <div
+        className="absolute pointer-events-none animate-mirror-side-led"
+        style={{
+          left: '-22px',
+          top: '10%',
+          bottom: '10%',
+          width: '20px',
+          background: 'linear-gradient(to bottom, transparent, rgba(168,85,247,0.95) 20%, rgba(232,121,249,1) 50%, rgba(168,85,247,0.95) 80%, transparent)',
+          filter: 'blur(8px)',
+          zIndex: 0,
+        }}
+      />
+      <div
+        className="absolute pointer-events-none animate-mirror-side-led"
+        style={{
+          right: '-22px',
+          top: '10%',
+          bottom: '10%',
+          width: '20px',
+          background: 'linear-gradient(to bottom, transparent, rgba(168,85,247,0.95) 20%, rgba(232,121,249,1) 50%, rgba(168,85,247,0.95) 80%, transparent)',
+          filter: 'blur(8px)',
+          zIndex: 0,
+          animationDelay: '0.5s',
         }}
       />
 
-      {/* ── Лейбл Instagram сверху ── */}
+      {/* ── Лейбл сверху ── */}
       <div
-        className="absolute -top-8 left-0 right-0 flex items-center justify-center gap-1.5 pointer-events-none animate-led-top-down"
-        style={{ animationDelay: '1100ms' }}
+        className="absolute -top-8 left-0 right-0 flex items-center justify-center gap-1.5 pointer-events-none animate-fade-in"
+        style={{ animationDelay: '1200ms' }}
       >
         <span className="w-1.5 h-1.5 rounded-full animate-pulse-neon" style={{ backgroundColor: '#a855f7' }} />
         <span
