@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Icon from '@/components/ui/icon';
 
 const Contacts = () => {
-  const [form, setForm] = useState({ name: '', phone: '', instagram: '', message: '' });
+  const [form, setForm] = useState({ name: '', phone: '', profile: '', message: '' });
   const [sent, setSent] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -45,7 +45,7 @@ const Contacts = () => {
                 {[
                   { key: 'name', label: 'Ваше имя', placeholder: 'Как вас зовут?', icon: 'User' },
                   { key: 'phone', label: 'Телефон', placeholder: '+7 (999) 999-99-99', icon: 'Phone' },
-                  { key: 'instagram', label: 'Instagram профиль', placeholder: '@username', icon: 'Instagram' },
+                  { key: 'profile', label: 'Ссылка на ваш профиль', placeholder: '@username', icon: 'AtSign' },
                 ].map((field) => (
                   <div key={field.key}>
                     <label className="block text-white/60 text-sm mb-2">{field.label}</label>
@@ -54,7 +54,7 @@ const Contacts = () => {
                       <input
                         type="text"
                         placeholder={field.placeholder}
-                        value={form[field.key as keyof typeof form]}
+                        value={form[field.key as keyof typeof form] ?? ''}
                         onChange={(e) => setForm({ ...form, [field.key]: e.target.value })}
                         className="w-full pl-11 pr-4 py-3.5 rounded-xl text-white placeholder-white/30 outline-none focus:border-purple-400 transition-all duration-300 text-sm"
                         style={{ background: 'rgba(168,85,247,0.08)', border: '1px solid rgba(168,85,247,0.2)' }}
@@ -97,7 +97,7 @@ const Contacts = () => {
                 {[
                   { icon: 'MessageCircle', label: 'WhatsApp', value: '+7 (999) 000-00-00', color: '#22c55e' },
                   { icon: 'Send', label: 'Telegram', value: '@askey_mirrors', color: '#22d3ee' },
-                  { icon: 'Instagram', label: 'Instagram', value: '@askey.mirrors', color: '#e879f9' },
+                  { icon: 'AtSign', label: 'Профиль', value: '@askey.mirrors', color: '#e879f9' },
                   { icon: 'Mail', label: 'Email', value: 'info@askey.ru', color: '#a855f7' },
                 ].map((contact) => (
                   <div key={contact.label} className="flex items-center gap-4 py-3 border-b border-white/5 last:border-0">

@@ -166,16 +166,29 @@ const Hero = () => {
 
           {/* Левая колонка — текст и кнопки */}
           <div className="flex-1 text-center lg:text-left">
-            <div
-              className="animate-fade-in-down delay-100 inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 text-xs font-semibold tracking-widest uppercase"
-              style={{
-                border: '1px solid rgba(168,85,247,0.4)',
-                background: 'rgba(168,85,247,0.1)',
-                color: '#a855f7',
-              }}
-            >
-              <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
-              Эксклюзивные зеркала с подсветкой
+            <div className="animate-fade-in-down delay-100 flex flex-wrap items-center gap-3 mb-8 justify-center lg:justify-start">
+              <div
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-widest uppercase"
+                style={{
+                  border: '1px solid rgba(168,85,247,0.4)',
+                  background: 'rgba(168,85,247,0.1)',
+                  color: '#a855f7',
+                }}
+              >
+                <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+                Эксклюзивные зеркала с подсветкой
+              </div>
+              <div
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase"
+                style={{
+                  border: '1px solid rgba(250,204,21,0.5)',
+                  background: 'rgba(250,204,21,0.08)',
+                  color: '#facc15',
+                }}
+              >
+                <Icon name="TrendingUp" size={13} />
+                Тренд 2026 года
+              </div>
             </div>
 
             <h1
@@ -190,7 +203,7 @@ const Hero = () => {
             </h1>
 
             <p className="animate-fade-in-up delay-300 text-white/60 text-lg md:text-xl max-w-2xl mx-auto lg:mx-0 mb-4 leading-relaxed">
-              Производим премиальные зеркала с наклейками Instagram-профиля и уникальной{' '}
+              Производим премиальные зеркала с наклейками вашего профиля и уникальной{' '}
               <span className="text-purple-400 font-semibold">адресной лентой</span>
             </p>
             <p className="animate-fade-in-up delay-400 text-white/40 text-sm md:text-base max-w-xl mx-auto lg:mx-0 mb-12">
