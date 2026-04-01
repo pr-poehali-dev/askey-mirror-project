@@ -18,11 +18,11 @@ const Footer = () => {
               <span className="text-xl font-black tracking-widest neon-text-purple" style={{ fontFamily: 'Orbitron, monospace' }}>АСКЕЙ</span>
             </div>
             <p className="text-white/40 text-sm leading-relaxed mb-4">
-              Производство премиальных зеркал с Instagram-наклейками и неоновой подсветкой. Доставка по всей России.
+              Производство премиальных зеркал с наклейками и неоновой подсветкой. Доставка по всей России.
             </p>
             <div className="flex items-center gap-3">
               {[
-                { icon: 'Instagram', color: '#e879f9' },
+                { icon: 'Camera', color: '#e879f9' },
                 { icon: 'Send', color: '#22d3ee' },
                 { icon: 'MessageCircle', color: '#22c55e' },
               ].map((social) => (
@@ -70,7 +70,7 @@ const Footer = () => {
 
         <div className="pt-6 border-t flex flex-col md:flex-row items-center justify-between gap-4" style={{ borderColor: 'rgba(168,85,247,0.15)' }}>
           <p className="text-white/25 text-xs">© 2024 Аскей. Все права защищены.</p>
-          <p className="text-white/25 text-xs">Производство зеркал с наклейками Instagram</p>
+          <p className="text-white/25 text-xs">Производство зеркал с наклейками</p>
         </div>
       </div>
     </footer>

@@ -1,9 +1,9 @@
 const portfolioItems = [
-  { id: 1, size: 'col-span-1 row-span-2', label: 'Instagram • Адресная лента', accent: '#a855f7' },
+  { id: 1, size: 'col-span-1 row-span-2', label: 'Профиль • Адресная лента', accent: '#a855f7' },
   { id: 2, size: 'col-span-1 row-span-1', label: 'LED • Салон красоты', accent: '#e879f9' },
   { id: 3, size: 'col-span-1 row-span-1', label: 'Именное • Подарок', accent: '#7c3aed' },
   { id: 4, size: 'col-span-1 row-span-1', label: 'Бизнес • QR-код', accent: '#a855f7' },
-  { id: 5, size: 'col-span-1 row-span-2', label: 'Instagram • Профиль', accent: '#e879f9' },
+  { id: 5, size: 'col-span-1 row-span-2', label: 'Зеркало • Профиль', accent: '#e879f9' },
   { id: 6, size: 'col-span-1 row-span-1', label: 'RGB • Подсветка', accent: '#22d3ee' },
 ];
 
@@ -64,7 +64,7 @@ const Portfolio = () => {
         <div className="mt-12 text-center">
           <p className="text-white/40 text-sm">
             Больше работ в нашем{' '}
-            <span className="text-purple-400 cursor-pointer hover:text-purple-300 transition-colors">Instagram-профиле</span>
+            <span className="text-purple-400 cursor-pointer hover:text-purple-300 transition-colors">профиле</span>
           </p>
         </div>
       </div>

@@ -3,12 +3,12 @@ import Icon from '@/components/ui/icon';
 const products = [
   {
     id: 1,
-    name: 'Instagram Профиль',
+    name: 'Профиль',
     tag: 'Флагман',
     tagColor: '#a855f7',
-    description: 'Ваш Instagram-профиль в виде наклейки на зеркало с уникальной адресной лентой',
+    description: 'Ваш профиль в виде наклейки на зеркало с уникальной адресной лентой',
     features: ['Адресная лента', 'QR-код профиля', 'Статистика подписчиков', 'LED-подсветка'],
-    icon: 'Instagram',
+    icon: 'Camera',
     popular: true,
   },
   {
