@@ -1,0 +1,8 @@
+[
+  {
+    "name": "Cut mirror from photo",
+    "method": "GET",
+    "path": "/",
+    "expectedStatus": 200
+  }
+]
