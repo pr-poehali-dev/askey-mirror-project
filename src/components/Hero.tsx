@@ -33,8 +33,6 @@ const MirrorDecor = () => (
       <div
         className="absolute inset-0 rounded-[40px] animate-mirror-glow"
         style={{
-          background:
-            'linear-gradient(145deg, rgba(255,255,255,0.14) 0%, rgba(147,210,255,0.18) 40%, rgba(255,255,255,0.06) 100%)',
           border: '2px solid rgba(147,210,255,0.75)',
           boxSizing: 'border-box',
         }}
