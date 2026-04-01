@@ -20,15 +20,6 @@ const MirrorDecor = () => (
       className="relative mx-auto"
       style={{ width: 'clamp(140px, 20vw, 240px)', aspectRatio: '1 / 2' }}
     >
-      {/* ── Внешнее неоновое свечение вокруг рамки ── */}
-      <div
-        className="absolute inset-0 rounded-[40px] pointer-events-none"
-        style={{
-          boxShadow:
-            '0 0 40px 12px rgba(147,210,255,0.55), 0 0 100px 30px rgba(186,230,255,0.22)',
-        }}
-      />
-
       {/* ── Рамка зеркала ── */}
       <div
         className="absolute inset-0 rounded-[40px] animate-mirror-glow"
