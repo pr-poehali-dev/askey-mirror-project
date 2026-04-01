@@ -7,6 +7,8 @@ const products = [
     tag: 'Флагман',
     tagColor: '#a855f7',
     description: 'Ваш профиль в виде наклейки на зеркало с уникальной адресной лентой',
+    longDescription: 'Зеркало оснащено сочетанием контурной и фронтальной подсветки, создающим комфортное и выразительное освещение. Фронтальная подсветка выполнена в виде двух вертикальных полос по бокам зеркала, которые мягко освещают лицо и обеспечивают равномерный свет для макияжа, умывания или бритья.',
+    longDescriptionTitle: '2\nКОНТУРНАЯ + ФРОНТАЛЬНАЯ ПОДСВЕТКА',
     features: ['Адресная лента', 'QR-код профиля', 'Статистика подписчиков', 'LED-подсветка'],
     icon: 'Camera',
     popular: true,
@@ -99,6 +101,17 @@ const Catalog = () => {
               </div>
 
               <p className="text-white/60 text-sm leading-relaxed mb-6">{product.description}</p>
+
+              {product.longDescription && (
+                <div className="mb-6 rounded-xl p-4" style={{ background: 'rgba(168,85,247,0.07)', border: '1px solid rgba(168,85,247,0.2)' }}>
+                  {product.longDescriptionTitle && (
+                    <p className="text-xs font-black tracking-widest uppercase mb-2" style={{ color: '#a855f7', whiteSpace: 'pre-line' }}>
+                      {product.longDescriptionTitle}
+                    </p>
+                  )}
+                  <p className="text-white/60 text-xs leading-relaxed">{product.longDescription}</p>
+                </div>
+              )}
 
               <div className="grid grid-cols-2 gap-2 mb-8">
                 {product.features.map((feat) => (
