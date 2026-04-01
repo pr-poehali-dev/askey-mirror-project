@@ -1,7 +1,7 @@
 import Icon from '@/components/ui/icon';
 
 /* ─────────────────────────────────────────
-   Зеркало в форме iPhone с тёплой LED-подсветкой
+   Реальное зеркало с тёплой LED-подсветкой
    Вылетает справа при загрузке страницы
 ───────────────────────────────────────── */
 const MirrorDecor = () => (
@@ -9,146 +9,65 @@ const MirrorDecor = () => (
     className="animate-slide-in-right relative flex items-center justify-center"
     style={{ animationDelay: '400ms', willChange: 'transform, opacity' }}
   >
-    {/* ── Внешнее тёплое свечение (halo вокруг телефона) ── */}
+    {/* ── Внешнее тёплое свечение (halo вокруг зеркала) ── */}
     <div
-      className="absolute inset-0 rounded-[52px] pointer-events-none animate-warm-halo"
+      className="absolute pointer-events-none animate-warm-halo"
       style={{
-        filter: 'blur(32px)',
-        background: 'radial-gradient(ellipse at center, rgba(255,210,120,0.55) 0%, rgba(255,170,60,0.30) 40%, transparent 70%)',
-        transform: 'scale(1.18)',
+        inset: '-20px',
+        filter: 'blur(40px)',
+        background: 'radial-gradient(ellipse at center, rgba(255,210,120,0.50) 0%, rgba(255,170,60,0.28) 45%, transparent 72%)',
         zIndex: 0,
       }}
     />
 
-    {/*
-      iPhone-зеркало: соотношение сторон ≈ 9:19.5 (как у iPhone 14)
-      Ширина: clamp(200px, 22vw, 300px)
-    */}
+    {/* ── Боковое LED-свечение слева ── */}
     <div
-      className="relative mx-auto"
-      style={{ width: 'clamp(200px, 22vw, 300px)', aspectRatio: '9 / 19.5', zIndex: 1 }}
+      className="absolute left-0 top-[8%] bottom-[8%] pointer-events-none animate-warm-glow"
+      style={{
+        width: '18px',
+        background: 'linear-gradient(to bottom, transparent, rgba(255,200,80,0.9) 20%, rgba(255,185,50,1) 50%, rgba(255,200,80,0.9) 80%, transparent)',
+        filter: 'blur(6px)',
+        zIndex: 2,
+        transform: 'translateX(-50%)',
+      }}
+    />
+    {/* ── Боковое LED-свечение справа ── */}
+    <div
+      className="absolute right-0 top-[8%] bottom-[8%] pointer-events-none animate-warm-glow"
+      style={{
+        width: '18px',
+        background: 'linear-gradient(to bottom, transparent, rgba(255,200,80,0.9) 20%, rgba(255,185,50,1) 50%, rgba(255,200,80,0.9) 80%, transparent)',
+        filter: 'blur(6px)',
+        zIndex: 2,
+        transform: 'translateX(50%)',
+      }}
+    />
+
+    {/* ── Само зеркало ── */}
+    <div
+      className="relative"
+      style={{
+        width: 'clamp(220px, 24vw, 340px)',
+        zIndex: 1,
+      }}
     >
-      {/* ── Корпус телефона (белая рамка) ── */}
-      <div
-        className="absolute inset-0 rounded-[44px] overflow-hidden animate-warm-glow"
+      <img
+        src="https://cdn.poehali.dev/files/a87b2122-aed7-4dea-a9b4-eb8a75de0b70.jpg"
+        alt="Зеркало с LED подсветкой"
+        className="w-full h-auto animate-led-top-down"
         style={{
-          background: '#f5f5f5',
+          animationDelay: '600ms',
+          borderRadius: '12px',
           boxShadow:
-            '0 0 0 2px rgba(255,255,255,0.9), 0 0 40px 12px rgba(255,195,80,0.55), 0 0 80px 24px rgba(255,160,40,0.32), 0 0 140px 48px rgba(255,130,0,0.18)',
+            '0 0 30px 8px rgba(255,195,80,0.45), 0 0 70px 20px rgba(255,160,40,0.28), 0 0 120px 40px rgba(255,130,0,0.15)',
+          filter: 'drop-shadow(0 0 18px rgba(255,190,60,0.6))',
         }}
-      >
-        {/* ── Экран / зеркальная поверхность ── */}
-        <div
-          className="absolute inset-[6px] rounded-[39px] overflow-hidden"
-          style={{
-            background:
-              'linear-gradient(155deg, rgba(255,255,255,0.13) 0%, rgba(200,195,210,0.08) 30%, rgba(160,155,175,0.15) 60%, rgba(120,115,135,0.2) 100%)',
-          }}
-        >
-          {/* Зеркальный контент — отражение интерьера */}
-          <img
-            src="https://cdn.poehali.dev/files/f1dbe533-a583-4a60-addd-7937c083ec2b.jpg"
-            alt="Зеркало с подсветкой"
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ opacity: 0.92 }}
-          />
+      />
 
-          {/* Блик сверху */}
-          <div
-            className="absolute top-0 left-0 right-0 h-[18%] pointer-events-none"
-            style={{
-              background: 'linear-gradient(to bottom, rgba(255,255,255,0.09), transparent)',
-            }}
-          />
-          {/* Диагональный блик */}
-          <div
-            className="absolute top-[6%] left-[5%] w-[22%] h-[22%] rounded-full pointer-events-none"
-            style={{
-              background: 'rgba(255,255,255,0.07)',
-              transform: 'rotate(-30deg)',
-              filter: 'blur(8px)',
-            }}
-          />
-        </div>
-
-        {/* ── Dynamic Island (чёрная пилюля сверху) ── */}
-        <div
-          className="absolute top-[14px] left-1/2 -translate-x-1/2 rounded-full"
-          style={{
-            width: '32%',
-            height: '22px',
-            background: '#111',
-            zIndex: 10,
-          }}
-        />
-
-        {/* ── Статус-бар ── */}
-        <div
-          className="absolute top-[10px] left-[14px] right-[14px] flex items-center justify-between px-2 pointer-events-none"
-          style={{ zIndex: 11, color: '#1a1a1a', fontSize: '11px', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
-        >
-          <span style={{ letterSpacing: '-0.3px' }}>13:00</span>
-          <div className="flex items-center gap-1" style={{ fontSize: '10px' }}>
-            <span>▲▲▲</span>
-            <span>WiFi</span>
-            <span>▮▮▯</span>
-          </div>
-        </div>
-
-        {/* ── LED подсветка — левая вертикальная полоска ── */}
-        <div
-          className="absolute top-[10%] bottom-[10%] left-[6px] animate-led-top-down"
-          style={{
-            animationDelay: '900ms',
-            width: '4px',
-            borderRadius: '4px',
-            background: 'linear-gradient(to bottom, rgba(255,220,100,0), rgba(255,200,80,1) 20%, rgba(255,190,60,1) 80%, rgba(255,220,100,0))',
-            boxShadow: '-2px 0 12px 4px rgba(255,190,60,0.9), -6px 0 24px 6px rgba(255,160,30,0.5)',
-            zIndex: 12,
-          }}
-        />
-        {/* ── LED подсветка — правая вертикальная полоска ── */}
-        <div
-          className="absolute top-[10%] bottom-[10%] right-[6px] animate-led-top-down"
-          style={{
-            animationDelay: '950ms',
-            width: '4px',
-            borderRadius: '4px',
-            background: 'linear-gradient(to bottom, rgba(255,220,100,0), rgba(255,200,80,1) 20%, rgba(255,190,60,1) 80%, rgba(255,220,100,0))',
-            boxShadow: '2px 0 12px 4px rgba(255,190,60,0.9), 6px 0 24px 6px rgba(255,160,30,0.5)',
-            zIndex: 12,
-          }}
-        />
-
-        {/* ── Нижняя кнопка Home / зарядка ── */}
-        <div
-          className="absolute -bottom-[14px] left-1/2 -translate-x-1/2"
-          style={{
-            width: '3px',
-            height: '20px',
-            background: 'rgba(255,255,255,0.5)',
-            borderRadius: '3px',
-          }}
-        />
-      </div>
-
-      {/* ── Метка размера ── */}
-      <div
-        className="absolute -bottom-9 left-0 right-0 flex items-center justify-center gap-1.5 pointer-events-none"
-        style={{ opacity: 0.55 }}
-      >
-        <span
-          className="text-[10px] uppercase tracking-widest"
-          style={{ color: '#ffd580', fontFamily: 'Orbitron, monospace' }}
-        >
-          60 × 120 см
-        </span>
-      </div>
-
-      {/* ── Лейбл LED ── */}
+      {/* ── Лейбл LED сверху ── */}
       <div
         className="absolute -top-8 left-0 right-0 flex items-center justify-center gap-1.5 pointer-events-none animate-led-top-down"
-        style={{ animationDelay: '1200ms' }}
+        style={{ animationDelay: '1100ms' }}
       >
         <span className="w-1.5 h-1.5 rounded-full animate-pulse-neon" style={{ backgroundColor: '#ffd580' }} />
         <span
@@ -156,6 +75,19 @@ const MirrorDecor = () => (
           style={{ color: '#ffd580', fontFamily: 'Orbitron, monospace' }}
         >
           LED подсветка
+        </span>
+      </div>
+
+      {/* ── Метка размера снизу ── */}
+      <div
+        className="absolute -bottom-8 left-0 right-0 flex items-center justify-center gap-1.5 pointer-events-none"
+        style={{ opacity: 0.55 }}
+      >
+        <span
+          className="text-[10px] uppercase tracking-widest"
+          style={{ color: '#ffd580', fontFamily: 'Orbitron, monospace' }}
+        >
+          60 × 120 см
         </span>
       </div>
     </div>
