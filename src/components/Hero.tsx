@@ -20,12 +20,12 @@ const Hero = () => {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 text-xs font-semibold tracking-widest uppercase" style={{ border: '1px solid rgba(168,85,247,0.4)', background: 'rgba(168,85,247,0.1)', color: '#a855f7' }}>
+        <div className="animate-fade-in-down delay-100 inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 text-xs font-semibold tracking-widest uppercase" style={{ border: '1px solid rgba(168,85,247,0.4)', background: 'rgba(168,85,247,0.1)', color: '#a855f7' }}>
           <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
           Эксклюзивные зеркала с подсветкой
         </div>
 
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight" style={{ fontFamily: 'Orbitron, monospace' }}>
+        <h1 className="animate-fade-in-up delay-200 text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight" style={{ fontFamily: 'Orbitron, monospace' }}>
           <span className="text-white">ЗЕРКАЛА</span>
           <br />
           <span className="text-gradient">НОВОГО</span>
@@ -33,15 +33,15 @@ const Hero = () => {
           <span className="text-white">ПОКОЛЕНИЯ</span>
         </h1>
 
-        <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
+        <p className="animate-fade-in-up delay-300 text-white/60 text-lg md:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
           Производим премиальные зеркала с наклейками Instagram-профиля и уникальной{' '}
           <span className="text-purple-400 font-semibold">адресной лентой</span>
         </p>
-        <p className="text-white/40 text-sm md:text-base max-w-xl mx-auto mb-12">
+        <p className="animate-fade-in-up delay-400 text-white/40 text-sm md:text-base max-w-xl mx-auto mb-12">
           LED-подсветка · Индивидуальный дизайн · Быстрое производство
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="animate-fade-in-up delay-500 flex flex-col sm:flex-row gap-4 justify-center items-center">
           <button
             onClick={() => scrollTo('#catalog')}
             className="neon-btn text-white px-10 py-4 rounded-xl text-base font-bold tracking-wide flex items-center gap-2"
@@ -58,7 +58,7 @@ const Hero = () => {
           </button>
         </div>
 
-        <div className="mt-20 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+        <div className="animate-fade-in-up delay-600 mt-20 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
           {[
             { value: '500+', label: 'Зеркал продано' },
             { value: '3–7', label: 'Дней производства' },
@@ -74,7 +74,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className="animate-fade-in delay-700 absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
         <Icon name="ChevronDown" size={28} className="text-purple-400/60" />
       </div>
     </section>

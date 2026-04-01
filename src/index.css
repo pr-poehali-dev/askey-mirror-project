@@ -274,3 +274,84 @@
 .animate-glow-pulse {
   animation: glow-pulse 2s ease-in-out infinite;
 }
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-fade-in-down {
+  animation: fade-in-down 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-fade-in {
+  animation: fade-in 0.8s ease both;
+}
+.animate-scale-in {
+  animation: scale-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Задержки для эффекта каскада */
+.delay-100 {
+  animation-delay: 100ms;
+}
+.delay-200 {
+  animation-delay: 200ms;
+}
+.delay-300 {
+  animation-delay: 300ms;
+}
+.delay-400 {
+  animation-delay: 400ms;
+}
+.delay-500 {
+  animation-delay: 500ms;
+}
+.delay-600 {
+  animation-delay: 600ms;
+}
+.delay-700 {
+  animation-delay: 700ms;
+}
+.delay-800 {
+  animation-delay: 800ms;
+}
