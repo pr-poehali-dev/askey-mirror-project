@@ -57,8 +57,8 @@ const Production = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {qualities.map((item, i) => (
-            <div key={i} className="card-dark rounded-2xl p-6 group hover:neon-border-purple transition-all duration-300">
-              <div className="w-12 h-12 rounded-xl mb-4 flex items-center justify-center" style={{ background: 'rgba(168,85,247,0.15)', border: '1px solid rgba(168,85,247,0.3)' }}>
+            <div key={i} className="card-dark rounded-3xl p-6 group hover:neon-border-purple transition-all duration-300">
+              <div className="w-12 h-12 rounded-2xl mb-4 flex items-center justify-center" style={{ background: 'rgba(168,85,247,0.15)', border: '1px solid rgba(168,85,247,0.3)' }}>
                 <Icon name={item.icon} size={22} className="text-purple-400" />
               </div>
               <h3 className="text-white font-bold text-lg mb-2">{item.title}</h3>
@@ -67,7 +67,7 @@ const Production = () => {
           ))}
         </div>
 
-        <div className="rounded-2xl overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(124,58,237,0.15), rgba(168,85,247,0.08))', border: '1px solid rgba(168,85,247,0.3)' }}>
+        <div className="rounded-3xl overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(124,58,237,0.15), rgba(168,85,247,0.08))', border: '1px solid rgba(168,85,247,0.3)' }}>
           <div className="p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
             <div className="flex-1">
               <h3 className="text-2xl md:text-3xl font-black text-white mb-3" style={{ fontFamily: 'Orbitron, monospace' }}>
@@ -92,8 +92,8 @@ const Production = () => {
               </ul>
             </div>
             <div className="flex-shrink-0">
-              <div className="w-48 h-64 rounded-2xl relative animate-float" style={{ background: 'linear-gradient(135deg, rgba(168,85,247,0.2), rgba(255,255,255,0.05))', border: '1px solid rgba(168,85,247,0.4)', boxShadow: '0 0 40px rgba(168,85,247,0.3)' }}>
-                <div className="absolute inset-4 rounded-xl overflow-hidden" style={{ background: 'rgba(0,0,0,0.5)' }}>
+              <div className="w-48 h-64 rounded-3xl relative animate-float" style={{ background: 'linear-gradient(135deg, rgba(168,85,247,0.2), rgba(255,255,255,0.05))', border: '1px solid rgba(168,85,247,0.4)', boxShadow: '0 0 40px rgba(168,85,247,0.3)' }}>
+                <div className="absolute inset-4 rounded-2xl overflow-hidden" style={{ background: 'rgba(0,0,0,0.5)' }}>
                   <div className="p-3">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-8 h-8 rounded-full" style={{ background: 'linear-gradient(135deg, #a855f7, #e879f9)' }} />

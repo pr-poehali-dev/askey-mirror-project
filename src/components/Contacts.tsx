@@ -33,7 +33,7 @@ const Contacts = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div>
             {sent ? (
-              <div className="rounded-2xl p-12 text-center" style={{ background: 'rgba(168,85,247,0.1)', border: '1px solid rgba(168,85,247,0.4)' }}>
+              <div className="rounded-3xl p-12 text-center" style={{ background: 'rgba(168,85,247,0.1)', border: '1px solid rgba(168,85,247,0.4)' }}>
                 <div className="w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center animate-glow-pulse" style={{ background: 'rgba(168,85,247,0.2)', border: '1px solid rgba(168,85,247,0.5)' }}>
                   <Icon name="Check" size={32} className="text-purple-400" />
                 </div>
@@ -56,7 +56,7 @@ const Contacts = () => {
                         placeholder={field.placeholder}
                         value={form[field.key as keyof typeof form] ?? ''}
                         onChange={(e) => setForm({ ...form, [field.key]: e.target.value })}
-                        className="w-full pl-11 pr-4 py-3.5 rounded-xl text-white placeholder-white/30 outline-none focus:border-purple-400 transition-all duration-300 text-sm"
+                        className="w-full pl-11 pr-4 py-3.5 rounded-2xl text-white placeholder-white/30 outline-none focus:border-purple-400 transition-all duration-300 text-sm"
                         style={{ background: 'rgba(168,85,247,0.08)', border: '1px solid rgba(168,85,247,0.2)' }}
                       />
                     </div>
@@ -70,14 +70,14 @@ const Contacts = () => {
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     rows={4}
-                    className="w-full px-4 py-3.5 rounded-xl text-white placeholder-white/30 outline-none focus:border-purple-400 transition-all duration-300 text-sm resize-none"
+                    className="w-full px-4 py-3.5 rounded-2xl text-white placeholder-white/30 outline-none focus:border-purple-400 transition-all duration-300 text-sm resize-none"
                     style={{ background: 'rgba(168,85,247,0.08)', border: '1px solid rgba(168,85,247,0.2)' }}
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full neon-btn text-white py-4 rounded-xl font-bold text-base tracking-wide flex items-center justify-center gap-2"
+                  className="w-full neon-btn text-white py-4 rounded-2xl font-bold text-base tracking-wide flex items-center justify-center gap-2"
                 >
                   <Icon name="Send" size={18} />
                   Отправить заявку
@@ -91,7 +91,7 @@ const Contacts = () => {
           </div>
 
           <div className="space-y-6">
-            <div className="card-dark rounded-2xl p-6">
+            <div className="card-dark rounded-3xl p-6">
               <h3 className="text-white font-bold text-lg mb-4">Как с нами связаться</h3>
               <div className="space-y-4">
                 {[
@@ -101,7 +101,7 @@ const Contacts = () => {
                   { icon: 'Mail', label: 'Email', value: 'info@askey.ru', color: '#a855f7' },
                 ].map((contact) => (
                   <div key={contact.label} className="flex items-center gap-4 py-3 border-b border-white/5 last:border-0">
-                    <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${contact.color}22` }}>
+                    <div className="w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: `${contact.color}22` }}>
                       <Icon name={contact.icon} size={18} style={{ color: contact.color }} />
                     </div>
                     <div>
@@ -113,7 +113,7 @@ const Contacts = () => {
               </div>
             </div>
 
-            <div className="card-dark rounded-2xl p-6">
+            <div className="card-dark rounded-3xl p-6">
               <h3 className="text-white font-bold mb-3">Режим работы</h3>
               <div className="space-y-2">
                 {[

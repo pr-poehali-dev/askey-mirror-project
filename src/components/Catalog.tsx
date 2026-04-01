@@ -77,7 +77,7 @@ const Catalog = () => {
               /* ── FLAGSHIP CARD ── */
               <div
                 key={product.id}
-                className="relative rounded-2xl overflow-hidden group col-span-1"
+                className="relative rounded-3xl overflow-hidden group col-span-1"
                 style={{
                   background: 'linear-gradient(135deg, #13002a 0%, #1a0035 60%, #0d0618 100%)',
                   border: '1px solid rgba(168,85,247,0.5)',
@@ -93,7 +93,7 @@ const Catalog = () => {
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-2">
                       <div
-                        className="w-12 h-12 rounded-xl flex items-center justify-center"
+                        className="w-12 h-12 rounded-2xl flex items-center justify-center"
                         style={{ background: 'rgba(168,85,247,0.2)', border: '1px solid rgba(168,85,247,0.4)' }}
                       >
                         <Icon name={product.icon} size={22} style={{ color: '#a855f7' }} />
@@ -125,7 +125,7 @@ const Catalog = () => {
                   {/* Light info block */}
                   {product.longDescription && (
                     <div
-                      className="rounded-xl p-4 mb-6 flex gap-3"
+                      className="rounded-2xl p-4 mb-6 flex gap-3"
                       style={{ background: 'rgba(168,85,247,0.08)', border: '1px solid rgba(168,85,247,0.25)' }}
                     >
                       <div className="mt-0.5 flex-shrink-0">
@@ -145,11 +145,11 @@ const Catalog = () => {
                     {(product.features as { label: string; icon: string }[]).map((feat) => (
                       <div
                         key={feat.label}
-                        className="flex items-center gap-2.5 rounded-xl px-3 py-2.5"
+                        className="flex items-center gap-2.5 rounded-2xl px-3 py-2.5"
                         style={{ background: 'rgba(168,85,247,0.08)', border: '1px solid rgba(168,85,247,0.18)' }}
                       >
                         <div
-                          className="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0"
+                          className="w-6 h-6 rounded-xl flex items-center justify-center flex-shrink-0"
                           style={{ background: 'rgba(168,85,247,0.2)' }}
                         >
                           <Icon name={feat.icon} size={12} style={{ color: '#c084fc' }} />
@@ -162,7 +162,7 @@ const Catalog = () => {
                   {/* CTA */}
                   <button
                     onClick={() => scrollTo('#contacts')}
-                    className="w-full py-3.5 rounded-xl text-sm font-bold transition-all duration-300 hover:scale-[1.02] hover:shadow-lg flex items-center justify-center gap-2"
+                    className="w-full py-3.5 rounded-2xl text-sm font-bold transition-all duration-300 hover:scale-[1.02] hover:shadow-lg flex items-center justify-center gap-2"
                     style={{
                       background: 'linear-gradient(135deg, #7c3aed, #a855f7)',
                       color: '#fff',
@@ -178,7 +178,7 @@ const Catalog = () => {
               /* ── REGULAR CARD ── */
               <div
                 key={product.id}
-                className="card-dark rounded-2xl p-8 relative overflow-hidden group"
+                className="card-dark rounded-3xl p-8 relative overflow-hidden group"
               >
                 <div
                   className="absolute -top-10 -right-10 w-40 h-40 rounded-full opacity-0 group-hover:opacity-10 transition-all duration-500 blur-2xl"

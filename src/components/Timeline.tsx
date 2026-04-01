@@ -63,7 +63,7 @@ const Timeline = () => {
               <div key={i} className={`relative flex flex-col md:flex-row ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-start md:items-center gap-4 md:gap-0`}>
                 <div className="md:w-1/2 md:pr-12 pl-16 md:pl-0">
                   {i % 2 === 0 ? (
-                    <div className="card-dark rounded-2xl p-6 md:ml-auto md:max-w-sm group hover:neon-border-purple transition-all duration-300">
+                    <div className="card-dark rounded-3xl p-6 md:ml-auto md:max-w-sm group hover:neon-border-purple transition-all duration-300">
                       <StepCard step={step} />
                     </div>
                   ) : (
@@ -77,11 +77,11 @@ const Timeline = () => {
 
                 <div className="md:w-1/2 md:pl-12 pl-16 md:pl-12">
                   {i % 2 !== 0 ? (
-                    <div className="card-dark rounded-2xl p-6 md:max-w-sm group hover:neon-border-purple transition-all duration-300">
+                    <div className="card-dark rounded-3xl p-6 md:max-w-sm group hover:neon-border-purple transition-all duration-300">
                       <StepCard step={step} />
                     </div>
                   ) : (
-                    <div className="block md:hidden card-dark rounded-2xl p-6 group hover:neon-border-purple transition-all duration-300">
+                    <div className="block md:hidden card-dark rounded-3xl p-6 group hover:neon-border-purple transition-all duration-300">
                       <StepCard step={step} />
                     </div>
                   )}
@@ -92,7 +92,7 @@ const Timeline = () => {
         </div>
 
         <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl" style={{ background: 'linear-gradient(135deg, rgba(168,85,247,0.15), rgba(124,58,237,0.1))', border: '1px solid rgba(168,85,247,0.3)' }}>
+          <div className="inline-flex items-center gap-3 px-8 py-4 rounded-3xl" style={{ background: 'linear-gradient(135deg, rgba(168,85,247,0.15), rgba(124,58,237,0.1))', border: '1px solid rgba(168,85,247,0.3)' }}>
             <Icon name="Zap" size={20} className="text-yellow-400" />
             <span className="text-white font-semibold">Срочный заказ?</span>
             <span className="text-white/60">Экспресс-производство за 2–3 дня по запросу</span>
@@ -105,7 +105,7 @@ const Timeline = () => {
 
 const StepCard = ({ step }: { step: typeof steps[0] }) => (
   <>
-    <div className="text-xs font-bold mb-2 px-2 py-1 rounded-md inline-block" style={{ background: `${step.color}22`, color: step.color }}>
+    <div className="text-xs font-bold mb-2 px-2 py-1 rounded-xl inline-block" style={{ background: `${step.color}22`, color: step.color }}>
       {step.day}
     </div>
     <h3 className="text-white font-bold text-lg mb-2">{step.title}</h3>

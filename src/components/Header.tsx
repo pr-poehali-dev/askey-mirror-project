@@ -36,7 +36,7 @@ const Header = () => {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3 cursor-pointer" onClick={() => scrollTo('#hero')}>
-          <div className="w-10 h-10 rounded-lg neon-border-purple flex items-center justify-center animate-glow-pulse">
+          <div className="w-10 h-10 rounded-2xl neon-border-purple flex items-center justify-center animate-glow-pulse">
             <span className="text-gradient font-black text-lg" style={{ fontFamily: 'Orbitron, monospace' }}>А</span>
           </div>
           <span className="text-2xl font-black tracking-widest neon-text-purple" style={{ fontFamily: 'Orbitron, monospace' }}>
@@ -58,7 +58,7 @@ const Header = () => {
 
         <button
           onClick={() => scrollTo('#contacts')}
-          className="hidden md:block neon-btn text-white px-6 py-2.5 rounded-lg text-sm font-semibold tracking-wide"
+          className="hidden md:block neon-btn text-white px-6 py-2.5 rounded-2xl text-sm font-semibold tracking-wide"
         >
           Заказать зеркало
         </button>
@@ -84,7 +84,7 @@ const Header = () => {
           ))}
           <button
             onClick={() => scrollTo('#contacts')}
-            className="neon-btn text-white px-6 py-3 rounded-lg text-sm font-semibold mt-2"
+            className="neon-btn text-white px-6 py-3 rounded-2xl text-sm font-semibold mt-2"
           >
             Заказать зеркало
           </button>

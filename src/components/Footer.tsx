@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 rounded-lg neon-border-purple flex items-center justify-center">
+              <div className="w-8 h-8 rounded-2xl neon-border-purple flex items-center justify-center">
                 <span className="text-gradient font-black text-sm" style={{ fontFamily: 'Orbitron, monospace' }}>А</span>
               </div>
               <span className="text-xl font-black tracking-widest neon-text-purple" style={{ fontFamily: 'Orbitron, monospace' }}>АСКЕЙ</span>
@@ -26,7 +26,7 @@ const Footer = () => {
                 { icon: 'Send', color: '#22d3ee' },
                 { icon: 'MessageCircle', color: '#22c55e' },
               ].map((social) => (
-                <button key={social.icon} className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110" style={{ background: `${social.color}22`, border: `1px solid ${social.color}44` }}>
+                <button key={social.icon} className="w-9 h-9 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110" style={{ background: `${social.color}22`, border: `1px solid ${social.color}44` }}>
                   <Icon name={social.icon} size={16} style={{ color: social.color }} />
                 </button>
               ))}
