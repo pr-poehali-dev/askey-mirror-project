@@ -51,9 +51,10 @@ const MirrorDecor = () => (
         {/* ── LED подсветка сверху вниз ── */}
         {/* Левая полоска */}
         <div
-          className="absolute top-[4px] bottom-[4px] left-[3px] w-[3px] rounded-full animate-led-top-down"
+          className="absolute top-[4px] bottom-[4px] left-[3px] w-[3px] animate-led-top-down"
           style={{
             animationDelay: '900ms',
+            borderRadius: '36px',
             background:
               'linear-gradient(to bottom, #e0f7ff, #93d2ff, #38bdf8)',
             boxShadow: '0 0 8px 3px rgba(147,210,255,0.95)',
@@ -61,9 +62,10 @@ const MirrorDecor = () => (
         />
         {/* Правая полоска */}
         <div
-          className="absolute top-[4px] bottom-[4px] right-[3px] w-[3px] rounded-full animate-led-top-down"
+          className="absolute top-[4px] bottom-[4px] right-[3px] w-[3px] animate-led-top-down"
           style={{
             animationDelay: '950ms',
+            borderRadius: '36px',
             background:
               'linear-gradient(to bottom, #e0f7ff, #93d2ff, #38bdf8)',
             boxShadow: '0 0 8px 3px rgba(147,210,255,0.95)',
@@ -71,9 +73,10 @@ const MirrorDecor = () => (
         />
         {/* Верхняя полоска */}
         <div
-          className="absolute top-[3px] left-[4px] right-[4px] h-[3px] rounded-full animate-led-top-down"
+          className="absolute top-[3px] left-[4px] right-[4px] h-[3px] animate-led-top-down"
           style={{
             animationDelay: '850ms',
+            borderRadius: '36px',
             background:
               'linear-gradient(to right, #e0f7ff, #93d2ff, #38bdf8, #93d2ff, #e0f7ff)',
             boxShadow: '0 0 8px 3px rgba(186,230,255,0.95)',
@@ -81,9 +84,10 @@ const MirrorDecor = () => (
         />
         {/* Нижняя полоска */}
         <div
-          className="absolute bottom-[3px] left-[4px] right-[4px] h-[3px] rounded-full animate-led-top-down"
+          className="absolute bottom-[3px] left-[4px] right-[4px] h-[3px] animate-led-top-down"
           style={{
             animationDelay: '1100ms',
+            borderRadius: '36px',
             background:
               'linear-gradient(to right, #38bdf8, #93d2ff, #e0f7ff, #93d2ff, #38bdf8)',
             boxShadow: '0 0 8px 3px rgba(147,210,255,0.95)',
