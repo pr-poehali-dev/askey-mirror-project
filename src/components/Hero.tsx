@@ -47,7 +47,7 @@ const MirrorDecor = () => (
         >
           {/* Зеркальный контент — отражение интерьера */}
           <img
-            src="https://cdn.poehali.dev/files/735f9f20-70a7-4b2a-b25b-c7ec1282c68d.jpg"
+            src="https://cdn.poehali.dev/files/f1dbe533-a583-4a60-addd-7937c083ec2b.jpg"
             alt="Зеркало с подсветкой"
             className="absolute inset-0 w-full h-full object-cover"
             style={{ opacity: 0.92 }}
