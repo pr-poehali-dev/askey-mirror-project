@@ -9,34 +9,34 @@ const MirrorDecor = () => (
     className="animate-slide-in-right relative flex items-center justify-center"
     style={{ animationDelay: '400ms', willChange: 'transform, opacity' }}
   >
-    {/* ── Внешнее тёплое свечение (halo вокруг зеркала) ── */}
+    {/* ── Внешнее фиолетовое свечение (halo вокруг зеркала) ── */}
     <div
       className="absolute pointer-events-none animate-warm-halo"
       style={{
         inset: '-20px',
         filter: 'blur(40px)',
-        background: 'radial-gradient(ellipse at center, rgba(255,210,120,0.50) 0%, rgba(255,170,60,0.28) 45%, transparent 72%)',
+        background: 'radial-gradient(ellipse at center, rgba(168,85,247,0.40) 0%, rgba(124,58,237,0.22) 45%, transparent 72%)',
         zIndex: 0,
       }}
     />
 
-    {/* ── Боковое LED-свечение слева ── */}
+    {/* ── Боковое LED-свечение слева (фиолетовое) ── */}
     <div
       className="absolute left-0 top-[8%] bottom-[8%] pointer-events-none animate-warm-glow"
       style={{
         width: '18px',
-        background: 'linear-gradient(to bottom, transparent, rgba(255,200,80,0.9) 20%, rgba(255,185,50,1) 50%, rgba(255,200,80,0.9) 80%, transparent)',
+        background: 'linear-gradient(to bottom, transparent, rgba(168,85,247,0.9) 20%, rgba(124,58,237,1) 50%, rgba(168,85,247,0.9) 80%, transparent)',
         filter: 'blur(6px)',
         zIndex: 2,
         transform: 'translateX(-50%)',
       }}
     />
-    {/* ── Боковое LED-свечение справа ── */}
+    {/* ── Боковое LED-свечение справа (фиолетовое) ── */}
     <div
       className="absolute right-0 top-[8%] bottom-[8%] pointer-events-none animate-warm-glow"
       style={{
         width: '18px',
-        background: 'linear-gradient(to bottom, transparent, rgba(255,200,80,0.9) 20%, rgba(255,185,50,1) 50%, rgba(255,200,80,0.9) 80%, transparent)',
+        background: 'linear-gradient(to bottom, transparent, rgba(168,85,247,0.9) 20%, rgba(124,58,237,1) 50%, rgba(168,85,247,0.9) 80%, transparent)',
         filter: 'blur(6px)',
         zIndex: 2,
         transform: 'translateX(50%)',
@@ -52,29 +52,29 @@ const MirrorDecor = () => (
       }}
     >
       <img
-        src="https://cdn.poehali.dev/files/a87b2122-aed7-4dea-a9b4-eb8a75de0b70.jpg"
-        alt="Зеркало с LED подсветкой"
+        src="https://cdn.poehali.dev/projects/af6d2ef4-20e2-486b-93ab-6d38dda52f4e/files/5ceef6b4-dc70-4e9f-9a8c-6098fc8f80da.jpg"
+        alt="Зеркало с наклейками Instagram профиля"
         className="w-full h-auto animate-led-top-down"
         style={{
           animationDelay: '600ms',
-          borderRadius: '12px',
+          borderRadius: '16px',
           boxShadow:
-            '0 0 30px 8px rgba(255,195,80,0.45), 0 0 70px 20px rgba(255,160,40,0.28), 0 0 120px 40px rgba(255,130,0,0.15)',
-          filter: 'drop-shadow(0 0 18px rgba(255,190,60,0.6))',
+            '0 0 30px 8px rgba(168,85,247,0.35), 0 0 70px 20px rgba(124,58,237,0.22), 0 0 120px 40px rgba(232,121,249,0.12)',
+          filter: 'drop-shadow(0 0 18px rgba(168,85,247,0.55))',
         }}
       />
 
-      {/* ── Лейбл LED сверху ── */}
+      {/* ── Лейбл Instagram сверху ── */}
       <div
         className="absolute -top-8 left-0 right-0 flex items-center justify-center gap-1.5 pointer-events-none animate-led-top-down"
         style={{ animationDelay: '1100ms' }}
       >
-        <span className="w-1.5 h-1.5 rounded-full animate-pulse-neon" style={{ backgroundColor: '#ffd580' }} />
+        <span className="w-1.5 h-1.5 rounded-full animate-pulse-neon" style={{ backgroundColor: '#a855f7' }} />
         <span
           className="text-[10px] uppercase tracking-widest"
-          style={{ color: '#ffd580', fontFamily: 'Orbitron, monospace' }}
+          style={{ color: '#a855f7', fontFamily: 'Orbitron, monospace' }}
         >
-          LED подсветка
+          Instagram наклейки
         </span>
       </div>
 
@@ -85,7 +85,7 @@ const MirrorDecor = () => (
       >
         <span
           className="text-[10px] uppercase tracking-widest"
-          style={{ color: '#ffd580', fontFamily: 'Orbitron, monospace' }}
+          style={{ color: '#a855f7', fontFamily: 'Orbitron, monospace' }}
         >
           60 × 120 см
         </span>
