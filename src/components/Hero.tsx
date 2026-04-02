@@ -198,7 +198,7 @@ const MirrorDecor = () => (
           className="text-[10px] uppercase tracking-widest"
           style={{ color: '#a855f7', fontFamily: 'Orbitron, monospace' }}
         >
-          Instagram наклейки
+          Ваш профиль
         </span>
       </div>
 
