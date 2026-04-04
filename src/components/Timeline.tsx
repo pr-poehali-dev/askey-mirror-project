@@ -111,17 +111,7 @@ const Timeline = () => {
           </div>
         </div>
 
-        {/* Срочный заказ */}
-        <div className="mt-10 sm:mt-12 lg:mt-16 text-center">
-          <div
-            className="inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-3 px-5 sm:px-8 py-3 sm:py-4 rounded-2xl sm:rounded-3xl text-center sm:text-left"
-            style={{ background: 'linear-gradient(135deg, rgba(168,85,247,0.15), rgba(124,58,237,0.1))', border: '1px solid rgba(168,85,247,0.3)' }}
-          >
-            <Icon name="Zap" size={18} className="text-yellow-400" />
-            <span className="text-white font-semibold text-sm sm:text-base">Срочный заказ?</span>
-            <span className="text-white/60 text-xs sm:text-sm">Экспресс-производство за 2–3 дня по запросу</span>
-          </div>
-        </div>
+
       </div>
     </section>
   );
