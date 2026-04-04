@@ -106,15 +106,13 @@ const MirrorDecor = () => (
                   <div style={{ width: '100%', height: '100%', borderRadius: '50%', background: '#c8b8a2' }} />
                 </div>
                 <div>
+                  <div style={{ fontSize: '8px', fontWeight: 700, color: '#111', fontFamily: 'sans-serif', lineHeight: 1.2 }}>13:00</div>
                   <div style={{ fontSize: '8px', fontWeight: 700, color: '#111', fontFamily: 'sans-serif', lineHeight: 1.2 }}>your_profile</div>
                   <div style={{ fontSize: '6.5px', color: '#666', fontFamily: 'sans-serif', lineHeight: 1.2 }}>Москва</div>
                 </div>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '3px' }}>
-                <span style={{ fontSize: '8px', fontWeight: 700, color: '#111', fontFamily: 'sans-serif' }}>13:00</span>
-                <div style={{ display: 'flex', gap: '2px' }}>
-                  {[0,1,2].map(i => <div key={i} style={{ width: '3px', height: '3px', borderRadius: '50%', background: '#111' }} />)}
-                </div>
+              <div style={{ display: 'flex', gap: '2px' }}>
+                {[0,1,2].map(i => <div key={i} style={{ width: '3px', height: '3px', borderRadius: '50%', background: '#111' }} />)}
               </div>
             </div>
           </div>
