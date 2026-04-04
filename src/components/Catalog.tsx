@@ -26,7 +26,7 @@ const products = [
     features: ['RGB-подсветка', 'Диммер яркости', '3 режима света'],
     icon: 'Lightbulb',
     popular: false,
-    image: 'https://cdn.poehali.dev/projects/af6d2ef4-20e2-486b-93ab-6d38dda52f4e/bucket/f1b33b0d-5ab1-4968-8564-eae849ab321e.jpg',
+    image: 'https://cdn.poehali.dev/projects/af6d2ef4-20e2-486b-93ab-6d38dda52f4e/bucket/fc1c50f0-8254-457b-b8cb-8429f51afeab.png',
   },
 
   {
