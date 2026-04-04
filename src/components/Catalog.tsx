@@ -188,25 +188,73 @@ const Catalog = () => {
               /* ── REGULAR CARD ── */
               <div
                 key={product.id}
-                className="card-dark rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 relative overflow-hidden group"
+                className="card-dark rounded-2xl sm:rounded-3xl relative overflow-hidden group flex flex-col"
+                style={{ minHeight: '320px' }}
               >
                 <div
-                  className="absolute -top-10 -right-10 w-32 h-32 sm:w-40 sm:h-40 rounded-full opacity-0 group-hover:opacity-10 transition-all duration-500 blur-2xl"
+                  className="absolute -top-10 -right-10 w-32 h-32 sm:w-40 sm:h-40 rounded-full opacity-0 group-hover:opacity-10 transition-all duration-500 blur-2xl pointer-events-none"
                   style={{ background: product.tagColor }}
                 />
 
-                <div className={'image' in product && product.image ? 'flex gap-4 items-start' : ''}>
-                  {'image' in product && product.image && (
-                    <div className="rounded-xl overflow-hidden flex-shrink-0" style={{ border: `1px solid ${product.tagColor}33`, width: '110px' }}>
+                {'image' in product && product.image ? (
+                  /* карточка с картинкой слева */
+                  <div className="flex flex-1">
+                    {/* Фото — 35% ширины, полная высота */}
+                    <div className="relative flex-shrink-0 overflow-hidden rounded-l-2xl sm:rounded-l-3xl" style={{ width: '35%' }}>
                       <img
                         src={product.image as string}
                         alt={product.name}
-                        className="w-full object-cover"
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                      <div
+                        className="absolute inset-0"
+                        style={{ background: `linear-gradient(to right, transparent 70%, rgba(10,10,15,0.6))` }}
                       />
                     </div>
-                  )}
 
-                  <div className="flex-1 min-w-0">
+                    {/* Контент справа */}
+                    <div className="flex-1 flex flex-col p-5 sm:p-6 lg:p-8 min-w-0">
+                      <div className="flex items-start justify-between mb-3 sm:mb-4">
+                        <div
+                          className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center"
+                          style={{ background: `${product.tagColor}22`, border: `1px solid ${product.tagColor}44` }}
+                        >
+                          <Icon name={product.icon} size={18} style={{ color: product.tagColor }} />
+                        </div>
+                        <span
+                          className="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full"
+                          style={{ background: `${product.tagColor}22`, color: product.tagColor, border: `1px solid ${product.tagColor}44` }}
+                        >
+                          {product.tag}
+                        </span>
+                      </div>
+
+                      <h3 className="text-lg sm:text-xl font-black text-white mb-2" style={{ fontFamily: 'Orbitron, monospace' }}>
+                        {product.name}
+                      </h3>
+                      <p className="text-white/50 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">{product.description}</p>
+
+                      <div className="space-y-1.5 sm:space-y-2 mb-5 sm:mb-6 flex-1">
+                        {(product.features as string[]).map((feat) => (
+                          <div key={feat} className="flex items-center gap-2 text-xs sm:text-sm text-white/60">
+                            <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: product.tagColor }} />
+                            {feat}
+                          </div>
+                        ))}
+                      </div>
+
+                      <button
+                        onClick={() => scrollTo('#contacts')}
+                        className="w-full py-2.5 sm:py-3 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-300 hover:opacity-80 flex items-center justify-center gap-2"
+                        style={{ background: `${product.tagColor}22`, color: product.tagColor, border: `1px solid ${product.tagColor}44` }}
+                      >
+                        Узнать подробнее
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  /* обычная карточка */
+                  <div className="flex flex-col flex-1 p-5 sm:p-6 lg:p-8">
                     <div className="flex items-start justify-between mb-3 sm:mb-4">
                       <div
                         className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center"
@@ -227,7 +275,7 @@ const Catalog = () => {
                     </h3>
                     <p className="text-white/50 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">{product.description}</p>
 
-                    <div className="space-y-1.5 sm:space-y-2 mb-5 sm:mb-6">
+                    <div className="space-y-1.5 sm:space-y-2 mb-5 sm:mb-6 flex-1">
                       {(product.features as string[]).map((feat) => (
                         <div key={feat} className="flex items-center gap-2 text-xs sm:text-sm text-white/60">
                           <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: product.tagColor }} />
@@ -235,16 +283,16 @@ const Catalog = () => {
                         </div>
                       ))}
                     </div>
-                  </div>
-                </div>
 
-                <button
-                  onClick={() => scrollTo('#contacts')}
-                  className="w-full py-2.5 sm:py-3 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-300 hover:opacity-80 flex items-center justify-center gap-2"
-                  style={{ background: `${product.tagColor}22`, color: product.tagColor, border: `1px solid ${product.tagColor}44` }}
-                >
-                  Узнать подробнее
-                </button>
+                    <button
+                      onClick={() => scrollTo('#contacts')}
+                      className="w-full py-2.5 sm:py-3 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-300 hover:opacity-80 flex items-center justify-center gap-2"
+                      style={{ background: `${product.tagColor}22`, color: product.tagColor, border: `1px solid ${product.tagColor}44` }}
+                    >
+                      Узнать подробнее
+                    </button>
+                  </div>
+                )}
               </div>
             )
           )}
