@@ -83,7 +83,7 @@ const MirrorDecor = () => (
             <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', marginBottom: '6px' }}>
               <span style={{ fontSize: '8px', fontWeight: 700, color: '#111', fontFamily: 'sans-serif', paddingLeft: '14px' }}>13:00</span>
               <div style={{ width: '26px', height: '7px', borderRadius: '4px', background: '#111' }} />
-              <div style={{ display: 'flex', gap: '3px', alignItems: 'center', justifyContent: 'flex-end' }}>
+              <div style={{ display: 'flex', gap: '3px', alignItems: 'center', justifyContent: 'flex-end', paddingRight: '8px' }}>
                 <div style={{ display: 'flex', gap: '1px', alignItems: 'flex-end' }}>
                   {[3,5,7,9].map((h, i) => (
                     <div key={i} style={{ width: '2px', height: `${h}px`, borderRadius: '1px', background: '#111', opacity: i < 3 ? 1 : 0.3 }} />
