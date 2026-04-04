@@ -331,7 +331,7 @@ const Hero = () => {
             <div className="animate-fade-in-up delay-600 mt-10 sm:mt-16 grid grid-cols-3 gap-4 sm:gap-8 max-w-sm sm:max-w-2xl mx-auto lg:mx-0">
               {[
                 { value: '500+', label: 'Зеркал продано' },
-                { value: '3–7', label: 'Дней производства' },
+                { value: '12', label: 'Дней производства' },
                 { value: '100%', label: 'Гарантия качества' },
               ].map((stat) => (
                 <div key={stat.label} className="text-center lg:text-left">
