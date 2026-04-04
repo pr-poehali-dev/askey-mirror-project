@@ -23,7 +23,7 @@ const products = [
     tag: 'Хит',
     tagColor: '#e879f9',
     description: 'Зеркало с RGB-подсветкой по периметру, идеально для фото и видео',
-    features: ['RGB-подсветка', 'Диммер яркости', '3 режима света', 'Антизапотевание'],
+    features: ['RGB-подсветка', 'Диммер яркости', '3 режима света'],
     icon: 'Lightbulb',
     popular: false,
     image: 'https://cdn.poehali.dev/projects/af6d2ef4-20e2-486b-93ab-6d38dda52f4e/bucket/f1b33b0d-5ab1-4968-8564-eae849ab321e.jpg',
@@ -204,45 +204,47 @@ const Catalog = () => {
                   style={{ background: product.tagColor }}
                 />
 
-                <div className="flex items-start justify-between mb-4 sm:mb-5">
-                  <div
-                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center"
-                    style={{ background: `${product.tagColor}22`, border: `1px solid ${product.tagColor}44` }}
-                  >
-                    <Icon name={product.icon} size={18} style={{ color: product.tagColor }} />
-                  </div>
-                  <span
-                    className="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full"
-                    style={{ background: `${product.tagColor}22`, color: product.tagColor, border: `1px solid ${product.tagColor}44` }}
-                  >
-                    {product.tag}
-                  </span>
-                </div>
-
-                <h3 className="text-lg sm:text-xl font-black text-white mb-2" style={{ fontFamily: 'Orbitron, monospace' }}>
-                  {product.name}
-                </h3>
-                <p className="text-white/50 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5">{product.description}</p>
-
-                {'image' in product && product.image && (
-                  <div className="flex justify-center mb-4 sm:mb-5">
-                    <div className="rounded-xl overflow-hidden" style={{ border: `1px solid ${product.tagColor}33`, width: '120px' }}>
+                <div className={'image' in product && product.image ? 'flex gap-4 items-start' : ''}>
+                  {'image' in product && product.image && (
+                    <div className="rounded-xl overflow-hidden flex-shrink-0" style={{ border: `1px solid ${product.tagColor}33`, width: '110px' }}>
                       <img
                         src={product.image as string}
                         alt={product.name}
                         className="w-full object-cover"
                       />
                     </div>
-                  </div>
-                )}
+                  )}
 
-                <div className="space-y-1.5 sm:space-y-2 mb-5 sm:mb-6">
-                  {(product.features as string[]).map((feat) => (
-                    <div key={feat} className="flex items-center gap-2 text-xs sm:text-sm text-white/60">
-                      <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: product.tagColor }} />
-                      {feat}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between mb-3 sm:mb-4">
+                      <div
+                        className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center"
+                        style={{ background: `${product.tagColor}22`, border: `1px solid ${product.tagColor}44` }}
+                      >
+                        <Icon name={product.icon} size={18} style={{ color: product.tagColor }} />
+                      </div>
+                      <span
+                        className="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full"
+                        style={{ background: `${product.tagColor}22`, color: product.tagColor, border: `1px solid ${product.tagColor}44` }}
+                      >
+                        {product.tag}
+                      </span>
                     </div>
-                  ))}
+
+                    <h3 className="text-lg sm:text-xl font-black text-white mb-2" style={{ fontFamily: 'Orbitron, monospace' }}>
+                      {product.name}
+                    </h3>
+                    <p className="text-white/50 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">{product.description}</p>
+
+                    <div className="space-y-1.5 sm:space-y-2 mb-5 sm:mb-6">
+                      {(product.features as string[]).map((feat) => (
+                        <div key={feat} className="flex items-center gap-2 text-xs sm:text-sm text-white/60">
+                          <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: product.tagColor }} />
+                          {feat}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
                 <button
