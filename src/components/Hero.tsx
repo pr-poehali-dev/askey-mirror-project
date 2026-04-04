@@ -137,20 +137,12 @@ const MirrorDecor = () => (
               width: '22px',
               height: '22px',
               borderRadius: '5px',
-              background: 'rgba(255,255,255,0.12)',
-              border: '1px solid rgba(255,255,255,0.5)',
-              boxShadow: '0 0 8px 2px rgba(255,255,220,0.7), 0 0 16px 4px rgba(255,255,180,0.4)',
-              backdropFilter: 'blur(2px)',
+              background: 'rgba(255,255,255,0.08)',
+              border: '2px solid rgba(255,240,150,0.9)',
+              boxShadow: '0 0 6px 2px rgba(255,240,100,0.8), 0 0 14px 4px rgba(255,220,80,0.4), inset 0 0 0px 0px transparent',
+              backdropFilter: 'blur(4px)',
             }}
-          >
-            <div style={{
-              width: '100%',
-              height: '100%',
-              borderRadius: '4px',
-              background: 'radial-gradient(circle, rgba(255,255,220,0.9) 0%, rgba(255,220,100,0.6) 60%, transparent 100%)',
-              animation: 'pulse 2s ease-in-out infinite',
-            }} />
-          </div>
+          />
 
           {/* ── Наклейка снизу: реакции поста ── */}
           <div
