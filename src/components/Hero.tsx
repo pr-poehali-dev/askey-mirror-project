@@ -138,8 +138,8 @@ const MirrorDecor = () => (
               height: '14px',
               borderRadius: '5px',
               background: 'rgba(255,255,255,0.08)',
-              border: '2px solid rgba(255,240,150,0.9)',
-              boxShadow: '0 0 6px 2px rgba(255,240,100,0.8), 0 0 14px 4px rgba(255,220,80,0.4), inset 0 0 0px 0px transparent',
+              border: '2px solid rgba(200,230,255,0.95)',
+              boxShadow: '0 0 6px 2px rgba(180,220,255,0.9), 0 0 14px 4px rgba(150,200,255,0.5), inset 0 0 0px 0px transparent',
               backdropFilter: 'blur(4px)',
             }}
           />
