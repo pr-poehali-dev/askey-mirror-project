@@ -132,7 +132,7 @@ const MirrorDecor = () => (
               zIndex: 4,
               animationDelay: '900ms',
               background: 'rgba(255,255,255,0.97)',
-              padding: '7px 10px 10px',
+              padding: '7px 10px 18px',
             }}
           >
             {/* Иконки реакций */}
