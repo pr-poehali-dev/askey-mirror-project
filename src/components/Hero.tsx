@@ -81,7 +81,7 @@ const MirrorDecor = () => (
           >
             {/* Динамический остров по центру + иконки справа */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', marginBottom: '6px' }}>
-              <div />
+              <span style={{ fontSize: '8px', fontWeight: 700, color: '#111', fontFamily: 'sans-serif' }}>13:00</span>
               <div style={{ width: '26px', height: '7px', borderRadius: '4px', background: '#111' }} />
               <div style={{ display: 'flex', gap: '3px', alignItems: 'center', justifyContent: 'flex-end' }}>
                 <div style={{ display: 'flex', gap: '1px', alignItems: 'flex-end' }}>
@@ -106,7 +106,6 @@ const MirrorDecor = () => (
                   <div style={{ width: '100%', height: '100%', borderRadius: '50%', background: '#c8b8a2' }} />
                 </div>
                 <div>
-                  <div style={{ fontSize: '8px', fontWeight: 700, color: '#111', fontFamily: 'sans-serif', lineHeight: 1.2 }}>13:00</div>
                   <div style={{ fontSize: '8px', fontWeight: 700, color: '#111', fontFamily: 'sans-serif', lineHeight: 1.2 }}>your_profile</div>
                   <div style={{ fontSize: '6.5px', color: '#666', fontFamily: 'sans-serif', lineHeight: 1.2 }}>Москва</div>
                 </div>
