@@ -225,12 +225,14 @@ const Catalog = () => {
                 <p className="text-white/50 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5">{product.description}</p>
 
                 {'image' in product && product.image && (
-                  <div className="rounded-xl overflow-hidden mb-4 sm:mb-5" style={{ border: `1px solid ${product.tagColor}33` }}>
-                    <img
-                      src={product.image as string}
-                      alt={product.name}
-                      className="w-full h-48 sm:h-56 object-cover"
-                    />
+                  <div className="flex justify-center mb-4 sm:mb-5">
+                    <div className="rounded-xl overflow-hidden" style={{ border: `1px solid ${product.tagColor}33`, width: '120px' }}>
+                      <img
+                        src={product.image as string}
+                        alt={product.name}
+                        className="w-full object-cover"
+                      />
+                    </div>
                   </div>
                 )}
 
