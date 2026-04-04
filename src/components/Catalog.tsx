@@ -28,16 +28,7 @@ const products = [
     popular: false,
     image: 'https://cdn.poehali.dev/projects/af6d2ef4-20e2-486b-93ab-6d38dda52f4e/bucket/f1b33b0d-5ab1-4968-8564-eae849ab321e.jpg',
   },
-  {
-    id: 3,
-    name: 'Именное зеркало',
-    tag: 'Подарок',
-    tagColor: '#22d3ee',
-    description: 'Персонализированное зеркало с именем, датой или любым текстом',
-    features: ['Любой текст', 'Выбор шрифта', 'Гравировка', 'Подарочная упаковка'],
-    icon: 'Heart',
-    popular: false,
-  },
+
   {
     id: 4,
     name: 'Бизнес-зеркало',
