@@ -3,7 +3,7 @@ import Icon from '@/components/ui/icon';
 const products = [
   {
     id: 1,
-    name: 'Профиль',
+    name: 'Премиум',
     tag: 'Флагман',
     tagColor: '#a855f7',
     description: 'Умное зеркало с двойной подсветкой и статистикой — твой личный бренд прямо в отражении.',
@@ -19,7 +19,7 @@ const products = [
   },
   {
     id: 2,
-    name: 'С подсветкой',
+    name: 'Стандарт',
     tag: 'Хит',
     tagColor: '#e879f9',
     description: 'Зеркало с RGB-подсветкой по периметру, идеально для фото и видео',
