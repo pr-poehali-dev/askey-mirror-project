@@ -80,20 +80,18 @@ const MirrorDecor = () => (
             }}
           >
             {/* Строка статуса */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '7px' }}>
-              <span style={{ fontSize: '9px', fontWeight: 700, color: '#111', fontFamily: 'sans-serif' }}>13:00</span>
-              <div style={{ display: 'flex', gap: '3px', alignItems: 'center' }}>
-                {/* Динамический остров */}
-                <div style={{ width: '28px', height: '7px', borderRadius: '4px', background: '#111' }} />
-              </div>
-              <div style={{ display: 'flex', gap: '3px', alignItems: 'center' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', marginBottom: '6px' }}>
+              <span style={{ fontSize: '8px', fontWeight: 700, color: '#111', fontFamily: 'sans-serif' }}>13:00</span>
+              {/* Динамический остров — строго по центру */}
+              <div style={{ width: '26px', height: '7px', borderRadius: '4px', background: '#111' }} />
+              <div style={{ display: 'flex', gap: '3px', alignItems: 'center', justifyContent: 'flex-end' }}>
                 <div style={{ display: 'flex', gap: '1px', alignItems: 'flex-end' }}>
                   {[3,5,7,9].map((h, i) => (
                     <div key={i} style={{ width: '2px', height: `${h}px`, borderRadius: '1px', background: '#111', opacity: i < 3 ? 1 : 0.3 }} />
                   ))}
                 </div>
-                <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M5 1.5C6.7 1.5 8.2 2.3 9.2 3.5L10 2.5C8.8 1.1 7 0 5 0C3 0 1.2 1.1 0 2.5L0.8 3.5C1.8 2.3 3.3 1.5 5 1.5Z" fill="#111"/><path d="M5 3.5C6.1 3.5 7.1 4 7.8 4.8L8.6 3.8C7.7 2.8 6.4 2.2 5 2.2C3.6 2.2 2.3 2.8 1.4 3.8L2.2 4.8C2.9 4 3.9 3.5 5 3.5Z" fill="#111"/><circle cx="5" cy="6.5" r="1" fill="#111"/></svg>
-                <div style={{ width: '14px', height: '7px', borderRadius: '2px', border: '1px solid #111', padding: '1px', display: 'flex', alignItems: 'center' }}>
+                <svg width="9" height="7" viewBox="0 0 10 8" fill="none"><path d="M5 1.5C6.7 1.5 8.2 2.3 9.2 3.5L10 2.5C8.8 1.1 7 0 5 0C3 0 1.2 1.1 0 2.5L0.8 3.5C1.8 2.3 3.3 1.5 5 1.5Z" fill="#111"/><path d="M5 3.5C6.1 3.5 7.1 4 7.8 4.8L8.6 3.8C7.7 2.8 6.4 2.2 5 2.2C3.6 2.2 2.3 2.8 1.4 3.8L2.2 4.8C2.9 4 3.9 3.5 5 3.5Z" fill="#111"/><circle cx="5" cy="6.5" r="1" fill="#111"/></svg>
+                <div style={{ width: '13px', height: '6px', borderRadius: '2px', border: '1px solid #111', padding: '1px', display: 'flex', alignItems: 'center' }}>
                   <div style={{ width: '70%', height: '100%', background: '#111', borderRadius: '1px' }} />
                 </div>
               </div>
