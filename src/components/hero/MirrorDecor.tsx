@@ -42,7 +42,7 @@ const MirrorDecor = () => {
             style={{
               borderRadius: '42px',
               aspectRatio: '9 / 16',
-              background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 20%, #0f3460 40%, #1a1a2e 60%, #0d0d1a 80%, #1a1a2e 100%)',
+              background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 20%, #141414 40%, #111111 60%, #0a0a0a 80%, #111111 100%)',
             }}
           >
             {/* Зеркальный блик */}
