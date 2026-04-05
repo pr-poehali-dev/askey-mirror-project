@@ -1,17 +1,29 @@
 import { useState } from 'react';
 import Icon from '@/components/ui/icon';
 import DocumentModal from '@/components/DocumentModal';
+import func2url from '../../backend/func2url.json';
 
 const Contacts = () => {
   const [form, setForm] = useState({ name: '', phone: '', profile: '', message: '' });
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [agreed, setAgreed] = useState(false);
   const [privacyOpen, setPrivacyOpen] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!agreed) return;
-    setSent(true);
+    setLoading(true);
+    try {
+      await fetch(func2url['send-order'], {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+    } finally {
+      setLoading(false);
+      setSent(true);
+    }
   };
 
   return (
@@ -131,11 +143,11 @@ const Contacts = () => {
 
                 <button
                   type="submit"
-                  disabled={!agreed}
+                  disabled={!agreed || loading}
                   className="w-full neon-btn text-white py-3.5 sm:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base tracking-wide flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed"
                 >
-                  <Icon name="Send" size={16} />
-                  Отправить заявку
+                  <Icon name={loading ? 'Loader' : 'Send'} size={16} className={loading ? 'animate-spin' : ''} />
+                  {loading ? 'Отправляем...' : 'Отправить заявку'}
                 </button>
               </form>
             )}

@@ -26,11 +26,11 @@ def handler(event: dict, context) -> dict:
     message = body.get('message', '').strip()
 
     text = (
-        f"🪞 <b>Новая заявка с сайта Аскей!</b>\n\n"
-        f"👤 <b>Имя:</b> {name}\n"
-        f"📞 <b>Телефон:</b> {phone}\n"
-        f"📱 <b>Профиль:</b> {profile if profile else '—'}\n"
-        f"💬 <b>Пожелания:</b> {message if message else '—'}"
+        f"Новая заявка с сайта Аскей!\n\n"
+        f"Имя: {name}\n"
+        f"Телефон: {phone}\n"
+        f"Профиль: {profile if profile else '-'}\n"
+        f"Пожелания: {message if message else '-'}"
     )
 
     token = os.environ['TELEGRAM_BOT_TOKEN']
@@ -40,7 +40,6 @@ def handler(event: dict, context) -> dict:
     data = urllib.parse.urlencode({
         'chat_id': chat_id,
         'text': text,
-        'parse_mode': 'HTML',
     }).encode()
 
     req = urllib.request.Request(url, data=data, method='POST')
