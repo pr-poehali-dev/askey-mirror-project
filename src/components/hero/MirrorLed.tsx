@@ -5,40 +5,41 @@ interface MirrorLedProps {
   dotsRef: React.MutableRefObject<(HTMLDivElement | null)[]>;
 }
 
+const DURATION = 1200; // мс на полное заполнение/опускание
+
 const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
   const frameRef = useRef<number>(0);
-  const tRef = useRef(0);
+  const fillRef = useRef(0);       // 0 = погашено, 1 = полностью заполнено
   const litRef = useRef(false);
+  const lastTimeRef = useRef<number | null>(null);
 
   useEffect(() => {
     litRef.current = lit;
   }, [lit]);
 
   useEffect(() => {
-    const tick = () => {
-      tRef.current += 0.025;
-      const t = tRef.current;
-      const isLit = litRef.current;
+    const tick = (now: number) => {
+      if (lastTimeRef.current === null) lastTimeRef.current = now;
+      const dt = (now - lastTimeRef.current) / DURATION;
+      lastTimeRef.current = now;
 
-      // 0 = левая полоса, 1 = правая полоса
+      if (litRef.current) {
+        fillRef.current = Math.min(1, fillRef.current + dt);
+      } else {
+        fillRef.current = Math.max(0, fillRef.current - dt);
+      }
+
+      const fill = fillRef.current;
+      const topInset = Math.round((1 - fill) * 100);
+
       for (let s = 0; s < 2; s++) {
         const el = dotsRef.current[s];
         if (!el) continue;
-
-        if (!isLit) {
-          el.style.clipPath = 'inset(100% 0 0 0)';
-          el.style.opacity = '0';
-          continue;
-        }
-
-        // Медленная волна заполнения снизу вверх
-        const cycle = (Math.sin(t * 0.5) + 1) / 2; // 0..1
-        const fillPct = Math.round(cycle * 100);
-        // clipPath: inset(top right bottom left)
-        // заполняем снизу вверх — уменьшаем top
-        el.style.clipPath = `inset(${100 - fillPct}% 0 0 0)`;
-        el.style.opacity = String(0.5 + cycle * 0.5);
-        el.style.boxShadow = `0 0 12px 4px rgba(255,255,255,${0.3 + cycle * 0.4})`;
+        el.style.clipPath = `inset(${topInset}% 0 0 0)`;
+        el.style.opacity = fill > 0 ? String(0.7 + fill * 0.3) : '0';
+        el.style.boxShadow = fill > 0.1
+          ? `0 0 18px 6px rgba(255,255,255,${0.5 + fill * 0.5}), 0 0 35px 10px rgba(255,255,255,${0.2 + fill * 0.3})`
+          : 'none';
       }
 
       frameRef.current = requestAnimationFrame(tick);
@@ -50,7 +51,7 @@ const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
 
   return (
     <>
-      {/* Левая лента — единая полоса, отступ 5% от края, высота 70% */}
+      {/* Левая лента */}
       <div
         ref={el => { dotsRef.current[0] = el; }}
         className="absolute pointer-events-none"
@@ -60,12 +61,11 @@ const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
           width: '5%',
           height: '70%',
           borderRadius: '4px',
-          background: 'linear-gradient(to bottom, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.9) 30%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.9) 70%, rgba(255,255,255,0.0) 100%)',
-          filter: 'blur(3px)',
+          background: 'linear-gradient(to bottom, rgba(255,255,255,0.0) 0%, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 80%, rgba(255,255,255,0.0) 100%)',
+          filter: 'blur(4px)',
           opacity: 0,
           clipPath: 'inset(100% 0 0 0)',
           zIndex: 5,
-          transition: 'opacity 0.3s ease',
         }}
       />
 
@@ -79,16 +79,15 @@ const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
           width: '5%',
           height: '70%',
           borderRadius: '4px',
-          background: 'linear-gradient(to bottom, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.9) 30%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.9) 70%, rgba(255,255,255,0.0) 100%)',
-          filter: 'blur(3px)',
+          background: 'linear-gradient(to bottom, rgba(255,255,255,0.0) 0%, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 80%, rgba(255,255,255,0.0) 100%)',
+          filter: 'blur(4px)',
           opacity: 0,
           clipPath: 'inset(100% 0 0 0)',
           zIndex: 5,
-          transition: 'opacity 0.3s ease',
         }}
       />
 
-      {/* LED-полоска снизу (постоянная) */}
+      {/* LED-полоска снизу */}
       <div
         className="absolute bottom-0 left-0 right-0 pointer-events-none animate-led-strip"
         style={{
@@ -99,7 +98,7 @@ const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
         }}
       />
 
-      {/* LED-полоска сверху (постоянная) */}
+      {/* LED-полоска сверху */}
       <div
         className="absolute top-0 left-0 right-0 pointer-events-none animate-led-strip"
         style={{
