@@ -1,10 +1,60 @@
 import Icon from '@/components/ui/icon';
+import { useEffect, useRef, useState } from 'react';
+
+const DOT_COUNT = 18;
 
 /* ─────────────────────────────────────────
    CSS-зеркало с LED-подсветкой и анимациями
    Вылетает справа при загрузке страницы
 ───────────────────────────────────────── */
-const MirrorDecor = () => (
+const MirrorDecor = () => {
+  const [lit, setLit] = useState(false);
+  const dotsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const frameRef = useRef<number>(0);
+  const tRef = useRef(0);
+  const litRef = useRef(false);
+
+  useEffect(() => {
+    litRef.current = lit;
+  }, [lit]);
+
+  useEffect(() => {
+    const tick = () => {
+      tRef.current += 0.025;
+      const t = tRef.current;
+      const isLit = litRef.current;
+
+      for (let i = 0; i < DOT_COUNT * 2; i++) {
+        const el = dotsRef.current[i];
+        if (!el) continue;
+        const dotIdx = i % DOT_COUNT;
+
+        if (!isLit) {
+          el.style.opacity = '0.08';
+          el.style.boxShadow = 'none';
+          el.style.background = '#a855f7';
+          continue;
+        }
+
+        // Заполнение снизу вверх — медленная волна
+        const cycle = (Math.sin(t * 0.5) + 1) / 2;
+        const fillLevel = cycle * DOT_COUNT;
+        const fromBottom = DOT_COUNT - 1 - dotIdx;
+        const diff = fillLevel - fromBottom;
+        const bright = Math.max(0, Math.min(1, diff));
+        el.style.opacity = String(0.08 + bright * 0.92);
+        el.style.background = '#c084fc';
+        el.style.boxShadow = bright > 0.5 ? `0 0 8px 3px #a855f7` : 'none';
+      }
+
+      frameRef.current = requestAnimationFrame(tick);
+    };
+
+    frameRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frameRef.current);
+  }, []);
+
+  return (
   <div
     className="animate-slide-in-right relative flex items-center justify-center"
     style={{ animationDelay: '400ms', willChange: 'transform, opacity', padding: '0 40px' }}
@@ -127,9 +177,10 @@ const MirrorDecor = () => (
 
           {/* ── Сенсорная кнопка подсветки ── */}
           <div
-            className="absolute animate-mirror-content-reveal"
+            className="absolute animate-mirror-content-reveal cursor-pointer"
+            onClick={() => setLit(v => !v)}
             style={{
-              zIndex: 4,
+              zIndex: 6,
               animationDelay: '950ms',
               bottom: 'calc(18px + 6% + 50px)',
               left: 'calc(50% - 3px)',
@@ -137,12 +188,37 @@ const MirrorDecor = () => (
               width: '14px',
               height: '14px',
               borderRadius: '5px',
-              background: 'rgba(255,255,255,0.08)',
-              border: '2px solid rgba(200,230,255,0.95)',
-              boxShadow: '0 0 6px 2px rgba(180,220,255,0.9), 0 0 14px 4px rgba(150,200,255,0.5), inset 0 0 0px 0px transparent',
+              background: lit ? 'rgba(168,85,247,0.4)' : 'rgba(255,255,255,0.08)',
+              border: lit ? '2px solid #a855f7' : '2px solid rgba(200,230,255,0.95)',
+              boxShadow: lit
+                ? '0 0 8px 3px rgba(168,85,247,0.9), 0 0 18px 5px rgba(168,85,247,0.4)'
+                : '0 0 6px 2px rgba(180,220,255,0.9), 0 0 14px 4px rgba(150,200,255,0.5)',
               backdropFilter: 'blur(4px)',
+              transition: 'all 0.3s ease',
             }}
           />
+
+          {/* ── Боковые диоды слева ── */}
+          <div className="absolute top-[10%] bottom-[15%] left-0 flex flex-col justify-between items-center" style={{ width: '6px', zIndex: 5 }}>
+            {Array.from({ length: DOT_COUNT }).map((_, i) => (
+              <div
+                key={i}
+                ref={el => { dotsRef.current[i] = el; }}
+                style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#a855f7', opacity: 0.08, flexShrink: 0 }}
+              />
+            ))}
+          </div>
+
+          {/* ── Боковые диоды справа ── */}
+          <div className="absolute top-[10%] bottom-[15%] right-0 flex flex-col justify-between items-center" style={{ width: '6px', zIndex: 5 }}>
+            {Array.from({ length: DOT_COUNT }).map((_, i) => (
+              <div
+                key={i}
+                ref={el => { dotsRef.current[DOT_COUNT + i] = el; }}
+                style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#a855f7', opacity: 0.08, flexShrink: 0 }}
+              />
+            ))}
+          </div>
 
           {/* ── Наклейка снизу: реакции поста ── */}
           <div
@@ -255,19 +331,25 @@ const MirrorDecor = () => (
 
       {/* ── Метка размера снизу ── */}
       <div
-        className="absolute -bottom-8 left-0 right-0 flex items-center justify-center gap-1.5 pointer-events-none"
-        style={{ opacity: 0.55 }}
+        className="absolute -bottom-8 left-0 right-0 flex flex-col items-center gap-1 pointer-events-none"
       >
         <span
           className="text-[10px] uppercase tracking-widest"
-          style={{ color: '#a855f7', fontFamily: 'Orbitron, monospace' }}
+          style={{ color: '#a855f7', opacity: 0.55, fontFamily: 'Orbitron, monospace' }}
         >
           60 × 120 см
+        </span>
+        <span
+          className="text-[9px] tracking-wide animate-pulse"
+          style={{ color: 'rgba(168,85,247,0.6)', fontFamily: 'sans-serif' }}
+        >
+          {lit ? '· нажми чтобы выключить ·' : '· нажми кнопку на зеркале ·'}
         </span>
       </div>
     </div>
   </div>
-);
+  );
+};
 
 const Hero = () => {
   const scrollTo = (href: string) => {
