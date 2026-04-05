@@ -84,7 +84,7 @@ const Contacts = () => {
                 {[
                   { key: 'name', label: 'Ваше имя', placeholder: 'Как вас зовут?', icon: 'User' },
                   { key: 'phone', label: 'Телефон', placeholder: '+7 (999) 999-99-99', icon: 'Phone' },
-                  { key: 'profile', label: 'Ссылка на ваш профиль', placeholder: '@username', icon: 'AtSign' },
+                  { key: 'profile', label: 'Ссылка на ваш профиль (Instagram / Telegram)', placeholder: '@username', icon: 'AtSign' },
                 ].map((field) => (
                   <div key={field.key}>
                     <label className="block text-white/60 text-xs sm:text-sm mb-1.5 sm:mb-2">{field.label}</label>
@@ -109,7 +109,7 @@ const Contacts = () => {
                 <div>
                   <label className="block text-white/60 text-xs sm:text-sm mb-1.5 sm:mb-2">Пожелания</label>
                   <textarea
-                    placeholder="Опишите желаемый размер, цвет подсветки, особые пожелания..."
+                    placeholder="Оставьте свои пожелания для заполнения вашего профиля на зеркало"
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     rows={4}
