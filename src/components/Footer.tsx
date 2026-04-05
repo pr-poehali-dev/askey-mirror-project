@@ -264,10 +264,19 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Реквизиты */}
+          <div
+            className="pt-5 sm:pt-6 border-t mb-4"
+            style={{ borderColor: 'rgba(168,85,247,0.15)' }}
+          >
+            <p className="text-white/25 text-[10px] sm:text-xs text-center leading-relaxed">
+              ИП Шевченко Андрей Игоревич · ИНН: 650401990699 · ОГРНИП: 321392600054674
+            </p>
+          </div>
+
           {/* Нижняя строка */}
           <div
-            className="pt-5 sm:pt-6 border-t flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4"
-            style={{ borderColor: 'rgba(168,85,247,0.15)' }}
+            className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4"
           >
             <p className="text-white/25 text-[10px] sm:text-xs">© 2024 Аскей. Все права защищены.</p>
             <div className="flex items-center gap-4">
