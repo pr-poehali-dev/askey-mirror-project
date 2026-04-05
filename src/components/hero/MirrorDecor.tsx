@@ -15,9 +15,9 @@ const MirrorDecor = () => {
       <div
         className="absolute pointer-events-none animate-mirror-outer-halo"
         style={{
-          inset: '-60px',
-          filter: 'blur(60px)',
-          background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.30) 0%, rgba(200,210,220,0.15) 50%, transparent 75%)',
+          inset: '-40px',
+          filter: 'blur(50px)',
+          background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.12) 0%, rgba(220,230,240,0.06) 60%, transparent 80%)',
           zIndex: 0,
         }}
       />
