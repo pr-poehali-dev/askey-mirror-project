@@ -11,6 +11,7 @@ const products = [
     price: '12 590',
     icon: 'Lightbulb',
     popular: false,
+    image: 'https://i.ibb.co/xtL3c0Xk/image.png',
   },
   {
     id: 2,
@@ -22,6 +23,7 @@ const products = [
     price: '15 590',
     icon: 'Sparkles',
     popular: true,
+    image: 'https://i.ibb.co/Qj7GBSB5/image.png',
   },
   {
     id: 3,
@@ -33,6 +35,7 @@ const products = [
     price: '18 590',
     icon: 'Gem',
     popular: false,
+    image: 'https://i.ibb.co/1GJVVgnN/image.png',
   },
 ];
 
@@ -92,6 +95,19 @@ const Catalog = () => {
                   style={{ background: 'radial-gradient(circle, #a855f7, transparent 70%)' }}
                 />
               )}
+
+              {/* Фото зеркала */}
+              <div className="relative w-full overflow-hidden" style={{ height: '220px' }}>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{ background: 'linear-gradient(to bottom, transparent 50%, rgba(10,10,15,0.85) 100%)' }}
+                />
+              </div>
 
               <div className="relative flex flex-col flex-1 p-5 sm:p-6 lg:p-7">
                 {/* Шапка */}
