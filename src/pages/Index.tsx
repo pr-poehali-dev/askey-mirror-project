@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import ScrollProgress from '@/components/ScrollProgress';
 import Catalog from '@/components/Catalog';
 import Production from '@/components/Production';
 import Timeline from '@/components/Timeline';
@@ -13,6 +14,7 @@ const Index = () => {
       <div className="side-glow-left" />
       <div className="side-glow-right" />
 
+      <ScrollProgress />
       <Header />
       <Hero />
       <Catalog />

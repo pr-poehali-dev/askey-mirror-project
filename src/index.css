@@ -594,7 +594,7 @@ body {
 
 /* Кастомный скроллбар — зеркальная рамка */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
