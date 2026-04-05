@@ -2,7 +2,7 @@ import Icon from '@/components/ui/icon';
 import { useEffect, useRef, useState } from 'react';
 
 const DOT_COUNT = 20;
-const MODES = ['Бегущий огонь', 'Радуга', 'Пульс', 'Заполнение'];
+const MODES = ['Бегущий огонь', 'Пульс', 'Заполнение'];
 
 const hslToHex = (h: number, s: number, l: number) => {
   const a = s * Math.min(l, 1 - l) / 100;
@@ -44,12 +44,6 @@ const AddressableLedDemo = () => {
           opacity = 0.1 + bright * 0.9;
           glow = bright > 0.5 ? `0 0 ${bright * 14}px 3px #e879f9` : 'none';
         } else if (m === 1) {
-          // Радуга — каждый диод свой цвет, волна сдвигается
-          const hue = ((i / DOT_COUNT) * 360 + t * 60) % 360;
-          color = hslToHex(hue, 100, 60);
-          opacity = 0.85;
-          glow = `0 0 8px 2px ${color}`;
-        } else if (m === 2) {
           // Пульс — все мигают вместе, но со сдвигом фазы
           const phase = Math.sin(t * 2 + i * 0.3);
           const bright = 0.3 + 0.7 * ((phase + 1) / 2);
