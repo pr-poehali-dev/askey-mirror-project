@@ -1,4 +1,111 @@
 import Icon from '@/components/ui/icon';
+import { useEffect, useRef } from 'react';
+
+const LED_COUNT = 16;
+const COLORS = [
+  '#a855f7', '#c084fc', '#e879f9', '#7c3aed',
+  '#818cf8', '#f0abfc', '#6d28d9', '#d946ef',
+];
+
+const AddressableLedDemo = () => {
+  const ledsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const states = Array.from({ length: LED_COUNT }, (_, i) => ({
+      hue: i * (360 / LED_COUNT),
+      brightness: Math.random(),
+      speed: 0.3 + Math.random() * 0.7,
+      offset: Math.random() * Math.PI * 2,
+    }));
+
+    let frame: number;
+    let t = 0;
+
+    const tick = () => {
+      t += 0.03;
+      states.forEach((s, i) => {
+        const el = ledsRef.current[i];
+        if (!el) return;
+        const wave = 0.5 + 0.5 * Math.sin(t * s.speed + s.offset);
+        const colorIdx = Math.floor((t * s.speed * 2 + i) % COLORS.length);
+        const color = COLORS[Math.abs(colorIdx) % COLORS.length];
+        el.style.background = color;
+        el.style.opacity = String(0.2 + wave * 0.8);
+        el.style.boxShadow = wave > 0.6 ? `0 0 8px 2px ${color}` : 'none';
+      });
+      frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
+  return (
+    <div className="flex-shrink-0 flex flex-col items-center gap-4">
+      {/* Зеркало с лентой */}
+      <div
+        className="relative rounded-2xl sm:rounded-3xl animate-float"
+        style={{
+          width: '160px',
+          height: '220px',
+          background: 'linear-gradient(135deg, #1a1a2e, #0d0d1a)',
+          border: '1px solid rgba(168,85,247,0.3)',
+          boxShadow: '0 0 30px rgba(168,85,247,0.2)',
+        }}
+      >
+        {/* Отражение */}
+        <div className="absolute inset-3 rounded-xl" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(168,85,247,0.03))' }} />
+
+        {/* Левая лента */}
+        <div className="absolute left-1.5 top-4 bottom-4 flex flex-col justify-between" style={{ width: '10px' }}>
+          {Array.from({ length: LED_COUNT }).map((_, i) => (
+            <div
+              key={i}
+              ref={el => { ledsRef.current[i] = el; }}
+              style={{ width: '10px', height: '10px', borderRadius: '50%', transition: 'none', background: COLORS[i % COLORS.length] }}
+            />
+          ))}
+        </div>
+
+        {/* Правая лента */}
+        <div className="absolute right-1.5 top-4 bottom-4 flex flex-col justify-between" style={{ width: '10px' }}>
+          {Array.from({ length: LED_COUNT }).map((_, i) => (
+            <div
+              key={i}
+              ref={el => { ledsRef.current[LED_COUNT + i] = el; }}
+              style={{ width: '10px', height: '10px', borderRadius: '50%', transition: 'none', background: COLORS[(i + 4) % COLORS.length] }}
+            />
+          ))}
+        </div>
+
+        {/* Подпись */}
+        <div className="absolute bottom-3 left-0 right-0 text-center" style={{ fontSize: '8px', color: 'rgba(168,85,247,0.7)', fontFamily: 'Orbitron, monospace', letterSpacing: '1px' }}>
+          АДРЕСНАЯ ЛЕНТА
+        </div>
+      </div>
+
+      {/* Легенда */}
+      <div className="flex gap-3 text-center">
+        <div>
+          <div className="text-[10px] text-white/40 mb-1">Обычная</div>
+          <div className="flex gap-1">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <div key={i} style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#a855f7', opacity: 0.9 }} />
+            ))}
+          </div>
+        </div>
+        <div style={{ width: '1px', background: 'rgba(255,255,255,0.1)' }} />
+        <div>
+          <div className="text-[10px] text-white/40 mb-1">Адресная</div>
+          <div className="flex gap-1">
+            {['#a855f7','#e879f9','#818cf8','#f0abfc','#7c3aed'].map((c, i) => (
+              <div key={i} style={{ width: '10px', height: '10px', borderRadius: '50%', background: c, boxShadow: `0 0 4px ${c}` }} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const qualities = [
   {
@@ -116,51 +223,7 @@ const Production = () => {
                 ))}
               </ul>
             </div>
-            <div className="flex-shrink-0">
-              <div
-                className="w-40 h-56 sm:w-48 sm:h-64 rounded-2xl sm:rounded-3xl relative animate-float"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(168,85,247,0.2), rgba(255,255,255,0.05))',
-                  border: '1px solid rgba(168,85,247,0.4)',
-                  boxShadow: '0 0 40px rgba(168,85,247,0.3)',
-                }}
-              >
-                <div
-                  className="absolute inset-3 sm:inset-4 rounded-xl sm:rounded-2xl overflow-hidden"
-                  style={{ background: 'rgba(0,0,0,0.5)' }}
-                >
-                  <div className="p-2 sm:p-3">
-                    <div className="flex items-center gap-2 mb-2 sm:mb-3">
-                      <div
-                        className="w-6 h-6 sm:w-8 sm:h-8 rounded-full"
-                        style={{ background: 'linear-gradient(135deg, #a855f7, #e879f9)' }}
-                      />
-                      <div>
-                        <div className="h-1.5 sm:h-2 w-12 sm:w-16 rounded" style={{ background: 'rgba(255,255,255,0.5)' }} />
-                        <div className="h-1 sm:h-1.5 w-8 sm:w-10 rounded mt-1" style={{ background: 'rgba(255,255,255,0.2)' }} />
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-3 gap-0.5 sm:gap-1">
-                      {Array.from({ length: 9 }).map((_, i) => (
-                        <div
-                          key={i}
-                          className="aspect-square rounded"
-                          style={{ background: `rgba(168,85,247,${0.1 + (i % 3) * 0.1})` }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="absolute -left-0.5 top-4 bottom-4 w-0.5 sm:w-1 rounded-full"
-                  style={{ background: 'linear-gradient(to bottom, transparent, #a855f7, #e879f9, #a855f7, transparent)', boxShadow: '0 0 10px #a855f7' }}
-                />
-                <div
-                  className="absolute -right-0.5 top-4 bottom-4 w-0.5 sm:w-1 rounded-full"
-                  style={{ background: 'linear-gradient(to bottom, transparent, #a855f7, #e879f9, #a855f7, transparent)', boxShadow: '0 0 10px #a855f7' }}
-                />
-              </div>
-            </div>
+            <AddressableLedDemo />
           </div>
         </div>
       </div>
