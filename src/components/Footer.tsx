@@ -92,8 +92,85 @@ const ofertaContent = (
   </div>
 );
 
+const privacyContent = (
+  <div className="space-y-4">
+    <h3 className="text-white font-bold text-base">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</h3>
+
+    <div>
+      <p className="text-white font-semibold mb-1">1. Общие положения</p>
+      <p>Настоящая Политика конфиденциальности определяет порядок обработки и защиты персональных данных пользователей сайта, которые предоставляют свои данные при оформлении заказа или обращении к Продавцу.</p>
+      <p className="mt-2">Оператор персональных данных: ИП Шевченко Андрей Игоревич, ИНН: 650401990699, ОГРНИП: 321392600054674.</p>
+      <p className="mt-2">Обработка персональных данных осуществляется в соответствии с ФЗ от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">2. Какие данные мы собираем</p>
+      <p>В процессе оформления заказа и взаимодействия с сайтом могут быть собраны следующие данные:</p>
+      <ul className="list-disc list-inside space-y-1 mt-1">
+        <li>имя и фамилия;</li>
+        <li>номер телефона;</li>
+        <li>адрес электронной почты;</li>
+        <li>адрес доставки;</li>
+        <li>данные об устройстве и браузере (cookies, IP-адрес).</li>
+      </ul>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">3. Цели обработки данных</p>
+      <p>Персональные данные обрабатываются в следующих целях:</p>
+      <ul className="list-disc list-inside space-y-1 mt-1">
+        <li>оформление и исполнение заказов;</li>
+        <li>связь с покупателем по вопросам заказа;</li>
+        <li>организация доставки товара;</li>
+        <li>улучшение качества обслуживания;</li>
+        <li>соблюдение требований законодательства РФ.</li>
+      </ul>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">4. Передача данных третьим лицам</p>
+      <p>Персональные данные не передаются третьим лицам, за исключением случаев, необходимых для исполнения договора (службы доставки, платежные системы), а также случаев, предусмотренных законодательством РФ.</p>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">5. Хранение и защита данных</p>
+      <p>Оператор принимает необходимые технические и организационные меры для защиты персональных данных от несанкционированного доступа, изменения, раскрытия или уничтожения. Данные хранятся не дольше, чем этого требуют цели их обработки.</p>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">6. Права пользователя</p>
+      <p>Пользователь вправе:</p>
+      <ul className="list-disc list-inside space-y-1 mt-1">
+        <li>получить информацию об обработке своих данных;</li>
+        <li>потребовать уточнения, блокировки или уничтожения своих данных;</li>
+        <li>отозвать согласие на обработку персональных данных;</li>
+        <li>обжаловать действия Оператора в уполномоченный орган по защите прав субъектов персональных данных.</li>
+      </ul>
+      <p className="mt-2">Для реализации своих прав обращайтесь: <span className="text-white/80">Comp.askei@gmail.com</span> или <span className="text-white/80">+7 966 767-03-33</span>.</p>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">7. Cookies</p>
+      <p>Сайт использует файлы cookies для улучшения работы и анализа посещаемости. Пользователь может отключить cookies в настройках браузера, однако это может повлиять на функциональность сайта.</p>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">8. Изменение политики</p>
+      <p>Оператор оставляет за собой право вносить изменения в настоящую Политику. Актуальная версия всегда доступна на сайте. Продолжение использования сайта после изменений означает согласие с новой редакцией.</p>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">9. Контакты</p>
+      <p>ИП Шевченко Андрей Игоревич</p>
+      <p>Телефон: +7 966 767-03-33</p>
+      <p>E-mail: Comp.askei@gmail.com</p>
+    </div>
+  </div>
+);
+
 const Footer = () => {
   const [ofertaOpen, setOfertaOpen] = useState(false);
+  const [privacyOpen, setPrivacyOpen] = useState(false);
 
   const scrollTo = (href: string) => {
     const el = document.querySelector(href);
@@ -200,6 +277,12 @@ const Footer = () => {
               >
                 Публичная оферта
               </button>
+              <button
+                onClick={() => setPrivacyOpen(true)}
+                className="text-white/25 hover:text-purple-400 text-[10px] sm:text-xs transition-colors duration-200 underline underline-offset-2"
+              >
+                Политика конфиденциальности
+              </button>
             </div>
             <p className="text-white/25 text-[10px] sm:text-xs">Производство зеркал с наклейками</p>
           </div>
@@ -212,6 +295,14 @@ const Footer = () => {
         title="Публичная оферта"
       >
         {ofertaContent}
+      </DocumentModal>
+
+      <DocumentModal
+        isOpen={privacyOpen}
+        onClose={() => setPrivacyOpen(false)}
+        title="Политика конфиденциальности"
+      >
+        {privacyContent}
       </DocumentModal>
     </>
   );
