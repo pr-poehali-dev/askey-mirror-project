@@ -31,7 +31,7 @@ const MirrorDecor = () => {
         <div
           className="relative animate-mirror-frame-glow"
           style={{
-            borderRadius: '48px',
+            borderRadius: '28px',
             padding: '6px',
             background: 'linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 30%, rgba(200,210,220,0.95) 60%, rgba(255,255,255,0.8) 100%)',
           }}
@@ -40,7 +40,7 @@ const MirrorDecor = () => {
           <div
             className="relative overflow-hidden"
             style={{
-              borderRadius: '42px',
+              borderRadius: '22px',
               aspectRatio: '9 / 16',
               background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 20%, #141414 40%, #111111 60%, #0a0a0a 80%, #111111 100%)',
             }}
