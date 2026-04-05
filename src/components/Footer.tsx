@@ -181,7 +181,7 @@ const Footer = () => {
     <>
       <footer
         className="relative py-10 sm:py-12 border-t"
-        style={{ background: '#060609', borderColor: 'rgba(168,85,247,0.2)' }}
+        style={{ background: '#060609', borderColor: 'rgba(255,255,255,0.2)' }}
       >
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 mb-8 sm:mb-12">
@@ -208,7 +208,7 @@ const Footer = () => {
               </p>
               <div className="flex items-center gap-2 sm:gap-3">
                 {[
-                  { icon: 'Camera', color: '#e879f9' },
+                  { icon: 'Camera', color: '#f8fafc' },
                   { icon: 'Send', color: '#22d3ee' },
                   { icon: 'MessageCircle', color: '#22c55e' },
                 ].map((social) => (
@@ -267,7 +267,7 @@ const Footer = () => {
           {/* Реквизиты */}
           <div
             className="pt-5 sm:pt-6 border-t mb-4"
-            style={{ borderColor: 'rgba(168,85,247,0.15)' }}
+            style={{ borderColor: 'rgba(255,255,255,0.15)' }}
           >
             <p className="text-white/25 text-[10px] sm:text-xs text-center leading-relaxed">
               ИП Шевченко Андрей Игоревич · ИНН: 650401990699 · ОГРНИП: 321392600054674

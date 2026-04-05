@@ -10,7 +10,7 @@ const HeroContent = ({ scrollTo }: HeroContentProps) => (
     <div className="animate-fade-in-down delay-100 flex flex-wrap items-center gap-2 sm:gap-3 mb-6 sm:mb-8 justify-center lg:justify-start">
       <div
         className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-semibold tracking-widest uppercase"
-        style={{ border: '1px solid rgba(168,85,247,0.4)', background: 'rgba(168,85,247,0.1)', color: '#a855f7' }}
+        style={{ border: '1px solid rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.1)', color: '#e2e8f0' }}
       >
         <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-purple-400 animate-pulse" />
         Эксклюзивные зеркала с подсветкой

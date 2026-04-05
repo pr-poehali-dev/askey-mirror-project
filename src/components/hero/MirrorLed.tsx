@@ -30,7 +30,7 @@ const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
         if (!isLit) {
           el.style.opacity = '0.08';
           el.style.boxShadow = 'none';
-          el.style.background = '#a855f7';
+          el.style.background = '#e2e8f0';
           continue;
         }
 
@@ -40,8 +40,8 @@ const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
         const diff = fillLevel - fromBottom;
         const bright = Math.max(0, Math.min(1, diff));
         el.style.opacity = String(0.08 + bright * 0.92);
-        el.style.background = '#c084fc';
-        el.style.boxShadow = bright > 0.5 ? `0 0 8px 3px #a855f7` : 'none';
+        el.style.background = '#cbd5e1';
+        el.style.boxShadow = bright > 0.5 ? `0 0 8px 3px #e2e8f0` : 'none';
       }
 
       frameRef.current = requestAnimationFrame(tick);
@@ -59,7 +59,7 @@ const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
           <div
             key={i}
             ref={el => { dotsRef.current[i] = el; }}
-            style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#a855f7', opacity: 0.08, flexShrink: 0 }}
+            style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#e2e8f0', opacity: 0.08, flexShrink: 0 }}
           />
         ))}
       </div>
@@ -70,7 +70,7 @@ const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
           <div
             key={i}
             ref={el => { dotsRef.current[DOT_COUNT + i] = el; }}
-            style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#a855f7', opacity: 0.08, flexShrink: 0 }}
+            style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#e2e8f0', opacity: 0.08, flexShrink: 0 }}
           />
         ))}
       </div>
@@ -80,7 +80,7 @@ const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
         className="absolute bottom-0 left-0 right-0 pointer-events-none animate-led-strip"
         style={{
           height: '3px',
-          background: 'linear-gradient(90deg, transparent, rgba(168,85,247,1) 20%, rgba(232,121,249,1) 50%, rgba(168,85,247,1) 80%, transparent)',
+          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 80%, transparent)',
           filter: 'blur(1px)',
           zIndex: 5,
         }}
@@ -91,7 +91,7 @@ const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
         className="absolute top-0 left-0 right-0 pointer-events-none animate-led-strip"
         style={{
           height: '3px',
-          background: 'linear-gradient(90deg, transparent, rgba(168,85,247,1) 20%, rgba(232,121,249,1) 50%, rgba(168,85,247,1) 80%, transparent)',
+          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 80%, transparent)',
           filter: 'blur(1px)',
           zIndex: 5,
           animationDelay: '0.3s',

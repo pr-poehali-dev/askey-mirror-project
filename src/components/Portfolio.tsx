@@ -1,9 +1,9 @@
 const portfolioItems = [
-  { id: 1, size: 'col-span-1 row-span-2', label: 'Профиль • Адресная лента', accent: '#a855f7' },
-  { id: 2, size: 'col-span-1 row-span-1', label: 'LED • Салон красоты', accent: '#e879f9' },
-  { id: 3, size: 'col-span-1 row-span-1', label: 'Именное • Подарок', accent: '#7c3aed' },
-  { id: 4, size: 'col-span-1 row-span-1', label: 'Бизнес • Логотип', accent: '#a855f7' },
-  { id: 5, size: 'col-span-1 row-span-2', label: 'Зеркало • Профиль', accent: '#e879f9' },
+  { id: 1, size: 'col-span-1 row-span-2', label: 'Профиль • Адресная лента', accent: '#e2e8f0' },
+  { id: 2, size: 'col-span-1 row-span-1', label: 'LED • Салон красоты', accent: '#f8fafc' },
+  { id: 3, size: 'col-span-1 row-span-1', label: 'Именное • Подарок', accent: '#94a3b8' },
+  { id: 4, size: 'col-span-1 row-span-1', label: 'Бизнес • Логотип', accent: '#e2e8f0' },
+  { id: 5, size: 'col-span-1 row-span-2', label: 'Зеркало • Профиль', accent: '#f8fafc' },
   { id: 6, size: 'col-span-1 row-span-1', label: 'RGB • Подсветка', accent: '#22d3ee' },
 ];
 
@@ -16,7 +16,7 @@ const MirrorPlaceholder = ({ accent, label }: { accent: string; label: string })
       <div
         className="relative w-2/3 h-4/5 rounded-lg"
         style={{
-          background: 'linear-gradient(135deg, rgba(255,255,255,0.08), rgba(168,85,247,0.1), rgba(255,255,255,0.03))',
+          background: 'linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.1), rgba(255,255,255,0.03))',
           border: '1px solid rgba(255,255,255,0.15)',
           backdropFilter: 'blur(2px)',
         }}
@@ -31,7 +31,7 @@ const MirrorPlaceholder = ({ accent, label }: { accent: string; label: string })
         />
         <div className="absolute inset-3 sm:inset-4 flex flex-col items-center justify-center gap-1.5 sm:gap-2">
           <div className="flex items-center gap-1.5 sm:gap-2">
-            <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full" style={{ background: `linear-gradient(135deg, ${accent}, #e879f9)` }} />
+            <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full" style={{ background: `linear-gradient(135deg, ${accent}, #f8fafc)` }} />
             <div>
               <div className="h-1 sm:h-1.5 w-10 sm:w-12 rounded" style={{ background: 'rgba(255,255,255,0.4)' }} />
               <div className="h-0.5 sm:h-1 w-6 sm:w-8 rounded mt-0.5" style={{ background: 'rgba(255,255,255,0.2)' }} />
@@ -42,7 +42,7 @@ const MirrorPlaceholder = ({ accent, label }: { accent: string; label: string })
               <div
                 key={i}
                 className="aspect-square rounded-sm"
-                style={{ background: `rgba(168,85,247,${0.15 + (i % 3) * 0.1})` }}
+                style={{ background: `rgba(255,255,255,${0.15 + (i % 3) * 0.1})` }}
               />
             ))}
           </div>
@@ -74,7 +74,7 @@ const Portfolio = () => {
         <div className="text-center mb-10 sm:mb-12 lg:mb-16">
           <div
             className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-[10px] sm:text-xs font-semibold tracking-widest uppercase"
-            style={{ border: '1px solid rgba(168,85,247,0.4)', background: 'rgba(168,85,247,0.1)', color: '#a855f7' }}
+            style={{ border: '1px solid rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.1)', color: '#e2e8f0' }}
           >
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-purple-400" />
             Портфолио

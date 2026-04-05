@@ -28,18 +28,18 @@ const DocumentModal = ({ isOpen, onClose, title, children }: DocumentModalProps)
     >
       <div
         className="relative w-full max-w-2xl max-h-[85vh] rounded-2xl flex flex-col"
-        style={{ background: '#0d0d14', border: '1px solid rgba(168,85,247,0.3)' }}
+        style={{ background: '#0d0d14', border: '1px solid rgba(255,255,255,0.3)' }}
         onClick={(e) => e.stopPropagation()}
       >
         <div
           className="flex items-center justify-between px-6 py-4 border-b"
-          style={{ borderColor: 'rgba(168,85,247,0.2)' }}
+          style={{ borderColor: 'rgba(255,255,255,0.2)' }}
         >
           <h2 className="text-white font-bold text-base sm:text-lg">{title}</h2>
           <button
             onClick={onClose}
             className="w-8 h-8 rounded-xl flex items-center justify-center transition-all hover:scale-110"
-            style={{ background: 'rgba(168,85,247,0.15)', border: '1px solid rgba(168,85,247,0.3)' }}
+            style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.3)' }}
           >
             <Icon name="X" size={16} className="text-white/70" />
           </button>

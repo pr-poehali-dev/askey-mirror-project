@@ -31,7 +31,7 @@ const AddressableLedDemo = () => {
         const el = dotsRef.current[i];
         if (!el) continue;
 
-        let color = '#a855f7';
+        let color = '#e2e8f0';
         let opacity = 1;
         let glow = '';
 
@@ -40,16 +40,16 @@ const AddressableLedDemo = () => {
           const pos = (t * 4) % DOT_COUNT;
           const dist = Math.min(Math.abs(i - pos), DOT_COUNT - Math.abs(i - pos));
           const bright = Math.max(0, 1 - dist / 3);
-          color = '#e879f9';
+          color = '#f8fafc';
           opacity = 0.1 + bright * 0.9;
-          glow = bright > 0.5 ? `0 0 ${bright * 14}px 3px #e879f9` : 'none';
+          glow = bright > 0.5 ? `0 0 ${bright * 14}px 3px #f8fafc` : 'none';
         } else if (m === 1) {
           // Пульс — все мигают вместе, но со сдвигом фазы
           const phase = Math.sin(t * 2 + i * 0.3);
           const bright = 0.3 + 0.7 * ((phase + 1) / 2);
-          color = '#a855f7';
+          color = '#e2e8f0';
           opacity = bright;
-          glow = bright > 0.7 ? `0 0 10px 3px #a855f7` : 'none';
+          glow = bright > 0.7 ? `0 0 10px 3px #e2e8f0` : 'none';
         } else {
           // Заполнение — снизу вверх медленно включается и выключается
           const cycle = (Math.sin(t * 0.6) + 1) / 2; // 0..1 медленно
@@ -57,9 +57,9 @@ const AddressableLedDemo = () => {
           const fromBottom = DOT_COUNT - 1 - i;
           const diff = fillLevel - fromBottom;
           const bright = Math.max(0, Math.min(1, diff));
-          color = '#c084fc';
+          color = '#cbd5e1';
           opacity = 0.08 + bright * 0.92;
-          glow = bright > 0.5 ? `0 0 10px 3px #c084fc` : 'none';
+          glow = bright > 0.5 ? `0 0 10px 3px #cbd5e1` : 'none';
         }
 
         el.style.background = color;
@@ -96,7 +96,7 @@ const AddressableLedDemo = () => {
           width: '200px',
           height: '240px',
           background: 'linear-gradient(135deg, #0d0618 0%, #1a0035 100%)',
-          border: '1px solid rgba(168,85,247,0.25)',
+          border: '1px solid rgba(255,255,255,0.25)',
         }}
       >
         {/* Зеркальная поверхность */}
@@ -119,7 +119,7 @@ const AddressableLedDemo = () => {
             <div
               key={i}
               ref={el => { dotsRef.current[i] = el; }}
-              style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#a855f7', flexShrink: 0 }}
+              style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#e2e8f0', flexShrink: 0 }}
             />
           ))}
         </div>
@@ -133,7 +133,7 @@ const AddressableLedDemo = () => {
             <div
               key={i}
               ref={el => { dotsRef.current[DOT_COUNT + i] = el; }}
-              style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#a855f7', flexShrink: 0 }}
+              style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#e2e8f0', flexShrink: 0 }}
             />
           ))}
         </div>
@@ -147,9 +147,9 @@ const AddressableLedDemo = () => {
             onClick={() => switchMode(i)}
             className="px-2 py-1 rounded-lg text-[10px] font-semibold transition-all duration-300"
             style={{
-              background: mode === i ? 'rgba(168,85,247,0.3)' : 'rgba(168,85,247,0.08)',
-              color: mode === i ? '#e879f9' : 'rgba(255,255,255,0.4)',
-              border: `1px solid ${mode === i ? 'rgba(168,85,247,0.6)' : 'rgba(168,85,247,0.15)'}`,
+              background: mode === i ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.08)',
+              color: mode === i ? '#f8fafc' : 'rgba(255,255,255,0.4)',
+              border: `1px solid ${mode === i ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.15)'}`,
             }}
           >
             {m}
@@ -201,8 +201,8 @@ const Production = () => {
       style={{ background: 'linear-gradient(180deg, #0a0a0f 0%, #0d0620 50%, #0a0a0f 100%)' }}
     >
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(168,85,247,0.5), transparent)' }} />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(168,85,247,0.5), transparent)' }} />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent)' }} />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent)' }} />
       </div>
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-16">
@@ -210,7 +210,7 @@ const Production = () => {
         <div className="text-center mb-10 sm:mb-12 lg:mb-16">
           <div
             className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-[10px] sm:text-xs font-semibold tracking-widest uppercase"
-            style={{ border: '1px solid rgba(168,85,247,0.4)', background: 'rgba(168,85,247,0.1)', color: '#a855f7' }}
+            style={{ border: '1px solid rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.1)', color: '#e2e8f0' }}
           >
             <Icon name="Factory" size={12} />
             О производстве
@@ -235,7 +235,7 @@ const Production = () => {
             >
               <div
                 className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl mb-3 sm:mb-4 flex items-center justify-center"
-                style={{ background: 'rgba(168,85,247,0.15)', border: '1px solid rgba(168,85,247,0.3)' }}
+                style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.3)' }}
               >
                 <Icon name={item.icon} size={18} className="text-purple-400" />
               </div>
@@ -248,7 +248,7 @@ const Production = () => {
         {/* Блок адресной ленты */}
         <div
           className="rounded-2xl sm:rounded-3xl overflow-hidden"
-          style={{ background: 'linear-gradient(135deg, rgba(124,58,237,0.15), rgba(168,85,247,0.08))', border: '1px solid rgba(168,85,247,0.3)' }}
+          style={{ background: 'linear-gradient(135deg, rgba(200,210,220,0.15), rgba(255,255,255,0.08))', border: '1px solid rgba(255,255,255,0.3)' }}
         >
           <div className="p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col md:flex-row items-center gap-6 sm:gap-8 lg:gap-12">
             <div className="flex-1 text-center md:text-left">

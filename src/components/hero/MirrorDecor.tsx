@@ -17,7 +17,7 @@ const MirrorDecor = () => {
         style={{
           inset: '-60px',
           filter: 'blur(60px)',
-          background: 'radial-gradient(ellipse at center, rgba(168,85,247,0.30) 0%, rgba(124,58,237,0.15) 50%, transparent 75%)',
+          background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.30) 0%, rgba(200,210,220,0.15) 50%, transparent 75%)',
           zIndex: 0,
         }}
       />
@@ -33,7 +33,7 @@ const MirrorDecor = () => {
           style={{
             borderRadius: '48px',
             padding: '6px',
-            background: 'linear-gradient(145deg, rgba(168,85,247,0.9) 0%, rgba(232,121,249,0.7) 30%, rgba(124,58,237,0.95) 60%, rgba(168,85,247,0.8) 100%)',
+            background: 'linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 30%, rgba(200,210,220,0.95) 60%, rgba(255,255,255,0.8) 100%)',
           }}
         >
           {/* Зеркальная поверхность */}
@@ -60,7 +60,7 @@ const MirrorDecor = () => {
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
-                background: 'linear-gradient(160deg, rgba(255,255,255,0.08) 0%, rgba(168,85,247,0.05) 30%, transparent 60%, rgba(124,58,237,0.06) 90%)',
+                background: 'linear-gradient(160deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.05) 30%, transparent 60%, rgba(200,210,220,0.06) 90%)',
                 zIndex: 2,
               }}
             />
@@ -90,10 +90,10 @@ const MirrorDecor = () => {
                 width: '14px',
                 height: '14px',
                 borderRadius: '5px',
-                background: lit ? 'rgba(168,85,247,0.4)' : 'rgba(255,255,255,0.08)',
-                border: lit ? '2px solid #a855f7' : '2px solid rgba(200,230,255,0.95)',
+                background: lit ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.08)',
+                border: lit ? '2px solid #e2e8f0' : '2px solid rgba(200,230,255,0.95)',
                 boxShadow: lit
-                  ? '0 0 8px 3px rgba(168,85,247,0.9), 0 0 18px 5px rgba(168,85,247,0.4)'
+                  ? '0 0 8px 3px rgba(255,255,255,0.9), 0 0 18px 5px rgba(255,255,255,0.4)'
                   : '0 0 6px 2px rgba(180,220,255,0.9), 0 0 14px 4px rgba(150,200,255,0.5)',
                 backdropFilter: 'blur(4px)',
                 transition: 'all 0.3s ease',
@@ -113,7 +113,7 @@ const MirrorDecor = () => {
           className="absolute pointer-events-none animate-mirror-side-led"
           style={{
             left: '-22px', top: '10%', bottom: '10%', width: '20px',
-            background: 'linear-gradient(to bottom, transparent, rgba(168,85,247,0.95) 20%, rgba(232,121,249,1) 50%, rgba(168,85,247,0.95) 80%, transparent)',
+            background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.95) 20%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.95) 80%, transparent)',
             filter: 'blur(8px)',
             zIndex: 0,
           }}
@@ -122,7 +122,7 @@ const MirrorDecor = () => {
           className="absolute pointer-events-none animate-mirror-side-led"
           style={{
             right: '-22px', top: '10%', bottom: '10%', width: '20px',
-            background: 'linear-gradient(to bottom, transparent, rgba(168,85,247,0.95) 20%, rgba(232,121,249,1) 50%, rgba(168,85,247,0.95) 80%, transparent)',
+            background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.95) 20%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.95) 80%, transparent)',
             filter: 'blur(8px)',
             zIndex: 0,
             animationDelay: '0.5s',
@@ -134,18 +134,18 @@ const MirrorDecor = () => {
           className="absolute -top-8 left-0 right-0 flex items-center justify-center gap-1.5 pointer-events-none animate-fade-in"
           style={{ animationDelay: '1200ms' }}
         >
-          <span className="w-1.5 h-1.5 rounded-full animate-pulse-neon" style={{ backgroundColor: '#a855f7' }} />
-          <span className="text-[10px] uppercase tracking-widest" style={{ color: '#a855f7', fontFamily: 'Orbitron, monospace' }}>
+          <span className="w-1.5 h-1.5 rounded-full animate-pulse-neon" style={{ backgroundColor: '#e2e8f0' }} />
+          <span className="text-[10px] uppercase tracking-widest" style={{ color: '#e2e8f0', fontFamily: 'Orbitron, monospace' }}>
             Ваш профиль
           </span>
         </div>
 
         {/* Метка размера снизу */}
         <div className="absolute -bottom-8 left-0 right-0 flex flex-col items-center gap-1 pointer-events-none">
-          <span className="text-[10px] uppercase tracking-widest" style={{ color: '#a855f7', opacity: 0.55, fontFamily: 'Orbitron, monospace' }}>
+          <span className="text-[10px] uppercase tracking-widest" style={{ color: '#e2e8f0', opacity: 0.55, fontFamily: 'Orbitron, monospace' }}>
             60 × 120 см
           </span>
-          <span className="text-[9px] tracking-wide animate-pulse" style={{ color: 'rgba(168,85,247,0.6)', fontFamily: 'sans-serif' }}>
+          <span className="text-[9px] tracking-wide animate-pulse" style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'sans-serif' }}>
             {lit ? '· нажми чтобы выключить ·' : '· нажми кнопку на зеркале ·'}
           </span>
         </div>

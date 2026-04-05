@@ -5,7 +5,7 @@ const products = [
     id: 1,
     name: 'Стандарт',
     tag: 'Хит',
-    tagColor: '#e879f9',
+    tagColor: '#f8fafc',
     lightType: 'Контурная подсветка',
     description: 'Светодиодная лента расположена по периметру зеркала, за корпусом между зеркалом и стеной. Оснащена сенсорной кнопкой, с помощью которой можно настраивать режимы свечения.',
     price: '12 590',
@@ -17,7 +17,7 @@ const products = [
     id: 2,
     name: 'Премиум',
     tag: 'Флагман',
-    tagColor: '#a855f7',
+    tagColor: '#e2e8f0',
     lightType: 'Контурная + фронтальная подсветка',
     description: 'Зеркало оснащено сочетанием контурной и фронтальной подсветкой, создающим комфортное и выразительное освещение. Фронтальная подсветка выполнена в виде двух вертикальных полос по бокам зеркала.',
     price: '15 590',
@@ -29,7 +29,7 @@ const products = [
     id: 3,
     name: 'Премиум +',
     tag: 'Exclusive',
-    tagColor: '#818cf8',
+    tagColor: '#cbd5e1',
     lightType: 'Контурная + фронтальная подсветка',
     description: 'Зеркало оснащено комбинированной подсветкой: контурная + фронтальная. Дополнительно декорировано полупрозрачными наклейками в черном исполнении.',
     price: '18 590',
@@ -56,7 +56,7 @@ const Catalog = () => {
         <div className="text-center mb-10 sm:mb-12 lg:mb-16">
           <div
             className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-[10px] sm:text-xs font-semibold tracking-widest uppercase"
-            style={{ border: '1px solid rgba(168,85,247,0.4)', background: 'rgba(168,85,247,0.1)', color: '#a855f7' }}
+            style={{ border: '1px solid rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.1)', color: '#e2e8f0' }}
           >
             <Icon name="Grid3X3" size={12} />
             Каталог продукции
@@ -82,9 +82,9 @@ const Catalog = () => {
                 background: product.popular
                   ? 'linear-gradient(135deg, #13002a 0%, #1a0035 60%, #0d0618 100%)'
                   : 'linear-gradient(135deg, #0d0618 0%, #110220 100%)',
-                border: `1px solid ${product.popular ? 'rgba(168,85,247,0.5)' : 'rgba(168,85,247,0.2)'}`,
+                border: `1px solid ${product.popular ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.2)'}`,
                 boxShadow: product.popular
-                  ? '0 0 40px rgba(168,85,247,0.15), inset 0 1px 0 rgba(168,85,247,0.2)'
+                  ? '0 0 40px rgba(255,255,255,0.15), inset 0 1px 0 rgba(255,255,255,0.2)'
                   : 'none',
               }}
             >
@@ -92,7 +92,7 @@ const Catalog = () => {
               {product.popular && (
                 <div
                   className="absolute top-0 right-0 w-48 h-48 rounded-full opacity-20 blur-3xl pointer-events-none"
-                  style={{ background: 'radial-gradient(circle, #a855f7, transparent 70%)' }}
+                  style={{ background: 'radial-gradient(circle, #e2e8f0, transparent 70%)' }}
                 />
               )}
 
@@ -126,7 +126,7 @@ const Catalog = () => {
                     {product.popular && (
                       <span
                         className="text-[10px] font-bold px-2 py-0.5 rounded-full animate-pulse-neon"
-                        style={{ background: 'linear-gradient(135deg, #7c3aed, #a855f7)', color: '#fff' }}
+                        style={{ background: 'linear-gradient(135deg, #94a3b8, #e2e8f0)', color: '#fff' }}
                       >
                         №1
                       </span>
@@ -147,7 +147,7 @@ const Catalog = () => {
                 {/* Название */}
                 <h3
                   className="text-xl sm:text-2xl font-black text-white mb-1 tracking-tight"
-                  style={{ fontFamily: 'Orbitron, monospace', textShadow: product.popular ? '0 0 20px rgba(168,85,247,0.4)' : 'none' }}
+                  style={{ fontFamily: 'Orbitron, monospace', textShadow: product.popular ? '0 0 20px rgba(255,255,255,0.4)' : 'none' }}
                 >
                   {product.name}
                 </h3>
@@ -168,7 +168,7 @@ const Catalog = () => {
                 {/* Цена */}
                 <div
                   className="rounded-xl sm:rounded-2xl px-4 py-3 mb-4 sm:mb-5 flex items-center justify-between"
-                  style={{ background: 'rgba(168,85,247,0.08)', border: '1px solid rgba(168,85,247,0.2)' }}
+                  style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.2)' }}
                 >
                   <span className="text-white/50 text-xs">Стоимость</span>
                   <span
@@ -186,9 +186,9 @@ const Catalog = () => {
                   style={
                     product.popular
                       ? {
-                          background: 'linear-gradient(135deg, #7c3aed, #a855f7)',
+                          background: 'linear-gradient(135deg, #94a3b8, #e2e8f0)',
                           color: '#fff',
-                          boxShadow: '0 4px 20px rgba(168,85,247,0.35)',
+                          boxShadow: '0 4px 20px rgba(255,255,255,0.35)',
                         }
                       : {
                           background: `${product.tagColor}22`,

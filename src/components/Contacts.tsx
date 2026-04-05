@@ -32,7 +32,7 @@ const Contacts = () => {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px"
-          style={{ background: 'linear-gradient(90deg, transparent, rgba(168,85,247,0.5), transparent)' }}
+          style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent)' }}
         />
       </div>
 
@@ -41,7 +41,7 @@ const Contacts = () => {
         <div className="text-center mb-10 sm:mb-12 lg:mb-16">
           <div
             className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-[10px] sm:text-xs font-semibold tracking-widest uppercase"
-            style={{ border: '1px solid rgba(168,85,247,0.4)', background: 'rgba(168,85,247,0.1)', color: '#a855f7' }}
+            style={{ border: '1px solid rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.1)', color: '#e2e8f0' }}
           >
             <Icon name="Send" size={12} />
             Контакты
@@ -63,11 +63,11 @@ const Contacts = () => {
             {sent ? (
               <div
                 className="rounded-2xl sm:rounded-3xl p-8 sm:p-10 lg:p-12 text-center"
-                style={{ background: 'rgba(168,85,247,0.1)', border: '1px solid rgba(168,85,247,0.4)' }}
+                style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.4)' }}
               >
                 <div
                   className="w-14 h-14 sm:w-16 sm:h-16 rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center animate-glow-pulse"
-                  style={{ background: 'rgba(168,85,247,0.2)', border: '1px solid rgba(168,85,247,0.5)' }}
+                  style={{ background: 'rgba(255,255,255,0.2)', border: '1px solid rgba(255,255,255,0.5)' }}
                 >
                   <Icon name="Check" size={28} className="text-purple-400" />
                 </div>
@@ -100,7 +100,7 @@ const Contacts = () => {
                         value={form[field.key as keyof typeof form] ?? ''}
                         onChange={(e) => setForm({ ...form, [field.key]: e.target.value })}
                         className="w-full pl-9 sm:pl-11 pr-3 sm:pr-4 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl text-white placeholder-white/30 outline-none focus:border-purple-400 transition-all duration-300 text-xs sm:text-sm"
-                        style={{ background: 'rgba(168,85,247,0.08)', border: '1px solid rgba(168,85,247,0.2)' }}
+                        style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.2)' }}
                       />
                     </div>
                   </div>
@@ -114,7 +114,7 @@ const Contacts = () => {
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     rows={4}
                     className="w-full px-3 sm:px-4 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl text-white placeholder-white/30 outline-none focus:border-purple-400 transition-all duration-300 text-xs sm:text-sm resize-none"
-                    style={{ background: 'rgba(168,85,247,0.08)', border: '1px solid rgba(168,85,247,0.2)' }}
+                    style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.2)' }}
                   />
                 </div>
 
@@ -123,8 +123,8 @@ const Contacts = () => {
                     onClick={() => setAgreed(!agreed)}
                     className="flex-shrink-0 w-4 h-4 mt-0.5 rounded flex items-center justify-center transition-all duration-200"
                     style={{
-                      background: agreed ? 'rgba(168,85,247,0.8)' : 'transparent',
-                      border: agreed ? '1px solid #a855f7' : '1px solid rgba(168,85,247,0.4)',
+                      background: agreed ? 'rgba(255,255,255,0.8)' : 'transparent',
+                      border: agreed ? '1px solid #e2e8f0' : '1px solid rgba(255,255,255,0.4)',
                     }}
                   >
                     {agreed && <Icon name="Check" size={10} className="text-white" />}
@@ -161,8 +161,8 @@ const Contacts = () => {
                 {[
                   { icon: 'MessageCircle', label: 'WhatsApp', value: '+7 (999) 000-00-00', color: '#22c55e' },
                   { icon: 'Send', label: 'Telegram', value: '@askey_mirrors', color: '#22d3ee' },
-                  { icon: 'AtSign', label: 'Профиль', value: '@askey.mirrors', color: '#e879f9' },
-                  { icon: 'Mail', label: 'Email', value: 'info@askey.ru', color: '#a855f7' },
+                  { icon: 'AtSign', label: 'Профиль', value: '@askey.mirrors', color: '#f8fafc' },
+                  { icon: 'Mail', label: 'Email', value: 'info@askey.ru', color: '#e2e8f0' },
                 ].map((contact) => (
                   <div
                     key={contact.label}

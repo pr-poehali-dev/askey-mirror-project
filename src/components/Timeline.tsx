@@ -6,35 +6,35 @@ const steps = [
     icon: 'MessageSquare',
     title: 'Заявка и согласование',
     description: 'Вы оставляете заявку, менеджер связывается в течение 15 минут. Уточняем детали: размер, подсветка, данные профиля.',
-    color: '#a855f7',
+    color: '#e2e8f0',
   },
   {
     day: 'День 1–3',
     icon: 'Palette',
     title: 'Дизайн наклейки',
     description: 'Дизайнер создаёт макет с вашим профилем и адресной лентой. Отправляем на согласование.',
-    color: '#9333ea',
+    color: '#94a3b8',
   },
   {
     day: 'День 3–7',
     icon: 'Layers',
     title: 'Производство',
     description: 'Раскрой стекла, монтаж подсветки, нанесение наклейки UV-печатью. Ручная сборка и проверка.',
-    color: '#7c3aed',
+    color: '#94a3b8',
   },
   {
     day: 'День 7–9',
     icon: 'Package',
     title: 'Упаковка',
     description: 'Зеркало упаковывается в многослойную защитную упаковку. Фото упакованного заказа отправляем вам в Telegram.',
-    color: '#6d28d9',
+    color: '#64748b',
   },
   {
     day: 'День 9–12',
     icon: 'Truck',
     title: 'Доставка',
     description: 'Отправляем только через СДЭК по всей России. Трек-номер для отслеживания посылки.',
-    color: '#e879f9',
+    color: '#f8fafc',
   },
 ];
 
@@ -46,7 +46,7 @@ const Timeline = () => {
         <div className="text-center mb-10 sm:mb-12 lg:mb-16">
           <div
             className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-[10px] sm:text-xs font-semibold tracking-widest uppercase"
-            style={{ border: '1px solid rgba(168,85,247,0.4)', background: 'rgba(168,85,247,0.1)', color: '#a855f7' }}
+            style={{ border: '1px solid rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.1)', color: '#e2e8f0' }}
           >
             <Icon name="Clock" size={12} />
             Сроки производства
@@ -66,7 +66,7 @@ const Timeline = () => {
           {/* Вертикальная линия */}
           <div
             className="absolute left-5 sm:left-6 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-px"
-            style={{ background: 'linear-gradient(to bottom, transparent, rgba(168,85,247,0.5), rgba(232,121,249,0.5), rgba(168,85,247,0.5), transparent)' }}
+            style={{ background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.5), rgba(255,255,255,0.5), rgba(255,255,255,0.5), transparent)' }}
           />
 
           <div className="space-y-6 sm:space-y-8">
