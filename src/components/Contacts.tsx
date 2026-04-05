@@ -1,16 +1,21 @@
 import { useState } from 'react';
 import Icon from '@/components/ui/icon';
+import DocumentModal from '@/components/DocumentModal';
 
 const Contacts = () => {
   const [form, setForm] = useState({ name: '', phone: '', profile: '', message: '' });
   const [sent, setSent] = useState(false);
+  const [agreed, setAgreed] = useState(false);
+  const [privacyOpen, setPrivacyOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!agreed) return;
     setSent(true);
   };
 
   return (
+    <>
     <section id="contacts" className="py-16 sm:py-20 lg:py-24 relative" style={{ background: '#0a0a0f' }}>
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
@@ -101,17 +106,37 @@ const Contacts = () => {
                   />
                 </div>
 
+                <label className="flex items-start gap-3 cursor-pointer group">
+                  <div
+                    onClick={() => setAgreed(!agreed)}
+                    className="flex-shrink-0 w-4 h-4 mt-0.5 rounded flex items-center justify-center transition-all duration-200"
+                    style={{
+                      background: agreed ? 'rgba(168,85,247,0.8)' : 'transparent',
+                      border: agreed ? '1px solid #a855f7' : '1px solid rgba(168,85,247,0.4)',
+                    }}
+                  >
+                    {agreed && <Icon name="Check" size={10} className="text-white" />}
+                  </div>
+                  <span className="text-white/40 text-[10px] sm:text-xs leading-relaxed">
+                    Я согласен(а) с{' '}
+                    <button
+                      type="button"
+                      onClick={() => setPrivacyOpen(true)}
+                      className="text-purple-400 underline underline-offset-2 hover:text-purple-300 transition-colors"
+                    >
+                      политикой конфиденциальности
+                    </button>
+                  </span>
+                </label>
+
                 <button
                   type="submit"
-                  className="w-full neon-btn text-white py-3.5 sm:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base tracking-wide flex items-center justify-center gap-2"
+                  disabled={!agreed}
+                  className="w-full neon-btn text-white py-3.5 sm:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base tracking-wide flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   <Icon name="Send" size={16} />
                   Отправить заявку
                 </button>
-
-                <p className="text-white/30 text-[10px] sm:text-xs text-center">
-                  Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
-                </p>
               </form>
             )}
           </div>
@@ -168,6 +193,18 @@ const Contacts = () => {
         </div>
       </div>
     </section>
+
+      <DocumentModal
+        isOpen={privacyOpen}
+        onClose={() => setPrivacyOpen(false)}
+        title="Политика конфиденциальности"
+      >
+        <p>Настоящая политика конфиденциальности определяет порядок обработки персональных данных пользователей сайта оператором: ИП Шевченко Андрей Игоревич, ИНН: 650401990699, ОГРНИП: 321392600054674.</p>
+        <p>Мы собираем имя, телефон, e-mail и адрес доставки исключительно для оформления и исполнения заказов. Данные не передаются третьим лицам, кроме случаев, необходимых для доставки товара и предусмотренных законодательством РФ.</p>
+        <p>Обработка персональных данных осуществляется в соответствии с ФЗ от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
+        <p>По вопросам обработки данных: <span className="text-white/80">Comp.askei@gmail.com</span>, <span className="text-white/80">+7 966 767-03-33</span>.</p>
+      </DocumentModal>
+    </>
   );
 };
 
