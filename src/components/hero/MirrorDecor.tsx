@@ -162,7 +162,7 @@ const MirrorDecor = () => {
         </div>
 
         {/* Метка размера снизу */}
-        <div className="absolute -bottom-8 left-0 right-0 flex flex-col items-center gap-1 pointer-events-none">
+        <div className="absolute -bottom-14 left-0 right-0 flex flex-col items-center gap-1 pointer-events-none">
           <span className="text-[10px] uppercase tracking-widest" style={{ color: '#e2e8f0', opacity: 0.55, fontFamily: 'Orbitron, monospace' }}>
             60 × 120 см
           </span>

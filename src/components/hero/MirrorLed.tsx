@@ -1,7 +1,5 @@
 import { useEffect, useRef } from 'react';
 
-export const DOT_COUNT = 18;
-
 interface MirrorLedProps {
   lit: boolean;
   dotsRef: React.MutableRefObject<(HTMLDivElement | null)[]>;
@@ -22,26 +20,25 @@ const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
       const t = tRef.current;
       const isLit = litRef.current;
 
-      for (let i = 0; i < DOT_COUNT * 2; i++) {
-        const el = dotsRef.current[i];
+      // 0 = левая полоса, 1 = правая полоса
+      for (let s = 0; s < 2; s++) {
+        const el = dotsRef.current[s];
         if (!el) continue;
-        const dotIdx = i % DOT_COUNT;
 
         if (!isLit) {
-          el.style.opacity = '0.08';
-          el.style.boxShadow = 'none';
-          el.style.background = '#e2e8f0';
+          el.style.clipPath = 'inset(100% 0 0 0)';
+          el.style.opacity = '0';
           continue;
         }
 
-        const cycle = (Math.sin(t * 0.5) + 1) / 2;
-        const fillLevel = cycle * DOT_COUNT;
-        const fromBottom = DOT_COUNT - 1 - dotIdx;
-        const diff = fillLevel - fromBottom;
-        const bright = Math.max(0, Math.min(1, diff));
-        el.style.opacity = String(0.08 + bright * 0.92);
-        el.style.background = '#cbd5e1';
-        el.style.boxShadow = bright > 0.5 ? `0 0 8px 3px #e2e8f0` : 'none';
+        // Медленная волна заполнения снизу вверх
+        const cycle = (Math.sin(t * 0.5) + 1) / 2; // 0..1
+        const fillPct = Math.round(cycle * 100);
+        // clipPath: inset(top right bottom left)
+        // заполняем снизу вверх — уменьшаем top
+        el.style.clipPath = `inset(${100 - fillPct}% 0 0 0)`;
+        el.style.opacity = String(0.5 + cycle * 0.5);
+        el.style.boxShadow = `0 0 12px 4px rgba(255,255,255,${0.3 + cycle * 0.4})`;
       }
 
       frameRef.current = requestAnimationFrame(tick);
@@ -53,45 +50,61 @@ const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
 
   return (
     <>
-      {/* Боковые диоды слева */}
-      <div className="absolute top-[10%] bottom-[15%] left-0 flex flex-col justify-between items-center" style={{ width: '6px', zIndex: 5 }}>
-        {Array.from({ length: DOT_COUNT }).map((_, i) => (
-          <div
-            key={i}
-            ref={el => { dotsRef.current[i] = el; }}
-            style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#e2e8f0', opacity: 0.08, flexShrink: 0 }}
-          />
-        ))}
-      </div>
+      {/* Левая лента — единая полоса, отступ 5% от края, высота 70% */}
+      <div
+        ref={el => { dotsRef.current[0] = el; }}
+        className="absolute pointer-events-none"
+        style={{
+          left: '4%',
+          top: '15%',
+          width: '5%',
+          height: '70%',
+          borderRadius: '4px',
+          background: 'linear-gradient(to bottom, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.9) 30%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.9) 70%, rgba(255,255,255,0.0) 100%)',
+          filter: 'blur(3px)',
+          opacity: 0,
+          clipPath: 'inset(100% 0 0 0)',
+          zIndex: 5,
+          transition: 'opacity 0.3s ease',
+        }}
+      />
 
-      {/* Боковые диоды справа */}
-      <div className="absolute top-[10%] bottom-[15%] right-0 flex flex-col justify-between items-center" style={{ width: '6px', zIndex: 5 }}>
-        {Array.from({ length: DOT_COUNT }).map((_, i) => (
-          <div
-            key={i}
-            ref={el => { dotsRef.current[DOT_COUNT + i] = el; }}
-            style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#e2e8f0', opacity: 0.08, flexShrink: 0 }}
-          />
-        ))}
-      </div>
+      {/* Правая лента */}
+      <div
+        ref={el => { dotsRef.current[1] = el; }}
+        className="absolute pointer-events-none"
+        style={{
+          right: '4%',
+          top: '15%',
+          width: '5%',
+          height: '70%',
+          borderRadius: '4px',
+          background: 'linear-gradient(to bottom, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.9) 30%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.9) 70%, rgba(255,255,255,0.0) 100%)',
+          filter: 'blur(3px)',
+          opacity: 0,
+          clipPath: 'inset(100% 0 0 0)',
+          zIndex: 5,
+          transition: 'opacity 0.3s ease',
+        }}
+      />
 
-      {/* LED-полоска снизу */}
+      {/* LED-полоска снизу (постоянная) */}
       <div
         className="absolute bottom-0 left-0 right-0 pointer-events-none animate-led-strip"
         style={{
           height: '3px',
-          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 80%, transparent)',
+          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 80%, transparent)',
           filter: 'blur(1px)',
           zIndex: 5,
         }}
       />
 
-      {/* LED-полоска сверху */}
+      {/* LED-полоска сверху (постоянная) */}
       <div
         className="absolute top-0 left-0 right-0 pointer-events-none animate-led-strip"
         style={{
           height: '3px',
-          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 80%, transparent)',
+          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 80%, transparent)',
           filter: 'blur(1px)',
           zIndex: 5,
           animationDelay: '0.3s',
