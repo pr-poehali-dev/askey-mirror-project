@@ -7,7 +7,7 @@ import Icon from '@/components/ui/icon';
 const MirrorDecor = () => (
   <div
     className="animate-slide-in-right relative flex items-center justify-center"
-    style={{ animationDelay: '400ms', willChange: 'transform, opacity' }}
+    style={{ animationDelay: '400ms', willChange: 'transform, opacity', padding: '0 40px' }}
   >
     {/* ── Дальнее фоновое свечение (halo) ── */}
     <div
@@ -24,7 +24,7 @@ const MirrorDecor = () => (
     <div
       className="relative animate-mirror-float"
       style={{
-        width: 'clamp(140px, 18vw, 280px)',
+        width: 'clamp(200px, 40vw, 280px)',
         zIndex: 1,
       }}
     >
@@ -401,7 +401,7 @@ const Hero = () => {
           </div>
 
           {/* Правая колонка — зеркало */}
-          <div className="flex-shrink-0 flex items-center justify-center order-first lg:order-last pb-2 lg:pb-0 lg:pr-4">
+          <div className="flex-shrink-0 flex items-center justify-center order-first lg:order-last py-6 lg:py-0 lg:pr-4">
             <MirrorDecor />
           </div>
         </div>
