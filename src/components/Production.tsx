@@ -2,7 +2,7 @@ import Icon from '@/components/ui/icon';
 import { useEffect, useRef, useState } from 'react';
 
 const DOT_COUNT = 20;
-const MODES = ['Бегущий огонь', 'Радуга', 'Пульс'];
+const MODES = ['Бегущий огонь', 'Радуга', 'Пульс', 'Заполнение'];
 
 const hslToHex = (h: number, s: number, l: number) => {
   const a = s * Math.min(l, 1 - l) / 100;
@@ -49,13 +49,23 @@ const AddressableLedDemo = () => {
           color = hslToHex(hue, 100, 60);
           opacity = 0.85;
           glow = `0 0 8px 2px ${color}`;
-        } else {
+        } else if (m === 2) {
           // Пульс — все мигают вместе, но со сдвигом фазы
           const phase = Math.sin(t * 2 + i * 0.3);
           const bright = 0.3 + 0.7 * ((phase + 1) / 2);
           color = '#a855f7';
           opacity = bright;
           glow = bright > 0.7 ? `0 0 10px 3px #a855f7` : 'none';
+        } else {
+          // Заполнение — снизу вверх медленно включается и выключается
+          const cycle = (Math.sin(t * 0.6) + 1) / 2; // 0..1 медленно
+          const fillLevel = cycle * DOT_COUNT;
+          const fromBottom = DOT_COUNT - 1 - i;
+          const diff = fillLevel - fromBottom;
+          const bright = Math.max(0, Math.min(1, diff));
+          color = '#c084fc';
+          opacity = 0.08 + bright * 0.92;
+          glow = bright > 0.5 ? `0 0 10px 3px #c084fc` : 'none';
         }
 
         el.style.background = color;
