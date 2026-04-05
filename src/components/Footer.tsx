@@ -204,7 +204,7 @@ const Footer = () => {
                 </span>
               </div>
               <p className="text-white/40 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
-                Производство премиальных зеркал с наклейками и неоновой подсветкой. Доставка по всей России.
+                Производство премиальных зеркал с наклейками и адресной подсветкой. Доставка по всей России.
               </p>
               <div className="flex items-center gap-2 sm:gap-3">
                 {[
