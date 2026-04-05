@@ -159,10 +159,10 @@ const Contacts = () => {
               <h3 className="text-white font-bold text-base sm:text-lg mb-3 sm:mb-4">Как с нами связаться</h3>
               <div className="space-y-3 sm:space-y-4">
                 {[
-                  { icon: 'MessageCircle', label: 'WhatsApp', value: '+7 (999) 000-00-00', color: '#22c55e' },
+                  { icon: 'Phone', label: 'Телефон', value: '+7 966 767-03-33', color: '#e2e8f0' },
                   { icon: 'Send', label: 'Telegram', value: '@askey_mirrors', color: '#22d3ee' },
-                  { icon: 'AtSign', label: 'Профиль', value: '@askey.mirrors', color: '#f8fafc' },
-                  { icon: 'Mail', label: 'Email', value: 'info@askey.ru', color: '#e2e8f0' },
+                  { icon: 'Mail', label: 'Email', value: 'Comp.askei@gmail.com', color: '#e2e8f0' },
+                  { icon: 'MapPin', label: 'Адрес', value: 'Анапа, ул. Гребенская 116а', color: '#e2e8f0' },
                 ].map((contact) => (
                   <div
                     key={contact.label}
