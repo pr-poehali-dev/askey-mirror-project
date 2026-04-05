@@ -1,107 +1,156 @@
 import Icon from '@/components/ui/icon';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-const LED_COUNT = 16;
-const COLORS = [
-  '#a855f7', '#c084fc', '#e879f9', '#7c3aed',
-  '#818cf8', '#f0abfc', '#6d28d9', '#d946ef',
-];
+const DOT_COUNT = 20;
+const MODES = ['Бегущий огонь', 'Радуга', 'Пульс'];
+
+const hslToHex = (h: number, s: number, l: number) => {
+  const a = s * Math.min(l, 1 - l) / 100;
+  const f = (n: number) => {
+    const k = (n + h / 30) % 12;
+    const color = l / 100 - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+    return Math.round(255 * color).toString(16).padStart(2, '0');
+  };
+  return `#${f(0)}${f(8)}${f(4)}`;
+};
 
 const AddressableLedDemo = () => {
-  const ledsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const dotsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const modeRef = useRef(0);
+  const [mode, setMode] = useState(0);
 
   useEffect(() => {
-    const states = Array.from({ length: LED_COUNT }, (_, i) => ({
-      hue: i * (360 / LED_COUNT),
-      brightness: Math.random(),
-      speed: 0.3 + Math.random() * 0.7,
-      offset: Math.random() * Math.PI * 2,
-    }));
-
     let frame: number;
     let t = 0;
 
     const tick = () => {
-      t += 0.03;
-      states.forEach((s, i) => {
-        const el = ledsRef.current[i];
-        if (!el) return;
-        const wave = 0.5 + 0.5 * Math.sin(t * s.speed + s.offset);
-        const colorIdx = Math.floor((t * s.speed * 2 + i) % COLORS.length);
-        const color = COLORS[Math.abs(colorIdx) % COLORS.length];
+      t += 0.04;
+      const m = modeRef.current;
+
+      for (let i = 0; i < DOT_COUNT; i++) {
+        const el = dotsRef.current[i];
+        if (!el) continue;
+
+        let color = '#a855f7';
+        let opacity = 1;
+        let glow = '';
+
+        if (m === 0) {
+          // Бегущий огонь — яркое пятно бежит по ленте
+          const pos = (t * 4) % DOT_COUNT;
+          const dist = Math.min(Math.abs(i - pos), DOT_COUNT - Math.abs(i - pos));
+          const bright = Math.max(0, 1 - dist / 3);
+          color = '#e879f9';
+          opacity = 0.1 + bright * 0.9;
+          glow = bright > 0.5 ? `0 0 ${bright * 14}px 3px #e879f9` : 'none';
+        } else if (m === 1) {
+          // Радуга — каждый диод свой цвет, волна сдвигается
+          const hue = ((i / DOT_COUNT) * 360 + t * 60) % 360;
+          color = hslToHex(hue, 100, 60);
+          opacity = 0.85;
+          glow = `0 0 8px 2px ${color}`;
+        } else {
+          // Пульс — все мигают вместе, но со сдвигом фазы
+          const phase = Math.sin(t * 2 + i * 0.3);
+          const bright = 0.3 + 0.7 * ((phase + 1) / 2);
+          color = '#a855f7';
+          opacity = bright;
+          glow = bright > 0.7 ? `0 0 10px 3px #a855f7` : 'none';
+        }
+
         el.style.background = color;
-        el.style.opacity = String(0.2 + wave * 0.8);
-        el.style.boxShadow = wave > 0.6 ? `0 0 8px 2px ${color}` : 'none';
-      });
+        el.style.opacity = String(opacity);
+        el.style.boxShadow = glow;
+      }
+
       frame = requestAnimationFrame(tick);
     };
+
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
   }, []);
 
+  const switchMode = (m: number) => {
+    modeRef.current = m;
+    setMode(m);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const next = (modeRef.current + 1) % MODES.length;
+      switchMode(next);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="flex-shrink-0 flex flex-col items-center gap-4">
-      {/* Зеркало с лентой */}
+    <div className="flex-shrink-0 flex flex-col items-center gap-5">
+      {/* Зеркало */}
       <div
-        className="relative rounded-2xl sm:rounded-3xl animate-float"
+        className="relative rounded-2xl animate-float"
         style={{
-          width: '160px',
-          height: '220px',
-          background: 'linear-gradient(135deg, #1a1a2e, #0d0d1a)',
-          border: '1px solid rgba(168,85,247,0.3)',
-          boxShadow: '0 0 30px rgba(168,85,247,0.2)',
+          width: '200px',
+          height: '240px',
+          background: 'linear-gradient(135deg, #0d0618 0%, #1a0035 100%)',
+          border: '1px solid rgba(168,85,247,0.25)',
         }}
       >
-        {/* Отражение */}
-        <div className="absolute inset-3 rounded-xl" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(168,85,247,0.03))' }} />
+        {/* Зеркальная поверхность */}
+        <div
+          className="absolute"
+          style={{
+            inset: '12px 22px',
+            borderRadius: '8px',
+            background: 'linear-gradient(135deg, #1a1a2e, #0f1a30)',
+            border: '1px solid rgba(255,255,255,0.06)',
+          }}
+        />
 
         {/* Левая лента */}
-        <div className="absolute left-1.5 top-4 bottom-4 flex flex-col justify-between" style={{ width: '10px' }}>
-          {Array.from({ length: LED_COUNT }).map((_, i) => (
+        <div
+          className="absolute top-6 bottom-6 left-3 flex flex-col justify-between items-center"
+          style={{ width: '12px' }}
+        >
+          {Array.from({ length: DOT_COUNT }).map((_, i) => (
             <div
               key={i}
-              ref={el => { ledsRef.current[i] = el; }}
-              style={{ width: '10px', height: '10px', borderRadius: '50%', transition: 'none', background: COLORS[i % COLORS.length] }}
+              ref={el => { dotsRef.current[i] = el; }}
+              style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#a855f7', flexShrink: 0 }}
             />
           ))}
         </div>
 
         {/* Правая лента */}
-        <div className="absolute right-1.5 top-4 bottom-4 flex flex-col justify-between" style={{ width: '10px' }}>
-          {Array.from({ length: LED_COUNT }).map((_, i) => (
+        <div
+          className="absolute top-6 bottom-6 right-3 flex flex-col justify-between items-center"
+          style={{ width: '12px' }}
+        >
+          {Array.from({ length: DOT_COUNT }).map((_, i) => (
             <div
               key={i}
-              ref={el => { ledsRef.current[LED_COUNT + i] = el; }}
-              style={{ width: '10px', height: '10px', borderRadius: '50%', transition: 'none', background: COLORS[(i + 4) % COLORS.length] }}
+              ref={el => { dotsRef.current[DOT_COUNT + i] = el; }}
+              style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#a855f7', flexShrink: 0 }}
             />
           ))}
         </div>
-
-        {/* Подпись */}
-        <div className="absolute bottom-3 left-0 right-0 text-center" style={{ fontSize: '8px', color: 'rgba(168,85,247,0.7)', fontFamily: 'Orbitron, monospace', letterSpacing: '1px' }}>
-          АДРЕСНАЯ ЛЕНТА
-        </div>
       </div>
 
-      {/* Легенда */}
-      <div className="flex gap-3 text-center">
-        <div>
-          <div className="text-[10px] text-white/40 mb-1">Обычная</div>
-          <div className="flex gap-1">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <div key={i} style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#a855f7', opacity: 0.9 }} />
-            ))}
-          </div>
-        </div>
-        <div style={{ width: '1px', background: 'rgba(255,255,255,0.1)' }} />
-        <div>
-          <div className="text-[10px] text-white/40 mb-1">Адресная</div>
-          <div className="flex gap-1">
-            {['#a855f7','#e879f9','#818cf8','#f0abfc','#7c3aed'].map((c, i) => (
-              <div key={i} style={{ width: '10px', height: '10px', borderRadius: '50%', background: c, boxShadow: `0 0 4px ${c}` }} />
-            ))}
-          </div>
-        </div>
+      {/* Режимы */}
+      <div className="flex gap-1.5">
+        {MODES.map((m, i) => (
+          <button
+            key={m}
+            onClick={() => switchMode(i)}
+            className="px-2 py-1 rounded-lg text-[10px] font-semibold transition-all duration-300"
+            style={{
+              background: mode === i ? 'rgba(168,85,247,0.3)' : 'rgba(168,85,247,0.08)',
+              color: mode === i ? '#e879f9' : 'rgba(255,255,255,0.4)',
+              border: `1px solid ${mode === i ? 'rgba(168,85,247,0.6)' : 'rgba(168,85,247,0.15)'}`,
+            }}
+          >
+            {m}
+          </button>
+        ))}
       </div>
     </div>
   );
