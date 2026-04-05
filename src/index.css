@@ -144,7 +144,7 @@
 
   .side-glow-right {
     position: fixed;
-    right: 0;
+    right: 10px;
     top: 0;
     width: 8px;
     height: 100vh;
