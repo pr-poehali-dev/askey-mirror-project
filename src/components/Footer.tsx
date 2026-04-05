@@ -278,7 +278,7 @@ const Footer = () => {
           <div
             className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4"
           >
-            <p className="text-white/25 text-[10px] sm:text-xs">© 2024 Аскей. Все права защищены.</p>
+            <p className="text-white/25 text-[10px] sm:text-xs">© 2026 Аскей. Все права защищены.</p>
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setOfertaOpen(true)}
@@ -293,7 +293,7 @@ const Footer = () => {
                 Политика конфиденциальности
               </button>
             </div>
-            <p className="text-white/25 text-[10px] sm:text-xs">Производство зеркал с наклейками</p>
+
           </div>
         </div>
       </footer>
