@@ -487,20 +487,20 @@
   animation: mirror-float 4s ease-in-out infinite;
 }
 
-/* === CSS Mirror: frame glow (purple) === */
+/* === CSS Mirror: frame glow (silver/white) === */
 @keyframes mirror-frame-glow {
   0%,
   100% {
     box-shadow:
-      0 0 20px 4px rgba(168, 85, 247, 0.55),
-      0 0 55px 14px rgba(168, 85, 247, 0.25),
-      0 0 100px 30px rgba(124, 58, 237, 0.15);
+      0 0 20px 4px rgba(255, 255, 255, 0.45),
+      0 0 55px 14px rgba(220, 230, 240, 0.2),
+      0 0 100px 30px rgba(200, 210, 220, 0.1);
   }
   50% {
     box-shadow:
-      0 0 35px 8px rgba(232, 121, 249, 0.8),
-      0 0 80px 24px rgba(168, 85, 247, 0.45),
-      0 0 150px 50px rgba(124, 58, 237, 0.28);
+      0 0 35px 8px rgba(255, 255, 255, 0.65),
+      0 0 80px 24px rgba(220, 230, 240, 0.35),
+      0 0 150px 50px rgba(200, 210, 220, 0.2);
   }
 }
 .animate-mirror-frame-glow {
@@ -600,11 +600,11 @@ body {
   background: #0a0a0f;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(168, 85, 247, 0.5);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(168, 85, 247, 0.8);
+  background: rgba(255, 255, 255, 0.4);
 }
 
 /* Улучшение тач-таргетов на мобильных */
@@ -641,21 +641,21 @@ body {
   .side-glow-left {
     width: 12px;
     box-shadow:
-      0 0 20px var(--neon-pink),
-      0 0 60px var(--neon-purple),
-      0 0 120px var(--neon-violet),
-      -30px 0 100px var(--neon-purple),
-      -60px 0 160px rgba(168, 85, 247, 0.4);
+      0 0 20px rgba(255, 255, 255, 0.5),
+      0 0 60px rgba(255, 255, 255, 0.2),
+      0 0 120px rgba(200, 210, 220, 0.15),
+      -30px 0 100px rgba(255, 255, 255, 0.1),
+      -60px 0 160px rgba(255, 255, 255, 0.05);
   }
 
   .side-glow-right {
     width: 12px;
     box-shadow:
-      0 0 20px var(--neon-pink),
-      0 0 60px var(--neon-purple),
-      0 0 120px var(--neon-violet),
-      30px 0 100px var(--neon-purple),
-      60px 0 160px rgba(168, 85, 247, 0.4);
+      0 0 20px rgba(255, 255, 255, 0.5),
+      0 0 60px rgba(255, 255, 255, 0.2),
+      0 0 120px rgba(200, 210, 220, 0.15),
+      30px 0 100px rgba(255, 255, 255, 0.1),
+      60px 0 160px rgba(255, 255, 255, 0.05);
   }
 }
 
