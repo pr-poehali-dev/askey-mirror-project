@@ -187,21 +187,12 @@ const Footer = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 mb-8 sm:mb-12">
             {/* О компании */}
             <div>
-              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl sm:rounded-2xl neon-border-purple flex items-center justify-center">
-                  <span
-                    className="text-gradient font-black text-xs sm:text-sm"
-                    style={{ fontFamily: 'Orbitron, monospace' }}
-                  >
-                    А
-                  </span>
-                </div>
-                <span
-                  className="text-lg sm:text-xl font-black tracking-widest neon-text-purple"
-                  style={{ fontFamily: 'Orbitron, monospace' }}
-                >
-                  АСКЕЙ
-                </span>
+              <div className="mb-3 sm:mb-4">
+                <img
+                  src="https://cdn.poehali.dev/projects/af6d2ef4-20e2-486b-93ab-6d38dda52f4e/bucket/3e7a1b92-00f2-4fbf-b8da-9fcb2d78b9ad.png"
+                  alt="АСКЕЙ"
+                  className="h-7 sm:h-8 w-auto object-contain"
+                />
               </div>
               <p className="text-white/40 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
                 Производство премиальных зеркал с наклейками и адресной подсветкой. Доставка по всей России.

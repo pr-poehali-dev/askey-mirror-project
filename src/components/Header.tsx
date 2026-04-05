@@ -49,20 +49,12 @@ const Header = () => {
           className="flex items-center gap-2 sm:gap-3 cursor-pointer flex-shrink-0"
           onClick={() => scrollTo('#hero')}
         >
-          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl neon-border-purple flex items-center justify-center animate-glow-pulse">
-            <span
-              className="text-gradient font-black text-sm sm:text-lg"
-              style={{ fontFamily: 'Orbitron, monospace' }}
-            >
-              А
-            </span>
-          </div>
-          <span
-            className="text-lg sm:text-2xl font-black tracking-widest neon-text-purple"
-            style={{ fontFamily: 'Orbitron, monospace' }}
-          >
-            АСКЕЙ
-          </span>
+          <img
+            src="https://cdn.poehali.dev/projects/af6d2ef4-20e2-486b-93ab-6d38dda52f4e/bucket/3e7a1b92-00f2-4fbf-b8da-9fcb2d78b9ad.png"
+            alt="АСКЕЙ"
+            className="h-7 sm:h-9 w-auto object-contain"
+            style={{ filter: 'brightness(1)' }}
+          />
         </div>
 
         {/* Десктопная навигация */}
