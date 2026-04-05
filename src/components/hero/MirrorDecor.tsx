@@ -108,12 +108,12 @@ const MirrorDecor = () => {
           </div>
         </div>
 
-        {/* Боковые LED-лучи (исходят из рамки наружу) */}
+        {/* Боковые LED-лучи */}
         <div
           className="absolute pointer-events-none animate-mirror-side-led"
           style={{
-            left: '-22px', top: '10%', bottom: '10%', width: '20px',
-            background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.95) 20%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.95) 80%, transparent)',
+            left: '-18px', top: '8%', bottom: '8%', width: '16px',
+            background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.7) 20%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.7) 80%, transparent)',
             filter: 'blur(8px)',
             zIndex: 0,
           }}
@@ -121,11 +121,32 @@ const MirrorDecor = () => {
         <div
           className="absolute pointer-events-none animate-mirror-side-led"
           style={{
-            right: '-22px', top: '10%', bottom: '10%', width: '20px',
-            background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.95) 20%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.95) 80%, transparent)',
+            right: '-18px', top: '8%', bottom: '8%', width: '16px',
+            background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.7) 20%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.7) 80%, transparent)',
             filter: 'blur(8px)',
             zIndex: 0,
             animationDelay: '0.5s',
+          }}
+        />
+        {/* Верхний и нижний LED-лучи */}
+        <div
+          className="absolute pointer-events-none animate-mirror-side-led"
+          style={{
+            top: '-18px', left: '8%', right: '8%', height: '16px',
+            background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.7) 20%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.7) 80%, transparent)',
+            filter: 'blur(8px)',
+            zIndex: 0,
+            animationDelay: '0.25s',
+          }}
+        />
+        <div
+          className="absolute pointer-events-none animate-mirror-side-led"
+          style={{
+            bottom: '-18px', left: '8%', right: '8%', height: '16px',
+            background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.7) 20%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.7) 80%, transparent)',
+            filter: 'blur(8px)',
+            zIndex: 0,
+            animationDelay: '0.75s',
           }}
         />
 
