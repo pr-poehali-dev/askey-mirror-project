@@ -97,11 +97,12 @@ const Catalog = () => {
               )}
 
               {/* Фото зеркала */}
-              <div className="relative w-full overflow-hidden flex items-center justify-center" style={{ height: '420px', background: '#06020c' }}>
+              <div className="relative w-full overflow-hidden">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="h-full w-auto object-contain"
+                  className="w-full block"
+                  style={{ display: 'block' }}
                 />
                 <div
                   className="absolute inset-0"
