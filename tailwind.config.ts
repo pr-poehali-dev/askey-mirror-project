@@ -29,6 +29,14 @@ export default {
 		},
 		extend: {
 			colors: {
+				// Переопределяем purple → серебристо-белый
+				purple: {
+					'300': '#e2e8f0',
+					'400': '#cbd5e1',
+					'500': '#94a3b8',
+					'600': '#64748b',
+					'700': '#475569',
+				},
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
