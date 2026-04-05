@@ -269,6 +269,21 @@
 .animate-pulse-neon {
   animation: pulse-neon 2s ease-in-out infinite;
 }
+
+@keyframes logo-glow {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+.animate-logo-glow {
+  animation: logo-glow 2.5s ease-in-out infinite;
+}
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }

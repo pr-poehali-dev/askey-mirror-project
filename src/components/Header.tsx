@@ -50,13 +50,16 @@ const Header = () => {
           onClick={() => scrollTo('#hero')}
         >
           <div style={{ position: 'relative', display: 'inline-flex', alignItems: 'center' }}>
-            <div style={{
-              position: 'absolute',
-              inset: '-8px -16px',
-              background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 50%, transparent 75%)',
-              filter: 'blur(8px)',
-              pointerEvents: 'none',
-            }} />
+            <div
+              className="animate-logo-glow"
+              style={{
+                position: 'absolute',
+                inset: '-10px -20px',
+                background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 50%, transparent 75%)',
+                filter: 'blur(10px)',
+                pointerEvents: 'none',
+              }}
+            />
             <img
               src="https://cdn.poehali.dev/projects/af6d2ef4-20e2-486b-93ab-6d38dda52f4e/bucket/3e7a1b92-00f2-4fbf-b8da-9fcb2d78b9ad.png"
               alt="АСКЕЙ"
