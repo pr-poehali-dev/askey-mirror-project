@@ -592,19 +592,44 @@ body {
   min-width: 320px;
 }
 
-/* Кастомный скроллбар */
+/* Кастомный скроллбар — зеркальная рамка */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0a0f;
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 15%,
+    rgba(255, 255, 255, 0.7) 35%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0.7) 65%,
+    rgba(255, 255, 255, 0.15) 85%,
+    transparent 100%
+  );
+  border-radius: 99px;
+  box-shadow:
+    0 0 6px 1px rgba(255, 255, 255, 0.5),
+    0 0 14px 3px rgba(255, 255, 255, 0.2);
+  transition: box-shadow 0.3s ease;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.25) 10%,
+    rgba(255, 255, 255, 0.9) 30%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0.9) 70%,
+    rgba(255, 255, 255, 0.25) 90%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 10px 2px rgba(255, 255, 255, 0.8),
+    0 0 24px 6px rgba(255, 255, 255, 0.35);
 }
 
 /* Улучшение тач-таргетов на мобильных */
