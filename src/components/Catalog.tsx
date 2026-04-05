@@ -97,15 +97,15 @@ const Catalog = () => {
               )}
 
               {/* Фото зеркала */}
-              <div className="relative w-full overflow-hidden" style={{ height: '320px' }}>
+              <div className="relative w-full overflow-hidden flex items-center justify-center" style={{ height: '420px', background: '#06020c' }}>
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-full object-cover object-top"
+                  className="h-full w-auto object-contain"
                 />
                 <div
                   className="absolute inset-0"
-                  style={{ background: 'linear-gradient(to bottom, transparent 60%, rgba(10,10,15,0.9) 100%)' }}
+                  style={{ background: 'linear-gradient(to bottom, transparent 70%, rgba(10,10,15,0.9) 100%)' }}
                 />
               </div>
 
