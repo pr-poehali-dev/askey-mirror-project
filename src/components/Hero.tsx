@@ -184,7 +184,7 @@ const MirrorDecor = () => (
             {/* Подпись */}
             <div style={{ fontSize: '6.5px', color: '#333', fontFamily: 'sans-serif', lineHeight: 1.4 }}>
               <span style={{ fontWeight: 700 }}>your_profile</span>
-              {' '}Вкусно жить — не запретишь !!!
+              {' '}Ваша любая подпись
             </div>
           </div>
 
