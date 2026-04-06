@@ -98,18 +98,24 @@ const Catalog = () => {
                   ? '0 0 40px rgba(255,255,255,0.15), inset 0 1px 0 rgba(255,255,255,0.2)'
                   : 'none',
               }}
+              onMouseEnter={e => {
+                const shine = e.currentTarget.querySelector<HTMLElement>('.shine-overlay');
+                if (shine) shine.style.backgroundPosition = '-50% 0%';
+              }}
+              onMouseLeave={e => {
+                const shine = e.currentTarget.querySelector<HTMLElement>('.shine-overlay');
+                if (shine) shine.style.backgroundPosition = '200% 0%';
+              }}
             >
               {/* Отблеск при hover */}
               <div
-                className="absolute -inset-px pointer-events-none rounded-2xl sm:rounded-3xl overflow-hidden"
+                className="shine-overlay absolute inset-0 pointer-events-none rounded-2xl sm:rounded-3xl"
                 style={{
-                  background: 'linear-gradient(115deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0) 60%)',
-                  backgroundSize: '300% 300%',
+                  background: 'linear-gradient(115deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0) 65%)',
+                  backgroundSize: '300% 100%',
                   backgroundPosition: '200% 0%',
-                  transition: 'background-position 0.6s ease',
+                  transition: 'background-position 0.7s ease',
                 }}
-                onMouseEnter={e => (e.currentTarget.style.backgroundPosition = '-50% 0%')}
-                onMouseLeave={e => (e.currentTarget.style.backgroundPosition = '200% 0%')}
               />
               {/* Glow */}
               {product.popular && (
