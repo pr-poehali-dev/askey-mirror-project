@@ -195,17 +195,17 @@ const Catalog = () => {
                 </p>
 
                 {/* Цена */}
-                <div
-                  className="rounded-xl sm:rounded-2xl px-4 py-3 mb-4 sm:mb-5 flex items-center justify-between"
-                  style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.2)' }}
-                >
-                  <span className="text-white/50 text-xs">Стоимость</span>
-                  <span
-                    className="text-lg sm:text-xl font-black"
-                    style={{ color: product.tagColor, fontFamily: 'Orbitron, monospace' }}
-                  >
-                    {product.price} ₽
-                  </span>
+                <div className="mb-4 sm:mb-5">
+                  <div className="flex items-end justify-between mb-1.5">
+                    <span className="text-white/30 text-[10px] tracking-widest uppercase">от</span>
+                    <span
+                      className="text-2xl sm:text-3xl font-black leading-none"
+                      style={{ color: product.tagColor, fontFamily: 'Orbitron, monospace', textShadow: `0 0 20px ${product.tagColor}55` }}
+                    >
+                      {product.price} <span className="text-base sm:text-lg">₽</span>
+                    </span>
+                  </div>
+                  <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${product.tagColor}40, transparent)` }} />
                 </div>
 
                 {/* CTA */}
