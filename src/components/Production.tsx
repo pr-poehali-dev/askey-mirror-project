@@ -2,7 +2,7 @@ import Icon from '@/components/ui/icon';
 import { useEffect, useRef, useState } from 'react';
 
 const DOT_COUNT = 20;
-const MODES = ['Бегущий огонь', 'Пульс', 'Заполнение'];
+const MODES = ['Заполнение'];
 
 const hslToHex = (h: number, s: number, l: number) => {
   const a = s * Math.min(l, 1 - l) / 100;
