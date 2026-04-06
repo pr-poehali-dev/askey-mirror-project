@@ -196,8 +196,7 @@ const Catalog = () => {
 
                 {/* Цена */}
                 <div className="mb-4 sm:mb-5">
-                  <div className="flex items-end justify-between mb-1.5">
-                    <span className="text-white/30 text-[10px] tracking-widest uppercase">от</span>
+                  <div className="flex items-end justify-end mb-1.5">
                     <span
                       className="text-2xl sm:text-3xl font-black leading-none"
                       style={{ color: product.tagColor, fontFamily: 'Orbitron, monospace', textShadow: `0 0 20px ${product.tagColor}55` }}
