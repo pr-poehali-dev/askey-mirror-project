@@ -111,10 +111,10 @@ const Catalog = () => {
               <div
                 className="shine-overlay absolute inset-0 pointer-events-none rounded-2xl sm:rounded-3xl"
                 style={{
-                  background: 'linear-gradient(115deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0) 65%)',
-                  backgroundSize: '300% 100%',
+                  background: 'linear-gradient(115deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0.07) 50%, rgba(255,255,255,0) 60%)',
+                  backgroundSize: '400% 100%',
                   backgroundPosition: '200% 0%',
-                  transition: 'background-position 0.7s ease',
+                  transition: 'background-position 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 }}
               />
               {/* Glow */}
