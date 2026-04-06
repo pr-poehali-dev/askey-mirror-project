@@ -17,7 +17,7 @@ const hslToHex = (h: number, s: number, l: number) => {
 const AddressableLedDemo = () => {
   const dotsRef = useRef<(HTMLDivElement | null)[]>([]);
   const modeRef = useRef(0);
-  const [mode, setMode] = useState(0);
+  const [mode] = useState(0);
 
   useEffect(() => {
     let frame: number;
@@ -25,7 +25,6 @@ const AddressableLedDemo = () => {
 
     const tick = () => {
       t += 0.04;
-      const m = modeRef.current;
 
       for (let i = 0; i < DOT_COUNT * 2; i++) {
         const el = dotsRef.current[i];
@@ -36,22 +35,7 @@ const AddressableLedDemo = () => {
         let opacity = 1;
         let glow = '';
 
-        if (m === 0) {
-          // Бегущий огонь — яркое пятно бежит по ленте
-          const pos = (t * 4) % DOT_COUNT;
-          const dist = Math.min(Math.abs(dotIdx - pos), DOT_COUNT - Math.abs(dotIdx - pos));
-          const bright = Math.max(0, 1 - dist / 3);
-          color = '#f8fafc';
-          opacity = 0.1 + bright * 0.9;
-          glow = bright > 0.5 ? `0 0 ${bright * 14}px 3px #f8fafc` : 'none';
-        } else if (m === 1) {
-          // Пульс — все мигают вместе, но со сдвигом фазы
-          const phase = Math.sin(t * 2 + dotIdx * 0.3);
-          const bright = 0.3 + 0.7 * ((phase + 1) / 2);
-          color = '#e2e8f0';
-          opacity = bright;
-          glow = bright > 0.7 ? `0 0 10px 3px #e2e8f0` : 'none';
-        } else {
+        {
           // Заполнение — снизу вверх медленно включается и выключается
           const cycle = (Math.sin(t * 0.6) + 1) / 2;
           const fillLevel = cycle * DOT_COUNT;
