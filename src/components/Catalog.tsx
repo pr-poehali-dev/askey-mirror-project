@@ -214,11 +214,11 @@ const Catalog = () => {
                   style={
                     product.popular
                       ? {
-                          background: 'transparent',
-                          color: '#e2e8f0',
-                          border: '1px solid rgba(255,255,255,0.25)',
-                          boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1), 0 0 24px rgba(255,255,255,0.06)',
-                          letterSpacing: '0.1em',
+                          background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
+                          color: '#ffffff',
+                          border: '1px solid rgba(255,255,255,0.35)',
+                          boxShadow: '0 0 30px rgba(255,255,255,0.12), inset 0 1px 0 rgba(255,255,255,0.2)',
+                          letterSpacing: '0.12em',
                         }
                       : {
                           background: `${product.tagColor}12`,
@@ -227,8 +227,20 @@ const Catalog = () => {
                           letterSpacing: '0.1em',
                         }
                   }
+                  onMouseEnter={e => {
+                    if (product.popular) {
+                      (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 0 50px rgba(255,255,255,0.22), inset 0 1px 0 rgba(255,255,255,0.3)';
+                      (e.currentTarget as HTMLButtonElement).style.background = 'linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 100%)';
+                    }
+                  }}
+                  onMouseLeave={e => {
+                    if (product.popular) {
+                      (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 0 30px rgba(255,255,255,0.12), inset 0 1px 0 rgba(255,255,255,0.2)';
+                      (e.currentTarget as HTMLButtonElement).style.background = 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)';
+                    }
+                  }}
                 >
-                  <Icon name="ArrowRight" size={13} />
+                  <Icon name="Sparkles" size={13} />
                   Заказать зеркало
                 </button>
               </div>
