@@ -69,8 +69,7 @@ const Portfolio = () => {
       className="py-16 sm:py-20 lg:py-24 relative"
       style={{ background: 'linear-gradient(180deg, #0a0a0f 0%, #0d0618 50%, #0a0a0f 100%)' }}
     >
-      <div className="absolute inset-x-0 top-0 h-24 pointer-events-none" style={{ background: 'linear-gradient(to bottom, #080808, transparent)' }} />
-      <div className="absolute inset-x-0 bottom-0 h-24 pointer-events-none" style={{ background: 'linear-gradient(to top, #080808, transparent)' }} />
+
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-16">
         {/* Заголовок */}
         <div className="text-center mb-10 sm:mb-12 lg:mb-16">
