@@ -101,8 +101,15 @@ const Catalog = () => {
             >
               {/* Отблеск при hover */}
               <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl sm:rounded-3xl overflow-hidden"
-                style={{ background: 'linear-gradient(115deg, rgba(255,255,255,0.07) 0%, transparent 50%, rgba(255,255,255,0.03) 100%)' }}
+                className="absolute -inset-px pointer-events-none rounded-2xl sm:rounded-3xl overflow-hidden"
+                style={{
+                  background: 'linear-gradient(115deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0) 60%)',
+                  backgroundSize: '300% 300%',
+                  backgroundPosition: '200% 0%',
+                  transition: 'background-position 0.6s ease',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.backgroundPosition = '-50% 0%')}
+                onMouseLeave={e => (e.currentTarget.style.backgroundPosition = '200% 0%')}
               />
               {/* Glow */}
               {product.popular && (
