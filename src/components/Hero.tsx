@@ -1,6 +1,7 @@
 import Icon from '@/components/ui/icon';
 import MirrorDecor from '@/components/hero/MirrorDecor';
 import HeroContent from '@/components/hero/HeroContent';
+import HeroBackground from '@/components/hero/HeroBackground';
 
 const Hero = () => {
   const scrollTo = (href: string) => {
@@ -12,27 +13,24 @@ const Hero = () => {
     <section
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-24"
-      style={{ background: 'radial-gradient(ellipse at center, #111114 0%, #080808 60%)' }}
+      style={{ background: 'radial-gradient(ellipse at 50% 40%, #12131a 0%, #080808 70%)' }}
     >
-      {/* Фоновые блобы и сетка */}
+      {/* Canvas-фон с частицами */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-72 sm:h-72 md:w-96 md:h-96 rounded-full opacity-10 blur-3xl"
-          style={{ background: 'radial-gradient(circle, #e2e8f0, transparent)' }}
-        />
-        <div
-          className="absolute bottom-1/4 right-1/4 w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-full opacity-10 blur-3xl"
-          style={{ background: 'radial-gradient(circle, #94a3b8, transparent)' }}
-        />
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 sm:w-[400px] sm:h-[400px] md:w-[600px] md:h-[600px] rounded-full opacity-5 blur-3xl"
-          style={{ background: 'radial-gradient(circle, #f8fafc, transparent)' }}
-        />
+        <HeroBackground />
+        {/* Тонкая сетка поверх */}
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: 'linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)',
-            backgroundSize: '40px 40px',
+            backgroundImage: 'linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px)',
+            backgroundSize: '60px 60px',
+          }}
+        />
+        {/* Виньетка по краям */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.55) 100%)',
           }}
         />
       </div>
