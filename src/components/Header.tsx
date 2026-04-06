@@ -10,6 +10,10 @@ const navItems = [
   { label: 'Контакты', href: '#contacts', icon: 'MessageCircle' },
 ];
 
+const haptic = () => {
+  if ('vibrate' in navigator) navigator.vibrate(8);
+};
+
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -33,7 +37,13 @@ const Header = () => {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
+  const toggleMenu = () => {
+    haptic();
+    setMenuOpen(v => !v);
+  };
+
   const scrollTo = (href: string) => {
+    haptic();
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
     setMenuOpen(false);
@@ -99,29 +109,32 @@ const Header = () => {
           <button
             className="md:hidden relative z-50 w-10 h-10 flex items-center justify-center rounded-xl transition-all duration-300"
             style={{
-              background: menuOpen ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.05)',
-              border: '1px solid rgba(255,255,255,0.15)',
+              background: menuOpen ? 'rgba(203,213,225,0.15)' : 'rgba(203,213,225,0.06)',
+              border: `1px solid ${menuOpen ? 'rgba(203,213,225,0.35)' : 'rgba(203,213,225,0.12)'}`,
             }}
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={toggleMenu}
             aria-label={menuOpen ? 'Закрыть меню' : 'Открыть меню'}
           >
             <div className="relative w-5 h-4 flex flex-col justify-between">
               <span
-                className="block h-0.5 bg-white rounded-full transition-all duration-300 origin-center"
+                className="block h-0.5 rounded-full transition-all duration-300 origin-center"
                 style={{
+                  background: '#cbd5e1',
                   transform: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none',
                 }}
               />
               <span
-                className="block h-0.5 bg-white rounded-full transition-all duration-300"
+                className="block h-0.5 rounded-full transition-all duration-300"
                 style={{
+                  background: '#cbd5e1',
                   opacity: menuOpen ? 0 : 1,
                   transform: menuOpen ? 'scaleX(0)' : 'none',
                 }}
               />
               <span
-                className="block h-0.5 bg-white rounded-full transition-all duration-300 origin-center"
+                className="block h-0.5 rounded-full transition-all duration-300 origin-center"
                 style={{
+                  background: '#cbd5e1',
                   transform: menuOpen ? 'translateY(-7px) rotate(-45deg)' : 'none',
                 }}
               />
@@ -134,8 +147,8 @@ const Header = () => {
       <div
         className="fixed inset-0 z-30 md:hidden transition-all duration-500"
         style={{
-          background: 'rgba(0,0,0,0.7)',
-          backdropFilter: menuOpen ? 'blur(8px)' : 'blur(0px)',
+          background: 'rgba(5,5,12,0.85)',
+          backdropFilter: menuOpen ? 'blur(10px)' : 'blur(0px)',
           opacity: menuOpen ? 1 : 0,
           pointerEvents: menuOpen ? 'auto' : 'none',
         }}
@@ -147,59 +160,69 @@ const Header = () => {
         className="fixed bottom-0 left-0 right-0 z-40 md:hidden"
         style={{
           transform: menuOpen ? 'translateY(0)' : 'translateY(100%)',
-          transition: 'transform 0.4s cubic-bezier(0.32, 0.72, 0, 1)',
-          background: 'linear-gradient(180deg, #0d0620 0%, #080010 100%)',
-          borderTop: '1px solid rgba(255,255,255,0.15)',
+          transition: 'transform 0.45s cubic-bezier(0.32, 0.72, 0, 1)',
+          background: 'linear-gradient(160deg, #111120 0%, #0a0a14 60%, #080810 100%)',
+          borderTop: '1px solid rgba(203,213,225,0.18)',
           borderRadius: '24px 24px 0 0',
           paddingBottom: 'env(safe-area-inset-bottom, 16px)',
+          boxShadow: '0 -20px 60px rgba(0,0,0,0.8), 0 -1px 0 rgba(203,213,225,0.1)',
         }}
       >
         {/* Ручка */}
-        <div className="flex justify-center pt-3 pb-1">
-          <div className="w-10 h-1 rounded-full" style={{ background: 'rgba(255,255,255,0.2)' }} />
+        <div className="flex justify-center pt-3 pb-2">
+          <div
+            className="w-10 h-1 rounded-full"
+            style={{ background: 'rgba(203,213,225,0.25)' }}
+          />
         </div>
 
         {/* Пункты меню */}
-        <div className="px-5 pt-3 pb-2 flex flex-col gap-1">
+        <div className="px-4 pt-2 pb-2 flex flex-col gap-1.5">
           {navItems.map((item, i) => (
             <button
               key={item.href}
               onClick={() => scrollTo(item.href)}
-              className="flex items-center gap-4 text-left py-3.5 px-4 rounded-2xl transition-all duration-200 group"
+              className="flex items-center gap-3.5 text-left py-3 px-4 rounded-2xl active:scale-[0.97] transition-transform duration-100"
               style={{
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.06)',
-                transform: menuOpen ? 'translateY(0)' : 'translateY(20px)',
+                background: 'rgba(203,213,225,0.05)',
+                border: '1px solid rgba(203,213,225,0.08)',
+                transform: menuOpen ? 'translateY(0)' : 'translateY(24px)',
                 opacity: menuOpen ? 1 : 0,
-                transition: `transform 0.4s cubic-bezier(0.32, 0.72, 0, 1) ${i * 50 + 150}ms, opacity 0.3s ease ${i * 50 + 150}ms, background 0.2s`,
+                transition: `transform 0.4s cubic-bezier(0.32, 0.72, 0, 1) ${i * 45 + 120}ms, opacity 0.3s ease ${i * 45 + 120}ms`,
               }}
             >
               <div
                 className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ background: 'rgba(255,255,255,0.08)' }}
+                style={{
+                  background: 'linear-gradient(135deg, rgba(203,213,225,0.12), rgba(148,163,184,0.06))',
+                  border: '1px solid rgba(203,213,225,0.12)',
+                }}
               >
-                <Icon name={item.icon} size={16} className="text-white/60 group-active:text-white" />
+                <Icon name={item.icon} size={15} style={{ color: '#94a3b8' }} />
               </div>
-              <span className="text-white/70 font-medium text-sm uppercase tracking-widest group-active:text-white transition-colors">
+              <span
+                className="font-medium text-sm uppercase tracking-widest flex-1"
+                style={{ color: '#94a3b8' }}
+              >
                 {item.label}
               </span>
-              <Icon name="ChevronRight" size={14} className="text-white/20 ml-auto" />
+              <Icon name="ChevronRight" size={13} style={{ color: 'rgba(148,163,184,0.3)' }} />
             </button>
           ))}
         </div>
 
         {/* CTA */}
         <div
-          className="px-5 pb-5 pt-2"
+          className="px-4 pb-5 pt-2"
           style={{
-            transform: menuOpen ? 'translateY(0)' : 'translateY(20px)',
+            transform: menuOpen ? 'translateY(0)' : 'translateY(24px)',
             opacity: menuOpen ? 1 : 0,
-            transition: `transform 0.4s cubic-bezier(0.32, 0.72, 0, 1) ${navItems.length * 50 + 150}ms, opacity 0.3s ease ${navItems.length * 50 + 150}ms`,
+            transition: `transform 0.4s cubic-bezier(0.32, 0.72, 0, 1) ${navItems.length * 45 + 120}ms, opacity 0.3s ease ${navItems.length * 45 + 120}ms`,
           }}
         >
           <button
             onClick={() => scrollTo('#contacts')}
-            className="neon-btn text-white w-full py-4 rounded-2xl text-sm font-bold tracking-wide"
+            className="neon-btn text-white w-full py-4 rounded-2xl text-sm font-bold tracking-wide active:scale-[0.98] transition-transform duration-100"
           >
             Заказать зеркало
           </button>
