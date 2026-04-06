@@ -1,10 +1,10 @@
 const portfolioItems = [
-  { id: 1, size: 'col-span-1 row-span-2', label: 'Профиль • Адресная лента', accent: '#e2e8f0' },
-  { id: 2, size: 'col-span-1 row-span-1', label: 'LED • Салон красоты', accent: '#f8fafc' },
-  { id: 3, size: 'col-span-1 row-span-1', label: 'Именное • Подарок', accent: '#94a3b8' },
-  { id: 4, size: 'col-span-1 row-span-1', label: 'Бизнес • Логотип', accent: '#e2e8f0' },
-  { id: 5, size: 'col-span-1 row-span-2', label: 'Зеркало • Профиль', accent: '#f8fafc' },
-  { id: 6, size: 'col-span-1 row-span-1', label: 'RGB • Подсветка', accent: '#22d3ee' },
+  { id: 1, size: 'md:col-span-1 md:row-span-2', label: 'Профиль • Адресная лента', accent: '#e2e8f0' },
+  { id: 2, size: 'md:col-span-1 md:row-span-1', label: 'LED • Салон красоты', accent: '#f8fafc' },
+  { id: 3, size: 'md:col-span-1 md:row-span-1', label: 'Именное • Подарок', accent: '#94a3b8' },
+  { id: 4, size: 'md:col-span-1 md:row-span-1', label: 'Бизнес • Логотип', accent: '#e2e8f0' },
+  { id: 5, size: 'md:col-span-1 md:row-span-2', label: 'Зеркало • Профиль', accent: '#f8fafc' },
+  { id: 6, size: 'md:col-span-1 md:row-span-1', label: 'RGB • Подсветка', accent: '#22d3ee' },
 ];
 
 const MirrorPlaceholder = ({ accent, label }: { accent: string; label: string }) => (
@@ -93,7 +93,7 @@ const Portfolio = () => {
         {/* Грид портфолио */}
         <div
           className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4"
-          style={{ gridAutoRows: 'clamp(120px, 15vw, 200px)' }}
+          style={{ gridAutoRows: 'clamp(140px, 18vw, 220px)' }}
         >
           {portfolioItems.map((item) => (
             <div key={item.id} className={item.size}>
