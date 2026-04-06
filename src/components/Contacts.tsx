@@ -29,12 +29,8 @@ const Contacts = () => {
   return (
     <>
     <section id="contacts" className="py-16 sm:py-20 lg:py-24 relative" style={{ background: '#0a0a0f' }}>
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px"
-          style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent)' }}
-        />
-      </div>
+      <div className="absolute inset-x-0 top-0 h-24 pointer-events-none" style={{ background: 'linear-gradient(to bottom, #080808, transparent)' }} />
+      <div className="absolute inset-x-0 bottom-0 h-24 pointer-events-none" style={{ background: 'linear-gradient(to top, #080808, transparent)' }} />
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-16">
         {/* Заголовок */}
