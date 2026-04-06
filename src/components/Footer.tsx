@@ -241,7 +241,7 @@ const Footer = () => {
               <h4 className="text-white font-bold mb-3 sm:mb-4 text-xs sm:text-sm uppercase tracking-wider">Гарантии</h4>
               <div className="space-y-2 sm:space-y-3">
                 {[
-                  { icon: 'Shield', text: 'Гарантия 12 месяцев на подсветку' },
+                  { icon: 'Shield', text: 'Гарантия 2 месяца на подсветку' },
                   { icon: 'RotateCcw', text: 'Возврат в течение 14 дней' },
                   { icon: 'Truck', text: 'Доставка по всей России' },
                   { icon: 'Award', text: 'Сертификаты качества материалов' },
