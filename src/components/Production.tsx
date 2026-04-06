@@ -1,5 +1,5 @@
 import Icon from '@/components/ui/icon';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 const DOT_COUNT = 20;
 const MODES = ['Заполнение'];
@@ -16,8 +16,6 @@ const hslToHex = (h: number, s: number, l: number) => {
 
 const AddressableLedDemo = () => {
   const dotsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const modeRef = useRef(0);
-  const [mode] = useState(0);
 
   useEffect(() => {
     let frame: number;
@@ -57,19 +55,6 @@ const AddressableLedDemo = () => {
 
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, []);
-
-  const switchMode = (m: number) => {
-    modeRef.current = m;
-    setMode(m);
-  };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const next = (modeRef.current + 1) % MODES.length;
-      switchMode(next);
-    }, 3000);
-    return () => clearInterval(interval);
   }, []);
 
   return (
