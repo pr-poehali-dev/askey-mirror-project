@@ -75,10 +75,17 @@ const Timeline = () => {
                 key={i}
                 className={`relative flex flex-col md:flex-row ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-start md:items-center gap-0 md:gap-0`}
               >
-                {/* Левая половина (чётные шаги на десктопе) */}
-                <div className="md:w-1/2 md:pr-10 lg:pr-16 pl-14 sm:pl-16 md:pl-0">
+                {/* Мобильная версия — один бокс для всех */}
+                <div className="md:hidden pl-14 sm:pl-16 w-full">
+                  <div className="card-dark rounded-2xl sm:rounded-3xl p-4 sm:p-5 group hover:neon-border-purple transition-all duration-300">
+                    <StepCard step={step} />
+                  </div>
+                </div>
+
+                {/* Десктоп — левая половина (чётные) */}
+                <div className="hidden md:block md:w-1/2 md:pr-10 lg:pr-16">
                   {i % 2 === 0 && (
-                    <div className="card-dark rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6 md:ml-auto md:max-w-sm lg:max-w-md group hover:neon-border-purple transition-all duration-300">
+                    <div className="card-dark rounded-3xl p-5 lg:p-6 ml-auto max-w-sm lg:max-w-md group hover:neon-border-purple transition-all duration-300">
                       <StepCard step={step} />
                     </div>
                   )}
@@ -92,14 +99,10 @@ const Timeline = () => {
                   <Icon name={step.icon} size={12} className="text-white" />
                 </div>
 
-                {/* Правая половина (нечётные шаги на десктопе, все на мобильном) */}
-                <div className="md:w-1/2 md:pl-10 lg:pl-16 pl-14 sm:pl-16">
-                  {i % 2 !== 0 ? (
-                    <div className="card-dark rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6 md:max-w-sm lg:max-w-md group hover:neon-border-purple transition-all duration-300">
-                      <StepCard step={step} />
-                    </div>
-                  ) : (
-                    <div className="block md:hidden card-dark rounded-2xl sm:rounded-3xl p-4 sm:p-5 group hover:neon-border-purple transition-all duration-300">
+                {/* Десктоп — правая половина (нечётные) */}
+                <div className="hidden md:block md:w-1/2 md:pl-10 lg:pl-16">
+                  {i % 2 !== 0 && (
+                    <div className="card-dark rounded-3xl p-5 lg:p-6 max-w-sm lg:max-w-md group hover:neon-border-purple transition-all duration-300">
                       <StepCard step={step} />
                     </div>
                   )}
