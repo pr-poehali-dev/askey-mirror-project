@@ -18,14 +18,7 @@ const Hero = () => {
       {/* Canvas-фон с частицами */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <HeroBackground />
-        {/* Тонкая сетка поверх */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: 'linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
-          }}
-        />
+
         {/* Виньетка по краям */}
         <div
           className="absolute inset-0"
