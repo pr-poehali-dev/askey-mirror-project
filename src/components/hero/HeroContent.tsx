@@ -11,42 +11,32 @@ const stats = [
   { end: 100, suffix: '%', label: 'Гарантия качества' },
 ];
 
-const useCounter = (end: number, duration = 1800, delay = 0) => {
+const useCounter = (end: number, duration = 2000, delay = 0) => {
   const [count, setCount] = useState(0);
-  const started = useRef(false);
-  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !started.current) {
-        started.current = true;
-        setTimeout(() => {
-          const startTime = performance.now();
-          const tick = (now: number) => {
-            const progress = Math.min((now - startTime) / duration, 1);
-            const ease = 1 - Math.pow(1 - progress, 3);
-            setCount(Math.floor(ease * end));
-            if (progress < 1) requestAnimationFrame(tick);
-            else setCount(end);
-          };
-          requestAnimationFrame(tick);
-        }, delay);
-        observer.disconnect();
-      }
-    }, { threshold: 0.5 });
-    observer.observe(el);
-    return () => observer.disconnect();
+    const timer = setTimeout(() => {
+      const startTime = performance.now();
+      const tick = (now: number) => {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 4);
+        setCount(Math.floor(ease * end));
+        if (progress < 1) requestAnimationFrame(tick);
+        else setCount(end);
+      };
+      requestAnimationFrame(tick);
+    }, 800 + delay);
+
+    return () => clearTimeout(timer);
   }, [end, duration, delay]);
 
-  return { count, ref };
+  return count;
 };
 
 const StatCounter = ({ end, suffix, label, delay }: { end: number; suffix: string; label: string; delay: number }) => {
-  const { count, ref } = useCounter(end, 1800, delay);
+  const count = useCounter(end, 2000, delay);
   return (
-    <div ref={ref} className="text-center lg:text-left">
+    <div className="text-center lg:text-left">
       <div
         className="text-2xl sm:text-3xl md:text-4xl font-black text-gradient mb-0.5 sm:mb-1 tabular-nums"
         style={{ fontFamily: 'Orbitron, monospace' }}
