@@ -1,4 +1,5 @@
 import Icon from '@/components/ui/icon';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const steps = [
   {
@@ -39,12 +40,16 @@ const steps = [
 ];
 
 const Timeline = () => {
+  const titleRef = useScrollReveal({ threshold: 0.1 });
+  const contentRef = useScrollReveal({ threshold: 0.05, delay: 120 });
+
   return (
-    <section id="timeline" className="py-16 sm:py-20 lg:py-24 relative" style={{ background: '#0a0a0f' }}>
+    <section id="timeline" className="py-16 sm:py-20 lg:py-24 relative" style={{ background: '#080808' }}>
+      <div className="absolute top-0 inset-x-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent)' }} />
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-16">
         {/* Заголовок */}
-        <div className="text-center mb-10 sm:mb-12 lg:mb-16">
+        <div ref={titleRef} className="text-center mb-10 sm:mb-12 lg:mb-16">
           <div
             className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-[10px] sm:text-xs font-semibold tracking-widest uppercase"
             style={{ border: '1px solid rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.1)', color: '#e2e8f0' }}
@@ -63,7 +68,7 @@ const Timeline = () => {
           </p>
         </div>
 
-        <div className="relative">
+        <div ref={contentRef} className="relative">
           {/* Вертикальная линия */}
           <div
             className="absolute left-5 sm:left-6 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-px"

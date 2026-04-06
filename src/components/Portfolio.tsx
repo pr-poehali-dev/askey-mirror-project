@@ -1,3 +1,5 @@
+import { useScrollReveal } from '@/hooks/useScrollReveal';
+
 const portfolioItems = [
   { id: 1, size: 'md:col-span-1 md:row-span-2', label: 'Профиль • Адресная лента', accent: '#e2e8f0' },
   { id: 2, size: 'md:col-span-1 md:row-span-1', label: 'LED • Салон красоты', accent: '#f8fafc' },
@@ -63,16 +65,20 @@ const MirrorPlaceholder = ({ accent, label }: { accent: string; label: string })
 );
 
 const Portfolio = () => {
+  const titleRef = useScrollReveal({ threshold: 0.1 });
+  const gridRef = useScrollReveal({ threshold: 0.05, delay: 100 });
+
   return (
     <section
       id="portfolio"
       className="py-16 sm:py-20 lg:py-24 relative"
-      style={{ background: 'linear-gradient(180deg, #0a0a0f 0%, #0d0618 50%, #0a0a0f 100%)' }}
+      style={{ background: '#080808' }}
     >
+      <div className="absolute top-0 inset-x-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent)' }} />
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-16">
         {/* Заголовок */}
-        <div className="text-center mb-10 sm:mb-12 lg:mb-16">
+        <div ref={titleRef} className="text-center mb-10 sm:mb-12 lg:mb-16">
           <div
             className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-[10px] sm:text-xs font-semibold tracking-widest uppercase"
             style={{ border: '1px solid rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.1)', color: '#e2e8f0' }}
@@ -93,6 +99,7 @@ const Portfolio = () => {
 
         {/* Грид портфолио */}
         <div
+          ref={gridRef}
           className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4"
           style={{ gridAutoRows: 'clamp(140px, 18vw, 220px)' }}
         >

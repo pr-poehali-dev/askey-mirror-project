@@ -1,4 +1,5 @@
 import Icon from '@/components/ui/icon';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const products = [
   {
@@ -45,16 +46,24 @@ const Catalog = () => {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const titleRef = useScrollReveal({ threshold: 0.1 });
+  const card0Ref = useScrollReveal<HTMLDivElement>({ threshold: 0.08, delay: 0 });
+  const card1Ref = useScrollReveal<HTMLDivElement>({ threshold: 0.08, delay: 100 });
+  const card2Ref = useScrollReveal<HTMLDivElement>({ threshold: 0.08, delay: 200 });
+  const cardRefs = [card0Ref, card1Ref, card2Ref];
+
   return (
     <section
       id="catalog"
       className="py-16 sm:py-20 lg:py-24 relative"
-      style={{ background: 'linear-gradient(180deg, #0a0a0f 0%, #0d0618 50%, #0a0a0f 100%)' }}
+      style={{ background: '#080808' }}
     >
+      {/* Разделитель сверху */}
+      <div className="absolute top-0 inset-x-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent)' }} />
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-16">
         {/* Заголовок */}
-        <div className="text-center mb-10 sm:mb-12 lg:mb-16">
+        <div ref={titleRef} className="text-center mb-10 sm:mb-12 lg:mb-16">
           <div
             className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-[10px] sm:text-xs font-semibold tracking-widest uppercase"
             style={{ border: '1px solid rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.1)', color: '#e2e8f0' }}
@@ -75,10 +84,11 @@ const Catalog = () => {
 
         {/* Карточки */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
-          {products.map((product) => (
+          {products.map((product, i) => (
             <div
               key={product.id}
-              className="relative rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col"
+              ref={cardRefs[i]}
+              className="relative rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col group"
               style={{
                 background: product.popular
                   ? 'linear-gradient(135deg, #13002a 0%, #1a0035 60%, #0d0618 100%)'
@@ -89,6 +99,11 @@ const Catalog = () => {
                   : 'none',
               }}
             >
+              {/* Отблеск при hover */}
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl sm:rounded-3xl overflow-hidden"
+                style={{ background: 'linear-gradient(115deg, rgba(255,255,255,0.07) 0%, transparent 50%, rgba(255,255,255,0.03) 100%)' }}
+              />
               {/* Glow */}
               {product.popular && (
                 <div

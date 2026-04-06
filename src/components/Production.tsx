@@ -1,5 +1,6 @@
 import Icon from '@/components/ui/icon';
 import { useEffect, useRef } from 'react';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const DOT_COUNT = 20;
 
@@ -147,17 +148,20 @@ const qualities = [
 ];
 
 const Production = () => {
+  const titleRef = useScrollReveal({ threshold: 0.1 });
+  const contentRef = useScrollReveal({ threshold: 0.08, delay: 100 });
+
   return (
     <section
       id="production"
       className="py-16 sm:py-20 lg:py-24 relative"
-      style={{ background: 'linear-gradient(180deg, #0a0a0f 0%, #0d0620 50%, #0a0a0f 100%)' }}
+      style={{ background: '#080808' }}
     >
-
+      <div className="absolute top-0 inset-x-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent)' }} />
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-16">
         {/* Заголовок */}
-        <div className="text-center mb-10 sm:mb-12 lg:mb-16">
+        <div ref={titleRef} className="text-center mb-10 sm:mb-12 lg:mb-16">
           <div
             className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-[10px] sm:text-xs font-semibold tracking-widest uppercase"
             style={{ border: '1px solid rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.1)', color: '#e2e8f0' }}
@@ -177,7 +181,7 @@ const Production = () => {
         </div>
 
         {/* Карточки качества */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 mb-10 sm:mb-12 lg:mb-16">
+        <div ref={contentRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 mb-10 sm:mb-12 lg:mb-16">
           {qualities.map((item, i) => (
             <div
               key={i}

@@ -189,6 +189,22 @@
     background-clip: text;
   }
 
+  .section-title {
+    font-family: "Orbitron", monospace;
+    font-weight: 900;
+    @apply text-3xl sm:text-4xl md:text-5xl xl:text-6xl text-white mb-3 sm:mb-4;
+  }
+
+  .section-divider {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.18),
+      transparent
+    );
+    height: 1px;
+  }
+
   .mirror-reflection {
     background: linear-gradient(
       135deg,
