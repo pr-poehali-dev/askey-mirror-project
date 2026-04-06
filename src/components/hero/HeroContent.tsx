@@ -1,8 +1,64 @@
 import Icon from '@/components/ui/icon';
+import { useEffect, useRef, useState } from 'react';
 
 interface HeroContentProps {
   scrollTo: (href: string) => void;
 }
+
+const stats = [
+  { end: 500, suffix: '+', label: 'Зеркал продано' },
+  { end: 12, suffix: '', label: 'Дней производства' },
+  { end: 100, suffix: '%', label: 'Гарантия качества' },
+];
+
+const useCounter = (end: number, duration = 1800, delay = 0) => {
+  const [count, setCount] = useState(0);
+  const started = useRef(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !started.current) {
+        started.current = true;
+        setTimeout(() => {
+          const startTime = performance.now();
+          const tick = (now: number) => {
+            const progress = Math.min((now - startTime) / duration, 1);
+            const ease = 1 - Math.pow(1 - progress, 3);
+            setCount(Math.floor(ease * end));
+            if (progress < 1) requestAnimationFrame(tick);
+            else setCount(end);
+          };
+          requestAnimationFrame(tick);
+        }, delay);
+        observer.disconnect();
+      }
+    }, { threshold: 0.5 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [end, duration, delay]);
+
+  return { count, ref };
+};
+
+const StatCounter = ({ end, suffix, label, delay }: { end: number; suffix: string; label: string; delay: number }) => {
+  const { count, ref } = useCounter(end, 1800, delay);
+  return (
+    <div ref={ref} className="text-center lg:text-left">
+      <div
+        className="text-2xl sm:text-3xl md:text-4xl font-black text-gradient mb-0.5 sm:mb-1 tabular-nums"
+        style={{ fontFamily: 'Orbitron, monospace' }}
+      >
+        {count}{suffix}
+      </div>
+      <div className="text-white/40 text-[9px] sm:text-xs uppercase tracking-wider leading-tight">
+        {label}
+      </div>
+    </div>
+  );
+};
 
 const HeroContent = ({ scrollTo }: HeroContentProps) => (
   <div className="flex-1 text-center lg:text-left w-full">
@@ -63,22 +119,13 @@ const HeroContent = ({ scrollTo }: HeroContentProps) => (
     </div>
 
     {/* Статистика */}
-    <div className="animate-fade-in-up delay-600 mt-10 sm:mt-16 grid grid-cols-3 gap-4 sm:gap-8 max-w-sm sm:max-w-2xl mx-auto lg:mx-0">
-      {[
-        { value: '500+', label: 'Зеркал продано' },
-        { value: '12', label: 'Дней производства' },
-        { value: '100%', label: 'Гарантия качества' },
-      ].map((stat) => (
-        <div key={stat.label} className="text-center lg:text-left">
-          <div
-            className="text-2xl sm:text-3xl md:text-4xl font-black text-gradient mb-0.5 sm:mb-1"
-            style={{ fontFamily: 'Orbitron, monospace' }}
-          >
-            {stat.value}
-          </div>
-          <div className="text-white/40 text-[9px] sm:text-xs uppercase tracking-wider leading-tight">
-            {stat.label}
-          </div>
+    <div className="animate-fade-in-up delay-600 mt-10 sm:mt-16 flex items-stretch gap-0 max-w-sm sm:max-w-md mx-auto lg:mx-0">
+      {stats.map((stat, i) => (
+        <div key={stat.label} className="flex items-stretch flex-1">
+          <StatCounter end={stat.end} suffix={stat.suffix} label={stat.label} delay={i * 150} />
+          {i < stats.length - 1 && (
+            <div className="mx-4 sm:mx-6 w-px self-stretch" style={{ background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.15), transparent)' }} />
+          )}
         </div>
       ))}
     </div>
