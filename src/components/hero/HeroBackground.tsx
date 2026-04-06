@@ -53,40 +53,6 @@ const HeroBackground = () => {
       });
     };
 
-    const drawLightRays = (w: number, h: number) => {
-      const cx = w * 0.5;
-      const cy = h * 0.42;
-      const rayCount = 7;
-      for (let i = 0; i < rayCount; i++) {
-        const angle = (Math.PI * 2 / rayCount) * i - Math.PI / 2;
-        const len = Math.min(w, h) * 0.72;
-        const grd = ctx!.createLinearGradient(
-          cx, cy,
-          cx + Math.cos(angle) * len,
-          cy + Math.sin(angle) * len
-        );
-        grd.addColorStop(0, 'rgba(255,255,255,0.025)');
-        grd.addColorStop(0.5, 'rgba(200,215,230,0.01)');
-        grd.addColorStop(1, 'rgba(255,255,255,0)');
-        ctx!.save();
-        ctx!.beginPath();
-        ctx!.moveTo(cx, cy);
-        const spread = 0.09;
-        ctx!.lineTo(
-          cx + Math.cos(angle - spread) * len,
-          cy + Math.sin(angle - spread) * len
-        );
-        ctx!.lineTo(
-          cx + Math.cos(angle + spread) * len,
-          cy + Math.sin(angle + spread) * len
-        );
-        ctx!.closePath();
-        ctx!.fillStyle = grd;
-        ctx!.fill();
-        ctx!.restore();
-      }
-    };
-
     const drawNebula = (w: number, h: number) => {
       // Центральное свечение
       const g1 = ctx!.createRadialGradient(w * 0.5, h * 0.4, 0, w * 0.5, h * 0.4, w * 0.5);
@@ -136,7 +102,6 @@ const HeroBackground = () => {
       ctx!.clearRect(0, 0, w, h);
 
       drawNebula(w, h);
-      drawLightRays(w, h);
       drawConnections(particlesRef.current, w, h);
 
       particlesRef.current.forEach(p => {
