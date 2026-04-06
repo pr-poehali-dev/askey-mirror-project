@@ -2,16 +2,16 @@ import { useState, useEffect } from 'react';
 import Icon from '@/components/ui/icon';
 
 const navItems = [
-  { label: 'Главная', href: '#hero', icon: 'Home' },
-  { label: 'Каталог', href: '#catalog', icon: 'Grid3x3' },
-  { label: 'Производство', href: '#production', icon: 'Factory' },
-  { label: 'Сроки', href: '#timeline', icon: 'Clock' },
-  { label: 'Портфолио', href: '#portfolio', icon: 'Image' },
-  { label: 'Контакты', href: '#contacts', icon: 'MessageCircle' },
+  { label: 'Главная', href: '#hero' },
+  { label: 'Каталог', href: '#catalog' },
+  { label: 'Производство', href: '#production' },
+  { label: 'Сроки', href: '#timeline' },
+  { label: 'Портфолио', href: '#portfolio' },
+  { label: 'Контакты', href: '#contacts' },
 ];
 
 const haptic = () => {
-  if ('vibrate' in navigator) navigator.vibrate(8);
+  if ('vibrate' in navigator) navigator.vibrate(6);
 };
 
 const Header = () => {
@@ -107,36 +107,23 @@ const Header = () => {
 
           {/* Бургер (mobile) */}
           <button
-            className="md:hidden relative z-50 w-10 h-10 flex items-center justify-center rounded-xl transition-all duration-300"
-            style={{
-              background: menuOpen ? 'rgba(203,213,225,0.15)' : 'rgba(203,213,225,0.06)',
-              border: `1px solid ${menuOpen ? 'rgba(203,213,225,0.35)' : 'rgba(203,213,225,0.12)'}`,
-            }}
+            className="md:hidden relative z-50 w-9 h-9 flex items-center justify-center rounded-full transition-all duration-300"
+            style={{ background: menuOpen ? 'rgba(255,255,255,0.1)' : 'transparent' }}
             onClick={toggleMenu}
             aria-label={menuOpen ? 'Закрыть меню' : 'Открыть меню'}
           >
-            <div className="relative w-5 h-4 flex flex-col justify-between">
+            <div className="w-5 flex flex-col gap-[5px] items-start">
               <span
-                className="block h-0.5 rounded-full transition-all duration-300 origin-center"
-                style={{
-                  background: '#cbd5e1',
-                  transform: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none',
-                }}
+                className="block h-px rounded-full bg-white transition-all duration-300 origin-center w-full"
+                style={{ transform: menuOpen ? 'translateY(6px) rotate(45deg)' : 'none' }}
               />
               <span
-                className="block h-0.5 rounded-full transition-all duration-300"
-                style={{
-                  background: '#cbd5e1',
-                  opacity: menuOpen ? 0 : 1,
-                  transform: menuOpen ? 'scaleX(0)' : 'none',
-                }}
+                className="block h-px rounded-full bg-white transition-all duration-300 w-[70%]"
+                style={{ opacity: menuOpen ? 0 : 1 }}
               />
               <span
-                className="block h-0.5 rounded-full transition-all duration-300 origin-center"
-                style={{
-                  background: '#cbd5e1',
-                  transform: menuOpen ? 'translateY(-7px) rotate(-45deg)' : 'none',
-                }}
+                className="block h-px rounded-full bg-white transition-all duration-300 origin-center w-full"
+                style={{ transform: menuOpen ? 'translateY(-6px) rotate(-45deg)' : 'none' }}
               />
             </div>
           </button>
@@ -145,84 +132,67 @@ const Header = () => {
 
       {/* Оверлей */}
       <div
-        className="fixed inset-0 z-30 md:hidden transition-all duration-500"
+        className="fixed inset-0 z-30 md:hidden"
         style={{
-          background: 'rgba(5,5,12,0.85)',
-          backdropFilter: menuOpen ? 'blur(10px)' : 'blur(0px)',
+          backdropFilter: menuOpen ? 'blur(20px) saturate(180%)' : 'blur(0px)',
+          background: menuOpen ? 'rgba(0,0,0,0.45)' : 'rgba(0,0,0,0)',
           opacity: menuOpen ? 1 : 0,
           pointerEvents: menuOpen ? 'auto' : 'none',
+          transition: 'opacity 0.3s ease, backdrop-filter 0.3s ease',
         }}
         onClick={() => setMenuOpen(false)}
       />
 
-      {/* Мобильное меню — слайд снизу */}
+      {/* Меню — выпадает сверху под хедером */}
       <div
-        className="fixed bottom-0 left-0 right-0 z-40 md:hidden"
+        className="fixed inset-x-4 z-40 md:hidden"
         style={{
-          transform: menuOpen ? 'translateY(0)' : 'translateY(100%)',
-          transition: 'transform 0.45s cubic-bezier(0.32, 0.72, 0, 1)',
-          background: 'linear-gradient(160deg, #111120 0%, #0a0a14 60%, #080810 100%)',
-          borderTop: '1px solid rgba(203,213,225,0.18)',
-          borderRadius: '24px 24px 0 0',
-          paddingBottom: 'env(safe-area-inset-bottom, 16px)',
-          boxShadow: '0 -20px 60px rgba(0,0,0,0.8), 0 -1px 0 rgba(203,213,225,0.1)',
+          top: '64px',
+          transform: menuOpen ? 'translateY(0) scale(1)' : 'translateY(-10px) scale(0.98)',
+          opacity: menuOpen ? 1 : 0,
+          pointerEvents: menuOpen ? 'auto' : 'none',
+          transition: 'transform 0.32s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.22s ease',
+          background: 'rgba(14,14,20,0.96)',
+          backdropFilter: 'blur(40px) saturate(180%)',
+          borderRadius: '18px',
+          border: '1px solid rgba(255,255,255,0.07)',
+          overflow: 'hidden',
+          boxShadow: '0 24px 60px rgba(0,0,0,0.6)',
         }}
       >
-        {/* Ручка */}
-        <div className="flex justify-center pt-3 pb-2">
-          <div
-            className="w-10 h-1 rounded-full"
-            style={{ background: 'rgba(203,213,225,0.25)' }}
-          />
-        </div>
-
-        {/* Пункты меню */}
-        <div className="px-4 pt-2 pb-2 flex flex-col gap-1.5">
+        <nav className="py-1.5">
           {navItems.map((item, i) => (
             <button
               key={item.href}
               onClick={() => scrollTo(item.href)}
-              className="flex items-center gap-3.5 text-left py-3 px-4 rounded-2xl active:scale-[0.97] transition-transform duration-100"
+              className="w-full text-left px-5 py-3.5 flex items-center justify-between active:bg-white/5 transition-colors duration-100"
               style={{
-                background: 'rgba(203,213,225,0.05)',
-                border: '1px solid rgba(203,213,225,0.08)',
-                transform: menuOpen ? 'translateY(0)' : 'translateY(24px)',
+                borderBottom: i < navItems.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none',
+                transform: menuOpen ? 'translateY(0)' : 'translateY(-6px)',
                 opacity: menuOpen ? 1 : 0,
-                transition: `transform 0.4s cubic-bezier(0.32, 0.72, 0, 1) ${i * 45 + 120}ms, opacity 0.3s ease ${i * 45 + 120}ms`,
+                transition: `transform 0.32s cubic-bezier(0.32, 0.72, 0, 1) ${i * 28 + 50}ms, opacity 0.22s ease ${i * 28 + 50}ms, background 0.1s`,
               }}
             >
-              <div
-                className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(203,213,225,0.12), rgba(148,163,184,0.06))',
-                  border: '1px solid rgba(203,213,225,0.12)',
-                }}
-              >
-                <Icon name={item.icon} size={15} style={{ color: '#94a3b8' }} />
-              </div>
-              <span
-                className="font-medium text-sm uppercase tracking-widest flex-1"
-                style={{ color: '#94a3b8' }}
-              >
+              <span className="text-white/75 text-[15px] font-light tracking-wide">
                 {item.label}
               </span>
-              <Icon name="ChevronRight" size={13} style={{ color: 'rgba(148,163,184,0.3)' }} />
+              <Icon name="ChevronRight" size={13} style={{ color: 'rgba(255,255,255,0.18)' }} />
             </button>
           ))}
-        </div>
+        </nav>
 
-        {/* CTA */}
         <div
-          className="px-4 pb-5 pt-2"
+          className="px-4 py-3.5"
           style={{
-            transform: menuOpen ? 'translateY(0)' : 'translateY(24px)',
+            borderTop: '1px solid rgba(255,255,255,0.06)',
+            transform: menuOpen ? 'translateY(0)' : 'translateY(-6px)',
             opacity: menuOpen ? 1 : 0,
-            transition: `transform 0.4s cubic-bezier(0.32, 0.72, 0, 1) ${navItems.length * 45 + 120}ms, opacity 0.3s ease ${navItems.length * 45 + 120}ms`,
+            transition: `transform 0.32s cubic-bezier(0.32, 0.72, 0, 1) ${navItems.length * 28 + 50}ms, opacity 0.22s ease ${navItems.length * 28 + 50}ms`,
           }}
         >
           <button
             onClick={() => scrollTo('#contacts')}
-            className="neon-btn text-white w-full py-4 rounded-2xl text-sm font-bold tracking-wide active:scale-[0.98] transition-transform duration-100"
+            className="neon-btn text-white w-full py-3 rounded-xl text-[15px] font-medium active:scale-[0.98] transition-transform duration-100"
           >
             Заказать зеркало
           </button>
