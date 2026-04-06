@@ -19,12 +19,14 @@ const Hero = () => {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <HeroBackground />
 
-        {/* Виньетка по краям */}
+        {/* Туман сверху и снизу */}
         <div
-          className="absolute inset-0"
-          style={{
-            background: 'radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.55) 100%)',
-          }}
+          className="absolute inset-x-0 top-0 h-40 pointer-events-none"
+          style={{ background: 'linear-gradient(to bottom, #080808 0%, transparent 100%)' }}
+        />
+        <div
+          className="absolute inset-x-0 bottom-0 h-48 pointer-events-none"
+          style={{ background: 'linear-gradient(to top, #080808 0%, transparent 100%)' }}
         />
       </div>
 
