@@ -2,7 +2,6 @@ import Icon from '@/components/ui/icon';
 import { useEffect, useRef } from 'react';
 
 const DOT_COUNT = 20;
-const MODES = ['Заполнение'];
 
 const hslToHex = (h: number, s: number, l: number) => {
   const a = s * Math.min(l, 1 - l) / 100;
@@ -109,23 +108,7 @@ const AddressableLedDemo = () => {
         </div>
       </div>
 
-      {/* Режимы */}
-      <div className="flex gap-1.5">
-        {MODES.map((m, i) => (
-          <button
-            key={m}
-            onClick={() => switchMode(i)}
-            className="px-2 py-1 rounded-lg text-[10px] font-semibold transition-all duration-300"
-            style={{
-              background: mode === i ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.08)',
-              color: mode === i ? '#f8fafc' : 'rgba(255,255,255,0.4)',
-              border: `1px solid ${mode === i ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.15)'}`,
-            }}
-          >
-            {m}
-          </button>
-        ))}
-      </div>
+
     </div>
   );
 };
