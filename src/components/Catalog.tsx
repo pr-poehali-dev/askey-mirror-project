@@ -214,18 +214,21 @@ const Catalog = () => {
                   style={
                     product.popular
                       ? {
-                          background: 'linear-gradient(135deg, #94a3b8, #e2e8f0)',
-                          color: '#fff',
-                          boxShadow: '0 4px 20px rgba(255,255,255,0.35)',
+                          background: 'transparent',
+                          color: '#e2e8f0',
+                          border: '1px solid rgba(255,255,255,0.25)',
+                          boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1), 0 0 24px rgba(255,255,255,0.06)',
+                          letterSpacing: '0.1em',
                         }
                       : {
-                          background: `${product.tagColor}22`,
+                          background: `${product.tagColor}12`,
                           color: product.tagColor,
-                          border: `1px solid ${product.tagColor}44`,
+                          border: `1px solid ${product.tagColor}30`,
+                          letterSpacing: '0.1em',
                         }
                   }
                 >
-                  <Icon name="ShoppingBag" size={14} />
+                  <Icon name="ArrowRight" size={13} />
                   Заказать зеркало
                 </button>
               </div>
