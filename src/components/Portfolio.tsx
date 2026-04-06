@@ -51,12 +51,7 @@ const MirrorPlaceholder = ({ accent, label }: { accent: string; label: string })
         </div>
       </div>
     </div>
-    <div
-      className="absolute bottom-0 left-0 right-0 p-2 sm:p-3 opacity-0 group-hover:opacity-100 transition-all duration-300"
-      style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)' }}
-    >
-      <p className="text-white/80 text-[10px] sm:text-xs font-medium">{label}</p>
-    </div>
+
     <div
       className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-xl"
       style={{ boxShadow: `inset 0 0 30px ${accent}22` }}
