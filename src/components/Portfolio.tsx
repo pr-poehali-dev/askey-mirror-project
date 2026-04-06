@@ -110,12 +110,7 @@ const Portfolio = () => {
           ))}
         </div>
 
-        <div className="mt-8 sm:mt-12 text-center">
-          <p className="text-white/40 text-xs sm:text-sm">
-            Больше работ в нашем{' '}
-            <span className="text-purple-400 cursor-pointer hover:text-purple-300 transition-colors">профиле</span>
-          </p>
-        </div>
+
       </div>
     </section>
   );
