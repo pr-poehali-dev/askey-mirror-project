@@ -160,7 +160,7 @@ const Contacts = () => {
               <div className="space-y-3 sm:space-y-4">
                 {[
                   { icon: 'Phone', label: 'Телефон', value: '+7 966 767-03-33', color: '#e2e8f0' },
-                  { icon: 'Send', label: 'Telegram', value: '@askey_mirrors', color: '#22d3ee' },
+                  { icon: 'Send', label: 'Telegram', value: '@askei_mirror', color: '#22d3ee' },
                   { icon: 'Mail', label: 'Email', value: 'Comp.askei@gmail.com', color: '#e2e8f0' },
                   { icon: 'MapPin', label: 'Адрес', value: 'Анапа, ул. Гребенская 116а', color: '#e2e8f0' },
                 ].map((contact) => (
