@@ -92,16 +92,6 @@ const MirrorPlaceholder = ({ accent, label, index }: { accent: string; label: st
         style={{ background: `radial-gradient(ellipse at center, ${accent}18 0%, transparent 70%)` }}
       />
 
-      {/* Подпись slide-up */}
-      <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-350 ease-out">
-        <div
-          className="px-3 sm:px-4 py-2.5 sm:py-3"
-          style={{ background: `linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.6) 60%, transparent)` }}
-        >
-          <p className="text-white/90 text-[10px] sm:text-xs font-medium tracking-wider uppercase">{label}</p>
-        </div>
-      </div>
-
       {/* Рамка hover */}
       <div
         className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"
