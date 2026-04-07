@@ -201,33 +201,28 @@ const Footer = () => {
             </div>
 
             {/* Навигация */}
-            <div>
-              <h4 className="text-white/30 font-bold mb-4 sm:mb-6 text-[10px] uppercase tracking-[0.2em]">Разделы</h4>
-              <div className="flex flex-col gap-1">
+            <div className="sm:col-span-2 md:col-span-1">
+              <h4 className="text-white/30 font-medium mb-4 sm:mb-6 text-[10px] uppercase tracking-[0.2em]">Разделы</h4>
+              <div className="flex flex-wrap gap-x-1 gap-y-0.5">
                 {[
                   { label: 'Каталог', href: '#catalog' },
                   { label: 'Производство', href: '#production' },
                   { label: 'Сроки', href: '#timeline' },
                   { label: 'Портфолио', href: '#portfolio' },
                   { label: 'Контакты', href: '#contacts' },
-                ].map((link) => (
-                  <button
-                    key={link.href}
-                    onClick={() => scrollTo(link.href)}
-                    className="group relative text-left w-fit"
-                  >
-                    <span
-                      className="text-xl sm:text-2xl font-bold tracking-tight transition-all duration-300 group-hover:text-white"
-                      style={{ color: 'rgba(255,255,255,0.18)', WebkitTextStroke: '1px rgba(255,255,255,0.12)' }}
+                ].map((link, i, arr) => (
+                  <span key={link.href} className="flex items-center">
+                    <button
+                      onClick={() => scrollTo(link.href)}
+                      className="group relative overflow-hidden text-sm sm:text-base font-light tracking-wide text-white/30 hover:text-white/90 transition-colors duration-300"
                     >
                       {link.label}
-                    </span>
-                    <span
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm text-xl sm:text-2xl font-bold tracking-tight text-white pointer-events-none"
-                    >
-                      {link.label}
-                    </span>
-                  </button>
+                      <span className="absolute bottom-0 left-0 w-0 h-px bg-white/50 group-hover:w-full transition-all duration-400" />
+                    </button>
+                    {i < arr.length - 1 && (
+                      <span className="mx-2 text-white/15 text-xs">·</span>
+                    )}
+                  </span>
                 ))}
               </div>
             </div>
