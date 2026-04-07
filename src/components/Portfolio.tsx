@@ -1,4 +1,5 @@
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useRef, useEffect } from 'react';
 
 const portfolioItems = [
   { id: 1, size: 'md:col-span-1 md:row-span-2', label: 'Профиль • Адресная лента', accent: '#e2e8f0' },
@@ -9,55 +10,106 @@ const portfolioItems = [
   { id: 6, size: 'md:col-span-1 md:row-span-1', label: 'RGB • Подсветка', accent: '#22d3ee' },
 ];
 
-const MirrorPlaceholder = ({ accent, label }: { accent: string; label: string }) => (
-  <div
-    className="w-full h-full min-h-36 sm:min-h-44 md:min-h-48 relative rounded-xl overflow-hidden group cursor-pointer"
-    style={{ background: `linear-gradient(135deg, rgba(0,0,0,0.8), ${accent}22)`, border: `1px solid ${accent}33` }}
-  >
-    <div className="absolute inset-0 flex items-center justify-center">
-      <div
-        className="relative w-2/3 h-4/5 rounded-lg"
-        style={{
-          background: 'linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.1), rgba(255,255,255,0.03))',
-          border: '1px solid rgba(255,255,255,0.15)',
-          backdropFilter: 'blur(2px)',
-        }}
-      >
+const MirrorPlaceholder = ({ accent, label, index }: { accent: string; label: string; index: number }) => {
+  const leftBarRef = useRef<HTMLDivElement>(null);
+  const rightBarRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const offset = index * 400;
+    let frame: number;
+    let start: number | null = null;
+
+    const animate = (ts: number) => {
+      if (!start) start = ts;
+      const t = ((ts - start + offset) % 2000) / 2000;
+      const glow = 0.5 + 0.5 * Math.sin(t * Math.PI * 2);
+      const opacity = 0.4 + glow * 0.6;
+      const blur = 4 + glow * 8;
+      if (leftBarRef.current) {
+        leftBarRef.current.style.opacity = String(opacity);
+        leftBarRef.current.style.boxShadow = `0 0 ${blur}px ${accent}`;
+      }
+      if (rightBarRef.current) {
+        rightBarRef.current.style.opacity = String(opacity);
+        rightBarRef.current.style.boxShadow = `0 0 ${blur}px ${accent}`;
+      }
+      frame = requestAnimationFrame(animate);
+    };
+
+    frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
+  }, [accent, index]);
+
+  return (
+    <div
+      className="w-full h-full min-h-36 sm:min-h-44 md:min-h-48 relative rounded-xl overflow-hidden group cursor-pointer"
+      style={{ background: `linear-gradient(135deg, rgba(0,0,0,0.8), ${accent}22)`, border: `1px solid ${accent}33` }}
+    >
+      {/* Зеркало */}
+      <div className="absolute inset-0 flex items-center justify-center transition-transform duration-500 ease-out group-hover:scale-105">
         <div
-          className="absolute -left-0.5 top-4 bottom-4 w-0.5 rounded-full"
-          style={{ background: `linear-gradient(to bottom, transparent, ${accent}, transparent)`, boxShadow: `0 0 8px ${accent}` }}
-        />
-        <div
-          className="absolute -right-0.5 top-4 bottom-4 w-0.5 rounded-full"
-          style={{ background: `linear-gradient(to bottom, transparent, ${accent}, transparent)`, boxShadow: `0 0 8px ${accent}` }}
-        />
-        <div className="absolute inset-3 sm:inset-4 flex flex-col items-center justify-center gap-1.5 sm:gap-2">
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full" style={{ background: `linear-gradient(135deg, ${accent}, #f8fafc)` }} />
-            <div>
-              <div className="h-1 sm:h-1.5 w-10 sm:w-12 rounded" style={{ background: 'rgba(255,255,255,0.4)' }} />
-              <div className="h-0.5 sm:h-1 w-6 sm:w-8 rounded mt-0.5" style={{ background: 'rgba(255,255,255,0.2)' }} />
+          className="relative w-2/3 h-4/5 rounded-lg"
+          style={{
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.1), rgba(255,255,255,0.03))',
+            border: '1px solid rgba(255,255,255,0.15)',
+            backdropFilter: 'blur(2px)',
+          }}
+        >
+          <div
+            ref={leftBarRef}
+            className="absolute -left-0.5 top-4 bottom-4 w-0.5 rounded-full"
+            style={{ background: `linear-gradient(to bottom, transparent, ${accent}, transparent)` }}
+          />
+          <div
+            ref={rightBarRef}
+            className="absolute -right-0.5 top-4 bottom-4 w-0.5 rounded-full"
+            style={{ background: `linear-gradient(to bottom, transparent, ${accent}, transparent)` }}
+          />
+          <div className="absolute inset-3 sm:inset-4 flex flex-col items-center justify-center gap-1.5 sm:gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full" style={{ background: `linear-gradient(135deg, ${accent}, #f8fafc)` }} />
+              <div>
+                <div className="h-1 sm:h-1.5 w-10 sm:w-12 rounded" style={{ background: 'rgba(255,255,255,0.4)' }} />
+                <div className="h-0.5 sm:h-1 w-6 sm:w-8 rounded mt-0.5" style={{ background: 'rgba(255,255,255,0.2)' }} />
+              </div>
             </div>
-          </div>
-          <div className="grid grid-cols-3 gap-0.5 w-full">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div
-                key={i}
-                className="aspect-square rounded-sm"
-                style={{ background: `rgba(255,255,255,${0.15 + (i % 3) * 0.1})` }}
-              />
-            ))}
+            <div className="grid grid-cols-3 gap-0.5 w-full">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="aspect-square rounded-sm"
+                  style={{ background: `rgba(255,255,255,${0.15 + (i % 3) * 0.1})` }}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div
-      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-xl"
-      style={{ boxShadow: `inset 0 0 30px ${accent}22` }}
-    />
-  </div>
-);
+      {/* Оверлей при hover */}
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400 rounded-xl"
+        style={{ background: `radial-gradient(ellipse at center, ${accent}18 0%, transparent 70%)` }}
+      />
+
+      {/* Подпись slide-up */}
+      <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-350 ease-out">
+        <div
+          className="px-3 sm:px-4 py-2.5 sm:py-3"
+          style={{ background: `linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.6) 60%, transparent)` }}
+        >
+          <p className="text-white/90 text-[10px] sm:text-xs font-medium tracking-wider uppercase">{label}</p>
+        </div>
+      </div>
+
+      {/* Рамка hover */}
+      <div
+        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"
+        style={{ boxShadow: `inset 0 0 0 1px ${accent}55` }}
+      />
+    </div>
+  );
+};
 
 const Portfolio = () => {
   const titleRef = useScrollReveal({ threshold: 0.1 });
@@ -72,7 +124,6 @@ const Portfolio = () => {
       <div className="absolute top-0 inset-x-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent)' }} />
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-16">
-        {/* Заголовок */}
         <div ref={titleRef} className="text-center mb-10 sm:mb-12 lg:mb-16">
           <div
             className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-[10px] sm:text-xs font-semibold tracking-widest uppercase"
@@ -92,20 +143,17 @@ const Portfolio = () => {
           </p>
         </div>
 
-        {/* Грид портфолио */}
         <div
           ref={gridRef}
           className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4"
           style={{ gridAutoRows: 'clamp(140px, 18vw, 220px)' }}
         >
-          {portfolioItems.map((item) => (
+          {portfolioItems.map((item, index) => (
             <div key={item.id} className={item.size}>
-              <MirrorPlaceholder accent={item.accent} label={item.label} />
+              <MirrorPlaceholder accent={item.accent} label={item.label} index={index} />
             </div>
           ))}
         </div>
-
-
       </div>
     </section>
   );
