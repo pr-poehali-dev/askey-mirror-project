@@ -201,22 +201,25 @@ const Footer = () => {
             </div>
 
             {/* Навигация */}
-            <div>
-              <h4 className="text-white font-bold mb-3 sm:mb-4 text-xs sm:text-sm uppercase tracking-wider">Навигация</h4>
-              <div className="space-y-1.5 sm:space-y-2">
+            <div className="flex flex-col justify-between">
+              <h4 className="text-white font-bold mb-4 sm:mb-6 text-xs sm:text-sm uppercase tracking-wider">Навигация</h4>
+              <div className="flex flex-col gap-0">
                 {[
-                  { label: 'Каталог', href: '#catalog' },
-                  { label: 'О производстве', href: '#production' },
-                  { label: 'Сроки', href: '#timeline' },
-                  { label: 'Портфолио', href: '#portfolio' },
-                  { label: 'Контакты', href: '#contacts' },
-                ].map((link) => (
+                  { label: 'Каталог', href: '#catalog', num: '01' },
+                  { label: 'О производстве', href: '#production', num: '02' },
+                  { label: 'Сроки', href: '#timeline', num: '03' },
+                  { label: 'Портфолио', href: '#portfolio', num: '04' },
+                  { label: 'Контакты', href: '#contacts', num: '05' },
+                ].map((link, i, arr) => (
                   <button
                     key={link.href}
                     onClick={() => scrollTo(link.href)}
-                    className="block text-white/40 hover:text-purple-400 text-xs sm:text-sm transition-colors duration-200"
+                    className="group flex items-center gap-3 py-2.5 text-left transition-all duration-200 hover:pl-1"
+                    style={{ borderBottom: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none' }}
                   >
-                    {link.label}
+                    <span className="text-white/20 text-[10px] font-mono group-hover:text-purple-400 transition-colors duration-200">{link.num}</span>
+                    <span className="text-white/50 text-xs sm:text-sm group-hover:text-white transition-colors duration-200">{link.label}</span>
+                    <Icon name="ArrowRight" size={11} className="ml-auto text-white/10 group-hover:text-purple-400 transition-colors duration-200" />
                   </button>
                 ))}
               </div>
