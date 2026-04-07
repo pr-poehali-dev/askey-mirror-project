@@ -197,21 +197,7 @@ const Footer = () => {
               <p className="text-white/40 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
                 Производство премиальных зеркал с наклейками и адресной подсветкой. Доставка по всей России.
               </p>
-              <div className="flex items-center gap-2 sm:gap-3">
-                {[
-                  { icon: 'Camera', color: '#f8fafc' },
-                  { icon: 'Send', color: '#22d3ee' },
-                  { icon: 'MessageCircle', color: '#22c55e' },
-                ].map((social) => (
-                  <button
-                    key={social.icon}
-                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl sm:rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110"
-                    style={{ background: `${social.color}22`, border: `1px solid ${social.color}44` }}
-                  >
-                    <Icon name={social.icon} size={14} style={{ color: social.color }} />
-                  </button>
-                ))}
-              </div>
+
             </div>
 
             {/* Навигация */}
