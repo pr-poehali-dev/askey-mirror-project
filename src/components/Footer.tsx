@@ -201,25 +201,32 @@ const Footer = () => {
             </div>
 
             {/* Навигация */}
-            <div className="flex flex-col justify-between">
-              <h4 className="text-white font-bold mb-4 sm:mb-6 text-xs sm:text-sm uppercase tracking-wider">Навигация</h4>
-              <div className="flex flex-col gap-0">
+            <div>
+              <h4 className="text-white/30 font-bold mb-4 sm:mb-6 text-[10px] uppercase tracking-[0.2em]">Разделы</h4>
+              <div className="flex flex-col gap-1">
                 {[
-                  { label: 'Каталог', href: '#catalog', num: '01' },
-                  { label: 'О производстве', href: '#production', num: '02' },
-                  { label: 'Сроки', href: '#timeline', num: '03' },
-                  { label: 'Портфолио', href: '#portfolio', num: '04' },
-                  { label: 'Контакты', href: '#contacts', num: '05' },
-                ].map((link, i, arr) => (
+                  { label: 'Каталог', href: '#catalog' },
+                  { label: 'Производство', href: '#production' },
+                  { label: 'Сроки', href: '#timeline' },
+                  { label: 'Портфолио', href: '#portfolio' },
+                  { label: 'Контакты', href: '#contacts' },
+                ].map((link) => (
                   <button
                     key={link.href}
                     onClick={() => scrollTo(link.href)}
-                    className="group flex items-center gap-3 py-2.5 text-left transition-all duration-200 hover:pl-1"
-                    style={{ borderBottom: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none' }}
+                    className="group relative text-left w-fit"
                   >
-                    <span className="text-white/20 text-[10px] font-mono group-hover:text-purple-400 transition-colors duration-200">{link.num}</span>
-                    <span className="text-white/50 text-xs sm:text-sm group-hover:text-white transition-colors duration-200">{link.label}</span>
-                    <Icon name="ArrowRight" size={11} className="ml-auto text-white/10 group-hover:text-purple-400 transition-colors duration-200" />
+                    <span
+                      className="text-xl sm:text-2xl font-bold tracking-tight transition-all duration-300 group-hover:text-white"
+                      style={{ color: 'rgba(255,255,255,0.18)', WebkitTextStroke: '1px rgba(255,255,255,0.12)' }}
+                    >
+                      {link.label}
+                    </span>
+                    <span
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm text-xl sm:text-2xl font-bold tracking-tight text-white pointer-events-none"
+                    >
+                      {link.label}
+                    </span>
                   </button>
                 ))}
               </div>
