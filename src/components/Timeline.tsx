@@ -64,7 +64,7 @@ const Timeline = () => {
             ОТ ЗАЯВКИ <span className="text-gradient">ДО ДОСТАВКИ</span>
           </h2>
           <p className="text-white/50 text-sm sm:text-base lg:text-lg max-w-xl sm:max-w-2xl mx-auto">
-            Весь процесс занимает 12 дней с момента оплаты. Держим вас в курсе на каждом этапе
+            Весь процесс занимает от 3 до 12 дней с момента оплаты. Держим вас в курсе на каждом этапе
           </p>
         </div>
 
