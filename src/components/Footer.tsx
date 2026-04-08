@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Icon from '@/components/ui/icon';
 import DocumentModal from '@/components/DocumentModal';
 
@@ -168,6 +168,89 @@ const privacyContent = (
   </div>
 );
 
+const FooterCanvas = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let frame: number;
+    let t = 0;
+
+    const COLS = 18;
+    const ROWS = 8;
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    const dots = Array.from({ length: COLS * ROWS }, (_, idx) => {
+      const col = idx % COLS;
+      const row = Math.floor(idx / COLS);
+      return {
+        col,
+        row,
+        phase: Math.random() * Math.PI * 2,
+        speed: 0.008 + Math.random() * 0.006,
+      };
+    });
+
+    const draw = () => {
+      t += 0.012;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const cellW = canvas.width / COLS;
+      const cellH = canvas.height / ROWS;
+
+      for (const dot of dots) {
+        const wave = (Math.sin(t * dot.speed * 80 + dot.phase) + 1) / 2;
+        const opacity = 0.04 + wave * 0.18;
+        const radius = 2 + wave * 1.5;
+
+        const x = (dot.col + 0.5) * cellW;
+        const y = (dot.row + 0.5) * cellH;
+
+        if (wave > 0.6) {
+          const grd = ctx.createRadialGradient(x, y, 0, x, y, radius * 4);
+          grd.addColorStop(0, `rgba(255,255,255,${opacity * 0.6})`);
+          grd.addColorStop(1, 'rgba(255,255,255,0)');
+          ctx.beginPath();
+          ctx.arc(x, y, radius * 4, 0, Math.PI * 2);
+          ctx.fillStyle = grd;
+          ctx.fill();
+        }
+
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${opacity})`;
+        ctx.fill();
+      }
+
+      frame = requestAnimationFrame(draw);
+    };
+
+    frame = requestAnimationFrame(draw);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 w-full h-full pointer-events-none"
+      style={{ opacity: 0.7 }}
+    />
+  );
+};
+
 const Footer = () => {
   const [ofertaOpen, setOfertaOpen] = useState(false);
   const [privacyOpen, setPrivacyOpen] = useState(false);
@@ -180,9 +263,10 @@ const Footer = () => {
   return (
     <>
       <footer
-        className="relative py-10 sm:py-12 border-t"
+        className="relative py-10 sm:py-12 border-t overflow-hidden"
         style={{ background: '#060609', borderColor: 'rgba(255,255,255,0.2)' }}
       >
+        <FooterCanvas />
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 mb-8 sm:mb-12">
             {/* О компании */}
