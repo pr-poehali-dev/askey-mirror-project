@@ -180,46 +180,45 @@ const FooterCanvas = () => {
     let frame: number;
     let t = 0;
 
-    const COLS = 22;
-    const ROWS = 6;
+    const CELL = 38;
+    let COLS = 22;
+    let ROWS = 6;
 
     const resize = () => {
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
+      COLS = Math.ceil(canvas.width / CELL);
+      ROWS = Math.ceil(canvas.height / CELL);
     };
     resize();
     window.addEventListener('resize', resize);
 
-    const dots = Array.from({ length: COLS * ROWS }, (_, idx) => {
-      const col = idx % COLS;
-      const row = Math.floor(idx / COLS);
-      return {
-        col,
-        row,
+    const getDots = () =>
+      Array.from({ length: COLS * ROWS }, (_, idx) => ({
+        col: idx % COLS,
+        row: Math.floor(idx / COLS),
         phase: Math.random() * Math.PI * 2,
         speed: 0.008 + Math.random() * 0.006,
-      };
-    });
+      }));
+
+    let dots = getDots();
+    window.addEventListener('resize', () => { dots = getDots(); });
 
     const draw = () => {
       t += 0.012;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      const cellW = canvas.width / COLS;
-      const cellH = canvas.height / ROWS;
-
       for (const dot of dots) {
         const wave = (Math.sin(t * dot.speed * 80 + dot.phase) + 1) / 2;
 
-        // fade: 0 вверху → 1 внизу
-        const fadeY = dot.row / (ROWS - 1);
+        const fadeY = ROWS > 1 ? dot.row / (ROWS - 1) : 1;
         const fade = Math.pow(fadeY, 1.8);
 
         const opacity = (0.05 + wave * 0.28) * fade;
         const radius = (1.5 + wave * 2) * (0.4 + fade * 0.6);
 
-        const x = (dot.col + 0.5) * cellW;
-        const y = (dot.row + 0.5) * cellH;
+        const x = (dot.col + 0.5) * CELL;
+        const y = (dot.row + 0.5) * CELL;
 
         if (wave > 0.55 && fade > 0.2) {
           const grd = ctx.createRadialGradient(x, y, 0, x, y, radius * 5);
