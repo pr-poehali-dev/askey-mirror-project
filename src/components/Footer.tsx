@@ -180,8 +180,8 @@ const FooterCanvas = () => {
     let frame: number;
     let t = 0;
 
-    const COLS = 18;
-    const ROWS = 8;
+    const COLS = 22;
+    const ROWS = 6;
 
     const resize = () => {
       canvas.width = canvas.offsetWidth;
@@ -210,18 +210,23 @@ const FooterCanvas = () => {
 
       for (const dot of dots) {
         const wave = (Math.sin(t * dot.speed * 80 + dot.phase) + 1) / 2;
-        const opacity = 0.04 + wave * 0.18;
-        const radius = 2 + wave * 1.5;
+
+        // fade: 0 вверху → 1 внизу
+        const fadeY = dot.row / (ROWS - 1);
+        const fade = Math.pow(fadeY, 1.8);
+
+        const opacity = (0.05 + wave * 0.28) * fade;
+        const radius = (1.5 + wave * 2) * (0.4 + fade * 0.6);
 
         const x = (dot.col + 0.5) * cellW;
         const y = (dot.row + 0.5) * cellH;
 
-        if (wave > 0.6) {
-          const grd = ctx.createRadialGradient(x, y, 0, x, y, radius * 4);
-          grd.addColorStop(0, `rgba(255,255,255,${opacity * 0.6})`);
+        if (wave > 0.55 && fade > 0.2) {
+          const grd = ctx.createRadialGradient(x, y, 0, x, y, radius * 5);
+          grd.addColorStop(0, `rgba(255,255,255,${opacity * 0.5})`);
           grd.addColorStop(1, 'rgba(255,255,255,0)');
           ctx.beginPath();
-          ctx.arc(x, y, radius * 4, 0, Math.PI * 2);
+          ctx.arc(x, y, radius * 5, 0, Math.PI * 2);
           ctx.fillStyle = grd;
           ctx.fill();
         }
@@ -245,8 +250,8 @@ const FooterCanvas = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none"
-      style={{ opacity: 0.7 }}
+      className="absolute bottom-0 left-0 w-full pointer-events-none"
+      style={{ height: '65%', opacity: 0.9 }}
     />
   );
 };
