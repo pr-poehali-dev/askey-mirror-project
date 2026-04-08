@@ -215,12 +215,11 @@ const Production = () => {
               <p className="text-white/60 text-sm sm:text-base leading-relaxed mb-3 sm:mb-4">
                 Наше главное отличие от конкурентов — адресная светодиодная лента.
                 В отличие от обычной, каждый диод управляется независимо, что позволяет
-                создавать динамические световые эффекты, плавные переходы и бегущие огни.
+                создавать динамические световые эффекты и плавные переходы.
               </p>
               <ul className="space-y-1.5 sm:space-y-2">
                 {[
                   'Каждый диод управляется независимо',
-                  'Динамические эффекты и плавные переходы',
                   'Настройка режимов сенсорной кнопкой',
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-white/70 justify-center md:justify-start">
