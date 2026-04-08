@@ -95,7 +95,7 @@ const Catalog = () => {
                   : 'linear-gradient(135deg, #0e0e0e 0%, #131313 100%)',
                 border: `1px solid ${product.popular ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.2)'}`,
                 boxShadow: product.popular
-                  ? '0 0 40px rgba(255,255,255,0.15), inset 0 1px 0 rgba(255,255,255,0.2)'
+                  ? '0 0 40px rgba(255,255,255,0.08), inset 0 1px 0 rgba(255,255,255,0.12)'
                   : 'none',
               }}
               onMouseEnter={e => {
