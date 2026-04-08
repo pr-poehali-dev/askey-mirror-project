@@ -91,8 +91,8 @@ const Catalog = () => {
               className="relative rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col group"
               style={{
                 background: product.popular
-                  ? 'linear-gradient(135deg, #13002a 0%, #1a0035 60%, #0d0618 100%)'
-                  : 'linear-gradient(135deg, #0d0618 0%, #110220 100%)',
+                  ? 'linear-gradient(135deg, #141414 0%, #1c1c1c 60%, #0e0e0e 100%)'
+                  : 'linear-gradient(135deg, #0e0e0e 0%, #131313 100%)',
                 border: `1px solid ${product.popular ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.2)'}`,
                 boxShadow: product.popular
                   ? '0 0 40px rgba(255,255,255,0.15), inset 0 1px 0 rgba(255,255,255,0.2)'
