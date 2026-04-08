@@ -22,7 +22,7 @@ const AddressableLedDemo = () => {
     let t = 0;
 
     const tick = () => {
-      t += 0.04;
+      t += 0.013;
 
       for (let i = 0; i < DOT_COUNT * 2; i++) {
         const el = dotsRef.current[i];
@@ -65,8 +65,8 @@ const AddressableLedDemo = () => {
         style={{
           width: '200px',
           height: '240px',
-          background: 'linear-gradient(135deg, #0d0618 0%, #1a0035 100%)',
-          border: '1px solid rgba(255,255,255,0.25)',
+          background: 'linear-gradient(135deg, #0e0e0e 0%, #161616 60%, #0a0a0a 100%)',
+          border: '1px solid rgba(255,255,255,0.2)',
         }}
       >
         {/* Зеркальная поверхность */}
@@ -75,8 +75,8 @@ const AddressableLedDemo = () => {
           style={{
             inset: '12px 22px',
             borderRadius: '8px',
-            background: 'linear-gradient(135deg, #1a1a2e, #0f1a30)',
-            border: '1px solid rgba(255,255,255,0.06)',
+            background: 'linear-gradient(135deg, #111111, #0d0d0d)',
+            border: '1px solid rgba(255,255,255,0.08)',
           }}
         />
 
