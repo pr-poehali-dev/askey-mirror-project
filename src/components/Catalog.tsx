@@ -97,24 +97,48 @@ const Catalog = () => {
                 boxShadow: product.popular
                   ? '0 0 40px rgba(255,255,255,0.08), inset 0 1px 0 rgba(255,255,255,0.12)'
                   : 'none',
+                transition: 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease, border-color 0.35s ease',
               }}
               onMouseEnter={e => {
-                const shine = e.currentTarget.querySelector<HTMLElement>('.shine-overlay');
+                const el = e.currentTarget;
+                el.style.transform = 'translateY(-8px) scale(1.02)';
+                el.style.boxShadow = '0 24px 60px rgba(255,255,255,0.12), 0 0 0 1px rgba(255,255,255,0.5), inset 0 1px 0 rgba(255,255,255,0.2)';
+                el.style.borderColor = 'rgba(255,255,255,0.6)';
+                const shine = el.querySelector<HTMLElement>('.shine-overlay');
                 if (shine) shine.style.backgroundPosition = '-50% 0%';
+                const glow = el.querySelector<HTMLElement>('.hover-glow');
+                if (glow) glow.style.opacity = '1';
               }}
               onMouseLeave={e => {
-                const shine = e.currentTarget.querySelector<HTMLElement>('.shine-overlay');
+                const el = e.currentTarget;
+                el.style.transform = '';
+                el.style.boxShadow = product.popular
+                  ? '0 0 40px rgba(255,255,255,0.08), inset 0 1px 0 rgba(255,255,255,0.12)'
+                  : 'none';
+                el.style.borderColor = product.popular ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.2)';
+                const shine = el.querySelector<HTMLElement>('.shine-overlay');
                 if (shine) shine.style.backgroundPosition = '200% 0%';
+                const glow = el.querySelector<HTMLElement>('.hover-glow');
+                if (glow) glow.style.opacity = '0';
               }}
             >
+              {/* Внутренний свет при hover */}
+              <div
+                className="hover-glow absolute inset-0 pointer-events-none rounded-2xl sm:rounded-3xl"
+                style={{
+                  background: 'radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.08) 0%, transparent 65%)',
+                  opacity: 0,
+                  transition: 'opacity 0.35s ease',
+                }}
+              />
               {/* Отблеск при hover */}
               <div
                 className="shine-overlay absolute inset-0 pointer-events-none rounded-2xl sm:rounded-3xl"
                 style={{
-                  background: 'linear-gradient(115deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0.07) 50%, rgba(255,255,255,0) 60%)',
+                  background: 'linear-gradient(115deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 60%)',
                   backgroundSize: '400% 100%',
                   backgroundPosition: '200% 0%',
-                  transition: 'background-position 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  transition: 'background-position 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 }}
               />
               {/* Glow */}
