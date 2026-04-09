@@ -158,11 +158,21 @@ const MirrorDecor = () => {
               className="absolute animate-mirror-content-reveal cursor-pointer"
               onClick={() => setLit(v => !v)}
               style={{
-                zIndex: 6,
+                zIndex: 9,
                 animationDelay: '950ms',
                 bottom: 'calc(18px + 6% + 50px)',
                 left: 'calc(50% - 3px)',
                 transform: 'translateX(-50%)',
+                width: '44px',
+                height: '44px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              {/* Видимая кнопка */}
+              <div style={{
                 width: '14px',
                 height: '14px',
                 borderRadius: '5px',
@@ -173,8 +183,9 @@ const MirrorDecor = () => {
                   : '0 0 6px 2px rgba(180,220,255,0.9), 0 0 14px 4px rgba(150,200,255,0.5)',
                 backdropFilter: 'blur(4px)',
                 transition: 'all 0.3s ease',
-              }}
-            />
+                flexShrink: 0,
+              }} />
+            </div>
 
             {/* Диоды + LED-полоски */}
             <MirrorLed lit={lit} dotsRef={dotsRef} />
