@@ -36,7 +36,7 @@ const MirrorCharacterTop = ({ lit }: Props) => {
 
   const getTransition = (): string => {
     if (phase === 'peek') return 'transform 0.4s cubic-bezier(0.34, 1.5, 0.64, 1)';
-    if (phase === 'fall') return 'transform 1s cubic-bezier(0.55, 0, 1, 1), opacity 0.15s ease 0.88s';
+    if (phase === 'fall') return 'transform 1.8s cubic-bezier(0.4, 0, 0.8, 1), opacity 0.15s ease 1.7s';
     return 'none';
   };
 
