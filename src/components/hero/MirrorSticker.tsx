@@ -2,7 +2,7 @@ const MirrorStickerTop = () => (
   <div
     className="absolute top-0 left-0 right-0 animate-mirror-content-reveal"
     style={{
-      zIndex: 4,
+      zIndex: 9,
       animationDelay: '800ms',
       background: 'rgba(255,255,255,0.97)',
       padding: '8px 10px 7px',

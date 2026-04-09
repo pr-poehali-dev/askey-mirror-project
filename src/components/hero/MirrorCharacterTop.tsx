@@ -12,12 +12,12 @@ const MirrorCharacterTop = ({ lit }: Props) => {
       setPhase('hidden');
       return;
     }
-    // Выглядывает — только голова из-под наклейки
-    setPhase('peek');
-    // Через 1.2s — отпускает и падает
-    const t1 = setTimeout(() => setPhase('fall'), 1200);
-    const t2 = setTimeout(() => setPhase('gone'), 2200);
-    return () => { clearTimeout(t1); clearTimeout(t2); };
+    // Сначала сбрасываем в hidden без анимации, потом запускаем
+    setPhase('hidden');
+    const t0 = setTimeout(() => setPhase('peek'), 50);
+    const t1 = setTimeout(() => setPhase('fall'), 1300);
+    const t2 = setTimeout(() => setPhase('gone'), 2300);
+    return () => { clearTimeout(t0); clearTimeout(t1); clearTimeout(t2); };
   }, [lit]);
 
   // Персонаж висит вниз головой.
@@ -43,7 +43,7 @@ const MirrorCharacterTop = ({ lit }: Props) => {
       className="absolute left-0 right-0 pointer-events-none"
       style={{
         top: '18%',
-        zIndex: 8,
+        zIndex: 3,
         display: 'flex',
         justifyContent: 'center',
         ...getStyle(),
