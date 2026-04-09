@@ -77,6 +77,44 @@ const MirrorDecor = () => {
               }}
             />
 
+            {/* Текст при включении */}
+            <div
+              className="absolute inset-0 flex items-center justify-center pointer-events-none"
+              style={{ zIndex: 6 }}
+            >
+              <div
+                style={{
+                  opacity: lit ? 1 : 0,
+                  transform: lit ? 'translateY(0) scale(1)' : 'translateY(8px) scale(0.95)',
+                  transition: 'opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s',
+                  textAlign: 'center',
+                  padding: '0 12%',
+                }}
+              >
+                <div style={{
+                  fontFamily: 'Orbitron, monospace',
+                  fontSize: 'clamp(9px, 2.2vw, 13px)',
+                  color: 'rgba(255,255,255,0.55)',
+                  letterSpacing: '0.2em',
+                  textTransform: 'uppercase',
+                  marginBottom: '6px',
+                }}>
+                  сегодня
+                </div>
+                <div style={{
+                  fontFamily: 'Georgia, serif',
+                  fontSize: 'clamp(13px, 3.2vw, 19px)',
+                  color: 'rgba(255,255,255,0.92)',
+                  fontStyle: 'italic',
+                  letterSpacing: '0.05em',
+                  lineHeight: 1.3,
+                  textShadow: '0 0 20px rgba(255,255,255,0.4)',
+                }}>
+                  ты в главной роли
+                </div>
+              </div>
+            </div>
+
             {/* Сенсорная кнопка подсветки */}
             <div
               className="absolute animate-mirror-content-reveal cursor-pointer"
