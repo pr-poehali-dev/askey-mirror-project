@@ -22,11 +22,11 @@ const CinemaText = ({ lit }: { lit: boolean }) => {
         {/* Верхняя линия */}
         <div style={{
           fontFamily: 'Orbitron, monospace',
-          fontSize: '0.57em',
+          fontSize: '8px',
           color: 'rgba(255,255,255,0.4)',
           letterSpacing: '0.25em',
           textTransform: 'uppercase',
-          marginBottom: '0.57em',
+          marginBottom: '8px',
           display: 'flex',
           justifyContent: 'center',
           gap: '0.05em',
@@ -45,13 +45,13 @@ const CinemaText = ({ lit }: { lit: boolean }) => {
           width: lit ? '50%' : '0%',
           height: '1px',
           background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent)',
-          margin: '0 auto 0.57em',
+          margin: '0 auto 8px',
           transition: lit ? 'width 0.8s ease 0.9s' : 'width 0.3s ease',
         }} />
         {/* Главная строка */}
         <div style={{
           fontFamily: "'Cormorant Garamond', Georgia, serif",
-          fontSize: '1.07em',
+          fontSize: '15px',
           fontWeight: 300,
           fontStyle: 'italic',
           color: 'rgba(255,255,255,0.88)',
@@ -82,7 +82,7 @@ const MirrorDecor = () => {
 
   return (
     <div
-      className="animate-slide-in-right relative flex items-center justify-center mb-10 lg:mb-0"
+      className="animate-slide-in-right relative flex items-center justify-center mb-16 sm:mb-12 lg:mb-0"
       style={{ animationDelay: '400ms', willChange: 'transform, opacity', padding: '0 40px' }}
     >
       {/* Дальнее фоновое свечение (halo) */}
@@ -98,15 +98,15 @@ const MirrorDecor = () => {
 
       {/* Обёртка зеркала */}
       <div
-        className="relative animate-mirror-float w-[55vw] sm:w-[42vw] md:w-[36vw] lg:w-[23vw] xl:w-[21vw] 2xl:w-[19vw]"
-        style={{ minWidth: '210px', maxWidth: '360px', zIndex: 1, containerType: 'inline-size', fontSize: '2.2cqw' }}
+        className="relative animate-mirror-float scale-[0.75] sm:scale-[0.85] md:scale-90 lg:scale-100 xl:scale-110 2xl:scale-125 origin-center"
+        style={{ width: '240px', zIndex: 1 }}
       >
         {/* Рамка зеркала — iPhone-форма */}
         <div
           className="relative animate-mirror-frame-glow"
           style={{
-            borderRadius: '3.1em',
-            padding: '0.43em',
+            borderRadius: '44px',
+            padding: '6px',
             background: 'linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 30%, rgba(200,210,220,0.95) 60%, rgba(255,255,255,0.8) 100%)',
           }}
         >
@@ -114,7 +114,7 @@ const MirrorDecor = () => {
           <div
             className="relative overflow-hidden"
             style={{
-              borderRadius: '2.7em',
+              borderRadius: '38px',
               aspectRatio: '9 / 16',
               background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 20%, #141414 40%, #111111 60%, #0a0a0a 80%, #111111 100%)',
             }}
@@ -169,8 +169,8 @@ const MirrorDecor = () => {
               }}
             >
               <div style={{
-                width: '3.1em',
-                height: '3.1em',
+                width: '44px',
+                height: '44px',
                 borderRadius: '50%',
                 display: 'flex',
                 alignItems: 'center',
@@ -178,9 +178,9 @@ const MirrorDecor = () => {
               }}>
                 {/* Видимая кнопка */}
                 <div style={{
-                  width: '1em',
-                  height: '1em',
-                  borderRadius: '0.35em',
+                  width: '14px',
+                  height: '14px',
+                  borderRadius: '5px',
                   background: lit ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.08)',
                   border: lit ? '2px solid #e2e8f0' : '2px solid rgba(200,230,255,0.95)',
                   boxShadow: lit
@@ -254,22 +254,22 @@ const MirrorDecor = () => {
           className="absolute -top-8 left-0 right-0 flex items-center justify-center gap-1.5 pointer-events-none animate-fade-in"
           style={{ animationDelay: '1200ms' }}
         >
-          <span className="rounded-full animate-pulse-neon" style={{ backgroundColor: '#e2e8f0', width: '0.7em', height: '0.7em', display: 'inline-block' }} />
-          <span style={{ fontSize: '0.7em', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#e2e8f0', fontFamily: 'Orbitron, monospace' }}>
+          <span className="w-1.5 h-1.5 rounded-full animate-pulse-neon" style={{ backgroundColor: '#e2e8f0' }} />
+          <span className="text-[10px] uppercase tracking-widest" style={{ color: '#e2e8f0', fontFamily: 'Orbitron, monospace' }}>
             Ваш профиль
           </span>
         </div>
 
         {/* Метка размера снизу */}
         <div className="absolute left-0 right-0 flex flex-col items-center gap-1 pointer-events-none" style={{ top: 'calc(100% + 10px)' }}>
-          <span style={{ fontSize: '0.7em', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#e2e8f0', opacity: 0.55, fontFamily: 'Orbitron, monospace' }}>
+          <span className="text-[10px] uppercase tracking-widest" style={{ color: '#e2e8f0', opacity: 0.55, fontFamily: 'Orbitron, monospace' }}>
             60 × 120 см
           </span>
           <span
             className="tracking-wide animate-pulse"
             style={{
               fontFamily: 'sans-serif',
-              fontSize: lit ? '0.64em' : '0.78em',
+              fontSize: lit ? '9px' : '11px',
               color: lit ? 'rgba(255,255,255,0.5)' : 'rgba(255,220,100,0.95)',
               fontWeight: lit ? 400 : 700,
               textShadow: lit ? 'none' : '0 0 8px rgba(255,200,50,0.7)',
