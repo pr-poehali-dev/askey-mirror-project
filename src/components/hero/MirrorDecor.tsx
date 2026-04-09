@@ -16,18 +16,18 @@ const CinemaText = ({ lit }: { lit: boolean }) => {
       className="absolute inset-0 flex items-center justify-center pointer-events-none"
       style={{ zIndex: 6 }}
     >
-      <div style={{ textAlign: 'center', padding: '0 10%', opacity: lit ? 1 : 0, transition: 'opacity 0.3s ease' }}>
+      <div style={{ textAlign: 'center', padding: '0 8%', width: '100%', opacity: lit ? 1 : 0, transition: 'opacity 0.3s ease' }}>
         {/* Верхняя линия */}
         <div style={{
           fontFamily: 'Orbitron, monospace',
-          fontSize: 'clamp(7px, 1.8vw, 10px)',
+          fontSize: '8px',
           color: 'rgba(255,255,255,0.4)',
-          letterSpacing: '0.35em',
+          letterSpacing: '0.25em',
           textTransform: 'uppercase',
-          marginBottom: '10px',
+          marginBottom: '8px',
           display: 'flex',
           justifyContent: 'center',
-          gap: '0.1em',
+          gap: '0.05em',
         }}>
           {line1.split('').map((ch, i) => (
             <span key={`${key}-l1-${i}`} style={{
@@ -40,25 +40,25 @@ const CinemaText = ({ lit }: { lit: boolean }) => {
         </div>
         {/* Разделитель */}
         <div style={{
-          width: lit ? '60%' : '0%',
+          width: lit ? '50%' : '0%',
           height: '1px',
           background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent)',
-          margin: '0 auto 10px',
+          margin: '0 auto 8px',
           transition: lit ? 'width 0.8s ease 0.9s' : 'width 0.3s ease',
         }} />
         {/* Главная строка */}
         <div style={{
           fontFamily: "'Cormorant Garamond', Georgia, serif",
-          fontSize: 'clamp(14px, 3.5vw, 20px)',
+          fontSize: '15px',
           fontWeight: 300,
           fontStyle: 'italic',
           color: 'rgba(255,255,255,0.88)',
-          letterSpacing: '0.08em',
+          letterSpacing: '0.04em',
+          whiteSpace: 'nowrap',
+          textShadow: '0 0 30px rgba(255,255,255,0.25)',
           display: 'flex',
           justifyContent: 'center',
-          flexWrap: 'wrap',
-          gap: '0.15em',
-          textShadow: '0 0 30px rgba(255,255,255,0.25)',
+          gap: '0.05em',
         }}>
           {line2.split('').map((ch, i) => (
             <span key={`${key}-l2-${i}`} style={{
