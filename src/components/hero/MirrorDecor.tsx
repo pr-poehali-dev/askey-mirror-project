@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import MirrorLed from './MirrorLed';
 import MirrorCharacter from './MirrorCharacter';
+import MirrorCharacterTop from './MirrorCharacterTop';
 import { MirrorStickerTop, MirrorStickerBottom } from './MirrorSticker';
 
 const CinemaText = ({ lit }: { lit: boolean }) => {
@@ -197,6 +198,9 @@ const MirrorDecor = () => {
 
             {/* Персонаж — выезжает снизу при включении */}
             <MirrorCharacter lit={lit} />
+
+            {/* Персонаж 2 — выглядывает сверху и падает */}
+            <MirrorCharacterTop lit={lit} />
 
             {/* Наклейка снизу */}
             <MirrorStickerBottom />
