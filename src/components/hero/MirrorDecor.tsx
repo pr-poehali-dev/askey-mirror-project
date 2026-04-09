@@ -98,8 +98,8 @@ const MirrorDecor = () => {
 
       {/* Обёртка зеркала */}
       <div
-        className="relative animate-mirror-float w-[55vw] sm:w-[42vw] md:w-[36vw] lg:w-[28vw] xl:w-[26vw] 2xl:w-[24vw]"
-        style={{ minWidth: '210px', maxWidth: '500px', zIndex: 1 }}
+        className="relative animate-mirror-float w-[55vw] sm:w-[42vw] md:w-[36vw] lg:w-[23vw] xl:w-[21vw] 2xl:w-[19vw]"
+        style={{ minWidth: '210px', maxWidth: '360px', zIndex: 1 }}
       >
         {/* Рамка зеркала — iPhone-форма */}
         <div
