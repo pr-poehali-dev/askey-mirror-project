@@ -6,12 +6,14 @@ interface MirrorLedProps {
 }
 
 const DURATION = 1200;
+const PULSE_PERIOD = 1400; // мс между волнами
 
 const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
   const frameRef = useRef<number>(0);
   const fillRef = useRef(0);
   const litRef = useRef(false);
   const lastTimeRef = useRef<number | null>(null);
+  const timeRef = useRef(0);
 
   useEffect(() => {
     litRef.current = lit;
@@ -20,25 +22,35 @@ const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
   useEffect(() => {
     const tick = (now: number) => {
       if (lastTimeRef.current === null) lastTimeRef.current = now;
-      const dt = (now - lastTimeRef.current) / DURATION;
+      const delta = now - lastTimeRef.current;
       lastTimeRef.current = now;
+      const dt = delta / DURATION;
 
       if (litRef.current) {
         fillRef.current = Math.min(1, fillRef.current + dt);
+        timeRef.current += delta;
       } else {
         fillRef.current = Math.max(0, fillRef.current - dt);
+        timeRef.current = 0;
       }
 
       const fill = fillRef.current;
       const topInset = Math.round((1 - fill) * 100);
 
+      // пульсация — волна яркости по полоскам каждые ~1.4с
+      const pulse = fill >= 1
+        ? 0.12 * Math.pow(Math.max(0, Math.sin((timeRef.current / PULSE_PERIOD) * Math.PI * 2)), 3)
+        : 0;
+      const opacity = fill > 0 ? Math.min(1, 0.7 + fill * 0.3 + pulse) : 0;
+      const glowBase = 0.5 + fill * 0.5 + pulse * 2;
+
       for (let s = 0; s < 2; s++) {
         const el = dotsRef.current[s];
         if (!el) continue;
         el.style.clipPath = `inset(${topInset}% 0 0 0)`;
-        el.style.opacity = fill > 0 ? String(0.7 + fill * 0.3) : '0';
+        el.style.opacity = String(opacity);
         el.style.boxShadow = fill > 0.1
-          ? `0 0 18px 6px rgba(255,255,255,${0.5 + fill * 0.5}), 0 0 35px 10px rgba(255,255,255,${0.2 + fill * 0.3})`
+          ? `0 0 18px 6px rgba(255,255,255,${glowBase}), 0 0 35px 10px rgba(255,255,255,${0.2 + fill * 0.3 + pulse})`
           : 'none';
       }
 
