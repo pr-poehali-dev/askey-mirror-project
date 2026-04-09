@@ -13,24 +13,21 @@ const MirrorCharacterTop = ({ lit }: Props) => {
       return;
     }
     setPhase('peek');
-    const t1 = setTimeout(() => setPhase('fall'), 1400);
-    const t2 = setTimeout(() => setPhase('gone'), 2300);
+    const t1 = setTimeout(() => setPhase('fall'), 300);
+    const t2 = setTimeout(() => setPhase('gone'), 1400);
     return () => { clearTimeout(t1); clearTimeout(t2); };
   }, [lit]);
 
-  // Персонаж висит вверх ногами — перевёрнут на 180deg
-  // В phase=peek — выехал наполовину вниз из верхней наклейки
-  // В phase=fall — падает вниз через всё зеркало
   const getStyle = (): React.CSSProperties => {
-    if (phase === 'hidden') return { transform: 'translateY(-100%) rotate(180deg)', opacity: 0 };
-    if (phase === 'peek')   return { transform: 'translateY(0%)   rotate(180deg)', opacity: 1 };
-    if (phase === 'fall')   return { transform: 'translateY(800%) rotate(180deg)', opacity: 1 };
-    return                         { transform: 'translateY(800%) rotate(180deg)', opacity: 0 };
+    if (phase === 'hidden') return { transform: 'translateY(-80%)',  opacity: 0 };
+    if (phase === 'peek')   return { transform: 'translateY(10%)',   opacity: 1 };
+    if (phase === 'fall')   return { transform: 'translateY(850%)',  opacity: 1 };
+    return                         { transform: 'translateY(850%)',  opacity: 0 };
   };
 
   const getTransition = (): string => {
-    if (phase === 'peek') return 'transform 0.45s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.25s ease';
-    if (phase === 'fall') return 'transform 0.65s cubic-bezier(0.55, 0, 1, 0.8), opacity 0.15s ease 0.55s';
+    if (phase === 'peek') return 'transform 0.2s ease-out, opacity 0.15s ease';
+    if (phase === 'fall') return 'transform 0.85s cubic-bezier(0.4, 0, 1, 1), opacity 0.1s ease 0.78s';
     return 'none';
   };
 
@@ -46,10 +43,11 @@ const MirrorCharacterTop = ({ lit }: Props) => {
         transition: getTransition(),
       }}
     >
+      {/* SVG перевёрнут — персонаж висит вниз головой */}
       <svg
         viewBox="0 0 80 100"
         width="26%"
-        style={{ display: 'block', overflow: 'visible' }}
+        style={{ display: 'block', overflow: 'visible', transform: 'rotate(180deg)' }}
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
@@ -67,67 +65,64 @@ const MirrorCharacterTop = ({ lit }: Props) => {
           </linearGradient>
         </defs>
 
-        {/* ── НОГИ (сверху, т.к. перевёрнут) — цепляются за край ── */}
-        <rect x="24" y="2" width="12" height="14" rx="4"
+        {/* ── НОГИ — торчат вверх (цепляются за край наклейки) ── */}
+        <rect x="24" y="2" width="12" height="16" rx="4"
           fill="url(#c2-suit)" stroke="#334155" strokeWidth="1" />
-        <rect x="44" y="2" width="12" height="14" rx="4"
+        <rect x="44" y="2" width="12" height="16" rx="4"
           fill="url(#c2-suit)" stroke="#334155" strokeWidth="1" />
-        {/* Ступни — крючки, цепляются за верхнюю наклейку */}
-        <rect x="22" y="2" width="16" height="5" rx="2"
+        <rect x="21" y="2" width="18" height="6" rx="3"
           fill="#0f172a" stroke="#475569" strokeWidth="1" />
-        <rect x="42" y="2" width="16" height="5" rx="2"
+        <rect x="41" y="2" width="18" height="6" rx="3"
           fill="#0f172a" stroke="#475569" strokeWidth="1" />
 
         {/* ── ТЕЛО ── */}
-        <rect x="20" y="14" width="40" height="30" rx="5"
+        <rect x="18" y="16" width="44" height="30" rx="6"
           fill="url(#c2-suit)" stroke="#334155" strokeWidth="1.2" />
-        {/* Нагрудная панель */}
-        <rect x="28" y="20" width="24" height="12" rx="2"
-          fill="#0f172a" stroke="#a78bfa" strokeWidth="0.8" strokeOpacity="0.6" />
-        <line x1="30" y1="25" x2="50" y2="25" stroke="#a78bfa" strokeWidth="1" strokeOpacity="0.7">
-          <animate attributeName="stroke-opacity" values="0.7;0.15;0.7" dur="1.4s" repeatCount="indefinite" />
-        </line>
-        <line x1="30" y1="29" x2="50" y2="29" stroke="#a78bfa" strokeWidth="0.7" strokeOpacity="0.4">
-          <animate attributeName="stroke-opacity" values="0.4;0.1;0.4" dur="1.9s" repeatCount="indefinite" />
+        <rect x="27" y="22" width="26" height="12" rx="2"
+          fill="#0f172a" stroke="#a78bfa" strokeWidth="0.8" strokeOpacity="0.5" />
+        <line x1="29" y1="27" x2="51" y2="27" stroke="#a78bfa" strokeWidth="1" strokeOpacity="0.6">
+          <animate attributeName="stroke-opacity" values="0.6;0.1;0.6" dur="1.2s" repeatCount="indefinite" />
         </line>
 
-        {/* ── РУКИ — висят вниз (в перевёрнутом виде — вверх) ── */}
-        {/* Левая */}
-        <line x1="20" y1="22" x2="8" y2="30"
-          stroke="#334155" strokeWidth="7" strokeLinecap="round" />
-        <circle cx="7" cy="32" r="4" fill="#1e293b" stroke="#475569" strokeWidth="1" />
-        {/* Правая */}
-        <line x1="60" y1="22" x2="72" y2="30"
-          stroke="#334155" strokeWidth="7" strokeLinecap="round" />
-        <circle cx="73" cy="32" r="4" fill="#1e293b" stroke="#475569" strokeWidth="1" />
+        {/* ── РУКИ — раскинуты в ужасе ── */}
+        <line x1="18" y1="24" x2="3"  y2="16" stroke="#334155" strokeWidth="7" strokeLinecap="round" />
+        <circle cx="2" cy="14" r="4" fill="#1e293b" stroke="#475569" strokeWidth="1" />
+        <line x1="62" y1="24" x2="77" y2="16" stroke="#334155" strokeWidth="7" strokeLinecap="round" />
+        <circle cx="78" cy="14" r="4" fill="#1e293b" stroke="#475569" strokeWidth="1" />
 
-        {/* ── ГОЛОВА (внизу, т.к. перевёрнут — выглядывает) ── */}
-        <rect x="18" y="42" width="44" height="38" rx="12"
+        {/* ── ГОЛОВА ── */}
+        <rect x="17" y="44" width="46" height="40" rx="13"
           fill="url(#c2-suit)" stroke="#475569" strokeWidth="1.2" />
         {/* Визор */}
-        <rect x="24" y="52" width="32" height="16" rx="5"
+        <rect x="23" y="52" width="34" height="16" rx="5"
           fill="url(#c2-visor)" filter="url(#c2-glow)" />
-        {/* Отблеск */}
-        <rect x="26" y="54" width="10" height="4" rx="2"
-          fill="white" opacity="0.28" />
-        {/* Глаза — подозрительно сощурены (узкие) */}
-        <rect x="28" y="58" width="8" height="3" rx="1.5"
-          fill="#e0e7ff" opacity="0.9">
-          <animate attributeName="opacity" values="0.9;0.5;0.9" dur="1.8s" repeatCount="indefinite" />
-        </rect>
-        <rect x="44" y="58" width="8" height="3" rx="1.5"
-          fill="#e0e7ff" opacity="0.9">
-          <animate attributeName="opacity" values="0.9;0.5;0.9" dur="1.8s" repeatCount="indefinite" begin="0.2s" />
-        </rect>
-        {/* Уши */}
-        <rect x="10" y="54" width="8" height="10" rx="3"
+        <rect x="25" y="54" width="10" height="4" rx="2"
+          fill="white" opacity="0.25" />
+
+        {/* ── ГЛАЗА — широко раскрыты (ужас) ── */}
+        <circle cx="32" cy="59" r="4.5" fill="#e0e7ff" opacity="0.95" />
+        <circle cx="48" cy="59" r="4.5" fill="#e0e7ff" opacity="0.95" />
+        <circle cx="32" cy="57" r="2.2" fill="#1e1b4b" />
+        <circle cx="48" cy="57" r="2.2" fill="#1e1b4b" />
+        <circle cx="33" cy="56" r="0.9" fill="white" opacity="0.9" />
+        <circle cx="49" cy="56" r="0.9" fill="white" opacity="0.9" />
+
+        {/* ── РОТ — кричит (широкий O) ── */}
+        <ellipse cx="40" cy="74" rx="8" ry="7"
+          fill="#0a0a14" stroke="#94a3b8" strokeWidth="1.2" />
+        <rect x="33" y="70" width="14" height="3.5" rx="1.5"
+          fill="white" opacity="0.65" />
+
+        {/* ── УШИ ── */}
+        <rect x="9"  y="56" width="8" height="10" rx="3"
           fill="#1e293b" stroke="#475569" strokeWidth="1" />
-        <rect x="62" y="54" width="8" height="10" rx="3"
+        <rect x="63" y="56" width="8" height="10" rx="3"
           fill="#1e293b" stroke="#475569" strokeWidth="1" />
-        {/* Антенна (снизу — в перевёрнутом виде торчит вниз) */}
-        <line x1="40" y1="80" x2="40" y2="90" stroke="#94a3b8" strokeWidth="1.5" />
-        <circle cx="40" cy="93" r="3" fill="#a78bfa" filter="url(#c2-glow)">
-          <animate attributeName="opacity" values="1;0.2;1" dur="0.8s" repeatCount="indefinite" />
+
+        {/* Антенна */}
+        <line x1="40" y1="84" x2="40" y2="94" stroke="#94a3b8" strokeWidth="1.5" />
+        <circle cx="40" cy="97" r="3" fill="#a78bfa" filter="url(#c2-glow)">
+          <animate attributeName="opacity" values="1;0.2;1" dur="0.7s" repeatCount="indefinite" />
         </circle>
       </svg>
     </div>
