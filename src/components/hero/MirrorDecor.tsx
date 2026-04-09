@@ -166,8 +166,19 @@ const MirrorDecor = () => {
           <span className="text-[10px] uppercase tracking-widest" style={{ color: '#e2e8f0', opacity: 0.55, fontFamily: 'Orbitron, monospace' }}>
             60 × 120 см
           </span>
-          <span className="text-[9px] tracking-wide animate-pulse" style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'sans-serif' }}>
-            {lit ? '· нажми чтобы выключить ·' : '· нажми кнопку на зеркале ·'}
+          <span
+            className="tracking-wide animate-pulse"
+            style={{
+              fontFamily: 'sans-serif',
+              fontSize: lit ? '9px' : '11px',
+              color: lit ? 'rgba(255,255,255,0.5)' : 'rgba(255,220,100,0.95)',
+              fontWeight: lit ? 400 : 700,
+              textShadow: lit ? 'none' : '0 0 8px rgba(255,200,50,0.7)',
+              letterSpacing: lit ? '0.05em' : '0.12em',
+              textTransform: 'uppercase',
+            }}
+          >
+            {lit ? '· нажми чтобы выключить ·' : '✦ нажми кнопку на зеркале ✦'}
           </span>
         </div>
       </div>
