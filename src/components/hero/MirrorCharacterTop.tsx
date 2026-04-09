@@ -4,37 +4,39 @@ interface Props {
   lit: boolean;
 }
 
+const SCREAMS = ['АААААА!!!', 'НЕТ-НЕТ-НЕТ!', 'ПОМОГИТЕ!!', 'ЗА ЧТО?!'];
+
 const MirrorCharacterTop = ({ lit }: Props) => {
   const [phase, setPhase] = useState<'hidden' | 'peek' | 'fall' | 'gone'>('hidden');
+  const [scream, setScream] = useState('');
+  const [screamKey, setScreamKey] = useState(0);
 
   useEffect(() => {
     if (!lit) {
       setPhase('hidden');
       return;
     }
-    // Сначала сбрасываем в hidden без анимации, потом запускаем
     setPhase('hidden');
     const t0 = setTimeout(() => setPhase('peek'), 50);
-    const t1 = setTimeout(() => setPhase('fall'), 1300);
-    const t2 = setTimeout(() => setPhase('gone'), 2300);
+    const t1 = setTimeout(() => {
+      setPhase('fall');
+      setScream(SCREAMS[Math.floor(Math.random() * SCREAMS.length)]);
+      setScreamKey(k => k + 1);
+    }, 1300);
+    const t2 = setTimeout(() => setPhase('gone'), 2400);
     return () => { clearTimeout(t0); clearTimeout(t1); clearTimeout(t2); };
   }, [lit]);
 
-  // Персонаж висит вниз головой.
-  // top: 18% = граница верхней наклейки
-  // hidden: весь скрыт за наклейкой (translateY = -100%)
-  // peek: выглядывает на ~40% своей высоты — видна голова + руки держатся
-  // fall: падает вниз через всё зеркало
   const getStyle = (): React.CSSProperties => {
     if (phase === 'hidden') return { transform: 'translateY(-100%)', opacity: 0 };
-    if (phase === 'peek')   return { transform: 'translateY(-55%)',  opacity: 1 };
-    if (phase === 'fall')   return { transform: 'translateY(750%)',  opacity: 1 };
-    return                         { transform: 'translateY(750%)',  opacity: 0 };
+    if (phase === 'peek')   return { transform: 'translateY(-52%)',  opacity: 1 };
+    if (phase === 'fall')   return { transform: 'translateY(780%)',  opacity: 1 };
+    return                         { transform: 'translateY(780%)',  opacity: 0 };
   };
 
   const getTransition = (): string => {
     if (phase === 'peek') return 'transform 0.4s cubic-bezier(0.34, 1.5, 0.64, 1)';
-    if (phase === 'fall') return 'transform 0.9s cubic-bezier(0.55, 0, 1, 0.8), opacity 0.15s ease 0.8s';
+    if (phase === 'fall') return 'transform 1s cubic-bezier(0.55, 0, 1, 1), opacity 0.15s ease 0.88s';
     return 'none';
   };
 
@@ -50,92 +52,138 @@ const MirrorCharacterTop = ({ lit }: Props) => {
         transition: getTransition(),
       }}
     >
-      {/* SVG перевёрнут — персонаж висит вниз головой */}
+      {/* Крик — всплывает рядом при падении */}
+      {phase === 'fall' && (
+        <div
+          key={screamKey}
+          style={{
+            position: 'absolute',
+            top: '-18px',
+            left: '50%',
+            transform: 'translateX(-80%)',
+            background: 'white',
+            color: '#111',
+            fontFamily: 'Orbitron, monospace',
+            fontSize: '9px',
+            fontWeight: 900,
+            padding: '4px 8px',
+            borderRadius: '8px 8px 2px 8px',
+            whiteSpace: 'nowrap',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.4)',
+            animation: 'scream-pop 0.25s cubic-bezier(0.34,1.6,0.64,1) forwards',
+            zIndex: 10,
+          }}
+        >
+          {scream}
+          {/* хвостик пузыря */}
+          <span style={{
+            position: 'absolute',
+            bottom: '-6px',
+            right: '10px',
+            width: 0,
+            height: 0,
+            borderLeft: '5px solid transparent',
+            borderRight: '5px solid transparent',
+            borderTop: '6px solid white',
+          }} />
+        </div>
+      )}
+
+      {/* Персонаж вниз головой */}
       <svg
-        viewBox="0 0 80 100"
-        width="26%"
+        viewBox="0 0 60 90"
+        width="22%"
         style={{
           display: 'block',
           overflow: 'visible',
           transform: 'rotate(180deg)',
-          animation: phase === 'peek' ? 'char-wobble 0.5s ease-in-out infinite alternate' : 'none',
+          animation: phase === 'peek' ? 'char-wobble 0.45s ease-in-out infinite alternate' : 'none',
         }}
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <filter id="c2-glow" x="-40%" y="-40%" width="180%" height="180%">
-            <feGaussianBlur stdDeviation="2.5" result="blur" />
-            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-          </filter>
-          <linearGradient id="c2-suit" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#1e293b" />
-            <stop offset="100%" stopColor="#0f172a" />
+          <radialGradient id="skin" cx="50%" cy="40%" r="60%">
+            <stop offset="0%" stopColor="#fde8c8" />
+            <stop offset="100%" stopColor="#f5c899" />
+          </radialGradient>
+          <linearGradient id="shirt" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#1e3a5f" />
+            <stop offset="100%" stopColor="#0f2040" />
           </linearGradient>
-          <linearGradient id="c2-visor" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.95" />
-            <stop offset="100%" stopColor="#7c3aed" stopOpacity="0.75" />
+          <linearGradient id="pants" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#1a1a2e" />
+            <stop offset="100%" stopColor="#0d0d1a" />
           </linearGradient>
         </defs>
 
-        {/* ── НОГИ — торчат вверх (цепляются за край наклейки) ── */}
-        <rect x="24" y="2" width="12" height="16" rx="4"
-          fill="url(#c2-suit)" stroke="#334155" strokeWidth="1" />
-        <rect x="44" y="2" width="12" height="16" rx="4"
-          fill="url(#c2-suit)" stroke="#334155" strokeWidth="1" />
-        <rect x="21" y="2" width="18" height="6" rx="3"
-          fill="#0f172a" stroke="#475569" strokeWidth="1" />
-        <rect x="41" y="2" width="18" height="6" rx="3"
-          fill="#0f172a" stroke="#475569" strokeWidth="1" />
+        {/* ── НОГИ (сверху — цепляются за наклейку) ── */}
+        {/* Левая нога */}
+        <rect x="14" y="0" width="12" height="20" rx="5"
+          fill="url(#pants)" stroke="#334155" strokeWidth="1" />
+        {/* Правая нога */}
+        <rect x="34" y="0" width="12" height="20" rx="5"
+          fill="url(#pants)" stroke="#334155" strokeWidth="1" />
+        {/* Кроссовки (держатся за край) */}
+        <rect x="11" y="0" width="18" height="7" rx="3"
+          fill="#111" stroke="#475569" strokeWidth="0.8" />
+        <rect x="31" y="0" width="18" height="7" rx="3"
+          fill="#111" stroke="#475569" strokeWidth="0.8" />
+        {/* Белая подошва */}
+        <rect x="11" y="3" width="18" height="3" rx="1.5" fill="#e2e8f0" opacity="0.5" />
+        <rect x="31" y="3" width="18" height="3" rx="1.5" fill="#e2e8f0" opacity="0.5" />
 
-        {/* ── ТЕЛО ── */}
-        <rect x="18" y="16" width="44" height="30" rx="6"
-          fill="url(#c2-suit)" stroke="#334155" strokeWidth="1.2" />
-        <rect x="27" y="22" width="26" height="12" rx="2"
-          fill="#0f172a" stroke="#a78bfa" strokeWidth="0.8" strokeOpacity="0.5" />
-        <line x1="29" y1="27" x2="51" y2="27" stroke="#a78bfa" strokeWidth="1" strokeOpacity="0.6">
-          <animate attributeName="stroke-opacity" values="0.6;0.1;0.6" dur="1.2s" repeatCount="indefinite" />
-        </line>
+        {/* ── ТЕЛО — футболка ── */}
+        <rect x="12" y="18" width="36" height="26" rx="6"
+          fill="url(#shirt)" stroke="#1e40af" strokeWidth="1" />
+        {/* Полоска на футболке */}
+        <rect x="12" y="28" width="36" height="4"
+          fill="#2563eb" opacity="0.5" />
 
-        {/* ── РУКИ — раскинуты в ужасе ── */}
-        <line x1="18" y1="24" x2="3"  y2="16" stroke="#334155" strokeWidth="7" strokeLinecap="round" />
-        <circle cx="2" cy="14" r="4" fill="#1e293b" stroke="#475569" strokeWidth="1" />
-        <line x1="62" y1="24" x2="77" y2="16" stroke="#334155" strokeWidth="7" strokeLinecap="round" />
-        <circle cx="78" cy="14" r="4" fill="#1e293b" stroke="#475569" strokeWidth="1" />
+        {/* ── РУКИ — раскинуты (держался, но падает) ── */}
+        {/* Левая рука */}
+        <path d="M12,24 Q2,20 0,14" stroke="url(#skin)" strokeWidth="7"
+          fill="none" strokeLinecap="round" />
+        {/* Кисть левая */}
+        <circle cx="0" cy="13" r="5" fill="url(#skin)" />
+        {/* Правая рука */}
+        <path d="M48,24 Q58,20 60,14" stroke="url(#skin)" strokeWidth="7"
+          fill="none" strokeLinecap="round" />
+        {/* Кисть правая */}
+        <circle cx="60" cy="13" r="5" fill="url(#skin)" />
 
         {/* ── ГОЛОВА ── */}
-        <rect x="17" y="44" width="46" height="40" rx="13"
-          fill="url(#c2-suit)" stroke="#475569" strokeWidth="1.2" />
-        {/* Визор */}
-        <rect x="23" y="52" width="34" height="16" rx="5"
-          fill="url(#c2-visor)" filter="url(#c2-glow)" />
-        <rect x="25" y="54" width="10" height="4" rx="2"
-          fill="white" opacity="0.25" />
+        <ellipse cx="30" cy="65" rx="18" ry="20"
+          fill="url(#skin)" stroke="#e0b080" strokeWidth="0.8" />
 
-        {/* ── ГЛАЗА — широко раскрыты (ужас) ── */}
-        <circle cx="32" cy="59" r="4.5" fill="#e0e7ff" opacity="0.95" />
-        <circle cx="48" cy="59" r="4.5" fill="#e0e7ff" opacity="0.95" />
-        <circle cx="32" cy="57" r="2.2" fill="#1e1b4b" />
-        <circle cx="48" cy="57" r="2.2" fill="#1e1b4b" />
-        <circle cx="33" cy="56" r="0.9" fill="white" opacity="0.9" />
-        <circle cx="49" cy="56" r="0.9" fill="white" opacity="0.9" />
+        {/* Волосы (вниз — в перевёрнутом виде торчат вниз) */}
+        <ellipse cx="30" cy="82" rx="18" ry="7" fill="#1a0a00" />
+        <ellipse cx="18" cy="80" rx="5" ry="6" fill="#1a0a00" />
+        <ellipse cx="42" cy="80" rx="5" ry="6" fill="#1a0a00" />
 
-        {/* ── РОТ — кричит (широкий O) ── */}
-        <ellipse cx="40" cy="74" rx="8" ry="7"
-          fill="#0a0a14" stroke="#94a3b8" strokeWidth="1.2" />
-        <rect x="33" y="70" width="14" height="3.5" rx="1.5"
-          fill="white" opacity="0.65" />
+        {/* ── ГЛАЗА — огромные от ужаса ── */}
+        <ellipse cx="22" cy="62" rx="5" ry="6" fill="white" />
+        <ellipse cx="38" cy="62" rx="5" ry="6" fill="white" />
+        {/* Зрачки — смотрят «вниз» (к зрителю) */}
+        <circle cx="22" cy="60" r="3" fill="#111" />
+        <circle cx="38" cy="60" r="3" fill="#111" />
+        {/* Блики */}
+        <circle cx="23.5" cy="58.5" r="1.2" fill="white" />
+        <circle cx="39.5" cy="58.5" r="1.2" fill="white" />
+        {/* Брови — вскинуты вверх */}
+        <path d="M17,55 Q22,52 27,55" stroke="#4a2800" strokeWidth="1.8"
+          fill="none" strokeLinecap="round" />
+        <path d="M33,55 Q38,52 43,55" stroke="#4a2800" strokeWidth="1.8"
+          fill="none" strokeLinecap="round" />
 
-        {/* ── УШИ ── */}
-        <rect x="9"  y="56" width="8" height="10" rx="3"
-          fill="#1e293b" stroke="#475569" strokeWidth="1" />
-        <rect x="63" y="56" width="8" height="10" rx="3"
-          fill="#1e293b" stroke="#475569" strokeWidth="1" />
+        {/* ── РОТ — орёт ── */}
+        <ellipse cx="30" cy="74" rx="7" ry="6" fill="#c0392b" />
+        <ellipse cx="30" cy="71" rx="7" ry="2.5" fill="#fde8c8" />
+        {/* Зубы */}
+        <rect x="24" y="70" width="12" height="3.5" rx="1" fill="white" />
 
-        {/* Антенна */}
-        <line x1="40" y1="84" x2="40" y2="94" stroke="#94a3b8" strokeWidth="1.5" />
-        <circle cx="40" cy="97" r="3" fill="#a78bfa" filter="url(#c2-glow)">
-          <animate attributeName="opacity" values="1;0.2;1" dur="0.7s" repeatCount="indefinite" />
-        </circle>
+        {/* Щёки — красные от крика */}
+        <circle cx="17" cy="68" r="4" fill="#ff6b6b" opacity="0.3" />
+        <circle cx="43" cy="68" r="4" fill="#ff6b6b" opacity="0.3" />
       </svg>
     </div>
   );

@@ -4,6 +4,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes scream-pop {
+  0% {
+    transform: translateX(-80%) scale(0.4);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-80%) scale(1);
+    opacity: 1;
+  }
+}
+
 @keyframes char-wobble {
   0% {
     transform: rotate(180deg) rotate(-8deg);
