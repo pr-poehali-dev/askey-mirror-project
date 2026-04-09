@@ -12,22 +12,29 @@ const MirrorCharacterTop = ({ lit }: Props) => {
       setPhase('hidden');
       return;
     }
+    // Выглядывает — только голова из-под наклейки
     setPhase('peek');
-    const t1 = setTimeout(() => setPhase('fall'), 300);
-    const t2 = setTimeout(() => setPhase('gone'), 1400);
+    // Через 1.2s — отпускает и падает
+    const t1 = setTimeout(() => setPhase('fall'), 1200);
+    const t2 = setTimeout(() => setPhase('gone'), 2200);
     return () => { clearTimeout(t1); clearTimeout(t2); };
   }, [lit]);
 
+  // Персонаж висит вниз головой.
+  // top: 18% = граница верхней наклейки
+  // hidden: весь скрыт за наклейкой (translateY = -100%)
+  // peek: выглядывает на ~40% своей высоты — видна голова + руки держатся
+  // fall: падает вниз через всё зеркало
   const getStyle = (): React.CSSProperties => {
-    if (phase === 'hidden') return { transform: 'translateY(-80%)',  opacity: 0 };
-    if (phase === 'peek')   return { transform: 'translateY(10%)',   opacity: 1 };
-    if (phase === 'fall')   return { transform: 'translateY(850%)',  opacity: 1 };
-    return                         { transform: 'translateY(850%)',  opacity: 0 };
+    if (phase === 'hidden') return { transform: 'translateY(-100%)', opacity: 1 };
+    if (phase === 'peek')   return { transform: 'translateY(-55%)',  opacity: 1 };
+    if (phase === 'fall')   return { transform: 'translateY(750%)',  opacity: 1 };
+    return                         { transform: 'translateY(750%)',  opacity: 0 };
   };
 
   const getTransition = (): string => {
-    if (phase === 'peek') return 'transform 0.2s ease-out, opacity 0.15s ease';
-    if (phase === 'fall') return 'transform 0.85s cubic-bezier(0.4, 0, 1, 1), opacity 0.1s ease 0.78s';
+    if (phase === 'peek') return 'transform 0.4s cubic-bezier(0.34, 1.5, 0.64, 1)';
+    if (phase === 'fall') return 'transform 0.9s cubic-bezier(0.55, 0, 1, 0.8), opacity 0.15s ease 0.8s';
     return 'none';
   };
 
@@ -47,7 +54,12 @@ const MirrorCharacterTop = ({ lit }: Props) => {
       <svg
         viewBox="0 0 80 100"
         width="26%"
-        style={{ display: 'block', overflow: 'visible', transform: 'rotate(180deg)' }}
+        style={{
+          display: 'block',
+          overflow: 'visible',
+          transform: 'rotate(180deg)',
+          animation: phase === 'peek' ? 'char-wobble 0.5s ease-in-out infinite alternate' : 'none',
+        }}
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>

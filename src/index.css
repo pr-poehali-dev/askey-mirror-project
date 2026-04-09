@@ -4,6 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes char-wobble {
+  0% {
+    transform: rotate(180deg) rotate(-8deg);
+  }
+  100% {
+    transform: rotate(180deg) rotate(8deg);
+  }
+}
+
 @keyframes charFadeIn {
   0% {
     opacity: 0;
