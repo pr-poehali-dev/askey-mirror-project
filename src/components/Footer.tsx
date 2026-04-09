@@ -181,17 +181,9 @@ const FooterCanvas = () => {
     let t = 0;
 
     const CELL = 38;
-    let COLS = 22;
-    let ROWS = 6;
-
-    const resize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-      COLS = Math.ceil(canvas.width / CELL);
-      ROWS = Math.ceil(canvas.height / CELL);
-    };
-    resize();
-    window.addEventListener('resize', resize);
+    let COLS = 1;
+    let ROWS = 1;
+    let dots: { col: number; row: number; phase: number; speed: number }[] = [];
 
     const getDots = () =>
       Array.from({ length: COLS * ROWS }, (_, idx) => ({
@@ -201,10 +193,26 @@ const FooterCanvas = () => {
         speed: 0.008 + Math.random() * 0.006,
       }));
 
-    let dots = getDots();
-    window.addEventListener('resize', () => { dots = getDots(); });
+    const resize = () => {
+      const w = canvas.offsetWidth;
+      const h = canvas.offsetHeight;
+      if (!w || !h) return;
+      canvas.width = w;
+      canvas.height = h;
+      COLS = Math.max(1, Math.ceil(w / CELL));
+      ROWS = Math.max(1, Math.ceil(h / CELL));
+      dots = getDots();
+    };
+
+    const ro = new ResizeObserver(resize);
+    ro.observe(canvas);
+    resize();
 
     const draw = () => {
+      if (!canvas.width || !canvas.height) {
+        frame = requestAnimationFrame(draw);
+        return;
+      }
       t += 0.012;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -242,7 +250,7 @@ const FooterCanvas = () => {
     frame = requestAnimationFrame(draw);
     return () => {
       cancelAnimationFrame(frame);
-      window.removeEventListener('resize', resize);
+      ro.disconnect();
     };
   }, []);
 
