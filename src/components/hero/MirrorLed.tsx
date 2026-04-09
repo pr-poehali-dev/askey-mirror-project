@@ -39,10 +39,12 @@ const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
 
       // пульсация — волна яркости по полоскам каждые ~1.4с
       const pulse = fill >= 1
-        ? 0.12 * Math.pow(Math.max(0, Math.sin((timeRef.current / PULSE_PERIOD) * Math.PI * 2)), 3)
+        ? 0.35 * Math.pow(Math.max(0, Math.sin((timeRef.current / PULSE_PERIOD) * Math.PI * 2)), 2)
         : 0;
-      const opacity = fill > 0 ? Math.min(1, 0.7 + fill * 0.3 + pulse) : 0;
-      const glowBase = 0.5 + fill * 0.5 + pulse * 2;
+      const opacity = fill > 0 ? Math.min(1, 0.8 + fill * 0.2 + pulse * 0.2) : 0;
+      const glowBase = Math.min(1, 0.7 + fill * 0.3 + pulse * 0.8);
+      const glowWide = Math.min(1, 0.35 + fill * 0.3 + pulse * 0.6);
+      const glowOuter = Math.min(0.6, 0.1 + fill * 0.15 + pulse * 0.4);
 
       for (let s = 0; s < 2; s++) {
         const el = dotsRef.current[s];
@@ -50,7 +52,7 @@ const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
         el.style.clipPath = `inset(${topInset}% 0 0 0)`;
         el.style.opacity = String(opacity);
         el.style.boxShadow = fill > 0.1
-          ? `0 0 18px 6px rgba(255,255,255,${glowBase}), 0 0 35px 10px rgba(255,255,255,${0.2 + fill * 0.3 + pulse})`
+          ? `0 0 8px 2px rgba(255,255,255,${glowBase}), 0 0 22px 6px rgba(255,255,255,${glowWide}), 0 0 55px 16px rgba(255,255,255,${glowOuter})`
           : 'none';
       }
 
