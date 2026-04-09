@@ -8,9 +8,10 @@ const MirrorCharacter = ({ lit }: Props) => {
       className="absolute left-0 right-0 pointer-events-none"
       style={{
         bottom: '18%',
+        right: '2%',
         zIndex: 8,
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
         transform: lit ? 'translateY(0%)' : 'translateY(160%)',
         transition: lit
           ? 'transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)'
@@ -19,7 +20,7 @@ const MirrorCharacter = ({ lit }: Props) => {
     >
       <svg
         viewBox="0 0 120 160"
-        width="62%"
+        width="38%"
         style={{ display: 'block', overflow: 'visible' }}
         xmlns="http://www.w3.org/2000/svg"
       >
