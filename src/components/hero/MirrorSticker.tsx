@@ -13,47 +13,46 @@ const MirrorStickerTop = () => (
       display: 'grid',
       gridTemplateColumns: '1fr auto 1fr',
       alignItems: 'center',
-      padding: '10px 16px 0',
-      marginBottom: '6px',
+      padding: '8px 10px 0',
+      marginBottom: '4px',
     }}>
       {/* Время */}
-      <span style={{ fontSize: '9px', fontWeight: 700, color: '#111', fontFamily: '-apple-system, sans-serif', letterSpacing: '-0.3px' }}>
+      <span style={{ fontSize: '7px', fontWeight: 700, color: '#111', fontFamily: '-apple-system, sans-serif', letterSpacing: '-0.3px' }}>
         9:41
       </span>
 
       {/* Dynamic Island */}
       <div style={{
-        width: '72px', height: '22px',
+        width: '50px', height: '16px',
         borderRadius: '20px',
         background: '#111',
-        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
+        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px',
+        flexShrink: 0,
       }}>
-        {/* Камера */}
-        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#1a1a1a', border: '1.5px solid #333' }} />
-        {/* Face ID датчик */}
-        <div style={{ width: '3px', height: '3px', borderRadius: '50%', background: '#2a2a2a' }} />
+        <div style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#1a1a1a', border: '1.5px solid #333' }} />
+        <div style={{ width: '2.5px', height: '2.5px', borderRadius: '50%', background: '#2a2a2a' }} />
       </div>
 
       {/* Правые иконки */}
-      <div style={{ display: 'flex', gap: '4px', alignItems: 'center', justifyContent: 'flex-end' }}>
+      <div style={{ display: 'flex', gap: '3px', alignItems: 'center', justifyContent: 'flex-end' }}>
         {/* Сигнал */}
         <div style={{ display: 'flex', gap: '1px', alignItems: 'flex-end' }}>
-          {[3, 5, 7, 9].map((h, i) => (
-            <div key={i} style={{ width: '2.5px', height: `${h}px`, borderRadius: '1px', background: '#111', opacity: i < 3 ? 1 : 0.25 }} />
+          {[2, 4, 6, 8].map((h, i) => (
+            <div key={i} style={{ width: '2px', height: `${h}px`, borderRadius: '1px', background: '#111', opacity: i < 3 ? 1 : 0.25 }} />
           ))}
         </div>
         {/* Wi-Fi */}
-        <svg width="10" height="8" viewBox="0 0 12 10" fill="none">
+        <svg width="8" height="6" viewBox="0 0 12 10" fill="none">
           <path d="M6 8.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" fill="#111"/>
           <path d="M3.5 6C4.3 5.2 5.1 4.8 6 4.8s1.7.4 2.5 1.2" stroke="#111" strokeWidth="1.2" strokeLinecap="round" fill="none"/>
           <path d="M1.5 4C2.8 2.7 4.3 2 6 2s3.2.7 4.5 2" stroke="#111" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.5"/>
         </svg>
         {/* Батарея */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1px' }}>
-          <div style={{ width: '16px', height: '8px', borderRadius: '2px', border: '1px solid #111', padding: '1.5px', display: 'flex', alignItems: 'center' }}>
+          <div style={{ width: '12px', height: '6px', borderRadius: '2px', border: '1px solid #111', padding: '1px', display: 'flex', alignItems: 'center' }}>
             <div style={{ width: '75%', height: '100%', background: '#111', borderRadius: '1px' }} />
           </div>
-          <div style={{ width: '2px', height: '4px', borderRadius: '0 1px 1px 0', background: '#111', opacity: 0.5 }} />
+          <div style={{ width: '1.5px', height: '3px', borderRadius: '0 1px 1px 0', background: '#111', opacity: 0.5 }} />
         </div>
       </div>
     </div>

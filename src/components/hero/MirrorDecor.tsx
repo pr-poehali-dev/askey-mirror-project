@@ -82,7 +82,7 @@ const MirrorDecor = () => {
 
   return (
     <div
-      className="animate-slide-in-right relative flex items-center justify-center"
+      className="animate-slide-in-right relative flex items-center justify-center mb-10 lg:mb-0"
       style={{ animationDelay: '400ms', willChange: 'transform, opacity', padding: '0 40px' }}
     >
       {/* Дальнее фоновое свечение (halo) */}
@@ -99,7 +99,7 @@ const MirrorDecor = () => {
       {/* Обёртка зеркала */}
       <div
         className="relative animate-mirror-float"
-        style={{ width: 'clamp(200px, 40vw, 280px)', zIndex: 1 }}
+        style={{ width: 'clamp(160px, 38vw, 280px)', zIndex: 1 }}
       >
         {/* Рамка зеркала — iPhone-форма */}
         <div
@@ -261,7 +261,7 @@ const MirrorDecor = () => {
         </div>
 
         {/* Метка размера снизу */}
-        <div className="absolute -bottom-14 left-0 right-0 flex flex-col items-center gap-1 pointer-events-none">
+        <div className="absolute left-0 right-0 flex flex-col items-center gap-1 pointer-events-none" style={{ top: 'calc(100% + 10px)' }}>
           <span className="text-[10px] uppercase tracking-widest" style={{ color: '#e2e8f0', opacity: 0.55, fontFamily: 'Orbitron, monospace' }}>
             60 × 120 см
           </span>
