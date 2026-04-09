@@ -153,7 +153,7 @@ const MirrorDecor = () => {
             {/* Текст при включении */}
             <CinemaText lit={lit} />
 
-            {/* Сенсорная кнопка подсветки */}
+            {/* Сенсорная кнопка подсветки — широкая зона клика по центру */}
             <div
               className="absolute animate-mirror-content-reveal cursor-pointer"
               onClick={() => setLit(v => !v)}
@@ -161,30 +161,35 @@ const MirrorDecor = () => {
                 zIndex: 9,
                 animationDelay: '950ms',
                 bottom: 'calc(18px + 6% + 50px)',
-                left: '50%',
-                transform: 'translateX(-50%)',
+                left: 0,
+                right: 0,
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              <div style={{
                 width: '44px',
                 height: '44px',
                 borderRadius: '50%',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-              }}
-            >
-              {/* Видимая кнопка */}
-              <div style={{
-                width: '14px',
-                height: '14px',
-                borderRadius: '5px',
-                background: lit ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.08)',
-                border: lit ? '2px solid #e2e8f0' : '2px solid rgba(200,230,255,0.95)',
-                boxShadow: lit
-                  ? '0 0 8px 3px rgba(255,255,255,0.9), 0 0 18px 5px rgba(255,255,255,0.4)'
-                  : '0 0 6px 2px rgba(180,220,255,0.9), 0 0 14px 4px rgba(150,200,255,0.5)',
-                backdropFilter: 'blur(4px)',
-                transition: 'all 0.3s ease',
-                flexShrink: 0,
-              }} />
+              }}>
+                {/* Видимая кнопка */}
+                <div style={{
+                  width: '14px',
+                  height: '14px',
+                  borderRadius: '5px',
+                  background: lit ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.08)',
+                  border: lit ? '2px solid #e2e8f0' : '2px solid rgba(200,230,255,0.95)',
+                  boxShadow: lit
+                    ? '0 0 8px 3px rgba(255,255,255,0.9), 0 0 18px 5px rgba(255,255,255,0.4)'
+                    : '0 0 6px 2px rgba(180,220,255,0.9), 0 0 14px 4px rgba(150,200,255,0.5)',
+                  backdropFilter: 'blur(4px)',
+                  transition: 'all 0.3s ease',
+                  flexShrink: 0,
+                }} />
+              </div>
             </div>
 
             {/* Диоды + LED-полоски */}
