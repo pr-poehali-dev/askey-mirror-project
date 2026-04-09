@@ -161,7 +161,7 @@ const MirrorDecor = () => {
                 zIndex: 9,
                 animationDelay: '950ms',
                 bottom: 'calc(18px + 6% + 50px)',
-                left: 'calc(50% - 3px)',
+                left: '50%',
                 transform: 'translateX(-50%)',
                 width: '44px',
                 height: '44px',
