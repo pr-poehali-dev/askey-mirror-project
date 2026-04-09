@@ -26,7 +26,7 @@ const MirrorCharacterTop = ({ lit }: Props) => {
   // peek: выглядывает на ~40% своей высоты — видна голова + руки держатся
   // fall: падает вниз через всё зеркало
   const getStyle = (): React.CSSProperties => {
-    if (phase === 'hidden') return { transform: 'translateY(-100%)', opacity: 1 };
+    if (phase === 'hidden') return { transform: 'translateY(-100%)', opacity: 0 };
     if (phase === 'peek')   return { transform: 'translateY(-55%)',  opacity: 1 };
     if (phase === 'fall')   return { transform: 'translateY(750%)',  opacity: 1 };
     return                         { transform: 'translateY(750%)',  opacity: 0 };
