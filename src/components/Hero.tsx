@@ -2,6 +2,7 @@ import Icon from '@/components/ui/icon';
 import MirrorDecor from '@/components/hero/MirrorDecor';
 import HeroContent from '@/components/hero/HeroContent';
 import HeroBackground from '@/components/hero/HeroBackground';
+import Mascot from '@/components/Mascot';
 
 const Hero = () => {
   const scrollTo = (href: string) => {
@@ -37,8 +38,12 @@ const Hero = () => {
           {/* Левая колонка — текст и кнопки */}
           <HeroContent scrollTo={scrollTo} />
 
-          {/* Правая колонка — зеркало */}
-          <div className="flex-shrink-0 flex items-center justify-center order-first lg:order-last py-6 lg:py-0 lg:pr-4">
+          {/* Правая колонка — зеркало + персонаж */}
+          <div className="flex-shrink-0 flex items-end justify-center gap-8 xl:gap-12 order-first lg:order-last py-6 lg:py-0 lg:pr-4">
+            {/* Персонаж-маскот */}
+            <div className="hidden lg:flex items-end pb-14">
+              <Mascot />
+            </div>
             <MirrorDecor />
           </div>
         </div>
