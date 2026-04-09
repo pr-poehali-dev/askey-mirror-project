@@ -1,6 +1,78 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import MirrorLed from './MirrorLed';
 import { MirrorStickerTop, MirrorStickerBottom } from './MirrorSticker';
+
+const CinemaText = ({ lit }: { lit: boolean }) => {
+  const line1 = 'сегодня';
+  const line2 = 'ты в главной роли';
+  const [key, setKey] = useState(0);
+
+  useEffect(() => {
+    if (lit) setKey(k => k + 1);
+  }, [lit]);
+
+  return (
+    <div
+      className="absolute inset-0 flex items-center justify-center pointer-events-none"
+      style={{ zIndex: 6 }}
+    >
+      <div style={{ textAlign: 'center', padding: '0 10%', opacity: lit ? 1 : 0, transition: 'opacity 0.3s ease' }}>
+        {/* Верхняя линия */}
+        <div style={{
+          fontFamily: 'Orbitron, monospace',
+          fontSize: 'clamp(7px, 1.8vw, 10px)',
+          color: 'rgba(255,255,255,0.4)',
+          letterSpacing: '0.35em',
+          textTransform: 'uppercase',
+          marginBottom: '10px',
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '0.1em',
+        }}>
+          {line1.split('').map((ch, i) => (
+            <span key={`${key}-l1-${i}`} style={{
+              display: 'inline-block',
+              opacity: 0,
+              animation: lit ? `charFadeIn 0.4s ease forwards` : 'none',
+              animationDelay: `${0.5 + i * 0.07}s`,
+            }}>{ch}</span>
+          ))}
+        </div>
+        {/* Разделитель */}
+        <div style={{
+          width: lit ? '60%' : '0%',
+          height: '1px',
+          background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent)',
+          margin: '0 auto 10px',
+          transition: lit ? 'width 0.8s ease 0.9s' : 'width 0.3s ease',
+        }} />
+        {/* Главная строка */}
+        <div style={{
+          fontFamily: "'Cormorant Garamond', Georgia, serif",
+          fontSize: 'clamp(14px, 3.5vw, 20px)',
+          fontWeight: 300,
+          fontStyle: 'italic',
+          color: 'rgba(255,255,255,0.88)',
+          letterSpacing: '0.08em',
+          display: 'flex',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          gap: '0.15em',
+          textShadow: '0 0 30px rgba(255,255,255,0.25)',
+        }}>
+          {line2.split('').map((ch, i) => (
+            <span key={`${key}-l2-${i}`} style={{
+              display: 'inline-block',
+              opacity: 0,
+              animation: lit ? `charFadeIn 0.5s ease forwards` : 'none',
+              animationDelay: `${1.1 + i * 0.055}s`,
+            }}>{ch === ' ' ? '\u00A0' : ch}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const MirrorDecor = () => {
   const [lit, setLit] = useState(false);
@@ -78,42 +150,7 @@ const MirrorDecor = () => {
             />
 
             {/* Текст при включении */}
-            <div
-              className="absolute inset-0 flex items-center justify-center pointer-events-none"
-              style={{ zIndex: 6 }}
-            >
-              <div
-                style={{
-                  opacity: lit ? 1 : 0,
-                  transform: lit ? 'translateY(0) scale(1)' : 'translateY(8px) scale(0.95)',
-                  transition: 'opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s',
-                  textAlign: 'center',
-                  padding: '0 12%',
-                }}
-              >
-                <div style={{
-                  fontFamily: 'Orbitron, monospace',
-                  fontSize: 'clamp(9px, 2.2vw, 13px)',
-                  color: 'rgba(255,255,255,0.55)',
-                  letterSpacing: '0.2em',
-                  textTransform: 'uppercase',
-                  marginBottom: '6px',
-                }}>
-                  сегодня
-                </div>
-                <div style={{
-                  fontFamily: 'Georgia, serif',
-                  fontSize: 'clamp(13px, 3.2vw, 19px)',
-                  color: 'rgba(255,255,255,0.92)',
-                  fontStyle: 'italic',
-                  letterSpacing: '0.05em',
-                  lineHeight: 1.3,
-                  textShadow: '0 0 20px rgba(255,255,255,0.4)',
-                }}>
-                  ты в главной роли
-                </div>
-              </div>
-            </div>
+            <CinemaText lit={lit} />
 
             {/* Сенсорная кнопка подсветки */}
             <div
