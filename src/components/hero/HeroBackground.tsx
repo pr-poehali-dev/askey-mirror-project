@@ -1,5 +1,18 @@
 import { useEffect, useRef } from 'react';
 
+interface Moon {
+  x: number;
+  y: number;
+  radius: number;
+  speed: number;
+  angle: number;       // текущий угол по орбите (радианы)
+  orbitA: number;      // полуось X эллипса
+  orbitB: number;      // полуось Y эллипса
+  cx: number;          // центр орбиты X
+  cy: number;          // центр орбиты Y
+  tilt: number;        // наклон орбиты
+}
+
 interface Particle {
   x: number;
   y: number;
@@ -13,10 +26,71 @@ interface Particle {
   pulseSpeed: number;
 }
 
+const drawMoon = (ctx: CanvasRenderingContext2D, moon: Moon) => {
+  const { x, y, radius } = moon;
+
+  ctx.save();
+  ctx.translate(x, y);
+
+  // Внешнее свечение луны
+  const halo = ctx.createRadialGradient(0, 0, radius * 0.8, 0, 0, radius * 3.5);
+  halo.addColorStop(0, 'rgba(220,230,255,0.12)');
+  halo.addColorStop(0.5, 'rgba(180,200,240,0.04)');
+  halo.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.beginPath();
+  ctx.arc(0, 0, radius * 3.5, 0, Math.PI * 2);
+  ctx.fillStyle = halo;
+  ctx.fill();
+
+  // Тело луны
+  const bodyGrad = ctx.createRadialGradient(-radius * 0.3, -radius * 0.3, 0, 0, 0, radius);
+  bodyGrad.addColorStop(0, 'rgba(235,240,255,0.92)');
+  bodyGrad.addColorStop(0.5, 'rgba(200,210,240,0.85)');
+  bodyGrad.addColorStop(1, 'rgba(140,155,195,0.75)');
+  ctx.beginPath();
+  ctx.arc(0, 0, radius, 0, Math.PI * 2);
+  ctx.fillStyle = bodyGrad;
+  ctx.fill();
+
+  // Кратеры
+  const craters: [number, number, number, number][] = [
+    [-0.3, -0.2, 0.18, 0.08],
+    [0.25, 0.15, 0.13, 0.06],
+    [-0.1, 0.35, 0.1, 0.045],
+    [0.4, -0.3, 0.09, 0.04],
+  ];
+  craters.forEach(([cx, cy, cr, shadow]) => {
+    ctx.beginPath();
+    ctx.arc(cx * radius, cy * radius, cr * radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(120,135,175,${shadow * 8})`;
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(cx * radius - cr * radius * 0.3, cy * radius - cr * radius * 0.3, cr * radius * 0.7, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(240,245,255,${shadow * 4})`;
+    ctx.fill();
+  });
+
+  // Тень (фаза — серп справа)
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(0, 0, radius, 0, Math.PI * 2);
+  ctx.clip();
+  const shadowGrad = ctx.createLinearGradient(radius * 0.2, 0, radius, 0);
+  shadowGrad.addColorStop(0, 'rgba(0,0,0,0)');
+  shadowGrad.addColorStop(0.5, 'rgba(5,8,20,0.45)');
+  shadowGrad.addColorStop(1, 'rgba(5,8,20,0.72)');
+  ctx.fillStyle = shadowGrad;
+  ctx.fillRect(-radius, -radius, radius * 2, radius * 2);
+  ctx.restore();
+
+  ctx.restore();
+};
+
 const HeroBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animRef = useRef<number>(0);
   const particlesRef = useRef<Particle[]>([]);
+  const moonRef = useRef<Moon | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -44,6 +118,20 @@ const HeroBackground = () => {
       pulseSpeed: Math.random() * 0.012 + 0.004,
     });
 
+    const initMoon = (w: number, h: number) => {
+      moonRef.current = {
+        x: 0, y: 0,
+        radius: Math.min(w, h) * 0.045,
+        speed: 0.00018,
+        angle: Math.random() * Math.PI * 2,
+        orbitA: w * 0.42,
+        orbitB: h * 0.32,
+        cx: w * 0.5,
+        cy: h * 0.46,
+        tilt: -0.22,
+      };
+    };
+
     const init = () => {
       particlesRef.current = Array.from({ length: COUNT }, () =>
         spawn(canvas.width, canvas.height)
@@ -51,6 +139,7 @@ const HeroBackground = () => {
       particlesRef.current.forEach(p => {
         p.opacity = Math.random() * p.opacityTarget;
       });
+      initMoon(canvas.width, canvas.height);
     };
 
     const drawNebula = (w: number, h: number) => {
@@ -102,6 +191,19 @@ const HeroBackground = () => {
       ctx!.clearRect(0, 0, w, h);
 
       drawNebula(w, h);
+
+      // Обновляем и рисуем луну
+      if (moonRef.current) {
+        const m = moonRef.current;
+        m.angle += m.speed;
+        // Эллиптическая орбита с наклоном
+        const ex = Math.cos(m.angle) * m.orbitA;
+        const ey = Math.sin(m.angle) * m.orbitB;
+        m.x = m.cx + ex * Math.cos(m.tilt) - ey * Math.sin(m.tilt);
+        m.y = m.cy + ex * Math.sin(m.tilt) + ey * Math.cos(m.tilt);
+        drawMoon(ctx!, m);
+      }
+
       drawConnections(particlesRef.current, w, h);
 
       particlesRef.current.forEach(p => {
