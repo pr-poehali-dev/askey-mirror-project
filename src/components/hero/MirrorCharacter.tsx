@@ -7,11 +7,11 @@ const MirrorCharacter = ({ lit }: Props) => {
     <div
       className="absolute left-0 right-0 pointer-events-none"
       style={{
-        bottom: 0,
+        bottom: '18%',
         zIndex: 8,
         display: 'flex',
         justifyContent: 'center',
-        transform: lit ? 'translateY(0%)' : 'translateY(110%)',
+        transform: lit ? 'translateY(0%)' : 'translateY(160%)',
         transition: lit
           ? 'transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)'
           : 'transform 0.5s cubic-bezier(0.4, 0, 0.6, 1)',
