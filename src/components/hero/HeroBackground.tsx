@@ -192,18 +192,6 @@ const HeroBackground = () => {
 
       drawNebula(w, h);
 
-      // Обновляем и рисуем луну
-      if (moonRef.current) {
-        const m = moonRef.current;
-        m.angle += m.speed;
-        // Эллиптическая орбита с наклоном
-        const ex = Math.cos(m.angle) * m.orbitA;
-        const ey = Math.sin(m.angle) * m.orbitB;
-        m.x = m.cx + ex * Math.cos(m.tilt) - ey * Math.sin(m.tilt);
-        m.y = m.cy + ex * Math.sin(m.tilt) + ey * Math.cos(m.tilt);
-        drawMoon(ctx!, m);
-      }
-
       drawConnections(particlesRef.current, w, h);
 
       particlesRef.current.forEach(p => {
