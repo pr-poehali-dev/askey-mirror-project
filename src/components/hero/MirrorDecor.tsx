@@ -22,14 +22,15 @@ const CinemaText = ({ lit }: { lit: boolean }) => {
         {/* Верхняя линия */}
         <div style={{
           fontFamily: 'Orbitron, monospace',
-          fontSize: '8px',
-          color: 'rgba(255,255,255,0.4)',
-          letterSpacing: '0.25em',
+          fontSize: '10px',
+          color: 'rgba(255,255,255,0.75)',
+          letterSpacing: '0.3em',
           textTransform: 'uppercase',
-          marginBottom: '8px',
+          marginBottom: '10px',
           display: 'flex',
           justifyContent: 'center',
           gap: '0.05em',
+          textShadow: '0 0 12px rgba(255,255,255,0.6)',
         }}>
           {line1.split('').map((ch, i) => (
             <span key={`${key}-l1-${i}`} style={{
@@ -42,22 +43,22 @@ const CinemaText = ({ lit }: { lit: boolean }) => {
         </div>
         {/* Разделитель */}
         <div style={{
-          width: lit ? '50%' : '0%',
+          width: lit ? '60%' : '0%',
           height: '1px',
-          background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent)',
-          margin: '0 auto 8px',
+          background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.7), transparent)',
+          margin: '0 auto 12px',
           transition: lit ? 'width 0.8s ease 0.9s' : 'width 0.3s ease',
         }} />
         {/* Главная строка */}
         <div style={{
           fontFamily: "'Cormorant Garamond', Georgia, serif",
-          fontSize: '15px',
-          fontWeight: 300,
+          fontSize: '17px',
+          fontWeight: 400,
           fontStyle: 'italic',
-          color: 'rgba(255,255,255,0.88)',
-          letterSpacing: '0.04em',
+          color: 'rgba(255,255,255,1)',
+          letterSpacing: '0.06em',
           whiteSpace: 'nowrap',
-          textShadow: '0 0 30px rgba(255,255,255,0.25)',
+          textShadow: '0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.4)',
           display: 'flex',
           justifyContent: 'center',
           gap: '0.05em',
