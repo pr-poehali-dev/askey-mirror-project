@@ -88,44 +88,44 @@ const MirrorStickerBottom = () => (
       padding: '8px 12px 0',
     }}
   >
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
-      <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#e53935">
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+      <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#e53935">
             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
           </svg>
-          <span style={{ fontSize: '9px', color: '#111', fontFamily: 'sans-serif', fontWeight: 600, whiteSpace: 'nowrap' }}>12 тыс.</span>
+          <span style={{ fontSize: '11px', color: '#111', fontFamily: 'sans-serif', fontWeight: 600, whiteSpace: 'nowrap' }}>12 тыс.</span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
           </svg>
-          <span style={{ fontSize: '9px', color: '#111', fontFamily: 'sans-serif', fontWeight: 600 }}>21</span>
+          <span style={{ fontSize: '11px', color: '#111', fontFamily: 'sans-serif', fontWeight: 600 }}>21</span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2">
             <path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/>
             <path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
           </svg>
-          <span style={{ fontSize: '9px', color: '#111', fontFamily: 'sans-serif', fontWeight: 600 }}>832</span>
+          <span style={{ fontSize: '11px', color: '#111', fontFamily: 'sans-serif', fontWeight: 600 }}>832</span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2">
             <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
           </svg>
-          <span style={{ fontSize: '9px', color: '#111', fontFamily: 'sans-serif', fontWeight: 600 }}>1007</span>
+          <span style={{ fontSize: '11px', color: '#111', fontFamily: 'sans-serif', fontWeight: 600 }}>1007</span>
         </div>
       </div>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2">
         <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
       </svg>
     </div>
-    <div style={{ fontSize: '9px', color: '#333', fontFamily: 'sans-serif', lineHeight: 1.4, marginBottom: '6px' }}>
+    <div style={{ fontSize: '11px', color: '#333', fontFamily: 'sans-serif', lineHeight: 1.4, marginBottom: '8px' }}>
       <span style={{ fontWeight: 700 }}>your_profile</span>
       {' '}Ваша любая подпись
     </div>
     {/* Home indicator */}
-    <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: '6px' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: '8px' }}>
       <div style={{ width: '40px', height: '4px', borderRadius: '2px', background: '#111', opacity: 0.2 }} />
     </div>
   </div>
