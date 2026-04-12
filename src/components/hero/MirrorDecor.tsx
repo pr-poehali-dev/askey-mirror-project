@@ -51,10 +51,10 @@ const CinemaText = ({ lit }: { lit: boolean }) => {
         }} />
         {/* Главная строка */}
         <div style={{
-          fontFamily: "'Cormorant Garamond', Georgia, serif",
-          fontSize: '17px',
-          fontWeight: 400,
-          fontStyle: 'italic',
+          fontFamily: "'Dancing Script', cursive",
+          fontSize: '20px',
+          fontWeight: 600,
+          fontStyle: 'normal',
           color: 'rgba(255,255,255,1)',
           letterSpacing: '0.06em',
           whiteSpace: 'nowrap',
