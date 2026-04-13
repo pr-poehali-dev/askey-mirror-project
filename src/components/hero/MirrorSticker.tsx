@@ -15,33 +15,40 @@ const MirrorStickerTop = () => (
   >
     {/* Статус-бар iOS */}
     <div style={{
-      display: 'grid',
-      gridTemplateColumns: '1fr auto 1fr',
+      position: 'relative',
+      display: 'flex',
       alignItems: 'center',
-      padding: '0.5em 0.7em 0',
+      justifyContent: 'space-between',
+      padding: '0.45em 1em 0',
       marginBottom: '0.3em',
+      minHeight: '1.8em',
     }}>
-      <span style={{ fontSize: '0.85em', fontWeight: 700, color: '#111', fontFamily: '-apple-system, sans-serif', letterSpacing: '-0.3px' }}>
+      {/* Время — строго слева */}
+      <span style={{ fontSize: '0.9em', fontWeight: 700, color: '#111', fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif', letterSpacing: '-0.5px', lineHeight: 1 }}>
         9:41
       </span>
 
-      {/* Dynamic Island */}
+      {/* Dynamic Island — по центру абсолютно */}
       <div style={{
-        width: '3.8em', height: '1.3em',
+        position: 'absolute',
+        left: '50%',
+        top: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '3.4em', height: '1.2em',
         borderRadius: '1em',
         background: '#111',
-        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.3em',
+        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.28em',
         flexShrink: 0,
       }}>
-        <div style={{ width: '0.5em', height: '0.5em', borderRadius: '50%', background: '#1a1a1a', border: '1.5px solid #333' }} />
-        <div style={{ width: '0.25em', height: '0.25em', borderRadius: '50%', background: '#2a2a2a' }} />
+        <div style={{ width: '0.45em', height: '0.45em', borderRadius: '50%', background: '#1a1a1a', border: '1.5px solid #333' }} />
+        <div style={{ width: '0.22em', height: '0.22em', borderRadius: '50%', background: '#2a2a2a' }} />
       </div>
 
-      {/* Правые иконки */}
-      <div style={{ display: 'flex', gap: '0.3em', alignItems: 'center', justifyContent: 'flex-end' }}>
+      {/* Правые иконки — строго справа */}
+      <div style={{ display: 'flex', gap: '0.28em', alignItems: 'center' }}>
         <div style={{ display: 'flex', gap: '1px', alignItems: 'flex-end' }}>
           {[3, 5, 7, 9].map((h, i) => (
-            <div key={i} style={{ width: '2px', height: `${h}px`, borderRadius: '1px', background: '#111', opacity: i < 3 ? 1 : 0.25 }} />
+            <div key={i} style={{ width: '2px', height: `${h}px`, borderRadius: '1px', background: '#111', opacity: i < 3 ? 1 : 0.3 }} />
           ))}
         </div>
         <svg style={{ width: '0.85em', height: '0.7em' }} viewBox="0 0 12 10" fill="none">
@@ -50,10 +57,10 @@ const MirrorStickerTop = () => (
           <path d="M1.5 4C2.8 2.7 4.3 2 6 2s3.2.7 4.5 2" stroke="#111" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.5"/>
         </svg>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1px' }}>
-          <div style={{ width: '1.3em', height: '0.7em', borderRadius: '2px', border: '1px solid #111', padding: '1px', display: 'flex', alignItems: 'center' }}>
+          <div style={{ width: '1.25em', height: '0.65em', borderRadius: '2px', border: '1px solid #111', padding: '1px', display: 'flex', alignItems: 'center' }}>
             <div style={{ width: '75%', height: '100%', background: '#111', borderRadius: '1px' }} />
           </div>
-          <div style={{ width: '2px', height: '0.4em', borderRadius: '0 1px 1px 0', background: '#111', opacity: 0.5 }} />
+          <div style={{ width: '2px', height: '0.38em', borderRadius: '0 1px 1px 0', background: '#111', opacity: 0.5 }} />
         </div>
       </div>
     </div>
