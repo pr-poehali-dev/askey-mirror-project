@@ -63,7 +63,7 @@ const HeroContent = ({ scrollTo }: HeroContentProps) => (
         <span className="xs:hidden">Зеркала с подсветкой</span>
       </div>
       <div
-        className="hidden xs:inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold tracking-widest uppercase whitespace-nowrap"
+        className="hidden sm:inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold tracking-widest uppercase whitespace-nowrap"
         style={{ border: '1px solid rgba(250,204,21,0.5)', background: 'rgba(250,204,21,0.08)', color: '#facc15' }}
       >
         <Icon name="TrendingUp" size={11} />
