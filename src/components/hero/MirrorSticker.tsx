@@ -1,6 +1,6 @@
 // Базовый размер шрифта на корне — clamp работает на div, а не на SVG.
 // Всё внутри в em, SVG тоже через style (не атрибуты width/height).
-const ROOT = 'clamp(10px, 3.2vw, 13px)';
+const ROOT = 'clamp(12px, 4vw, 16px)';
 
 const MirrorStickerTop = () => (
   <div
