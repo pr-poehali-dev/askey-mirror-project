@@ -139,11 +139,15 @@ const MirrorStickerBottom = () => (
         <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
       </svg>
     </div>
-    <div style={{ fontSize: '1em', color: '#333', fontFamily: 'sans-serif', lineHeight: 1.4, marginBottom: '0.7em' }}>
+    <div style={{ fontSize: '1em', color: '#333', fontFamily: 'sans-serif', lineHeight: 1.4, marginBottom: '0.5em' }}>
       <span style={{ fontWeight: 700 }}>your_profile</span>
       {' '}Ваша любая подпись
     </div>
-    <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: '0.3em' }}>
+    {/* Пустая строка */}
+    <div style={{ fontSize: '1em', color: 'transparent', fontFamily: 'sans-serif', lineHeight: 1.4, marginBottom: '0.8em' }}>
+      &nbsp;
+    </div>
+    <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: '0.2em' }}>
       <div style={{ width: '3em', height: '3px', borderRadius: '2px', background: '#111', opacity: 0.2 }} />
     </div>
   </div>
