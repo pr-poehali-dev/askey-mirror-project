@@ -32,7 +32,7 @@ const Hero = () => {
       </div>
 
       {/* Двухколоночный лейаут */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 pt-24 pb-16 sm:pt-28 lg:pt-0">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 pt-4 pb-16 sm:pt-8 lg:pt-0">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-10 xl:gap-16">
 
           {/* Левая колонка — текст и кнопки */}
@@ -46,7 +46,7 @@ const Hero = () => {
       </div>
 
       {/* Стрелка вниз */}
-      <div className="animate-fade-in delay-700 absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className="animate-bounce absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2">
         <Icon name="ChevronDown" size={24} className="text-purple-400/60 sm:w-7 sm:h-7" />
       </div>
     </section>

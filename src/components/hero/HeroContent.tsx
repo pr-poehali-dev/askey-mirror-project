@@ -38,7 +38,7 @@ const StatCounter = ({ end, suffix, label, delay }: { end: number; suffix: strin
   return (
     <div className="text-center lg:text-left">
       <div
-        className="text-2xl sm:text-3xl md:text-4xl font-black text-gradient mb-0.5 sm:mb-1 tabular-nums"
+        className="text-xl sm:text-3xl md:text-4xl font-black text-gradient mb-0.5 sm:mb-1 tabular-nums"
         style={{ fontFamily: 'Orbitron, monospace' }}
       >
         {count}{suffix}
@@ -92,7 +92,7 @@ const HeroContent = ({ scrollTo }: HeroContentProps) => (
     </p>
 
     {/* Кнопки */}
-    <div className="animate-fade-in-up delay-500 flex flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center">
+    <div className="animate-fade-in-up delay-500 flex flex-col xs:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-stretch xs:items-center">
       <button
         onClick={() => scrollTo('#catalog')}
         className="neon-btn text-white px-5 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-xl text-xs sm:text-base font-bold tracking-wide flex items-center justify-center gap-2"
