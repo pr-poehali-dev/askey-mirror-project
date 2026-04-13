@@ -98,13 +98,12 @@ const MirrorStickerTop = () => (
 
 const MirrorStickerBottom = () => (
   <div
-    className="absolute left-0 right-0 animate-mirror-content-reveal"
+    className="absolute bottom-0 left-0 right-0 animate-mirror-content-reveal"
     style={{
-      bottom: '12%',
       zIndex: 10,
       animationDelay: '900ms',
       background: 'rgba(255,255,255,0.97)',
-      padding: '0.6em 0.9em 0',
+      padding: '1em 0.9em 1em',
       fontSize: ROOT,
     }}
   >
