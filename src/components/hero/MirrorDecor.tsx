@@ -100,7 +100,7 @@ const MirrorDecor = () => {
       {/* Обёртка зеркала */}
       <div
         className="relative animate-mirror-float"
-        style={{ width: 'clamp(160px, 38vw, 300px)', zIndex: 1 }}
+        style={{ width: 'clamp(220px, 55vw, 300px)', zIndex: 1 }}
       >
         {/* Рамка зеркала — iPhone-форма */}
         <div
