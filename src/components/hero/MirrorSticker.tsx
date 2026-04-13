@@ -103,7 +103,7 @@ const MirrorStickerBottom = () => (
       zIndex: 10,
       animationDelay: '900ms',
       background: 'rgba(255,255,255,0.97)',
-      padding: '1em 0.9em 1em',
+      padding: '1.6em 0.9em 1.6em',
       fontSize: ROOT,
     }}
   >
