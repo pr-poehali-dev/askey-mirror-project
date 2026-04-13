@@ -18,8 +18,8 @@ const MirrorStickerTop = () => (
       display: 'grid',
       gridTemplateColumns: '1fr auto 1fr',
       alignItems: 'center',
-      padding: '0.6em 0.9em 0',
-      marginBottom: '0.4em',
+      padding: '0.5em 0.7em 0',
+      marginBottom: '0.3em',
     }}>
       <span style={{ fontSize: '0.85em', fontWeight: 700, color: '#111', fontFamily: '-apple-system, sans-serif', letterSpacing: '-0.3px' }}>
         9:41
@@ -27,10 +27,10 @@ const MirrorStickerTop = () => (
 
       {/* Dynamic Island */}
       <div style={{
-        width: '4.5em', height: '1.5em',
+        width: '3.8em', height: '1.3em',
         borderRadius: '1em',
         background: '#111',
-        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4em',
+        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.3em',
         flexShrink: 0,
       }}>
         <div style={{ width: '0.5em', height: '0.5em', borderRadius: '50%', background: '#1a1a1a', border: '1.5px solid #333' }} />
