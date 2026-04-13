@@ -83,7 +83,7 @@ const Catalog = () => {
         </div>
 
         {/* Карточки */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
           {products.map((product, i) => (
             <div
               key={product.id}
@@ -220,7 +220,8 @@ const Catalog = () => {
 
                 {/* Цена */}
                 <div className="mb-4 sm:mb-5">
-                  <div className="flex items-end justify-end mb-1.5">
+                  <div className="flex items-end justify-between mb-1.5">
+                    <span className="text-xs text-white/30 uppercase tracking-widest mb-1">цена</span>
                     <span
                       className="text-2xl sm:text-3xl font-black leading-none"
                       style={{ color: product.tagColor, fontFamily: 'Orbitron, monospace', textShadow: `0 0 20px ${product.tagColor}55` }}
