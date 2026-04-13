@@ -270,12 +270,13 @@ const MirrorDecor = () => {
             className="tracking-wide animate-pulse"
             style={{
               fontFamily: 'sans-serif',
-              fontSize: lit ? '9px' : '11px',
+              fontSize: lit ? '8px' : '9px',
               color: lit ? 'rgba(255,255,255,0.5)' : 'rgba(255,220,100,0.95)',
               fontWeight: lit ? 400 : 700,
               textShadow: lit ? 'none' : '0 0 8px rgba(255,200,50,0.7)',
-              letterSpacing: lit ? '0.05em' : '0.12em',
+              letterSpacing: lit ? '0.03em' : '0.07em',
               textTransform: 'uppercase',
+              whiteSpace: 'nowrap',
             }}
           >
             {lit ? '· нажми чтобы выключить ·' : '✦ нажми кнопку на зеркале ✦'}
