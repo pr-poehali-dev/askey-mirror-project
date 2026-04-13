@@ -8,8 +8,8 @@ const MirrorStickerTop = () => (
     style={{
       zIndex: 9,
       animationDelay: '800ms',
-      background: 'rgba(255,255,255,0.97)',
-      paddingBottom: '0.5em',
+      background: 'rgba(255,255,255,0.92)',
+      paddingBottom: '0.4em',
       fontSize: ROOT,
     }}
   >
