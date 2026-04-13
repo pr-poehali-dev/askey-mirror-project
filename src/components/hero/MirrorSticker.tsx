@@ -8,8 +8,8 @@ const MirrorStickerTop = () => (
     style={{
       zIndex: 9,
       animationDelay: '800ms',
-      background: 'rgba(255,255,255,0.92)',
-      paddingBottom: '0.4em',
+      background: 'rgba(255,255,255,0.97)',
+      paddingBottom: '0.7em',
       fontSize: ROOT,
     }}
   >
@@ -89,8 +89,8 @@ const MirrorStickerTop = () => (
           <div style={{ fontSize: '0.75em', color: '#666', fontFamily: 'sans-serif', lineHeight: 1.2 }}>Москва</div>
         </div>
       </div>
-      <div style={{ display: 'flex', gap: '0.25em' }}>
-        {[0, 1, 2].map(i => <div key={i} style={{ width: '0.35em', height: '0.35em', borderRadius: '50%', background: '#111' }} />)}
+      <div style={{ display: 'flex', gap: '0.3em' }}>
+        {[0, 1, 2].map(i => <div key={i} style={{ width: '0.5em', height: '0.5em', borderRadius: '50%', background: '#111' }} />)}
       </div>
     </div>
   </div>
@@ -103,7 +103,7 @@ const MirrorStickerBottom = () => (
       zIndex: 10,
       animationDelay: '900ms',
       background: 'rgba(255,255,255,0.97)',
-      padding: '1.6em 0.9em 1.6em',
+      padding: '1em 0.9em 0.6em',
       fontSize: ROOT,
     }}
   >
