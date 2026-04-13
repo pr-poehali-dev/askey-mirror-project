@@ -84,7 +84,7 @@ const MirrorDecor = () => {
   return (
     <div
       className="animate-slide-in-right relative flex items-center justify-center mb-16 sm:mb-12 lg:mb-0"
-      style={{ animationDelay: '400ms', willChange: 'transform, opacity', padding: '0 40px' }}
+      style={{ animationDelay: '400ms', willChange: 'transform, opacity', padding: '0 16px' }}
     >
       {/* Дальнее фоновое свечение (halo) */}
       <div
