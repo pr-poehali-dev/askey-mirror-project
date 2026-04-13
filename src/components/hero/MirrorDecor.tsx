@@ -102,24 +102,75 @@ const MirrorDecor = () => {
         className="relative animate-mirror-float"
         style={{ width: 'clamp(220px, 55vw, 300px)', zIndex: 1 }}
       >
-        {/* Рамка зеркала — iPhone-форма */}
+        {/* Контурное свечение снаружи рамки — тёплый янтарный */}
+        <div className="absolute pointer-events-none animate-mirror-outer-halo" style={{
+          inset: '-24px',
+          borderRadius: '32px',
+          background: 'transparent',
+          boxShadow: '0 0 30px 8px rgba(255,220,140,0.4), 0 0 70px 20px rgba(255,190,90,0.2), 0 0 120px 40px rgba(255,160,60,0.1)',
+          zIndex: 0,
+        }} />
+
+        {/* Рамка зеркала — деревянная прямоугольная */}
         <div
-          className="relative animate-mirror-frame-glow"
+          className="relative"
           style={{
-            borderRadius: '44px',
-            padding: '6px',
-            background: 'linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 30%, rgba(200,210,220,0.95) 60%, rgba(255,255,255,0.8) 100%)',
+            borderRadius: '16px',
+            padding: '10px',
+            background: 'linear-gradient(145deg, #8B6340 0%, #A0724A 15%, #6B4A2A 30%, #9B7350 45%, #7A5535 60%, #A07848 75%, #6B4A2A 100%)',
+            boxShadow: 'inset 0 2px 4px rgba(255,255,255,0.15), inset 0 -2px 4px rgba(0,0,0,0.4), 0 4px 20px rgba(0,0,0,0.5)',
           }}
         >
+          {/* Деревянная текстура — горизонтальные полосы */}
+          <div className="absolute inset-0 pointer-events-none rounded-2xl overflow-hidden" style={{ zIndex: 0 }}>
+            {[...Array(12)].map((_, i) => (
+              <div key={i} style={{
+                position: 'absolute',
+                left: 0, right: 0,
+                top: `${i * 8.5}%`,
+                height: '3px',
+                background: i % 2 === 0
+                  ? 'rgba(0,0,0,0.07)'
+                  : 'rgba(255,255,255,0.04)',
+                borderRadius: '1px',
+              }} />
+            ))}
+          </div>
+
+          {/* Металлические вставки по бокам (как на фото) */}
+          <div className="absolute pointer-events-none" style={{
+            left: '8px', top: '30%', bottom: '30%', width: '6px',
+            background: 'linear-gradient(to right, rgba(180,140,100,0.6), rgba(220,190,150,0.9), rgba(180,140,100,0.6))',
+            borderRadius: '3px',
+            boxShadow: '0 0 6px rgba(200,160,100,0.4)',
+            zIndex: 2,
+          }} />
+          <div className="absolute pointer-events-none" style={{
+            right: '8px', top: '30%', bottom: '30%', width: '6px',
+            background: 'linear-gradient(to right, rgba(180,140,100,0.6), rgba(220,190,150,0.9), rgba(180,140,100,0.6))',
+            borderRadius: '3px',
+            boxShadow: '0 0 6px rgba(200,160,100,0.4)',
+            zIndex: 2,
+          }} />
+
           {/* Зеркальная поверхность */}
           <div
             className="relative overflow-hidden"
             style={{
-              borderRadius: '38px',
+              borderRadius: '8px',
               aspectRatio: '9 / 16',
-              background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 20%, #141414 40%, #111111 60%, #0a0a0a 80%, #111111 100%)',
+              background: '#111',
             }}
           >
+            {/* Фото интерьера */}
+            <img
+              src="https://cdn.poehali.dev/projects/af6d2ef4-20e2-486b-93ab-6d38dda52f4e/bucket/5782c6d9-7caf-44d7-9be9-c9c684105d8b.png"
+              alt="интерьер"
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ zIndex: 0, opacity: 0.85 }}
+            />
+            {/* Затемнение поверх фото */}
+            <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1, background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.3) 100%)' }} />
             {/* Зеркальный блик */}
             <div
               className="absolute pointer-events-none animate-mirror-shine"
@@ -207,48 +258,6 @@ const MirrorDecor = () => {
             <MirrorStickerBottom />
           </div>
         </div>
-
-        {/* Боковые LED-лучи */}
-        <div
-          className="absolute pointer-events-none animate-mirror-side-led"
-          style={{
-            left: '-18px', top: '8%', bottom: '8%', width: '16px',
-            background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.7) 20%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.7) 80%, transparent)',
-            filter: 'blur(8px)',
-            zIndex: 0,
-          }}
-        />
-        <div
-          className="absolute pointer-events-none animate-mirror-side-led"
-          style={{
-            right: '-18px', top: '8%', bottom: '8%', width: '16px',
-            background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.7) 20%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.7) 80%, transparent)',
-            filter: 'blur(8px)',
-            zIndex: 0,
-            animationDelay: '0.5s',
-          }}
-        />
-        {/* Верхний и нижний LED-лучи */}
-        <div
-          className="absolute pointer-events-none animate-mirror-side-led"
-          style={{
-            top: '-18px', left: '8%', right: '8%', height: '16px',
-            background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.7) 20%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.7) 80%, transparent)',
-            filter: 'blur(8px)',
-            zIndex: 0,
-            animationDelay: '0.25s',
-          }}
-        />
-        <div
-          className="absolute pointer-events-none animate-mirror-side-led"
-          style={{
-            bottom: '-18px', left: '8%', right: '8%', height: '16px',
-            background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.7) 20%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.7) 80%, transparent)',
-            filter: 'blur(8px)',
-            zIndex: 0,
-            animationDelay: '0.75s',
-          }}
-        />
 
         {/* Лейбл сверху */}
         <div
