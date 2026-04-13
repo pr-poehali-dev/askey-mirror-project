@@ -72,7 +72,7 @@ const HeroContent = ({ scrollTo }: HeroContentProps) => (
 
     {/* Заголовок */}
     <h1
-      className="animate-fade-in-up delay-200 text-4xl xs:text-5xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black mb-4 sm:mb-6 leading-tight"
+      className="animate-fade-in-up delay-200 text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black mb-3 sm:mb-6 leading-tight"
       style={{ fontFamily: 'Orbitron, monospace' }}
     >
       <span className="text-white">ЗЕРКАЛА</span>
@@ -82,26 +82,26 @@ const HeroContent = ({ scrollTo }: HeroContentProps) => (
       <span className="text-white">ПОКОЛЕНИЯ</span>
     </h1>
 
-    <p className="animate-fade-in-up delay-300 text-white/60 text-base sm:text-lg md:text-xl max-w-xl sm:max-w-2xl mx-auto lg:mx-0 mb-3 sm:mb-4 leading-relaxed">
+    <p className="animate-fade-in-up delay-300 text-white/60 text-sm sm:text-lg md:text-xl max-w-xl sm:max-w-2xl mx-auto lg:mx-0 mb-2 sm:mb-4 leading-relaxed">
       Производим премиальные зеркала с наклейками вашего профиля и уникальной{' '}
       <span className="text-purple-400 font-semibold">адресной лентой</span>
     </p>
-    <p className="animate-fade-in-up delay-400 text-white/40 text-xs sm:text-sm md:text-base max-w-md sm:max-w-xl mx-auto lg:mx-0 mb-8 sm:mb-12">
+    <p className="animate-fade-in-up delay-400 text-white/40 text-xs sm:text-sm md:text-base max-w-md sm:max-w-xl mx-auto lg:mx-0 mb-5 sm:mb-12">
       LED-подсветка · Индивидуальный дизайн · Быстрое производство
     </p>
 
     {/* Кнопки */}
-    <div className="animate-fade-in-up delay-500 flex flex-col xs:flex-row sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center">
+    <div className="animate-fade-in-up delay-500 flex flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center">
       <button
         onClick={() => scrollTo('#catalog')}
-        className="neon-btn text-white w-full xs:w-auto px-6 sm:px-8 lg:px-10 py-3.5 sm:py-4 rounded-xl text-sm sm:text-base font-bold tracking-wide flex items-center justify-center gap-2"
+        className="neon-btn text-white px-5 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-xl text-xs sm:text-base font-bold tracking-wide flex items-center justify-center gap-2"
       >
         <Icon name="Sparkles" size={16} />
         Смотреть каталог
       </button>
       <button
         onClick={() => scrollTo('#contacts')}
-        className="text-white/80 hover:text-white border border-white/20 hover:border-purple-400 w-full xs:w-auto px-6 sm:px-8 lg:px-10 py-3.5 sm:py-4 rounded-xl text-sm sm:text-base font-semibold tracking-wide transition-all duration-300 flex items-center justify-center gap-2"
+        className="text-white/80 hover:text-white border border-white/20 hover:border-purple-400 px-5 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-xl text-xs sm:text-base font-semibold tracking-wide transition-all duration-300 flex items-center justify-center gap-2"
       >
         <Icon name="Phone" size={16} />
         Связаться с нами
@@ -109,7 +109,7 @@ const HeroContent = ({ scrollTo }: HeroContentProps) => (
     </div>
 
     {/* Статистика */}
-    <div className="animate-fade-in-up delay-600 mt-10 sm:mt-16 flex items-stretch gap-0 max-w-sm sm:max-w-md mx-auto lg:mx-0">
+    <div className="animate-fade-in-up delay-600 mt-6 sm:mt-16 flex items-stretch gap-0 max-w-sm sm:max-w-md mx-auto lg:mx-0">
       {stats.map((stat, i) => (
         <div key={stat.label} className="flex items-stretch flex-1">
           <StatCounter end={stat.end} suffix={stat.suffix} label={stat.label} delay={i * 150} />
