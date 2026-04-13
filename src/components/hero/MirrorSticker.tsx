@@ -147,9 +147,7 @@ const MirrorStickerBottom = () => (
     <div style={{ fontSize: '1em', color: 'transparent', fontFamily: 'sans-serif', lineHeight: 1.4, marginBottom: '0.8em' }}>
       &nbsp;
     </div>
-    <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: '0.2em' }}>
-      <div style={{ width: '3em', height: '3px', borderRadius: '2px', background: '#111', opacity: 0.2 }} />
-    </div>
+
   </div>
 );
 
