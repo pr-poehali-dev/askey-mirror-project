@@ -67,10 +67,10 @@ const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
         ref={el => { glowRef.current[0] = el; }}
         className="absolute pointer-events-none"
         style={{
-          left: '2%', top: '12%', width: '10%', height: '76%',
-          borderRadius: '8px',
-          background: 'radial-gradient(ellipse 100% 50% at 50% 50%, rgba(255,235,180,0.7) 0%, rgba(255,210,120,0.3) 50%, transparent 100%)',
-          filter: 'blur(10px)',
+          left: '1%', top: '15%', width: '9%', height: '70%',
+          borderRadius: '6px',
+          background: 'radial-gradient(ellipse 100% 50% at 50% 50%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.2) 50%, transparent 100%)',
+          filter: 'blur(8px)',
           opacity: 0,
           clipPath: 'inset(100% 0 0 0)',
           zIndex: 4,
@@ -80,10 +80,10 @@ const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
         ref={el => { dotsRef.current[0] = el; }}
         className="absolute pointer-events-none"
         style={{
-          left: '4.5%', top: '12%', width: '3%', height: '76%',
-          borderRadius: '4px',
-          background: 'linear-gradient(to bottom, rgba(255,235,180,0) 0%, rgba(255,248,220,1) 10%, #fffdf0 40%, #fffdf0 60%, rgba(255,248,220,1) 90%, rgba(255,235,180,0) 100%)',
-          filter: 'blur(1.5px)',
+          left: '4%', top: '15%', width: '4%', height: '70%',
+          borderRadius: '3px',
+          background: 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.95) 12%, #fff 40%, #fff 60%, rgba(255,255,255,0.95) 88%, rgba(255,255,255,0) 100%)',
+          filter: 'blur(2.5px)',
           opacity: 0,
           clipPath: 'inset(100% 0 0 0)',
           zIndex: 5,
@@ -95,10 +95,10 @@ const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
         ref={el => { glowRef.current[1] = el; }}
         className="absolute pointer-events-none"
         style={{
-          right: '2%', top: '12%', width: '10%', height: '76%',
-          borderRadius: '8px',
-          background: 'radial-gradient(ellipse 100% 50% at 50% 50%, rgba(255,235,180,0.7) 0%, rgba(255,210,120,0.3) 50%, transparent 100%)',
-          filter: 'blur(10px)',
+          right: '1%', top: '15%', width: '9%', height: '70%',
+          borderRadius: '6px',
+          background: 'radial-gradient(ellipse 100% 50% at 50% 50%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.2) 50%, transparent 100%)',
+          filter: 'blur(8px)',
           opacity: 0,
           clipPath: 'inset(100% 0 0 0)',
           zIndex: 4,
@@ -108,10 +108,10 @@ const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
         ref={el => { dotsRef.current[1] = el; }}
         className="absolute pointer-events-none"
         style={{
-          right: '4.5%', top: '12%', width: '3%', height: '76%',
-          borderRadius: '4px',
-          background: 'linear-gradient(to bottom, rgba(255,235,180,0) 0%, rgba(255,248,220,1) 10%, #fffdf0 40%, #fffdf0 60%, rgba(255,248,220,1) 90%, rgba(255,235,180,0) 100%)',
-          filter: 'blur(1.5px)',
+          right: '4%', top: '15%', width: '4%', height: '70%',
+          borderRadius: '3px',
+          background: 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.95) 12%, #fff 40%, #fff 60%, rgba(255,255,255,0.95) 88%, rgba(255,255,255,0) 100%)',
+          filter: 'blur(2.5px)',
           opacity: 0,
           clipPath: 'inset(100% 0 0 0)',
           zIndex: 5,
@@ -122,8 +122,8 @@ const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
       <div
         className="absolute bottom-0 left-0 right-0 pointer-events-none animate-led-strip"
         style={{
-          height: '2px',
-          background: 'linear-gradient(90deg, transparent, rgba(255,240,180,0.9) 20%, rgba(255,248,220,1) 80%, transparent)',
+          height: '3px',
+          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 80%, transparent)',
           filter: 'blur(1px)',
           zIndex: 5,
         }}
@@ -133,8 +133,8 @@ const MirrorLed = ({ lit, dotsRef }: MirrorLedProps) => {
       <div
         className="absolute top-0 left-0 right-0 pointer-events-none animate-led-strip"
         style={{
-          height: '2px',
-          background: 'linear-gradient(90deg, transparent, rgba(255,240,180,0.9) 20%, rgba(255,248,220,1) 80%, transparent)',
+          height: '3px',
+          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 80%, transparent)',
           filter: 'blur(1px)',
           zIndex: 5,
           animationDelay: '0.3s',
