@@ -158,7 +158,7 @@ const MirrorDecor = () => {
               style={{
                 zIndex: 9,
                 animationDelay: '950ms',
-                bottom: 'calc(18px + 6% + 50px)',
+                bottom: 'calc(18px + 28% + 10px)',
                 left: 0,
                 right: 0,
                 display: 'flex',
