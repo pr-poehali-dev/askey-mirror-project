@@ -53,16 +53,17 @@ const StatCounter = ({ end, suffix, label, delay }: { end: number; suffix: strin
 const HeroContent = ({ scrollTo }: HeroContentProps) => (
   <div className="flex-1 text-center lg:text-left w-full">
     {/* Бейджи */}
-    <div className="animate-fade-in-down delay-100 flex flex-wrap items-center gap-2 sm:gap-3 mb-6 sm:mb-8 justify-center lg:justify-start">
+    <div className="animate-fade-in-down delay-100 flex items-center gap-2 sm:gap-3 mb-4 sm:mb-8 justify-center lg:justify-start">
       <div
-        className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-semibold tracking-widest uppercase"
+        className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-semibold tracking-widest uppercase whitespace-nowrap"
         style={{ border: '1px solid rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.1)', color: '#e2e8f0' }}
       >
-        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-purple-400 animate-pulse" />
-        Эксклюзивные зеркала с подсветкой
+        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-purple-400 animate-pulse flex-shrink-0" />
+        <span className="hidden xs:inline">Эксклюзивные зеркала с подсветкой</span>
+        <span className="xs:hidden">Зеркала с подсветкой</span>
       </div>
       <div
-        className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold tracking-widest uppercase"
+        className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold tracking-widest uppercase whitespace-nowrap"
         style={{ border: '1px solid rgba(250,204,21,0.5)', background: 'rgba(250,204,21,0.08)', color: '#facc15' }}
       >
         <Icon name="TrendingUp" size={11} />
