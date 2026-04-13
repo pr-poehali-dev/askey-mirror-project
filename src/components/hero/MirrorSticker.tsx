@@ -16,51 +16,60 @@ const MirrorStickerTop = () => (
     {/* Статус-бар iOS */}
     <div style={{
       position: 'relative',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      padding: '0.45em 1em 0',
-      marginBottom: '0.3em',
-      minHeight: '1.8em',
+      height: '1.8em',
+      margin: '0.4em 0 0.25em',
     }}>
-      {/* Время — строго слева */}
-      <span style={{ fontSize: '0.9em', fontWeight: 700, color: '#111', fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif', letterSpacing: '-0.5px', lineHeight: 1 }}>
+      {/* Время — абсолютно слева */}
+      <span style={{
+        position: 'absolute',
+        left: '1em',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        fontSize: '0.9em', fontWeight: 700, color: '#111',
+        fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif',
+        letterSpacing: '-0.5px', lineHeight: 1,
+      }}>
         9:41
       </span>
 
-      {/* Dynamic Island — по центру абсолютно */}
+      {/* Dynamic Island — абсолютно по центру */}
       <div style={{
         position: 'absolute',
         left: '50%',
         top: '50%',
         transform: 'translate(-50%, -50%)',
-        width: '3.4em', height: '1.2em',
+        width: '3.2em', height: '1.15em',
         borderRadius: '1em',
         background: '#111',
         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.28em',
-        flexShrink: 0,
       }}>
-        <div style={{ width: '0.45em', height: '0.45em', borderRadius: '50%', background: '#1a1a1a', border: '1.5px solid #333' }} />
-        <div style={{ width: '0.22em', height: '0.22em', borderRadius: '50%', background: '#2a2a2a' }} />
+        <div style={{ width: '0.42em', height: '0.42em', borderRadius: '50%', background: '#1a1a1a', border: '1.5px solid #333' }} />
+        <div style={{ width: '0.2em', height: '0.2em', borderRadius: '50%', background: '#2a2a2a' }} />
       </div>
 
-      {/* Правые иконки — строго справа */}
-      <div style={{ display: 'flex', gap: '0.28em', alignItems: 'center' }}>
+      {/* Правые иконки — абсолютно справа */}
+      <div style={{
+        position: 'absolute',
+        right: '1em',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        display: 'flex', gap: '0.22em', alignItems: 'center',
+      }}>
         <div style={{ display: 'flex', gap: '1px', alignItems: 'flex-end' }}>
           {[3, 5, 7, 9].map((h, i) => (
             <div key={i} style={{ width: '2px', height: `${h}px`, borderRadius: '1px', background: '#111', opacity: i < 3 ? 1 : 0.3 }} />
           ))}
         </div>
-        <svg style={{ width: '0.85em', height: '0.7em' }} viewBox="0 0 12 10" fill="none">
+        <svg style={{ width: '0.82em', height: '0.68em' }} viewBox="0 0 12 10" fill="none">
           <path d="M6 8.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" fill="#111"/>
           <path d="M3.5 6C4.3 5.2 5.1 4.8 6 4.8s1.7.4 2.5 1.2" stroke="#111" strokeWidth="1.2" strokeLinecap="round" fill="none"/>
           <path d="M1.5 4C2.8 2.7 4.3 2 6 2s3.2.7 4.5 2" stroke="#111" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.5"/>
         </svg>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1px' }}>
-          <div style={{ width: '1.25em', height: '0.65em', borderRadius: '2px', border: '1px solid #111', padding: '1px', display: 'flex', alignItems: 'center' }}>
+          <div style={{ width: '1.2em', height: '0.6em', borderRadius: '2px', border: '1px solid #111', padding: '1px', display: 'flex', alignItems: 'center' }}>
             <div style={{ width: '75%', height: '100%', background: '#111', borderRadius: '1px' }} />
           </div>
-          <div style={{ width: '2px', height: '0.38em', borderRadius: '0 1px 1px 0', background: '#111', opacity: 0.5 }} />
+          <div style={{ width: '2px', height: '0.35em', borderRadius: '0 1px 1px 0', background: '#111', opacity: 0.5 }} />
         </div>
       </div>
     </div>
