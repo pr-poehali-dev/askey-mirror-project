@@ -192,9 +192,6 @@ const MirrorDecor = () => {
             {/* Диоды + LED-полоски */}
             <MirrorLed lit={lit} dotsRef={dotsRef} />
 
-            {/* Персонаж — выезжает снизу при включении */}
-            <MirrorCharacter lit={lit} />
-
             {/* Персонаж 2 — выглядывает сверху и падает */}
             <MirrorCharacterTop lit={lit} />
 
