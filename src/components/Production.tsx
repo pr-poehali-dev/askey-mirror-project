@@ -180,39 +180,33 @@ const Production = () => {
           </p>
         </div>
 
-        {/* Glassmorphism карточки */}
+        {/* Gradient borders карточки */}
         <div ref={contentRef} className="mb-10 sm:mb-12 lg:mb-16">
           {/* Верхний ряд: большая карточка + 2 маленькие */}
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-5 mb-4 sm:mb-5">
             {/* Большая карточка */}
             <div
-              className="lg:col-span-2 rounded-2xl sm:rounded-3xl p-7 sm:p-8 flex flex-col justify-between group transition-all duration-300"
-              style={{
-                minHeight: '220px',
-                background: 'rgba(255,255,255,0.05)',
-                backdropFilter: 'blur(20px)',
-                WebkitBackdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255,255,255,0.12)',
-                boxShadow: '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)',
-              }}
+              className="lg:col-span-2 relative p-px rounded-2xl sm:rounded-3xl group"
+              style={{ background: 'linear-gradient(135deg, rgba(167,139,250,0.6), rgba(99,102,241,0.3), rgba(255,255,255,0.05))' }}
             >
-              <div>
-                <div
-                  className="w-12 h-12 rounded-2xl mb-5 flex items-center justify-center"
-                  style={{
-                    background: 'rgba(167,139,250,0.15)',
-                    border: '1px solid rgba(167,139,250,0.3)',
-                    backdropFilter: 'blur(10px)',
-                  }}
-                >
-                  <Icon name={qualities[0].icon} size={22} className="text-purple-400" />
+              <div
+                className="h-full rounded-2xl sm:rounded-3xl p-7 sm:p-8 flex flex-col justify-between"
+                style={{ background: '#0e0e12', minHeight: '220px' }}
+              >
+                <div>
+                  <div
+                    className="w-12 h-12 rounded-2xl mb-5 flex items-center justify-center"
+                    style={{ background: 'rgba(167,139,250,0.12)' }}
+                  >
+                    <Icon name={qualities[0].icon} size={22} className="text-purple-400" />
+                  </div>
+                  <h3 className="text-white font-black text-xl sm:text-2xl mb-2">{qualities[0].title}</h3>
+                  <p className="text-white/55 text-sm leading-relaxed">{qualities[0].description}</p>
                 </div>
-                <h3 className="text-white font-black text-xl sm:text-2xl mb-2">{qualities[0].title}</h3>
-                <p className="text-white/55 text-sm leading-relaxed">{qualities[0].description}</p>
-              </div>
-              <div className="mt-6 flex items-center gap-2 text-purple-400 text-xs font-semibold tracking-wide">
-                <span className="w-6 h-px" style={{ background: 'currentColor' }} />
-                Основа каждого зеркала
+                <div className="mt-6 flex items-center gap-2 text-purple-400 text-xs font-semibold tracking-wide">
+                  <span className="w-6 h-px" style={{ background: 'currentColor' }} />
+                  Основа каждого зеркала
+                </div>
               </div>
             </div>
 
@@ -221,26 +215,22 @@ const Production = () => {
               {qualities.slice(1, 3).map((item, i) => (
                 <div
                   key={i}
-                  className="rounded-2xl sm:rounded-3xl p-5 sm:p-6 group transition-all duration-300"
-                  style={{
-                    background: 'rgba(255,255,255,0.04)',
-                    backdropFilter: 'blur(20px)',
-                    WebkitBackdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.08)',
-                  }}
+                  className="relative p-px rounded-2xl sm:rounded-3xl"
+                  style={{ background: 'linear-gradient(135deg, rgba(99,102,241,0.4), rgba(167,139,250,0.15), rgba(255,255,255,0.04))' }}
                 >
                   <div
-                    className="w-10 h-10 rounded-xl mb-4 flex items-center justify-center"
-                    style={{
-                      background: 'rgba(167,139,250,0.12)',
-                      border: '1px solid rgba(167,139,250,0.25)',
-                    }}
+                    className="h-full rounded-2xl sm:rounded-3xl p-5 sm:p-6"
+                    style={{ background: '#0e0e12' }}
                   >
-                    <Icon name={item.icon} size={18} className="text-purple-400" />
+                    <div
+                      className="w-10 h-10 rounded-xl mb-4 flex items-center justify-center"
+                      style={{ background: 'rgba(167,139,250,0.1)' }}
+                    >
+                      <Icon name={item.icon} size={18} className="text-purple-400" />
+                    </div>
+                    <h3 className="text-white font-bold text-base sm:text-lg mb-1.5">{item.title}</h3>
+                    <p className="text-white/50 text-xs sm:text-sm leading-relaxed">{item.description}</p>
                   </div>
-                  <h3 className="text-white font-bold text-base sm:text-lg mb-1.5">{item.title}</h3>
-                  <p className="text-white/50 text-xs sm:text-sm leading-relaxed">{item.description}</p>
                 </div>
               ))}
             </div>
@@ -251,27 +241,23 @@ const Production = () => {
             {qualities.slice(3).map((item, i) => (
               <div
                 key={i}
-                className="rounded-2xl sm:rounded-3xl p-5 sm:p-6 flex gap-4 items-start group transition-all duration-300"
-                style={{
-                  background: 'rgba(255,255,255,0.03)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  boxShadow: '0 4px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06)',
-                }}
+                className="relative p-px rounded-2xl sm:rounded-3xl"
+                style={{ background: 'linear-gradient(135deg, rgba(167,139,250,0.25), rgba(99,102,241,0.1), rgba(255,255,255,0.03))' }}
               >
                 <div
-                  className="w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center mt-0.5"
-                  style={{
-                    background: 'rgba(167,139,250,0.1)',
-                    border: '1px solid rgba(167,139,250,0.2)',
-                  }}
+                  className="h-full rounded-2xl sm:rounded-3xl p-5 sm:p-6 flex gap-4 items-start"
+                  style={{ background: '#0d0d10' }}
                 >
-                  <Icon name={item.icon} size={18} className="text-purple-400" />
-                </div>
-                <div>
-                  <h3 className="text-white font-bold text-sm sm:text-base mb-1">{item.title}</h3>
-                  <p className="text-white/45 text-xs leading-relaxed">{item.description}</p>
+                  <div
+                    className="w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center mt-0.5"
+                    style={{ background: 'rgba(167,139,250,0.08)' }}
+                  >
+                    <Icon name={item.icon} size={18} className="text-purple-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold text-sm sm:text-base mb-1">{item.title}</h3>
+                    <p className="text-white/45 text-xs leading-relaxed">{item.description}</p>
+                  </div>
                 </div>
               </div>
             ))}
