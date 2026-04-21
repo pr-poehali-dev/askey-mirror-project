@@ -182,10 +182,10 @@ const QualityCard = ({ item, delay = 0, large = false, horizontal = false }: Qua
   }, [hovered]);
 
   const baseGrad = large
-    ? `linear-gradient(${angle}deg, rgba(167,139,250,0.6), rgba(99,102,241,0.3), rgba(255,255,255,0.05))`
-    : `linear-gradient(${angle}deg, rgba(99,102,241,0.4), rgba(167,139,250,0.15), rgba(255,255,255,0.04))`;
+    ? `linear-gradient(${angle}deg, rgba(226,232,240,0.5), rgba(148,163,184,0.2), rgba(255,255,255,0.04))`
+    : `linear-gradient(${angle}deg, rgba(203,213,225,0.35), rgba(226,232,240,0.12), rgba(255,255,255,0.03))`;
 
-  const hoverGrad = `linear-gradient(${angle}deg, rgba(167,139,250,0.95), rgba(99,102,241,0.7), rgba(167,139,250,0.95))`;
+  const hoverGrad = `linear-gradient(${angle}deg, rgba(255,255,255,0.9), rgba(203,213,225,0.6), rgba(226,232,240,0.9))`;
 
   return (
     <div
@@ -201,7 +201,7 @@ const QualityCard = ({ item, delay = 0, large = false, horizontal = false }: Qua
           ? 'transform 0.25s cubic-bezier(0.34,1.56,0.64,1), opacity 0.5s ease, box-shadow 0.3s ease'
           : 'transform 0.6s cubic-bezier(0.16,1,0.3,1), opacity 0.6s ease, background 0.4s ease, box-shadow 0.3s ease',
         boxShadow: hovered
-          ? '0 20px 60px rgba(167,139,250,0.25), 0 0 0 0px rgba(167,139,250,0.1)'
+          ? '0 20px 60px rgba(226,232,240,0.12), 0 0 40px rgba(255,255,255,0.06)'
           : '0 4px 20px rgba(0,0,0,0.4)',
       }}
       onMouseEnter={() => setHovered(true)}
@@ -212,7 +212,7 @@ const QualityCard = ({ item, delay = 0, large = false, horizontal = false }: Qua
         <div
           className="absolute inset-0 rounded-2xl sm:rounded-3xl pointer-events-none"
           style={{
-            background: 'radial-gradient(ellipse at 50% 0%, rgba(167,139,250,0.15) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.08) 0%, transparent 70%)',
           }}
         />
       )}
@@ -226,12 +226,12 @@ const QualityCard = ({ item, delay = 0, large = false, horizontal = false }: Qua
             <div
               className="w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center mt-0.5"
               style={{
-                background: hovered ? 'rgba(167,139,250,0.2)' : 'rgba(167,139,250,0.08)',
+                background: hovered ? 'rgba(226,232,240,0.15)' : 'rgba(255,255,255,0.06)',
                 transition: 'background 0.3s ease, transform 0.3s ease',
                 transform: hovered ? 'scale(1.1) rotate(-6deg)' : 'scale(1) rotate(0deg)',
               }}
             >
-              <Icon name={item.icon} size={18} className="text-purple-400" />
+              <Icon name={item.icon} size={18} className="text-slate-300" />
             </div>
             <div>
               <h3 className="text-white font-bold text-sm sm:text-base mb-1">{item.title}</h3>
@@ -243,17 +243,17 @@ const QualityCard = ({ item, delay = 0, large = false, horizontal = false }: Qua
             <div
               className={`${large ? 'w-12 h-12 rounded-2xl mb-5' : 'w-10 h-10 rounded-xl mb-4'} flex items-center justify-center`}
               style={{
-                background: hovered ? 'rgba(167,139,250,0.22)' : 'rgba(167,139,250,0.1)',
+                background: hovered ? 'rgba(226,232,240,0.15)' : 'rgba(255,255,255,0.07)',
                 transition: 'background 0.3s ease, transform 0.4s cubic-bezier(0.34,1.56,0.64,1)',
                 transform: hovered ? 'scale(1.15) rotate(-8deg)' : 'scale(1) rotate(0deg)',
               }}
             >
-              <Icon name={item.icon} size={large ? 22 : 18} className="text-purple-400" />
+              <Icon name={item.icon} size={large ? 22 : 18} className="text-slate-300" />
             </div>
             <h3 className={`text-white font-bold ${large ? 'font-black text-xl sm:text-2xl mb-2' : 'text-base sm:text-lg mb-1.5'}`}>{item.title}</h3>
             <p className={`text-white/50 ${large ? 'text-sm' : 'text-xs sm:text-sm'} leading-relaxed`}>{item.description}</p>
             {large && (
-              <div className="mt-6 flex items-center gap-2 text-purple-400 text-xs font-semibold tracking-wide">
+              <div className="mt-6 flex items-center gap-2 text-slate-400 text-xs font-semibold tracking-wide">
                 <span className="w-6 h-px" style={{ background: 'currentColor' }} />
                 Основа каждого зеркала
               </div>
