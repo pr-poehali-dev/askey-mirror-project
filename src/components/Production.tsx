@@ -180,71 +180,42 @@ const Production = () => {
           </p>
         </div>
 
-        {/* Карточки качества */}
+        {/* Список качеств */}
         <div ref={contentRef} className="mb-10 sm:mb-12 lg:mb-16">
-          {/* Верхний ряд: большая карточка + 2 маленькие */}
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-5 mb-4 sm:mb-5">
-            {/* Большая карточка */}
-            <div
-              className="lg:col-span-2 card-dark rounded-2xl sm:rounded-3xl p-7 sm:p-8 flex flex-col justify-between group hover:neon-border-purple transition-all duration-300"
-              style={{ minHeight: '220px' }}
-            >
-              <div>
+          {qualities.map((item, i) => (
+            <div key={i}>
+              <div className="grid grid-cols-[48px_1fr] sm:grid-cols-[64px_200px_1fr] lg:grid-cols-[80px_260px_1fr] gap-x-4 sm:gap-x-8 items-start py-6 sm:py-8 group cursor-default">
+                {/* Номер */}
                 <div
-                  className="w-12 h-12 rounded-2xl mb-5 flex items-center justify-center"
-                  style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.3)' }}
+                  className="text-3xl sm:text-4xl lg:text-5xl font-black leading-none pt-1 transition-all duration-300 group-hover:text-white"
+                  style={{ fontFamily: 'Orbitron, monospace', color: 'rgba(255,255,255,0.12)' }}
                 >
-                  <Icon name={qualities[0].icon} size={22} className="text-purple-400" />
+                  {String(i + 1).padStart(2, '0')}
                 </div>
-                <h3 className="text-white font-black text-xl sm:text-2xl mb-2">{qualities[0].title}</h3>
-                <p className="text-white/50 text-sm leading-relaxed">{qualities[0].description}</p>
-              </div>
-              <div className="mt-6 flex items-center gap-2 text-purple-400 text-xs font-semibold tracking-wide">
-                <span className="w-6 h-px" style={{ background: 'currentColor' }} />
-                Основа каждого зеркала
-              </div>
-            </div>
 
-            {/* Две маленькие карточки */}
-            <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-              {qualities.slice(1, 3).map((item, i) => (
-                <div
-                  key={i}
-                  className="card-dark rounded-2xl sm:rounded-3xl p-5 sm:p-6 group hover:neon-border-purple transition-all duration-300"
-                >
+                {/* Заголовок + иконка */}
+                <div className="flex items-center gap-3 pt-0.5 sm:pt-1">
                   <div
-                    className="w-10 h-10 rounded-xl mb-4 flex items-center justify-center"
-                    style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.3)' }}
+                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex-shrink-0 flex items-center justify-center"
+                    style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)' }}
                   >
-                    <Icon name={item.icon} size={18} className="text-purple-400" />
+                    <Icon name={item.icon} size={15} className="text-purple-400" />
                   </div>
-                  <h3 className="text-white font-bold text-base sm:text-lg mb-1.5">{item.title}</h3>
-                  <p className="text-white/50 text-xs sm:text-sm leading-relaxed">{item.description}</p>
+                  <h3 className="text-white font-bold text-sm sm:text-base lg:text-lg leading-tight">{item.title}</h3>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Нижний ряд: 3 карточки в ряд с цифровыми акцентами */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
-            {qualities.slice(3).map((item, i) => (
-              <div
-                key={i}
-                className="card-dark rounded-2xl sm:rounded-3xl p-5 sm:p-6 flex gap-4 items-start group hover:neon-border-purple transition-all duration-300"
-              >
-                <div
-                  className="w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center mt-0.5"
-                  style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.3)' }}
-                >
-                  <Icon name={item.icon} size={18} className="text-purple-400" />
-                </div>
-                <div>
-                  <h3 className="text-white font-bold text-sm sm:text-base mb-1">{item.title}</h3>
-                  <p className="text-white/50 text-xs leading-relaxed">{item.description}</p>
-                </div>
+                {/* Описание */}
+                <p className="text-white/45 text-xs sm:text-sm leading-relaxed col-start-2 sm:col-start-3 mt-2 sm:mt-0 sm:pt-1.5">
+                  {item.description}
+                </p>
               </div>
-            ))}
-          </div>
+
+              {/* Разделитель */}
+              {i < qualities.length - 1 && (
+                <div className="h-px w-full" style={{ background: 'rgba(255,255,255,0.07)' }} />
+              )}
+            </div>
+          ))}
         </div>
 
         {/* Блок адресной ленты */}
