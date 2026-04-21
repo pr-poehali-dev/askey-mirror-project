@@ -1,5 +1,5 @@
 import Icon from '@/components/ui/icon';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const DOT_COUNT = 20;
@@ -147,6 +147,124 @@ const qualities = [
   },
 ];
 
+interface QualityCardProps {
+  item: { icon: string; title: string; description: string };
+  delay?: number;
+  large?: boolean;
+  horizontal?: boolean;
+}
+
+const QualityCard = ({ item, delay = 0, large = false, horizontal = false }: QualityCardProps) => {
+  const [hovered, setHovered] = useState(false);
+  const [angle, setAngle] = useState(135);
+  const [visible, setVisible] = useState(false);
+  const rafRef = useRef<number>();
+  const angleRef = useRef(135);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setVisible(true), delay);
+    return () => clearTimeout(timer);
+  }, [delay]);
+
+  useEffect(() => {
+    if (hovered) {
+      const spin = () => {
+        angleRef.current = (angleRef.current + 1.8) % 360;
+        setAngle(angleRef.current);
+        rafRef.current = requestAnimationFrame(spin);
+      };
+      rafRef.current = requestAnimationFrame(spin);
+    } else {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    }
+    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
+  }, [hovered]);
+
+  const baseGrad = large
+    ? `linear-gradient(${angle}deg, rgba(167,139,250,0.6), rgba(99,102,241,0.3), rgba(255,255,255,0.05))`
+    : `linear-gradient(${angle}deg, rgba(99,102,241,0.4), rgba(167,139,250,0.15), rgba(255,255,255,0.04))`;
+
+  const hoverGrad = `linear-gradient(${angle}deg, rgba(167,139,250,0.95), rgba(99,102,241,0.7), rgba(167,139,250,0.95))`;
+
+  return (
+    <div
+      ref={cardRef}
+      className="relative p-px rounded-2xl sm:rounded-3xl cursor-default"
+      style={{
+        background: hovered ? hoverGrad : baseGrad,
+        transform: visible
+          ? hovered ? 'translateY(-6px) scale(1.01)' : 'translateY(0) scale(1)'
+          : 'translateY(32px) scale(0.97)',
+        opacity: visible ? 1 : 0,
+        transition: hovered
+          ? 'transform 0.25s cubic-bezier(0.34,1.56,0.64,1), opacity 0.5s ease, box-shadow 0.3s ease'
+          : 'transform 0.6s cubic-bezier(0.16,1,0.3,1), opacity 0.6s ease, background 0.4s ease, box-shadow 0.3s ease',
+        boxShadow: hovered
+          ? '0 20px 60px rgba(167,139,250,0.25), 0 0 0 0px rgba(167,139,250,0.1)'
+          : '0 4px 20px rgba(0,0,0,0.4)',
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      {/* Glow spot при наведении */}
+      {hovered && (
+        <div
+          className="absolute inset-0 rounded-2xl sm:rounded-3xl pointer-events-none"
+          style={{
+            background: 'radial-gradient(ellipse at 50% 0%, rgba(167,139,250,0.15) 0%, transparent 70%)',
+          }}
+        />
+      )}
+
+      <div
+        className={`h-full rounded-2xl sm:rounded-3xl ${large ? 'p-7 sm:p-8 flex flex-col justify-between' : horizontal ? 'p-5 sm:p-6 flex gap-4 items-start' : 'p-5 sm:p-6'}`}
+        style={{ background: hovered ? '#12101a' : large ? '#0e0e12' : '#0d0d10', minHeight: large ? '220px' : undefined, transition: 'background 0.3s ease' }}
+      >
+        {horizontal ? (
+          <>
+            <div
+              className="w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center mt-0.5"
+              style={{
+                background: hovered ? 'rgba(167,139,250,0.2)' : 'rgba(167,139,250,0.08)',
+                transition: 'background 0.3s ease, transform 0.3s ease',
+                transform: hovered ? 'scale(1.1) rotate(-6deg)' : 'scale(1) rotate(0deg)',
+              }}
+            >
+              <Icon name={item.icon} size={18} className="text-purple-400" />
+            </div>
+            <div>
+              <h3 className="text-white font-bold text-sm sm:text-base mb-1">{item.title}</h3>
+              <p className="text-white/45 text-xs leading-relaxed">{item.description}</p>
+            </div>
+          </>
+        ) : (
+          <>
+            <div
+              className={`${large ? 'w-12 h-12 rounded-2xl mb-5' : 'w-10 h-10 rounded-xl mb-4'} flex items-center justify-center`}
+              style={{
+                background: hovered ? 'rgba(167,139,250,0.22)' : 'rgba(167,139,250,0.1)',
+                transition: 'background 0.3s ease, transform 0.4s cubic-bezier(0.34,1.56,0.64,1)',
+                transform: hovered ? 'scale(1.15) rotate(-8deg)' : 'scale(1) rotate(0deg)',
+              }}
+            >
+              <Icon name={item.icon} size={large ? 22 : 18} className="text-purple-400" />
+            </div>
+            <h3 className={`text-white font-bold ${large ? 'font-black text-xl sm:text-2xl mb-2' : 'text-base sm:text-lg mb-1.5'}`}>{item.title}</h3>
+            <p className={`text-white/50 ${large ? 'text-sm' : 'text-xs sm:text-sm'} leading-relaxed`}>{item.description}</p>
+            {large && (
+              <div className="mt-6 flex items-center gap-2 text-purple-400 text-xs font-semibold tracking-wide">
+                <span className="w-6 h-px" style={{ background: 'currentColor' }} />
+                Основа каждого зеркала
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
+
 const Production = () => {
   const titleRef = useScrollReveal({ threshold: 0.1 });
   const contentRef = useScrollReveal({ threshold: 0.08, delay: 100 });
@@ -180,86 +298,24 @@ const Production = () => {
           </p>
         </div>
 
-        {/* Gradient borders карточки */}
+        {/* Карточки с анимацией */}
         <div ref={contentRef} className="mb-10 sm:mb-12 lg:mb-16">
-          {/* Верхний ряд: большая карточка + 2 маленькие */}
+          {/* Верхний ряд */}
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-5 mb-4 sm:mb-5">
-            {/* Большая карточка */}
-            <div
-              className="lg:col-span-2 relative p-px rounded-2xl sm:rounded-3xl group"
-              style={{ background: 'linear-gradient(135deg, rgba(167,139,250,0.6), rgba(99,102,241,0.3), rgba(255,255,255,0.05))' }}
-            >
-              <div
-                className="h-full rounded-2xl sm:rounded-3xl p-7 sm:p-8 flex flex-col justify-between"
-                style={{ background: '#0e0e12', minHeight: '220px' }}
-              >
-                <div>
-                  <div
-                    className="w-12 h-12 rounded-2xl mb-5 flex items-center justify-center"
-                    style={{ background: 'rgba(167,139,250,0.12)' }}
-                  >
-                    <Icon name={qualities[0].icon} size={22} className="text-purple-400" />
-                  </div>
-                  <h3 className="text-white font-black text-xl sm:text-2xl mb-2">{qualities[0].title}</h3>
-                  <p className="text-white/55 text-sm leading-relaxed">{qualities[0].description}</p>
-                </div>
-                <div className="mt-6 flex items-center gap-2 text-purple-400 text-xs font-semibold tracking-wide">
-                  <span className="w-6 h-px" style={{ background: 'currentColor' }} />
-                  Основа каждого зеркала
-                </div>
-              </div>
+            <div className="lg:col-span-2">
+              <QualityCard item={qualities[0]} delay={100} large />
             </div>
-
-            {/* Две маленькие карточки */}
             <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
               {qualities.slice(1, 3).map((item, i) => (
-                <div
-                  key={i}
-                  className="relative p-px rounded-2xl sm:rounded-3xl"
-                  style={{ background: 'linear-gradient(135deg, rgba(99,102,241,0.4), rgba(167,139,250,0.15), rgba(255,255,255,0.04))' }}
-                >
-                  <div
-                    className="h-full rounded-2xl sm:rounded-3xl p-5 sm:p-6"
-                    style={{ background: '#0e0e12' }}
-                  >
-                    <div
-                      className="w-10 h-10 rounded-xl mb-4 flex items-center justify-center"
-                      style={{ background: 'rgba(167,139,250,0.1)' }}
-                    >
-                      <Icon name={item.icon} size={18} className="text-purple-400" />
-                    </div>
-                    <h3 className="text-white font-bold text-base sm:text-lg mb-1.5">{item.title}</h3>
-                    <p className="text-white/50 text-xs sm:text-sm leading-relaxed">{item.description}</p>
-                  </div>
-                </div>
+                <QualityCard key={i} item={item} delay={200 + i * 100} />
               ))}
             </div>
           </div>
 
-          {/* Нижний ряд: 3 карточки */}
+          {/* Нижний ряд */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
             {qualities.slice(3).map((item, i) => (
-              <div
-                key={i}
-                className="relative p-px rounded-2xl sm:rounded-3xl"
-                style={{ background: 'linear-gradient(135deg, rgba(167,139,250,0.25), rgba(99,102,241,0.1), rgba(255,255,255,0.03))' }}
-              >
-                <div
-                  className="h-full rounded-2xl sm:rounded-3xl p-5 sm:p-6 flex gap-4 items-start"
-                  style={{ background: '#0d0d10' }}
-                >
-                  <div
-                    className="w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center mt-0.5"
-                    style={{ background: 'rgba(167,139,250,0.08)' }}
-                  >
-                    <Icon name={item.icon} size={18} className="text-purple-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-white font-bold text-sm sm:text-base mb-1">{item.title}</h3>
-                    <p className="text-white/45 text-xs leading-relaxed">{item.description}</p>
-                  </div>
-                </div>
-              </div>
+              <QualityCard key={i} item={item} delay={400 + i * 100} horizontal />
             ))}
           </div>
         </div>
