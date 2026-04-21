@@ -252,12 +252,7 @@ const QualityCard = ({ item, delay = 0, large = false, horizontal = false }: Qua
             </div>
             <h3 className={`text-white font-bold ${large ? 'font-black text-xl sm:text-2xl mb-2' : 'text-base sm:text-lg mb-1.5'}`}>{item.title}</h3>
             <p className={`text-white/50 ${large ? 'text-sm' : 'text-xs sm:text-sm'} leading-relaxed`}>{item.description}</p>
-            {large && (
-              <div className="mt-6 flex items-center gap-2 text-slate-400 text-xs font-semibold tracking-wide">
-                <span className="w-6 h-px" style={{ background: 'currentColor' }} />
-                Основа каждого зеркала
-              </div>
-            )}
+
           </>
         )}
       </div>
