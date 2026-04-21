@@ -180,42 +180,102 @@ const Production = () => {
           </p>
         </div>
 
-        {/* Список качеств */}
+        {/* Glassmorphism карточки */}
         <div ref={contentRef} className="mb-10 sm:mb-12 lg:mb-16">
-          {qualities.map((item, i) => (
-            <div key={i}>
-              <div className="grid grid-cols-[48px_1fr] sm:grid-cols-[64px_200px_1fr] lg:grid-cols-[80px_260px_1fr] gap-x-4 sm:gap-x-8 items-start py-6 sm:py-8 group cursor-default">
-                {/* Номер */}
+          {/* Верхний ряд: большая карточка + 2 маленькие */}
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-5 mb-4 sm:mb-5">
+            {/* Большая карточка */}
+            <div
+              className="lg:col-span-2 rounded-2xl sm:rounded-3xl p-7 sm:p-8 flex flex-col justify-between group transition-all duration-300"
+              style={{
+                minHeight: '220px',
+                background: 'rgba(255,255,255,0.05)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255,255,255,0.12)',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)',
+              }}
+            >
+              <div>
                 <div
-                  className="text-3xl sm:text-4xl lg:text-5xl font-black leading-none pt-1 transition-all duration-300 group-hover:text-white"
-                  style={{ fontFamily: 'Orbitron, monospace', color: 'rgba(255,255,255,0.12)' }}
+                  className="w-12 h-12 rounded-2xl mb-5 flex items-center justify-center"
+                  style={{
+                    background: 'rgba(167,139,250,0.15)',
+                    border: '1px solid rgba(167,139,250,0.3)',
+                    backdropFilter: 'blur(10px)',
+                  }}
                 >
-                  {String(i + 1).padStart(2, '0')}
+                  <Icon name={qualities[0].icon} size={22} className="text-purple-400" />
                 </div>
-
-                {/* Заголовок + иконка */}
-                <div className="flex items-center gap-3 pt-0.5 sm:pt-1">
-                  <div
-                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex-shrink-0 flex items-center justify-center"
-                    style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)' }}
-                  >
-                    <Icon name={item.icon} size={15} className="text-purple-400" />
-                  </div>
-                  <h3 className="text-white font-bold text-sm sm:text-base lg:text-lg leading-tight">{item.title}</h3>
-                </div>
-
-                {/* Описание */}
-                <p className="text-white/45 text-xs sm:text-sm leading-relaxed col-start-2 sm:col-start-3 mt-2 sm:mt-0 sm:pt-1.5">
-                  {item.description}
-                </p>
+                <h3 className="text-white font-black text-xl sm:text-2xl mb-2">{qualities[0].title}</h3>
+                <p className="text-white/55 text-sm leading-relaxed">{qualities[0].description}</p>
               </div>
-
-              {/* Разделитель */}
-              {i < qualities.length - 1 && (
-                <div className="h-px w-full" style={{ background: 'rgba(255,255,255,0.07)' }} />
-              )}
+              <div className="mt-6 flex items-center gap-2 text-purple-400 text-xs font-semibold tracking-wide">
+                <span className="w-6 h-px" style={{ background: 'currentColor' }} />
+                Основа каждого зеркала
+              </div>
             </div>
-          ))}
+
+            {/* Две маленькие карточки */}
+            <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+              {qualities.slice(1, 3).map((item, i) => (
+                <div
+                  key={i}
+                  className="rounded-2xl sm:rounded-3xl p-5 sm:p-6 group transition-all duration-300"
+                  style={{
+                    background: 'rgba(255,255,255,0.04)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.08)',
+                  }}
+                >
+                  <div
+                    className="w-10 h-10 rounded-xl mb-4 flex items-center justify-center"
+                    style={{
+                      background: 'rgba(167,139,250,0.12)',
+                      border: '1px solid rgba(167,139,250,0.25)',
+                    }}
+                  >
+                    <Icon name={item.icon} size={18} className="text-purple-400" />
+                  </div>
+                  <h3 className="text-white font-bold text-base sm:text-lg mb-1.5">{item.title}</h3>
+                  <p className="text-white/50 text-xs sm:text-sm leading-relaxed">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Нижний ряд: 3 карточки */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
+            {qualities.slice(3).map((item, i) => (
+              <div
+                key={i}
+                className="rounded-2xl sm:rounded-3xl p-5 sm:p-6 flex gap-4 items-start group transition-all duration-300"
+                style={{
+                  background: 'rgba(255,255,255,0.03)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  boxShadow: '0 4px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06)',
+                }}
+              >
+                <div
+                  className="w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center mt-0.5"
+                  style={{
+                    background: 'rgba(167,139,250,0.1)',
+                    border: '1px solid rgba(167,139,250,0.2)',
+                  }}
+                >
+                  <Icon name={item.icon} size={18} className="text-purple-400" />
+                </div>
+                <div>
+                  <h3 className="text-white font-bold text-sm sm:text-base mb-1">{item.title}</h3>
+                  <p className="text-white/45 text-xs leading-relaxed">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Блок адресной ленты */}
