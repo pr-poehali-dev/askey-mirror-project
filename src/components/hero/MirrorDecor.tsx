@@ -75,7 +75,20 @@ const CinemaText = ({ lit }: { lit: boolean }) => {
 
 const MirrorDecor = () => {
   const [lit, setLit] = useState(false);
+  const [scale, setScale] = useState(1);
   const dotsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const innerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = innerRef.current;
+    if (!el) return;
+    const observer = new ResizeObserver(entries => {
+      const w = entries[0].contentRect.width;
+      setScale(w / 320);
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div
@@ -96,7 +109,7 @@ const MirrorDecor = () => {
       {/* Обёртка зеркала */}
       <div
         className="relative animate-mirror-float"
-        style={{ width: 'clamp(180px, 52vw, 360px)', zIndex: 1, containerType: 'inline-size' }}
+        style={{ width: 'clamp(180px, 52vw, 360px)', zIndex: 1 }}
       >
         {/* Рамка зеркала — iPhone-форма */}
         <div
@@ -109,6 +122,7 @@ const MirrorDecor = () => {
         >
           {/* Зеркальная поверхность */}
           <div
+            ref={innerRef}
             className="relative overflow-hidden"
             style={{
               borderRadius: '38px',
@@ -137,7 +151,9 @@ const MirrorDecor = () => {
             />
 
             {/* Наклейка сверху */}
-            <MirrorStickerTop />
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 9, transformOrigin: 'top left', transform: `scale(${scale})` }}>
+              <MirrorStickerTop />
+            </div>
 
             {/* Зеркальная поверхность (отражение интерьера) */}
             <div
@@ -196,7 +212,9 @@ const MirrorDecor = () => {
             <MirrorCharacterTop lit={lit} />
 
             {/* Наклейка снизу */}
-            <MirrorStickerBottom />
+            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10, transformOrigin: 'bottom left', transform: `scale(${scale})` }}>
+              <MirrorStickerBottom />
+            </div>
           </div>
         </div>
 
