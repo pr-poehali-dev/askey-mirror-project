@@ -1,6 +1,6 @@
 // Базовый размер шрифта на корне — clamp работает на div, а не на SVG.
 // Всё внутри в em, SVG тоже через style (не атрибуты width/height).
-const ROOT = 'clamp(12px, 4vw, 16px)';
+const ROOT = 'clamp(9px, 3vw, 16px)';
 
 const MirrorStickerTop = () => (
   <div
@@ -85,7 +85,6 @@ const MirrorStickerTop = () => (
           <div style={{ width: '100%', height: '100%', borderRadius: '50%', background: '#c8b8a2' }} />
         </div>
         <div>
-          <div style={{ fontSize: '0.85em', fontWeight: 700, color: '#111', fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif', letterSpacing: '-0.5px', lineHeight: 1.2 }}>9:41</div>
           <div style={{ fontSize: '0.9em', fontWeight: 700, color: '#111', fontFamily: 'sans-serif', lineHeight: 1.2 }}>your_profile</div>
           <div style={{ fontSize: '0.75em', color: '#666', fontFamily: 'sans-serif', lineHeight: 1.2 }}>Москва</div>
         </div>
