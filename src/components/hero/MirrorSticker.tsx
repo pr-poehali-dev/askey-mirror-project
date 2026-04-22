@@ -1,6 +1,4 @@
-// Базовый размер шрифта на корне — clamp работает на div, а не на SVG.
-// Всё внутри в em, SVG тоже через style (не атрибуты width/height).
-const ROOT = 'clamp(9px, 3vw, 16px)';
+const ROOT = 'clamp(8px, 2.5vw, 16px)';
 
 const MirrorStickerTop = () => (
   <div
@@ -9,15 +7,15 @@ const MirrorStickerTop = () => (
       zIndex: 9,
       animationDelay: '800ms',
       background: 'rgba(255,255,255,0.97)',
-      paddingBottom: '0.7em',
+      paddingBottom: '0.4em',
       fontSize: ROOT,
     }}
   >
     {/* Статус-бар iOS */}
     <div style={{
       position: 'relative',
-      height: '1.8em',
-      margin: '0.4em 0 0.25em',
+      height: '1.6em',
+      margin: '0.3em 0 0.2em',
     }}>
       {/* Время — абсолютно слева */}
       <span style={{
@@ -75,10 +73,10 @@ const MirrorStickerTop = () => (
     </div>
 
     {/* Instagram шапка */}
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 0.9em' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.6em' }}>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 0.7em' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
         <div style={{
-          width: '2.6em', height: '2.6em', borderRadius: '50%',
+          width: '2.2em', height: '2.2em', borderRadius: '50%',
           background: 'linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)',
           padding: '2px', flexShrink: 0,
         }}>
@@ -86,11 +84,11 @@ const MirrorStickerTop = () => (
         </div>
         <div>
           <div style={{ fontSize: '0.9em', fontWeight: 700, color: '#111', fontFamily: 'sans-serif', lineHeight: 1.2 }}>your_profile</div>
-          <div style={{ fontSize: '0.75em', color: '#666', fontFamily: 'sans-serif', lineHeight: 1.2 }}>Москва</div>
+          <div style={{ fontSize: '0.72em', color: '#666', fontFamily: 'sans-serif', lineHeight: 1.2 }}>Москва</div>
         </div>
       </div>
       <div style={{ display: 'flex', gap: '0.3em' }}>
-        {[0, 1, 2].map(i => <div key={i} style={{ width: '0.5em', height: '0.5em', borderRadius: '50%', background: '#111' }} />)}
+        {[0, 1, 2].map(i => <div key={i} style={{ width: '0.45em', height: '0.45em', borderRadius: '50%', background: '#111' }} />)}
       </div>
     </div>
   </div>
@@ -103,51 +101,46 @@ const MirrorStickerBottom = () => (
       zIndex: 10,
       animationDelay: '900ms',
       background: 'rgba(255,255,255,0.97)',
-      padding: '1em 0.9em 0.6em',
+      padding: '0.5em 0.7em 0.5em',
       fontSize: ROOT,
     }}
   >
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.7em' }}>
-      <div style={{ display: 'flex', gap: '0.8em', alignItems: 'center' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.35em' }}>
-          <svg style={{ width: '1.4em', height: '1.4em', flexShrink: 0 }} viewBox="0 0 24 24" fill="#e53935">
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.4em' }}>
+      <div style={{ display: 'flex', gap: '0.6em', alignItems: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.3em' }}>
+          <svg style={{ width: '1.2em', height: '1.2em', flexShrink: 0 }} viewBox="0 0 24 24" fill="#e53935">
             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
           </svg>
-          <span style={{ fontSize: '1em', color: '#111', fontFamily: 'sans-serif', fontWeight: 600, whiteSpace: 'nowrap' }}>12K</span>
+          <span style={{ fontSize: '0.95em', color: '#111', fontFamily: 'sans-serif', fontWeight: 600, whiteSpace: 'nowrap' }}>12K</span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.35em' }}>
-          <svg style={{ width: '1.4em', height: '1.4em', flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.3em' }}>
+          <svg style={{ width: '1.2em', height: '1.2em', flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
           </svg>
-          <span style={{ fontSize: '1em', color: '#111', fontFamily: 'sans-serif', fontWeight: 600 }}>21</span>
+          <span style={{ fontSize: '0.95em', color: '#111', fontFamily: 'sans-serif', fontWeight: 600 }}>21</span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.35em' }}>
-          <svg style={{ width: '1.4em', height: '1.4em', flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.3em' }}>
+          <svg style={{ width: '1.2em', height: '1.2em', flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2">
             <path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/>
             <path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
           </svg>
-          <span style={{ fontSize: '1em', color: '#111', fontFamily: 'sans-serif', fontWeight: 600 }}>832</span>
+          <span style={{ fontSize: '0.95em', color: '#111', fontFamily: 'sans-serif', fontWeight: 600 }}>832</span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.35em' }}>
-          <svg style={{ width: '1.4em', height: '1.4em', flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.3em' }}>
+          <svg style={{ width: '1.2em', height: '1.2em', flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2">
             <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
           </svg>
-          <span style={{ fontSize: '1em', color: '#111', fontFamily: 'sans-serif', fontWeight: 600 }}>1007</span>
+          <span style={{ fontSize: '0.95em', color: '#111', fontFamily: 'sans-serif', fontWeight: 600 }}>1007</span>
         </div>
       </div>
-      <svg style={{ width: '1.4em', height: '1.4em', flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2">
+      <svg style={{ width: '1.2em', height: '1.2em', flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2">
         <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
       </svg>
     </div>
-    <div style={{ fontSize: '1em', color: '#333', fontFamily: 'sans-serif', lineHeight: 1.4, marginBottom: '0.5em' }}>
+    <div style={{ fontSize: '0.9em', color: '#333', fontFamily: 'sans-serif', lineHeight: 1.3 }}>
       <span style={{ fontWeight: 700 }}>your_profile</span>
       {' '}Ваша любая подпись
     </div>
-    {/* Пустая строка */}
-    <div style={{ fontSize: '1em', color: 'transparent', fontFamily: 'sans-serif', lineHeight: 1.4, marginBottom: '0.8em' }}>
-      &nbsp;
-    </div>
-
   </div>
 );
 
