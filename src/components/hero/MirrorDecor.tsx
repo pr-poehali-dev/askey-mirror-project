@@ -79,8 +79,8 @@ const MirrorDecor = () => {
 
   return (
     <div
-      className="animate-slide-in-right relative flex items-center justify-center mb-8 sm:mb-12 lg:mb-0"
-      style={{ animationDelay: '400ms', willChange: 'transform, opacity', padding: '0 32px' }}
+      className="animate-slide-in-right relative flex items-center justify-center mb-4 sm:mb-8 lg:mb-0"
+      style={{ animationDelay: '400ms', willChange: 'transform, opacity', padding: '0 16px' }}
     >
       {/* Дальнее фоновое свечение (halo) */}
       <div
@@ -96,7 +96,7 @@ const MirrorDecor = () => {
       {/* Обёртка зеркала */}
       <div
         className="relative animate-mirror-float"
-        style={{ width: 'clamp(200px, 55vw, 360px)', zIndex: 1 }}
+        style={{ width: 'clamp(160px, 42vw, 360px)', zIndex: 1 }}
       >
         {/* Рамка зеркала — iPhone-форма */}
         <div

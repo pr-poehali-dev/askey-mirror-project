@@ -110,7 +110,7 @@ const HeroContent = ({ scrollTo }: HeroContentProps) => (
     </div>
 
     {/* Статистика */}
-    <div className="animate-fade-in-up delay-600 mt-6 sm:mt-16 flex items-stretch gap-0 max-w-sm sm:max-w-md mx-auto lg:mx-0">
+    <div className="animate-fade-in-up delay-600 mt-4 sm:mt-12 flex items-stretch gap-0 max-w-sm sm:max-w-md mx-auto lg:mx-0">
       {stats.map((stat, i) => (
         <div key={stat.label} className="flex items-stretch flex-1">
           <StatCounter end={stat.end} suffix={stat.suffix} label={stat.label} delay={i * 150} />

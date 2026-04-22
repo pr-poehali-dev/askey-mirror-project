@@ -13,7 +13,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-24"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-24"
       style={{ background: 'radial-gradient(ellipse at 50% 40%, #12131a 0%, #080808 70%)' }}
     >
       {/* Canvas-фон с частицами */}
@@ -32,14 +32,14 @@ const Hero = () => {
       </div>
 
       {/* Двухколоночный лейаут */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 pt-4 pb-16 sm:pt-8 lg:pt-0">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-10 xl:gap-16">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 pt-2 pb-10 sm:pt-8 sm:pb-16 lg:pt-0 lg:pb-0">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 sm:gap-8 lg:gap-10 xl:gap-16">
 
           {/* Левая колонка — текст и кнопки */}
           <HeroContent scrollTo={scrollTo} />
 
           {/* Правая колонка — зеркало */}
-          <div className="flex items-center justify-center order-first lg:order-last mt-0 lg:mt-0 py-4 sm:py-6 lg:py-0 lg:pr-4 w-full lg:w-[38%] xl:w-[40%] 2xl:w-[42%]">
+          <div className="flex items-center justify-center order-first lg:order-last py-2 sm:py-4 lg:py-0 lg:pr-4 w-full lg:w-[38%] xl:w-[40%] 2xl:w-[42%]">
             <MirrorDecor />
           </div>
         </div>
