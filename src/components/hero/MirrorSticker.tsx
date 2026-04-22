@@ -1,4 +1,5 @@
-const ROOT = 'clamp(8px, 2.5vw, 16px)';
+// font-size привязан к ширине зеркала через container query units
+const ROOT = 'clamp(7px, 3.5cqw, 15px)';
 
 const MirrorStickerTop = () => (
   <div
@@ -20,7 +21,7 @@ const MirrorStickerTop = () => (
       {/* Время — абсолютно слева */}
       <span style={{
         position: 'absolute',
-        left: '1em',
+        left: '0.8em',
         top: '50%',
         transform: 'translateY(-50%)',
         fontSize: '0.9em', fontWeight: 700, color: '#111',
@@ -36,38 +37,38 @@ const MirrorStickerTop = () => (
         left: '50%',
         top: '50%',
         transform: 'translate(-50%, -50%)',
-        width: '3.2em', height: '1.15em',
+        width: '3.2em', height: '1.1em',
         borderRadius: '1em',
         background: '#111',
         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.28em',
       }}>
-        <div style={{ width: '0.42em', height: '0.42em', borderRadius: '50%', background: '#1a1a1a', border: '1.5px solid #333' }} />
-        <div style={{ width: '0.2em', height: '0.2em', borderRadius: '50%', background: '#2a2a2a' }} />
+        <div style={{ width: '0.4em', height: '0.4em', borderRadius: '50%', background: '#1a1a1a', border: '1.5px solid #333' }} />
+        <div style={{ width: '0.18em', height: '0.18em', borderRadius: '50%', background: '#2a2a2a' }} />
       </div>
 
       {/* Правые иконки — абсолютно справа */}
       <div style={{
         position: 'absolute',
-        right: '1em',
+        right: '0.8em',
         top: '50%',
         transform: 'translateY(-50%)',
-        display: 'flex', gap: '0.22em', alignItems: 'center',
+        display: 'flex', gap: '0.2em', alignItems: 'center',
       }}>
         <div style={{ display: 'flex', gap: '1px', alignItems: 'flex-end' }}>
           {[3, 5, 7, 9].map((h, i) => (
             <div key={i} style={{ width: '2px', height: `${h}px`, borderRadius: '1px', background: '#111', opacity: i < 3 ? 1 : 0.3 }} />
           ))}
         </div>
-        <svg style={{ width: '0.82em', height: '0.68em' }} viewBox="0 0 12 10" fill="none">
+        <svg style={{ width: '0.8em', height: '0.65em' }} viewBox="0 0 12 10" fill="none">
           <path d="M6 8.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" fill="#111"/>
           <path d="M3.5 6C4.3 5.2 5.1 4.8 6 4.8s1.7.4 2.5 1.2" stroke="#111" strokeWidth="1.2" strokeLinecap="round" fill="none"/>
           <path d="M1.5 4C2.8 2.7 4.3 2 6 2s3.2.7 4.5 2" stroke="#111" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.5"/>
         </svg>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1px' }}>
-          <div style={{ width: '1.2em', height: '0.6em', borderRadius: '2px', border: '1px solid #111', padding: '1px', display: 'flex', alignItems: 'center' }}>
+          <div style={{ width: '1.15em', height: '0.55em', borderRadius: '2px', border: '1px solid #111', padding: '1px', display: 'flex', alignItems: 'center' }}>
             <div style={{ width: '75%', height: '100%', background: '#111', borderRadius: '1px' }} />
           </div>
-          <div style={{ width: '2px', height: '0.35em', borderRadius: '0 1px 1px 0', background: '#111', opacity: 0.5 }} />
+          <div style={{ width: '2px', height: '0.32em', borderRadius: '0 1px 1px 0', background: '#111', opacity: 0.5 }} />
         </div>
       </div>
     </div>
