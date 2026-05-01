@@ -36,7 +36,7 @@ const products = [
     price: '18 590',
     icon: 'Gem',
     popular: false,
-    image: 'https://i.ibb.co/1GJVVgnN/image.png',
+    image: 'https://cdn.poehali.dev/projects/af6d2ef4-20e2-486b-93ab-6d38dda52f4e/files/624ccebf-6ac9-4646-95d6-9ef7b3365c2b.jpg',
   },
 ];
 
