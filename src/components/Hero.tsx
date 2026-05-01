@@ -46,7 +46,7 @@ const Hero = () => {
       </div>
 
       {/* Стрелка вниз */}
-      <div className="animate-bounce absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2">
+      <div className="animate-bounce absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 z-20">
         <Icon name="ChevronDown" size={24} className="text-purple-400/60 sm:w-7 sm:h-7" />
       </div>
     </section>
