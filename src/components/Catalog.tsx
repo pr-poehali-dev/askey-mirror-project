@@ -155,7 +155,7 @@ const Catalog = () => {
                   src={product.image}
                   alt={product.name}
                   className="w-full h-full"
-                  style={{ objectFit: 'cover', objectPosition: 'center 15%' }}
+                  style={{ objectFit: 'cover', objectPosition: product.id === 2 ? 'center 40%' : 'center 15%' }}
                 />
                 <div
                   className="absolute inset-0"
