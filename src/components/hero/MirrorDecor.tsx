@@ -108,7 +108,7 @@ const MirrorDecor = () => {
       {/* Обёртка зеркала — пропорции 60×120 см = 1:2 */}
       <div
         className="relative animate-mirror-float"
-        style={{ width: 'clamp(180px, 40vw, 320px)', zIndex: 1 }}
+        style={{ width: 'clamp(220px, 52vw, 340px)', zIndex: 1 }}
       >
         {/* Рамка зеркала — тонкая, как настоящее зеркало */}
         <div
