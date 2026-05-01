@@ -114,7 +114,7 @@ const MirrorDecor = () => {
         <div
           className="relative animate-mirror-frame-glow"
           style={{
-            borderRadius: 'clamp(8px, 2.5%, 14px)',
+            borderRadius: 'clamp(16px, 5%, 24px)',
             padding: '4px',
             background: 'linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(220,225,235,0.85) 40%, rgba(255,255,255,0.9) 70%, rgba(200,210,220,0.95) 100%)',
             boxShadow: '0 0 0 1px rgba(255,255,255,0.3)',
@@ -125,7 +125,7 @@ const MirrorDecor = () => {
             ref={screenRef}
             className="relative overflow-hidden"
             style={{
-              borderRadius: 'clamp(5px, 1.5%, 10px)',
+              borderRadius: 'clamp(13px, 4%, 20px)',
               aspectRatio: '1 / 2',
               background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 20%, #141414 40%, #111111 60%, #0a0a0a 80%, #111111 100%)',
             }}
