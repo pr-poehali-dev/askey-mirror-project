@@ -167,7 +167,7 @@ const MirrorDecor = () => {
               style={{
                 zIndex: 9,
                 animationDelay: '950ms',
-                top: '50%',
+                top: '52%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
               }}
@@ -201,6 +201,9 @@ const MirrorDecor = () => {
             {/* Персонаж сверху */}
             <MirrorCharacterTop lit={lit} />
 
+            {/* Персонаж снизу — внутри зеркала */}
+            <MirrorCharacter lit={lit} />
+
             {/* Наклейка снизу */}
             <div
               className="animate-mirror-content-reveal"
@@ -228,8 +231,6 @@ const MirrorDecor = () => {
         ))}
       </div>
 
-      {/* Персонаж снизу */}
-      <MirrorCharacter lit={lit} />
     </div>
   );
 };
