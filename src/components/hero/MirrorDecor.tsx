@@ -167,9 +167,7 @@ const MirrorDecor = () => {
             {/* Текст при включении */}
             <CinemaText lit={lit} />
 
-            {/* ── Кнопка подсветки ──
-                Зеркало 120см, нижняя наклейка ~10-12% снизу.
-                10см выше низа = ~75% от верха экрана. */}
+            {/* ── Кнопка подсветки ── */}
             <div
               className="absolute animate-mirror-content-reveal cursor-pointer"
               onClick={() => setLit(v => !v)}
@@ -177,8 +175,11 @@ const MirrorDecor = () => {
                 zIndex: 9,
                 animationDelay: '950ms',
                 top: '72%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
+                left: 0,
+                right: 0,
+                display: 'flex',
+                justifyContent: 'center',
+                transform: 'translateY(-50%)',
               }}
             >
               <div style={{
@@ -214,6 +215,43 @@ const MirrorDecor = () => {
             <div style={{ position: 'absolute', bottom: 0, left: 0, zIndex: 10, transformOrigin: 'bottom left', transform: `scale(${scale})` }}>
               <MirrorStickerBottom />
             </div>
+          </div>
+        </div>
+
+        {/* Подписи под зеркалом */}
+        <div style={{
+          position: 'absolute',
+          bottom: '-38px',
+          left: 0,
+          right: 0,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '4px',
+          pointerEvents: 'none',
+        }}>
+          <div style={{
+            fontSize: '11px',
+            color: 'rgba(255,255,255,0.35)',
+            fontFamily: 'Orbitron, monospace',
+            letterSpacing: '0.15em',
+            textTransform: 'uppercase',
+          }}>60 × 120 см</div>
+          <div
+            className="animate-mirror-content-reveal"
+            style={{
+              animationDelay: '1200ms',
+              fontSize: '11px',
+              color: 'rgba(255,255,255,0.5)',
+              fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif',
+              letterSpacing: '0.05em',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '5px',
+            }}
+          >
+            <span style={{ opacity: 0.7 }}>↑</span>
+            нажми на кнопку
           </div>
         </div>
 
