@@ -61,10 +61,10 @@ const Timeline = () => {
             className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-black text-white mb-3 sm:mb-4"
             style={{ fontFamily: 'Orbitron, monospace' }}
           >
-            ОТ ЗАЯВКИ <span className="text-gradient">ДО ДОСТАВКИ</span>
+            ОТ ЗАЯВКИ <span className="text-gradient">ДО ОТПРАВКИ</span>
           </h2>
           <p className="text-white/50 text-sm sm:text-base lg:text-lg max-w-xl sm:max-w-2xl mx-auto">
-            Весь процесс занимает от 3 до 12 дней с момента оплаты. Держим вас в курсе на каждом этапе
+            5 простых шагов — и ваше зеркало уже в пути. Держим вас в курсе на каждом этапе
           </p>
         </div>
 
