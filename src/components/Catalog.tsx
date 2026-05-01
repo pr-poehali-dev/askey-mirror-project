@@ -150,12 +150,12 @@ const Catalog = () => {
               )}
 
               {/* Фото зеркала */}
-              <div className="relative w-full overflow-hidden">
+              <div className="relative w-full overflow-hidden" style={{ height: '320px' }}>
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full block"
-                  style={{ display: 'block' }}
+                  className="w-full h-full"
+                  style={{ objectFit: 'cover', objectPosition: 'center 15%' }}
                 />
                 <div
                   className="absolute inset-0"
