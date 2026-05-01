@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
 import MirrorLed from './MirrorLed';
-import MirrorCharacter from './MirrorCharacter';
 import MirrorCharacterTop from './MirrorCharacterTop';
 import { MirrorStickerTop, MirrorStickerBottom } from './MirrorSticker';
 
@@ -27,11 +26,11 @@ const CinemaText = ({ lit }: { lit: boolean }) => {
       }}>
         <div style={{
           fontFamily: 'Orbitron, monospace',
-          fontSize: 'clamp(7px, 3cqw, 11px)',
+          fontSize: 'clamp(7px,2.5cqw,11px)',
           color: 'rgba(255,255,255,0.75)',
           letterSpacing: '0.25em',
           textTransform: 'uppercase',
-          marginBottom: '6%',
+          marginBottom: '4%',
           textShadow: '0 0 12px rgba(255,255,255,0.6)',
         }}>
           {line1.split('').map((ch, i) => (
@@ -44,15 +43,15 @@ const CinemaText = ({ lit }: { lit: boolean }) => {
           ))}
         </div>
         <div style={{
-          width: lit ? '60%' : '0%',
+          width: lit ? '55%' : '0%',
           height: '1px',
           background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.7), transparent)',
-          margin: '0 auto 6%',
+          margin: '0 auto 4%',
           transition: lit ? 'width 0.8s ease 0.9s' : 'width 0.3s ease',
         }} />
         <div style={{
           fontFamily: "'Dancing Script', cursive",
-          fontSize: 'clamp(12px, 5.5cqw, 22px)',
+          fontSize: 'clamp(11px,4cqw,20px)',
           fontWeight: 600,
           color: 'rgba(255,255,255,1)',
           letterSpacing: '0.04em',
@@ -83,7 +82,7 @@ const MirrorDecor = () => {
   return (
     <div
       className="animate-slide-in-right relative flex items-center justify-center mb-4 sm:mb-8 lg:mb-0"
-      style={{ animationDelay: '400ms', willChange: 'transform, opacity', padding: '0 16px' }}
+      style={{ animationDelay: '400ms', willChange: 'transform, opacity', padding: '0 20px' }}
     >
       {/* Фоновое свечение */}
       <div
@@ -96,26 +95,27 @@ const MirrorDecor = () => {
         }}
       />
 
-      {/* Обёртка зеркала */}
+      {/* Обёртка зеркала — пропорции 60×120 см = 1:2 */}
       <div
         className="relative animate-mirror-float"
-        style={{ width: 'clamp(200px, 46vw, 340px)', zIndex: 1 }}
+        style={{ width: 'clamp(180px, 40vw, 320px)', zIndex: 1 }}
       >
-        {/* Рамка — iPhone-форма */}
+        {/* Рамка зеркала — тонкая, как настоящее зеркало */}
         <div
           className="relative animate-mirror-frame-glow"
           style={{
-            borderRadius: 'clamp(28px, 12%, 44px)',
-            padding: '5px',
-            background: 'linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 30%, rgba(200,210,220,0.95) 60%, rgba(255,255,255,0.8) 100%)',
+            borderRadius: 'clamp(8px, 2.5%, 14px)',
+            padding: '4px',
+            background: 'linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(220,225,235,0.85) 40%, rgba(255,255,255,0.9) 70%, rgba(200,210,220,0.95) 100%)',
+            boxShadow: '0 0 0 1px rgba(255,255,255,0.3)',
           }}
         >
-          {/* Экран зеркала */}
+          {/* Экран — соотношение 1:2 как зеркало 60×120 см */}
           <div
             className="relative overflow-hidden"
             style={{
-              borderRadius: 'clamp(24px, 10%, 40px)',
-              aspectRatio: '9 / 16',
+              borderRadius: 'clamp(5px, 1.5%, 10px)',
+              aspectRatio: '1 / 2',
               background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 20%, #141414 40%, #111111 60%, #0a0a0a 80%, #111111 100%)',
               containerType: 'inline-size',
             }}
@@ -125,7 +125,7 @@ const MirrorDecor = () => {
               className="absolute pointer-events-none animate-mirror-shine"
               style={{
                 top: 0, left: '-60%', width: '40%', height: '100%',
-                background: 'linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.06) 60%, transparent 70%)',
+                background: 'linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.10) 50%, rgba(255,255,255,0.05) 60%, transparent 70%)',
                 transform: 'skewX(-15deg)',
                 zIndex: 3,
               }}
@@ -135,16 +135,13 @@ const MirrorDecor = () => {
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
-                background: 'linear-gradient(160deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.05) 30%, transparent 60%, rgba(200,210,220,0.06) 90%)',
+                background: 'linear-gradient(160deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 30%, transparent 60%, rgba(200,210,220,0.04) 90%)',
                 zIndex: 2,
               }}
             />
 
-            {/* Наклейка сверху */}
-            <div
-              className="animate-mirror-content-reveal"
-              style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 9, animationDelay: '800ms' }}
-            >
+            {/* ── Наклейка сверху ── */}
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 9 }}>
               <MirrorStickerTop />
             </div>
 
@@ -153,42 +150,44 @@ const MirrorDecor = () => {
               className="absolute inset-0"
               style={{
                 zIndex: 1,
-                background: 'linear-gradient(160deg, rgba(255,255,255,0.08) 0%, rgba(200,184,160,0.12) 30%, rgba(180,160,130,0.08) 60%, rgba(255,255,255,0.05) 100%)',
+                background: 'linear-gradient(160deg, rgba(255,255,255,0.05) 0%, rgba(200,184,160,0.08) 30%, rgba(180,160,130,0.05) 60%, rgba(255,255,255,0.03) 100%)',
               }}
             />
 
             {/* Текст при включении */}
             <CinemaText lit={lit} />
 
-            {/* Кнопка подсветки — строго по центру по горизонтали, 50% от верха */}
+            {/* ── Кнопка подсветки ──
+                Зеркало 120см, нижняя наклейка ~10-12% снизу.
+                10см выше низа = ~75% от верха экрана. */}
             <div
               className="absolute animate-mirror-content-reveal cursor-pointer"
               onClick={() => setLit(v => !v)}
               style={{
                 zIndex: 9,
                 animationDelay: '950ms',
-                top: '52%',
+                top: '72%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
               }}
             >
               <div style={{
-                width: '40px',
-                height: '40px',
+                width: '44px',
+                height: '44px',
                 borderRadius: '50%',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
                 <div style={{
-                  width: '14px',
-                  height: '14px',
+                  width: '16px',
+                  height: '16px',
                   borderRadius: '5px',
-                  background: lit ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.08)',
-                  border: lit ? '2px solid #e2e8f0' : '2px solid rgba(200,230,255,0.95)',
+                  background: lit ? 'rgba(255,255,255,0.35)' : 'rgba(255,255,255,0.06)',
+                  border: lit ? '2px solid rgba(255,255,255,0.9)' : '2px solid rgba(180,220,255,0.95)',
                   boxShadow: lit
-                    ? '0 0 8px 3px rgba(255,255,255,0.9), 0 0 18px 5px rgba(255,255,255,0.4)'
-                    : '0 0 6px 2px rgba(180,220,255,0.9), 0 0 14px 4px rgba(150,200,255,0.5)',
+                    ? '0 0 10px 4px rgba(255,255,255,0.85), 0 0 24px 6px rgba(255,255,255,0.35)'
+                    : '0 0 6px 2px rgba(160,210,255,0.9), 0 0 16px 4px rgba(130,190,255,0.45)',
                   backdropFilter: 'blur(4px)',
                   transition: 'all 0.3s ease',
                 }} />
@@ -198,39 +197,32 @@ const MirrorDecor = () => {
             {/* LED + диоды */}
             <MirrorLed lit={lit} dotsRef={dotsRef} />
 
-            {/* Персонаж сверху */}
+            {/* Персонаж сверху (выглядывает при включении) */}
             <MirrorCharacterTop lit={lit} />
 
-            {/* Персонаж снизу — внутри зеркала */}
-            <MirrorCharacter lit={lit} />
-
-            {/* Наклейка снизу */}
-            <div
-              className="animate-mirror-content-reveal"
-              style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10, animationDelay: '900ms' }}
-            >
+            {/* ── Наклейка снизу ── */}
+            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10 }}>
               <MirrorStickerBottom />
             </div>
           </div>
         </div>
 
         {/* Боковые LED-лучи */}
-        {['left', 'right'].map((side, i) => (
+        {([['left', '0s'], ['right', '0.5s']] as const).map(([side, delay]) => (
           <div
             key={side}
             className="absolute pointer-events-none animate-mirror-side-led"
             style={{
-              [side]: '-16px', top: '10%', bottom: '10%', width: '14px',
-              background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.3) 40%, rgba(255,255,255,0.3) 60%, transparent)',
+              [side]: '-14px', top: '12%', bottom: '12%', width: '12px',
+              background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.25) 40%, rgba(255,255,255,0.25) 60%, transparent)',
               borderRadius: '8px',
-              filter: 'blur(10px)',
+              filter: 'blur(8px)',
               zIndex: 0,
-              animationDelay: i === 1 ? '0.5s' : '0s',
+              animationDelay: delay,
             }}
           />
         ))}
       </div>
-
     </div>
   );
 };
