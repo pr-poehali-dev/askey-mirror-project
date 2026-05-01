@@ -1,7 +1,7 @@
 // Наклейки с фиксированными px — зеркало всегда выглядит как Instagram на iPhone
 
 const MirrorStickerTop = () => (
-  <div style={{ background: '#ffffff', width: '100%' }}>
+  <div style={{ background: '#ffffff', width: '300px' }}>
 
     {/* ── Статус-бар iOS ── */}
     <div style={{
@@ -117,7 +117,7 @@ const MirrorStickerTop = () => (
 const MirrorStickerBottom = () => (
   <div style={{
     background: '#ffffff',
-    width: '100%',
+    width: '300px',
     padding: '8px 10px 18px',
   }}>
     {/* Иконки действий */}

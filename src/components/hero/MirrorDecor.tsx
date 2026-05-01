@@ -77,7 +77,17 @@ const CinemaText = ({ lit }: { lit: boolean }) => {
 
 const MirrorDecor = () => {
   const [lit, setLit] = useState(false);
+  const [scale, setScale] = useState(1);
   const dotsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const screenRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = screenRef.current;
+    if (!el) return;
+    const obs = new ResizeObserver(([e]) => setScale(e.contentRect.width / 300));
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <div
@@ -112,12 +122,12 @@ const MirrorDecor = () => {
         >
           {/* Экран — соотношение 1:2 как зеркало 60×120 см */}
           <div
+            ref={screenRef}
             className="relative overflow-hidden"
             style={{
               borderRadius: 'clamp(5px, 1.5%, 10px)',
               aspectRatio: '1 / 2',
               background: 'linear-gradient(135deg, #111111 0%, #1a1a1a 20%, #141414 40%, #111111 60%, #0a0a0a 80%, #111111 100%)',
-              containerType: 'inline-size',
             }}
           >
             {/* Блик */}
@@ -141,7 +151,7 @@ const MirrorDecor = () => {
             />
 
             {/* ── Наклейка сверху ── */}
-            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 9 }}>
+            <div style={{ position: 'absolute', top: 0, left: 0, zIndex: 9, transformOrigin: 'top left', transform: `scale(${scale})` }}>
               <MirrorStickerTop />
             </div>
 
@@ -201,7 +211,7 @@ const MirrorDecor = () => {
             <MirrorCharacterTop lit={lit} />
 
             {/* ── Наклейка снизу ── */}
-            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10 }}>
+            <div style={{ position: 'absolute', bottom: 0, left: 0, zIndex: 10, transformOrigin: 'bottom left', transform: `scale(${scale})` }}>
               <MirrorStickerBottom />
             </div>
           </div>
