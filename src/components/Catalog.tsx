@@ -24,7 +24,7 @@ const products = [
     price: '15 590',
     icon: 'Sparkles',
     popular: true,
-    image: 'https://cdn.poehali.dev/files/1c52a0fb-bc13-4ebc-892a-9d67e6a72f4b.jpeg',
+    image: 'https://cdn.poehali.dev/projects/af6d2ef4-20e2-486b-93ab-6d38dda52f4e/bucket/e022ba38-7f94-4cd2-8fd5-8218d33e0c41.png',
   },
   {
     id: 3,
@@ -36,7 +36,8 @@ const products = [
     price: '18 590',
     icon: 'Gem',
     popular: false,
-    image: 'https://cdn.poehali.dev/projects/af6d2ef4-20e2-486b-93ab-6d38dda52f4e/files/c1a9db91-b600-47a2-ad29-dfc010f31bab.jpg',
+    image: 'https://cdn.poehali.dev/projects/af6d2ef4-20e2-486b-93ab-6d38dda52f4e/bucket/e022ba38-7f94-4cd2-8fd5-8218d33e0c41.png',
+    darkSticker: true,
   },
 ];
 
@@ -160,6 +161,75 @@ const Catalog = () => {
                   className="absolute inset-0"
                   style={{ background: 'linear-gradient(to bottom, transparent 70%, rgba(10,10,15,0.9) 100%)' }}
                 />
+                {/* Чёрные наклейки для Премиум+ */}
+                {(product as typeof product & { darkSticker?: boolean }).darkSticker && (
+                  <>
+                    {/* Верхняя наклейка */}
+                    <div style={{
+                      position: 'absolute', top: '6%', left: '9%', right: '9%',
+                      background: 'rgba(0,0,0,0.72)',
+                      backdropFilter: 'blur(6px)',
+                      borderRadius: '18px 18px 0 0',
+                      padding: '8px 12px 6px',
+                    }}>
+                      {/* Статус-бар */}
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                        <span style={{ fontSize: '11px', fontWeight: 700, color: '#fff', fontFamily: 'sans-serif' }}>13:00</span>
+                        <div style={{ width: '50px', height: '16px', borderRadius: '999px', background: '#111' }} />
+                        <div style={{ display: 'flex', gap: '3px', alignItems: 'center' }}>
+                          <svg style={{ width: '12px', height: '9px' }} viewBox="0 0 17 12" fill="none"><rect x="0" y="4" width="3" height="8" rx="1" fill="white"/><rect x="4.5" y="2.5" width="3" height="9.5" rx="1" fill="white"/><rect x="9" y="1" width="3" height="11" rx="1" fill="white"/><rect x="13.5" y="0" width="3" height="12" rx="1" fill="white" opacity="0.4"/></svg>
+                          <svg style={{ width: '12px', height: '9px' }} viewBox="0 0 16 12" fill="none"><path d="M8 9.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" fill="white"/><path d="M4.2 7.2C5.3 6 6.6 5.3 8 5.3s2.7.7 3.8 1.9" stroke="white" strokeWidth="1.5" strokeLinecap="round"/><path d="M1.2 4.2C3.1 2.2 5.4 1 8 1s4.9 1.2 6.8 3.2" stroke="white" strokeWidth="1.5" strokeLinecap="round"/></svg>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '1px' }}>
+                            <div style={{ width: '18px', height: '9px', borderRadius: '2px', border: '1.5px solid white', padding: '1.5px', display: 'flex', alignItems: 'center', boxSizing: 'border-box' }}>
+                              <div style={{ width: '70%', height: '100%', background: 'white', borderRadius: '1px' }} />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {/* Instagram шапка */}
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
+                          <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)', padding: '2px', boxSizing: 'border-box', flexShrink: 0 }}>
+                            <div style={{ width: '100%', height: '100%', borderRadius: '50%', background: '#555' }} />
+                          </div>
+                          <div>
+                            <div style={{ fontSize: '11px', fontWeight: 700, color: '#fff', fontFamily: 'sans-serif', lineHeight: 1.2 }}>askei.mirror</div>
+                            <div style={{ fontSize: '9px', color: 'rgba(255,255,255,0.7)', fontFamily: 'sans-serif' }}>Анапа</div>
+                          </div>
+                        </div>
+                        <div style={{ display: 'flex', gap: '3px' }}>{[0,1,2].map(i => <div key={i} style={{ width: '3px', height: '3px', borderRadius: '50%', background: 'white' }} />)}</div>
+                      </div>
+                    </div>
+
+                    {/* Нижняя наклейка */}
+                    <div style={{
+                      position: 'absolute', bottom: '6%', left: '9%', right: '9%',
+                      background: 'rgba(0,0,0,0.72)',
+                      backdropFilter: 'blur(6px)',
+                      borderRadius: '0 0 18px 18px',
+                      padding: '8px 12px 10px',
+                    }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '5px' }}>
+                        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                          {[
+                            { icon: <svg style={{width:'15px',height:'15px'}} viewBox="0 0 24 24" fill="#ff4d6d"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>, label: '12 тыс.' },
+                            { icon: <svg style={{width:'15px',height:'15px'}} viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>, label: '21' },
+                            { icon: <svg style={{width:'15px',height:'15px'}} viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>, label: '1 007' },
+                          ].map(({icon, label}) => (
+                            <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
+                              {icon}
+                              <span style={{ fontSize: '10px', color: '#fff', fontFamily: 'sans-serif', fontWeight: 600 }}>{label}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <svg style={{width:'15px',height:'15px'}} viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                      </div>
+                      <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.9)', fontFamily: 'sans-serif', lineHeight: 1.4 }}>
+                        <span style={{ fontWeight: 700 }}>askei.mirror</span>{' '}Если зеркало, то только наше
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
 
               <div className="relative flex flex-col flex-1 p-5 sm:p-6 lg:p-7">
