@@ -39,7 +39,7 @@ const Hero = () => {
           <HeroContent scrollTo={scrollTo} />
 
           {/* Правая колонка — зеркало */}
-          <div className="flex items-center justify-center order-first lg:order-last py-2 sm:py-4 lg:py-0 lg:pr-4 w-full lg:w-[38%] xl:w-[40%] 2xl:w-[42%]">
+          <div className="flex items-center justify-center order-first lg:order-last pt-2 pb-16 sm:pt-4 sm:pb-16 lg:py-0 lg:pr-4 w-full lg:w-[38%] xl:w-[40%] 2xl:w-[42%]">
             <MirrorDecor />
           </div>
         </div>
