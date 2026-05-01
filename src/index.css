@@ -4,6 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
 @keyframes scream-pop {
   0% {
     transform: translateX(-80%) scale(0.4);

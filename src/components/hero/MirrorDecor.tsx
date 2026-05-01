@@ -221,37 +221,53 @@ const MirrorDecor = () => {
         {/* Подписи под зеркалом */}
         <div style={{
           position: 'absolute',
-          bottom: '-38px',
+          bottom: '-52px',
           left: 0,
           right: 0,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: '4px',
+          gap: '6px',
           pointerEvents: 'none',
         }}>
           <div style={{
-            fontSize: '11px',
-            color: 'rgba(255,255,255,0.35)',
+            fontSize: '10px',
+            color: 'rgba(255,255,255,0.25)',
             fontFamily: 'Orbitron, monospace',
-            letterSpacing: '0.15em',
+            letterSpacing: '0.2em',
             textTransform: 'uppercase',
           }}>60 × 120 см</div>
           <div
             className="animate-mirror-content-reveal"
             style={{
               animationDelay: '1200ms',
-              fontSize: '11px',
-              color: 'rgba(255,255,255,0.5)',
-              fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif',
-              letterSpacing: '0.05em',
               display: 'flex',
               alignItems: 'center',
-              gap: '5px',
+              gap: '6px',
             }}
           >
-            <span style={{ opacity: 0.7 }}>↑</span>
-            нажми на кнопку
+            <span style={{
+              fontSize: '13px',
+              animation: 'bounce 1.4s ease-in-out infinite',
+              display: 'inline-block',
+              color: 'rgba(255,255,255,0.6)',
+            }}>↑</span>
+            <span style={{
+              fontSize: '12px',
+              fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif',
+              fontWeight: 500,
+              letterSpacing: '0.08em',
+              background: 'linear-gradient(90deg, rgba(255,255,255,0.4), rgba(255,255,255,0.75), rgba(255,255,255,0.4))',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>нажми на кнопку</span>
+            <span style={{
+              fontSize: '13px',
+              animation: 'bounce 1.4s ease-in-out infinite',
+              display: 'inline-block',
+              color: 'rgba(255,255,255,0.6)',
+            }}>↑</span>
           </div>
         </div>
 
