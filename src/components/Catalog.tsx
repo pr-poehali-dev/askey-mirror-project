@@ -12,7 +12,7 @@ const products = [
     price: '12 590',
     icon: 'Lightbulb',
     popular: false,
-    image: 'https://i.ibb.co/xtL3c0Xk/image.png',
+    image: 'https://cdn.poehali.dev/projects/af6d2ef4-20e2-486b-93ab-6d38dda52f4e/bucket/57e07a93-c21d-482c-9692-5239ccdc13fc.jpg',
   },
   {
     id: 2,
