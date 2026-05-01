@@ -24,7 +24,7 @@ const products = [
     price: '15 590',
     icon: 'Sparkles',
     popular: true,
-    image: 'https://i.ibb.co/Qj7GBSB5/image.png',
+    image: 'https://cdn.poehali.dev/files/1c52a0fb-bc13-4ebc-892a-9d67e6a72f4b.jpeg',
   },
   {
     id: 3,
