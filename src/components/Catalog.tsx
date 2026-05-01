@@ -24,7 +24,7 @@ const products = [
     price: '15 590',
     icon: 'Sparkles',
     popular: true,
-    image: 'https://cdn.poehali.dev/projects/af6d2ef4-20e2-486b-93ab-6d38dda52f4e/bucket/e022ba38-7f94-4cd2-8fd5-8218d33e0c41.png',
+    image: 'https://cdn.poehali.dev/files/1c52a0fb-bc13-4ebc-892a-9d67e6a72f4b.jpeg',
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const products = [
     price: '18 590',
     icon: 'Gem',
     popular: false,
-    image: 'https://cdn.poehali.dev/projects/af6d2ef4-20e2-486b-93ab-6d38dda52f4e/bucket/e022ba38-7f94-4cd2-8fd5-8218d33e0c41.png',
+    image: 'https://i.ibb.co/1GJVVgnN/image.png',
     darkSticker: true,
   },
 ];
