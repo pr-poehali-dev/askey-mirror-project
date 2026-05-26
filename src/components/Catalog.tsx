@@ -3,18 +3,6 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const products = [
   {
-    id: 1,
-    name: 'Стандарт',
-    tag: 'Хит',
-    tagColor: '#f8fafc',
-    lightType: 'Контурная подсветка',
-    description: 'Светодиодная лента расположена по периметру зеркала, за корпусом между зеркалом и стеной. Оснащена сенсорной кнопкой, с помощью которой можно настраивать режимы свечения.',
-    price: '12 590',
-    icon: 'Lightbulb',
-    popular: false,
-    image: 'https://cdn.poehali.dev/projects/af6d2ef4-20e2-486b-93ab-6d38dda52f4e/bucket/57e07a93-c21d-482c-9692-5239ccdc13fc.jpg',
-  },
-  {
     id: 2,
     name: 'Премиум',
     tag: 'Флагман',
