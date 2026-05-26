@@ -36,23 +36,21 @@ const Catalog = () => {
   };
 
   const titleRef = useScrollReveal({ threshold: 0.1 });
-  const card0Ref = useScrollReveal<HTMLDivElement>({ threshold: 0.08, delay: 0 });
-  const card1Ref = useScrollReveal<HTMLDivElement>({ threshold: 0.08, delay: 100 });
-  const card2Ref = useScrollReveal<HTMLDivElement>({ threshold: 0.08, delay: 200 });
-  const cardRefs = [card0Ref, card1Ref, card2Ref];
+  const card0Ref = useScrollReveal<HTMLDivElement>({ threshold: 0.05, delay: 0 });
+  const card1Ref = useScrollReveal<HTMLDivElement>({ threshold: 0.05, delay: 120 });
+  const cardRefs = [card0Ref, card1Ref];
 
   return (
     <section
       id="catalog"
-      className="py-16 sm:py-20 lg:py-24 relative"
+      className="py-16 sm:py-20 lg:py-28 relative"
       style={{ background: '#080808' }}
     >
-      {/* Разделитель сверху */}
       <div className="absolute top-0 inset-x-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent)' }} />
 
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-16">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-10">
         {/* Заголовок */}
-        <div ref={titleRef} className="text-center mb-10 sm:mb-12 lg:mb-16">
+        <div ref={titleRef} className="text-center mb-16 sm:mb-20 lg:mb-24">
           <div
             className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-[10px] sm:text-xs font-semibold tracking-widest uppercase"
             style={{ border: '1px solid rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.1)', color: '#e2e8f0' }}
@@ -71,234 +69,189 @@ const Catalog = () => {
           </p>
         </div>
 
-        {/* Карточки */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
-          {products.map((product, i) => (
-            <div
-              key={product.id}
-              ref={cardRefs[i]}
-              className="relative rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col group"
-              style={{
-                background: product.popular
-                  ? 'linear-gradient(135deg, #141414 0%, #1c1c1c 60%, #0e0e0e 100%)'
-                  : 'linear-gradient(135deg, #0e0e0e 0%, #131313 100%)',
-                border: `1px solid ${product.popular ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.2)'}`,
-                boxShadow: product.popular
-                  ? '0 0 40px rgba(255,255,255,0.08), inset 0 1px 0 rgba(255,255,255,0.12)'
-                  : 'none',
-                transition: 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease, border-color 0.35s ease',
-              }}
-              onMouseEnter={e => {
-                const el = e.currentTarget;
-                el.style.transform = 'translateY(-8px) scale(1.02)';
-                el.style.boxShadow = '0 24px 60px rgba(255,255,255,0.12), 0 0 0 1px rgba(255,255,255,0.5), inset 0 1px 0 rgba(255,255,255,0.2)';
-                el.style.borderColor = 'rgba(255,255,255,0.6)';
-                const shine = el.querySelector<HTMLElement>('.shine-overlay');
-                if (shine) shine.style.backgroundPosition = '-50% 0%';
-                const glow = el.querySelector<HTMLElement>('.hover-glow');
-                if (glow) glow.style.opacity = '1';
-              }}
-              onMouseLeave={e => {
-                const el = e.currentTarget;
-                el.style.transform = '';
-                el.style.boxShadow = product.popular
-                  ? '0 0 40px rgba(255,255,255,0.08), inset 0 1px 0 rgba(255,255,255,0.12)'
-                  : 'none';
-                el.style.borderColor = product.popular ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.2)';
-                const shine = el.querySelector<HTMLElement>('.shine-overlay');
-                if (shine) shine.style.backgroundPosition = '200% 0%';
-                const glow = el.querySelector<HTMLElement>('.hover-glow');
-                if (glow) glow.style.opacity = '0';
-              }}
-            >
-              {/* Внутренний свет при hover */}
-              <div
-                className="hover-glow absolute inset-0 pointer-events-none rounded-2xl sm:rounded-3xl"
-                style={{
-                  background: 'radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.08) 0%, transparent 65%)',
-                  opacity: 0,
-                  transition: 'opacity 0.35s ease',
-                }}
-              />
-              {/* Отблеск при hover */}
-              <div
-                className="shine-overlay absolute inset-0 pointer-events-none rounded-2xl sm:rounded-3xl"
-                style={{
-                  background: 'linear-gradient(115deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 60%)',
-                  backgroundSize: '400% 100%',
-                  backgroundPosition: '200% 0%',
-                  transition: 'background-position 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                }}
-              />
-              {/* Glow */}
-              {product.popular && (
-                <div
-                  className="absolute top-0 right-0 w-48 h-48 rounded-full opacity-20 blur-3xl pointer-events-none"
-                  style={{ background: 'radial-gradient(circle, #e2e8f0, transparent 70%)' }}
-                />
-              )}
+        {/* Блоки на всю ширину */}
+        <div className="flex flex-col gap-6 sm:gap-8 lg:gap-10">
+          {products.map((product, i) => {
+            const isDark = (product as typeof product & { darkSticker?: boolean }).darkSticker;
+            const isEven = i % 2 === 0;
 
-              {/* Фото зеркала */}
-              <div className="relative w-full overflow-hidden">
-                {(product as typeof product & { darkSticker?: boolean }).darkSticker ? (
-                  <div style={{
-                    aspectRatio: '3/4',
-                    background: 'linear-gradient(135deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '12px',
-                  }}>
-                    <div style={{
-                      fontSize: '11px',
-                      fontFamily: 'Orbitron, monospace',
-                      letterSpacing: '0.3em',
-                      color: 'rgba(255,255,255,0.25)',
-                      textTransform: 'uppercase',
-                    }}>coming soon</div>
-                    <div style={{
-                      fontSize: '28px',
-                      fontFamily: 'Orbitron, monospace',
-                      fontWeight: 900,
-                      letterSpacing: '0.1em',
-                      textTransform: 'uppercase',
-                      background: 'linear-gradient(90deg, rgba(255,255,255,0.5), rgba(255,255,255,0.9), rgba(255,255,255,0.5))',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      textAlign: 'center',
-                      lineHeight: 1.2,
-                    }}>СКОРО<br/>В ПРОДАЖЕ</div>
-                    <div style={{
-                      width: '40px',
-                      height: '1px',
-                      background: 'rgba(255,255,255,0.2)',
-                    }} />
-                  </div>
-                ) : (
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full block"
-                />
-                )}
-                {!(product as typeof product & { darkSticker?: boolean }).darkSticker && (
+            return (
+              <div
+                key={product.id}
+                ref={cardRefs[i]}
+                className="relative rounded-2xl sm:rounded-3xl overflow-hidden"
+                style={{
+                  background: product.popular
+                    ? 'linear-gradient(135deg, #141414 0%, #1c1c1c 60%, #0e0e0e 100%)'
+                    : 'linear-gradient(135deg, #0e0e0e 0%, #131313 100%)',
+                  border: `1px solid ${product.popular ? 'rgba(255,255,255,0.22)' : 'rgba(255,255,255,0.12)'}`,
+                  boxShadow: product.popular ? '0 0 60px rgba(255,255,255,0.06)' : 'none',
+                }}
+              >
+                {/* Glow */}
+                {product.popular && (
                   <div
-                    className="absolute inset-0"
-                    style={{ background: 'linear-gradient(to bottom, transparent 70%, rgba(10,10,15,0.9) 100%)' }}
+                    className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-10 blur-3xl pointer-events-none"
+                    style={{ background: 'radial-gradient(circle, #e2e8f0, transparent 70%)' }}
                   />
                 )}
-              </div>
 
-              <div className="relative flex flex-col flex-1 p-5 sm:p-6 lg:p-7">
-                {/* Шапка */}
-                <div className="flex items-center justify-between mb-4 sm:mb-5">
-                  <div
-                    className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center"
-                    style={{
-                      background: `${product.tagColor}22`,
-                      border: `1px solid ${product.tagColor}44`,
-                    }}
-                  >
-                    <Icon name={product.icon} size={18} style={{ color: product.tagColor }} />
-                  </div>
-                  <div className="flex items-center gap-2">
-                    {product.popular && (
-                      <span
-                        className="text-[10px] font-bold px-2 py-0.5 rounded-full animate-pulse-neon"
-                        style={{ background: 'linear-gradient(135deg, #94a3b8, #e2e8f0)', color: '#fff' }}
+                <div className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} min-h-[420px] sm:min-h-[480px] lg:min-h-[520px]`}>
+
+                  {/* Фото */}
+                  <div className="relative w-full lg:w-1/2 overflow-hidden" style={{ minHeight: '280px' }}>
+                    {isDark ? (
+                      <div
+                        className="w-full h-full"
+                        style={{
+                          minHeight: '280px',
+                          background: 'linear-gradient(135deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%)',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '16px',
+                        }}
                       >
-                        №1
-                      </span>
+                        <div style={{
+                          fontSize: '11px',
+                          fontFamily: 'Orbitron, monospace',
+                          letterSpacing: '0.35em',
+                          color: 'rgba(255,255,255,0.2)',
+                          textTransform: 'uppercase',
+                        }}>coming soon</div>
+                        <div style={{
+                          fontSize: '36px',
+                          fontFamily: 'Orbitron, monospace',
+                          fontWeight: 900,
+                          letterSpacing: '0.08em',
+                          textTransform: 'uppercase',
+                          background: 'linear-gradient(90deg, rgba(255,255,255,0.4), rgba(255,255,255,0.85), rgba(255,255,255,0.4))',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          backgroundClip: 'text',
+                          textAlign: 'center',
+                          lineHeight: 1.2,
+                        }}>СКОРО<br />В ПРОДАЖЕ</div>
+                        <div style={{ width: '48px', height: '1px', background: 'rgba(255,255,255,0.15)' }} />
+                      </div>
+                    ) : (
+                      <>
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="w-full h-full object-cover"
+                          style={{ minHeight: '280px' }}
+                        />
+                        <div
+                          className="absolute inset-0"
+                          style={{
+                            background: isEven
+                              ? 'linear-gradient(to right, transparent 60%, rgba(10,10,15,0.85) 100%)'
+                              : 'linear-gradient(to left, transparent 60%, rgba(10,10,15,0.85) 100%)',
+                          }}
+                        />
+                      </>
                     )}
-                    <span
-                      className="text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full"
+                  </div>
+
+                  {/* Контент */}
+                  <div className="relative flex flex-col justify-center w-full lg:w-1/2 p-8 sm:p-10 lg:p-14">
+                    {/* Тег */}
+                    <div className="flex items-center gap-3 mb-6">
+                      <div
+                        className="w-10 h-10 rounded-xl flex items-center justify-center"
+                        style={{ background: `${product.tagColor}18`, border: `1px solid ${product.tagColor}33` }}
+                      >
+                        <Icon name={product.icon} size={18} style={{ color: product.tagColor }} />
+                      </div>
+                      <div className="flex items-center gap-2">
+                        {product.popular && (
+                          <span
+                            className="text-[10px] font-bold px-2.5 py-1 rounded-full"
+                            style={{ background: 'linear-gradient(135deg, #94a3b8, #e2e8f0)', color: '#0a0a0a' }}
+                          >
+                            №1
+                          </span>
+                        )}
+                        <span
+                          className="text-[10px] font-bold px-2.5 py-1 rounded-full tracking-widest uppercase"
+                          style={{ background: `${product.tagColor}18`, color: product.tagColor, border: `1px solid ${product.tagColor}33` }}
+                        >
+                          {product.tag}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Название */}
+                    <h3
+                      className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-2 tracking-tight"
                       style={{
-                        background: `${product.tagColor}22`,
-                        color: product.tagColor,
-                        border: `1px solid ${product.tagColor}44`,
+                        fontFamily: 'Orbitron, monospace',
+                        textShadow: product.popular ? '0 0 30px rgba(255,255,255,0.3)' : 'none',
                       }}
                     >
-                      {product.tag}
-                    </span>
-                  </div>
-                </div>
+                      {product.name}
+                    </h3>
 
-                {/* Название */}
-                <h3
-                  className="text-xl sm:text-2xl font-black text-white mb-1 tracking-tight"
-                  style={{ fontFamily: 'Orbitron, monospace', textShadow: product.popular ? '0 0 20px rgba(255,255,255,0.4)' : 'none' }}
-                >
-                  {product.name}
-                </h3>
-
-                {/* Тип подсветки */}
-                <p
-                  className="text-[10px] sm:text-xs font-semibold tracking-widest uppercase mb-3 sm:mb-4"
-                  style={{ color: product.tagColor }}
-                >
-                  {product.lightType}
-                </p>
-
-                {/* Описание */}
-                <p className="text-white/55 text-xs sm:text-sm leading-relaxed mb-5 sm:mb-6 flex-1">
-                  {product.description}
-                </p>
-
-                {/* Цена */}
-                <div className="mb-4 sm:mb-5">
-                  <div className="flex items-end justify-between mb-1.5">
-                    <span className="text-xs text-white/30 uppercase tracking-widest mb-1">цена</span>
-                    <span
-                      className="text-2xl sm:text-3xl font-black leading-none"
-                      style={{ color: product.tagColor, fontFamily: 'Orbitron, monospace', textShadow: `0 0 20px ${product.tagColor}55` }}
+                    {/* Тип подсветки */}
+                    <p
+                      className="text-xs font-semibold tracking-widest uppercase mb-5"
+                      style={{ color: product.tagColor, opacity: 0.7 }}
                     >
-                      {product.price} <span className="text-base sm:text-lg">₽</span>
-                    </span>
-                  </div>
-                  <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${product.tagColor}40, transparent)` }} />
-                </div>
+                      {product.lightType}
+                    </p>
 
-                {/* CTA */}
-                <button
-                  onClick={() => scrollTo('#contacts')}
-                  className="w-full py-3 sm:py-3.5 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-bold transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2"
-                  style={
-                    product.popular
-                      ? {
-                          background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
-                          color: '#ffffff',
-                          border: '1px solid rgba(255,255,255,0.35)',
-                          boxShadow: '0 0 30px rgba(255,255,255,0.12), inset 0 1px 0 rgba(255,255,255,0.2)',
-                          letterSpacing: '0.12em',
+                    {/* Описание */}
+                    <p className="text-white/50 text-sm sm:text-base leading-relaxed mb-8 max-w-md">
+                      {product.description}
+                    </p>
+
+                    {/* Цена + кнопка */}
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+                      <div>
+                        <div className="text-white/30 text-[10px] uppercase tracking-widest mb-1">цена</div>
+                        <div
+                          className="text-3xl sm:text-4xl font-black leading-none"
+                          style={{
+                            color: product.tagColor,
+                            fontFamily: 'Orbitron, monospace',
+                            textShadow: `0 0 24px ${product.tagColor}44`,
+                          }}
+                        >
+                          {product.price} <span className="text-xl">₽</span>
+                        </div>
+                      </div>
+
+                      <button
+                        onClick={() => scrollTo('#contacts')}
+                        className="flex items-center gap-2 px-7 py-3.5 rounded-2xl text-sm font-bold transition-all duration-300 hover:scale-[1.03]"
+                        style={
+                          product.popular
+                            ? {
+                                background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
+                                color: '#ffffff',
+                                border: '1px solid rgba(255,255,255,0.3)',
+                                boxShadow: '0 0 30px rgba(255,255,255,0.1), inset 0 1px 0 rgba(255,255,255,0.15)',
+                                letterSpacing: '0.1em',
+                              }
+                            : {
+                                background: `${product.tagColor}12`,
+                                color: product.tagColor,
+                                border: `1px solid ${product.tagColor}28`,
+                                letterSpacing: '0.1em',
+                              }
                         }
-                      : {
-                          background: `${product.tagColor}12`,
-                          color: product.tagColor,
-                          border: `1px solid ${product.tagColor}30`,
-                          letterSpacing: '0.1em',
-                        }
-                  }
-                  onMouseEnter={e => {
-                    if (product.popular) {
-                      (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 0 50px rgba(255,255,255,0.22), inset 0 1px 0 rgba(255,255,255,0.3)';
-                      (e.currentTarget as HTMLButtonElement).style.background = 'linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 100%)';
-                    }
-                  }}
-                  onMouseLeave={e => {
-                    if (product.popular) {
-                      (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 0 30px rgba(255,255,255,0.12), inset 0 1px 0 rgba(255,255,255,0.2)';
-                      (e.currentTarget as HTMLButtonElement).style.background = 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)';
-                    }
-                  }}
-                >
-                  <Icon name="Sparkles" size={13} />
-                  Заказать зеркало
-                </button>
+                      >
+                        <Icon name="Sparkles" size={14} />
+                        Заказать зеркало
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
