@@ -468,7 +468,7 @@ const Footer = () => {
                   { icon: 'Shield', text: 'Гарантия 2 месяца на подсветку' },
                   { icon: 'RotateCcw', text: 'Возврат в течение 14 дней' },
                   { icon: 'Truck', text: 'Доставка по всей России' },
-                  { icon: 'Award', text: 'Сертификаты качества материалов' },
+
                 ].map((item) => (
                   <div key={item.text} className="flex items-center gap-2 sm:gap-3">
                     <Icon name={item.icon} size={12} className="text-purple-400 flex-shrink-0" />
