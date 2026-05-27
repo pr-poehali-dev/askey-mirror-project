@@ -263,9 +263,146 @@ const FooterCanvas = () => {
   );
 };
 
+const adConsentContent = (
+  <div className="space-y-4">
+    <h3 className="text-white font-bold text-base">СОГЛАСИЕ НА ПОЛУЧЕНИЕ РЕКЛАМНОЙ РАССЫЛКИ</h3>
+
+    <div>
+      <p className="text-white font-semibold mb-1">1. Общие положения</p>
+      <p>Настоящее Согласие на получение рекламной рассылки (далее — Согласие) предоставляется субъектом персональных данных (далее — Пользователь) оператору — ИП Шевченко Андрей Игоревич, ИНН: 650401990699, ОГРНИП: 321392600054674 (далее — Оператор).</p>
+      <p className="mt-2">Настоящее Согласие является добровольным и предоставляется Пользователем в соответствии с требованиями Федерального закона от 13.03.2006 № 38-ФЗ «О рекламе» и Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">2. Предмет Согласия</p>
+      <p>Пользователь даёт согласие Оператору на получение рекламных и информационных сообщений о товарах, услугах, акциях и специальных предложениях Оператора по следующим каналам связи:</p>
+      <ul className="list-disc list-inside space-y-1 mt-1">
+        <li>SMS-сообщения на указанный номер телефона;</li>
+        <li>сообщения в мессенджерах (Telegram, WhatsApp и др.);</li>
+        <li>электронная почта (e-mail).</li>
+      </ul>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">3. Состав обрабатываемых данных</p>
+      <p>В рамках настоящего Согласия Оператор обрабатывает следующие персональные данные Пользователя:</p>
+      <ul className="list-disc list-inside space-y-1 mt-1">
+        <li>имя;</li>
+        <li>номер телефона;</li>
+        <li>адрес электронной почты;</li>
+        <li>имя пользователя в мессенджерах (username).</li>
+      </ul>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">4. Цели обработки данных</p>
+      <p>Персональные данные обрабатываются исключительно в целях направления Пользователю рекламных и информационных материалов: новостей, акций, специальных предложений, анонсов новых товаров и услуг Оператора.</p>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">5. Срок действия Согласия</p>
+      <p>Настоящее Согласие действует с момента его предоставления Пользователем и до момента его отзыва. Пользователь вправе в любое время отозвать настоящее Согласие, направив соответствующий запрос на адрес электронной почты: Comp.askei@gmail.com или по телефону: +7 966 767-03-33.</p>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">6. Отзыв Согласия</p>
+      <p>Отзыв Согласия осуществляется путём направления письменного заявления Оператору. После получения заявления об отзыве Согласия Оператор прекращает рассылку в течение 10 рабочих дней. Отзыв Согласия на рекламную рассылку не влечёт прекращения обработки персональных данных, необходимой для исполнения договора.</p>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">7. Реквизиты Оператора</p>
+      <p>ИП Шевченко Андрей Игоревич</p>
+      <p>ИНН: 650401990699</p>
+      <p>ОГРНИП: 321392600054674</p>
+      <p>Телефон: +7 966 767-03-33</p>
+      <p>E-mail: Comp.askei@gmail.com</p>
+    </div>
+  </div>
+);
+
+const pdConsentContent = (
+  <div className="space-y-4">
+    <h3 className="text-white font-bold text-base">СОГЛАСИЕ НА ОБРАБОТКУ ПЕРСОНАЛЬНЫХ ДАННЫХ</h3>
+
+    <div>
+      <p className="text-white font-semibold mb-1">1. Общие положения</p>
+      <p>Настоящее Согласие на обработку персональных данных (далее — Согласие) предоставляется субъектом персональных данных (далее — Пользователь) оператору — ИП Шевченко Андрей Игоревич, ИНН: 650401990699, ОГРНИП: 321392600054674 (далее — Оператор).</p>
+      <p className="mt-2">Обработка персональных данных осуществляется в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">2. Состав персональных данных</p>
+      <p>Пользователь даёт согласие на обработку следующих персональных данных:</p>
+      <ul className="list-disc list-inside space-y-1 mt-1">
+        <li>фамилия, имя, отчество;</li>
+        <li>номер телефона;</li>
+        <li>адрес электронной почты;</li>
+        <li>адрес доставки;</li>
+        <li>имя пользователя в мессенджерах (username, Telegram);</li>
+        <li>данные об устройстве и браузере (cookies, IP-адрес).</li>
+      </ul>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">3. Цели обработки персональных данных</p>
+      <p>Персональные данные обрабатываются в следующих целях:</p>
+      <ul className="list-disc list-inside space-y-1 mt-1">
+        <li>оформление, обработка и исполнение заказов;</li>
+        <li>связь с Пользователем по вопросам заказа и доставки;</li>
+        <li>организация доставки товара;</li>
+        <li>улучшение качества обслуживания;</li>
+        <li>соблюдение требований законодательства Российской Федерации;</li>
+        <li>направление информационных и рекламных сообщений (при наличии отдельного согласия).</li>
+      </ul>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">4. Действия с персональными данными</p>
+      <p>Оператор осуществляет следующие действия с персональными данными: сбор, запись, систематизация, накопление, хранение, уточнение, использование, передача (в случаях, предусмотренных настоящим Согласием), обезличивание, блокирование, удаление, уничтожение.</p>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">5. Передача данных третьим лицам</p>
+      <p>Персональные данные могут быть переданы третьим лицам исключительно в целях исполнения договора (службы доставки, платёжные системы), а также в случаях, прямо предусмотренных законодательством Российской Федерации. Передача данных в иных целях не осуществляется.</p>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">6. Срок обработки и хранения данных</p>
+      <p>Персональные данные обрабатываются и хранятся в течение срока, необходимого для достижения целей обработки, но не более 3 (трёх) лет с момента последнего взаимодействия Пользователя с Оператором, либо до отзыва Согласия Пользователем.</p>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">7. Права Пользователя</p>
+      <p>Пользователь имеет право:</p>
+      <ul className="list-disc list-inside space-y-1 mt-1">
+        <li>получить информацию об обработке своих персональных данных;</li>
+        <li>требовать уточнения, блокирования или уничтожения персональных данных;</li>
+        <li>отозвать настоящее Согласие в любое время;</li>
+        <li>обжаловать действия Оператора в уполномоченный орган по защите прав субъектов персональных данных (Роскомнадзор).</li>
+      </ul>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">8. Отзыв Согласия</p>
+      <p>Пользователь вправе в любое время отозвать настоящее Согласие, направив соответствующее заявление Оператору по адресу электронной почты: Comp.askei@gmail.com или по телефону: +7 966 767-03-33. Отзыв Согласия не влечёт недействительности обработки персональных данных, осуществлённой до момента его отзыва.</p>
+    </div>
+
+    <div>
+      <p className="text-white font-semibold mb-1">9. Реквизиты Оператора</p>
+      <p>ИП Шевченко Андрей Игоревич</p>
+      <p>ИНН: 650401990699</p>
+      <p>ОГРНИП: 321392600054674</p>
+      <p>Телефон: +7 966 767-03-33</p>
+      <p>E-mail: Comp.askei@gmail.com</p>
+    </div>
+  </div>
+);
+
 const Footer = () => {
   const [ofertaOpen, setOfertaOpen] = useState(false);
   const [privacyOpen, setPrivacyOpen] = useState(false);
+  const [adConsentOpen, setAdConsentOpen] = useState(false);
+  const [pdConsentOpen, setPdConsentOpen] = useState(false);
 
   const scrollTo = (href: string) => {
     const el = document.querySelector(href);
@@ -357,7 +494,7 @@ const Footer = () => {
             className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4"
           >
             <p className="text-white/25 text-[10px] sm:text-xs">© 2026 Аскей. Все права защищены.</p>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 justify-center sm:justify-end">
               <button
                 onClick={() => setOfertaOpen(true)}
                 className="text-white/25 hover:text-purple-400 text-[10px] sm:text-xs transition-colors duration-200 underline underline-offset-2"
@@ -369,6 +506,18 @@ const Footer = () => {
                 className="text-white/25 hover:text-purple-400 text-[10px] sm:text-xs transition-colors duration-200 underline underline-offset-2"
               >
                 Политика конфиденциальности
+              </button>
+              <button
+                onClick={() => setPdConsentOpen(true)}
+                className="text-white/25 hover:text-purple-400 text-[10px] sm:text-xs transition-colors duration-200 underline underline-offset-2"
+              >
+                Согласие на обработку ПД
+              </button>
+              <button
+                onClick={() => setAdConsentOpen(true)}
+                className="text-white/25 hover:text-purple-400 text-[10px] sm:text-xs transition-colors duration-200 underline underline-offset-2"
+              >
+                Согласие на рекламную рассылку
               </button>
             </div>
 
@@ -390,6 +539,22 @@ const Footer = () => {
         title="Политика конфиденциальности"
       >
         {privacyContent}
+      </DocumentModal>
+
+      <DocumentModal
+        isOpen={pdConsentOpen}
+        onClose={() => setPdConsentOpen(false)}
+        title="Согласие на обработку персональных данных"
+      >
+        {pdConsentContent}
+      </DocumentModal>
+
+      <DocumentModal
+        isOpen={adConsentOpen}
+        onClose={() => setAdConsentOpen(false)}
+        title="Согласие на рекламную рассылку"
+      >
+        {adConsentContent}
       </DocumentModal>
     </>
   );

@@ -10,6 +10,7 @@ const Contacts = () => {
   const [loading, setLoading] = useState(false);
   const [agreed, setAgreed] = useState(false);
   const [privacyOpen, setPrivacyOpen] = useState(false);
+  const [pdConsentOpen, setPdConsentOpen] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -137,6 +138,14 @@ const Contacts = () => {
                     >
                       политикой конфиденциальности
                     </button>
+                    {' '}и даю{' '}
+                    <button
+                      type="button"
+                      onClick={() => setPdConsentOpen(true)}
+                      className="text-purple-400 underline underline-offset-2 hover:text-purple-300 transition-colors"
+                    >
+                      согласие на обработку персональных данных
+                    </button>
                   </span>
                 </label>
 
@@ -214,6 +223,19 @@ const Contacts = () => {
         <p>Мы собираем имя, телефон, e-mail и адрес доставки исключительно для оформления и исполнения заказов. Данные не передаются третьим лицам, кроме случаев, необходимых для доставки товара и предусмотренных законодательством РФ.</p>
         <p>Обработка персональных данных осуществляется в соответствии с ФЗ от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
         <p>По вопросам обработки данных: <span className="text-white/80">Comp.askei@gmail.com</span>, <span className="text-white/80">+7 966 767-03-33</span>.</p>
+      </DocumentModal>
+
+      <DocumentModal
+        isOpen={pdConsentOpen}
+        onClose={() => setPdConsentOpen(false)}
+        title="Согласие на обработку персональных данных"
+      >
+        <div className="space-y-3 text-white/60 text-sm leading-relaxed">
+          <p>Отправляя форму, я, субъект персональных данных, даю своё согласие оператору — ИП Шевченко Андрей Игоревич (ИНН: 650401990699, ОГРНИП: 321392600054674) — на обработку следующих персональных данных: имя, номер телефона, адрес электронной почты, имя пользователя в мессенджерах.</p>
+          <p>Обработка персональных данных осуществляется в целях оформления и исполнения заказа, связи с покупателем, организации доставки. Обработка включает: сбор, запись, систематизацию, хранение, использование, передачу третьим лицам (службам доставки) и уничтожение данных.</p>
+          <p>Настоящее согласие действует с момента его предоставления и до его отзыва. Отзыв осуществляется путём направления заявления на e-mail: <span className="text-white/80">Comp.askei@gmail.com</span> или по телефону: <span className="text-white/80">+7 966 767-03-33</span>.</p>
+          <p>Обработка осуществляется в соответствии с ФЗ от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
+        </div>
       </DocumentModal>
     </>
   );
